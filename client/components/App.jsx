@@ -8,9 +8,11 @@ class App extends React.Component {
     super(props);
     this.state = {
       locationSelected: false,
+      storyForm: false,
       storyPresent: 2,
     };
     this.handleLocationClick = this.handleLocationClick.bind(this);
+    this.storyFormRender = this.storyFormRender.bind(this);
   }
 
   handleLocationClick() {
@@ -25,11 +27,18 @@ class App extends React.Component {
     } else if (event.target.id === 'story') {
       document.getElementById('present-story').classList.remove('hidden');
       document.getElementById('absent-story').classList.add('hidden');
+      document.getElementById('story-form-zone').classList.add('hidden');
       this.setState({
         locationSelected: true,
+        storyForm: false,
         storyPresent: 1,
       });
     }
+  }
+
+  storyFormRender() {
+    document.getElementById('story-form-zone').classList.remove('hidden');
+    this.setState({ storyForm: true });
   }
 
   render() {
@@ -41,7 +50,7 @@ class App extends React.Component {
           <LocationInfo />
         </div>
         <div className="hidden" id="absent-story">
-          <AbsentStory />
+          <AbsentStory storyFormRender={this.storyFormRender} />
         </div>
         <div className="hidden" id="present-story">
           <PresentStory />

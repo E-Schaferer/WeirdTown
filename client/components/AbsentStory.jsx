@@ -1,4 +1,5 @@
 import React from 'react';
+import StoryForm from './StoryForm.jsx';
 
 class AbsentStory extends React.Component {
   constructor(props) {
@@ -8,7 +9,7 @@ class AbsentStory extends React.Component {
   }
 
   storyButtonClick() {
-    console.log('pressed!');
+    this.props.storyFormRender();
   }
 
   render() {
@@ -17,6 +18,9 @@ class AbsentStory extends React.Component {
         <div>
           <h2>No stories have been told about this place. Would you like to share one?</h2>
           <button id="story-button" onClick={this.storyButtonClick}>Share your story</button>
+        </div>
+        <div id="story-form-zone" className="hidden">
+          <StoryForm />
         </div>
       </div>
     );
