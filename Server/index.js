@@ -1,9 +1,10 @@
-const express = require('express');
-const app = express();
-let path = require('path');
-let port = 3777;
+const path = require('path');
+const express = require('../node_modules/express');
 
-app.use('/', express.static(path.join(__dirname, '../Public/')));
+const app = express();
+const port = 3777;
+
+app.use('/', express.static(path.join(__dirname, '../public/')));
 
 
 app.listen(port);
