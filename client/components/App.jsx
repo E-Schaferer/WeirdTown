@@ -1,4 +1,5 @@
 import React from 'react';
+import Axios from 'axios';
 import LocationInfo from './LocationInfo.jsx';
 import AbsentStory from './AbsentStory.jsx';
 import PresentStory from './PresentStory.jsx';
@@ -13,9 +14,17 @@ class App extends React.Component {
     };
     this.handleLocationClick = this.handleLocationClick.bind(this);
     this.storyFormRender = this.storyFormRender.bind(this);
+    this.storyFormSubmit = this.storyFormSubmit.bind(this);
   }
 
   handleLocationClick() {
+    Axios.get('/locationInfo')
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     document.getElementById('location-info').classList.remove('hidden');
     if (event.target.id === 'no-story') {
       document.getElementById('absent-story').classList.remove('hidden');
@@ -41,6 +50,18 @@ class App extends React.Component {
     this.setState({ storyForm: true });
   }
 
+  storyFormSubmit() {
+    Axios.post('/storySubmit', {
+      data: 'blank',
+    })
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
   render() {
     return (
       <div>
@@ -50,7 +71,7 @@ class App extends React.Component {
           <LocationInfo />
         </div>
         <div className="hidden" id="absent-story">
-          <AbsentStory storyFormRender={this.storyFormRender} />
+          <AbsentStory storyFormRender={this.storyFormRender} storyFormSubmit={this.storyFormSubmit} />
         </div>
         <div className="hidden" id="present-story">
           <PresentStory />

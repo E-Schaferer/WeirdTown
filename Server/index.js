@@ -6,6 +6,13 @@ const port = 3777;
 
 app.use('/', express.static(path.join(__dirname, '../public/')));
 
+app.get('/locationInfo', (req, res) => {
+  res.send(200);
+});
+
+app.post('/storySubmit', (req, res) => {
+  res.send(200);
+});
 
 app.listen(port);
 console.log(`time to get weird on port ${port}`);

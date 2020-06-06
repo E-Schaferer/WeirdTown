@@ -8,7 +8,7 @@ class StoryForm extends React.Component {
   }
 
   onStorySubmit() {
-    console.log('submitted!');
+    this.props.storyFormSubmit();
   }
 
   render() {
