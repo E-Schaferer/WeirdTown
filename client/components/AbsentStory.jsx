@@ -20,7 +20,7 @@ class AbsentStory extends React.Component {
           <button id="story-button" onClick={this.storyButtonClick}>Share your story</button>
         </div>
         <div id="story-form-zone" className="hidden">
-          <StoryForm />
+          <StoryForm storyFormSubmit={this.props.storyFormSubmit} />
         </div>
       </div>
     );
