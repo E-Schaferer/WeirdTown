@@ -1,4 +1,7 @@
 import React from 'react';
+import LocationInfo from './LocationInfo.jsx';
+import AbsentStory from './AbsentStory.jsx';
+import PresentStory from './PresentStory.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -11,6 +14,13 @@ class App extends React.Component {
     return (
       <div>
         <h1>hello world 2</h1>
+        <LocationInfo />
+        <div>
+          <AbsentStory />
+        </div>
+        <div>
+          <PresentStory />
+        </div>
       </div>
     );
   }
