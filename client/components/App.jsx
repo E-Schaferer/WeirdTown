@@ -3,6 +3,7 @@ import Axios from 'axios';
 import LocationInfo from './LocationInfo.jsx';
 import AbsentStory from './AbsentStory.jsx';
 import PresentStory from './PresentStory.jsx';
+import Mapzone from './Map.jsx'
 
 class App extends React.Component {
   constructor(props) {
@@ -65,6 +66,9 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <div id="map-zone">
+          <Mapzone />
+        </div>
         <h1 id="no-story" onClick={this.handleLocationClick}>location: no story</h1>
         <h1 id="story" onClick={this.handleLocationClick}>location: story</h1>
         <div className="hidden" id="location-info">

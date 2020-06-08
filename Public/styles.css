@@ -1,3 +1,5 @@
 .hidden {
   display: none;
 }
+
+#mapid { height: 380px; }
