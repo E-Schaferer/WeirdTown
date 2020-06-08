@@ -3,7 +3,7 @@ import Axios from 'axios';
 import LocationInfo from './LocationInfo.jsx';
 import AbsentStory from './AbsentStory.jsx';
 import PresentStory from './PresentStory.jsx';
-import Mapzone from './Map.jsx'
+import Mapzone from './Mapzone.jsx'
 
 class App extends React.Component {
   constructor(props) {
@@ -12,37 +12,42 @@ class App extends React.Component {
       locationSelected: false,
       storyForm: false,
       storyPresent: 2,
+      coords: [[47.571806504300895, -122.22178459167482],
+        [47.57519395538315, -122.22873687744142]],
+      lastMarker: undefined,
     };
     this.handleLocationClick = this.handleLocationClick.bind(this);
     this.storyFormRender = this.storyFormRender.bind(this);
     this.storyFormSubmit = this.storyFormSubmit.bind(this);
+    this.handleLegendGet = this.handleLegendGet.bind(this);
   }
 
-  handleLocationClick() {
+  handleLocationClick(location) {
+    document.getElementById('absent-story').classList.remove('hidden');
+    document.getElementById('present-story').classList.add('hidden');
+    this.state.lastMarker = location;
+    this.setState({
+      locationSelected: true,
+      storyPresent: 0,
+    });
+  }
+
+  handleLegendGet(location) {
     Axios.get('/locationInfo')
-      .then((result) => {
-        console.log(result);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    if (event.target.id === 'no-story') {
-      document.getElementById('absent-story').classList.remove('hidden');
-      document.getElementById('present-story').classList.add('hidden');
-      this.setState({
-        locationSelected: true,
-        storyPresent: 0,
-      });
-    } else if (event.target.id === 'story') {
-      document.getElementById('present-story').classList.remove('hidden');
-      document.getElementById('absent-story').classList.add('hidden');
-      document.getElementById('story-form-zone').classList.add('hidden');
-      this.setState({
-        locationSelected: true,
-        storyForm: false,
-        storyPresent: 1,
-      });
-    }
+    .then((result) => {
+      console.log(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+    document.getElementById('present-story').classList.remove('hidden');
+    document.getElementById('absent-story').classList.add('hidden');
+    document.getElementById('story-form-zone').classList.add('hidden');
+    this.setState({
+      locationSelected: true,
+      storyForm: false,
+      storyPresent: 1,
+    });
   }
 
   storyFormRender() {
@@ -66,12 +71,17 @@ class App extends React.Component {
     return (
       <div>
         <div id="map-zone">
-          <Mapzone />
+          <Mapzone 
+          coords={this.state.coords}
+          handleLocationClick={this.handleLocationClick}
+          handleLegendGet={this.handleLegendGet}
+          />
         </div>
-        <h1 id="no-story" onClick={this.handleLocationClick}>location: no story</h1>
-        <h1 id="story" onClick={this.handleLocationClick}>location: story</h1>
         <div className="hidden" id="absent-story">
-          <AbsentStory storyFormRender={this.storyFormRender} storyFormSubmit={this.storyFormSubmit} />
+          <AbsentStory 
+          storyFormRender={this.storyFormRender}
+          storyFormSubmit={this.storyFormSubmit}
+          />
         </div>
         <div className="hidden" id="present-story">
           <PresentStory />
