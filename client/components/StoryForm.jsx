@@ -18,6 +18,10 @@ class StoryForm extends React.Component {
           <label>What do you call it?</label>
           <input id="input-name" type="text"></input>
         </div>
+        <div>
+          <label>Where did it happen?</label>
+          <input id="input-location" type="text"></input>
+        </div>
         <div id="story-saw">
           <label>What did you see?</label>
           <input id="input-saw" type="text"></input>
