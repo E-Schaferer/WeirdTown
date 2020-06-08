@@ -22,6 +22,12 @@ class App extends React.Component {
     this.handleLegendGet = this.handleLegendGet.bind(this);
   }
 
+
+  /*
+=====
+  - map click functions
+=====
+  */
   handleLocationClick(location) {
     document.getElementById('absent-story').classList.remove('hidden');
     document.getElementById('present-story').classList.add('hidden');
@@ -33,23 +39,29 @@ class App extends React.Component {
   }
 
   handleLegendGet(location) {
-    Axios.get('/locationInfo')
-    .then((result) => {
-      console.log(result);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-    document.getElementById('present-story').classList.remove('hidden');
-    document.getElementById('absent-story').classList.add('hidden');
-    document.getElementById('story-form-zone').classList.add('hidden');
-    this.setState({
-      locationSelected: true,
-      storyForm: false,
-      storyPresent: 1,
-    });
+    Axios.get(`/locationInfo?lat=${location[0]}&lng=${location[1]}`)
+      .then((result) => {
+        console.log(result);
+        document.getElementById('present-story').classList.remove('hidden');
+        document.getElementById('absent-story').classList.add('hidden');
+        document.getElementById('story-form-zone').classList.add('hidden');
+        this.setState({
+          locationSelected: true,
+          storyForm: false,
+          storyPresent: 1,
+        });
+      })
+      .catch((err) => {
+        alert('Something went wrong! Please try again.')
+        console.log(err);
+      });
   }
 
+  /*
+=====
+  - story form functions
+=====
+  */
   storyFormRender() {
     document.getElementById('story-form-zone').classList.remove('hidden');
     this.setState({ storyForm: true });
@@ -67,6 +79,11 @@ class App extends React.Component {
       })
   }
 
+  /*
+=====
+  - render
+=====
+  */
   render() {
     return (
       <div>
