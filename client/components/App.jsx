@@ -26,7 +26,6 @@ class App extends React.Component {
       .catch((err) => {
         console.log(err);
       });
-    document.getElementById('location-info').classList.remove('hidden');
     if (event.target.id === 'no-story') {
       document.getElementById('absent-story').classList.remove('hidden');
       document.getElementById('present-story').classList.add('hidden');
@@ -71,9 +70,6 @@ class App extends React.Component {
         </div>
         <h1 id="no-story" onClick={this.handleLocationClick}>location: no story</h1>
         <h1 id="story" onClick={this.handleLocationClick}>location: story</h1>
-        <div className="hidden" id="location-info">
-          <LocationInfo />
-        </div>
         <div className="hidden" id="absent-story">
           <AbsentStory storyFormRender={this.storyFormRender} storyFormSubmit={this.storyFormSubmit} />
         </div>

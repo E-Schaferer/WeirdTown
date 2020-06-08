@@ -10,6 +10,10 @@ class PresentStory extends React.Component {
     return (
       <div id="story-zone">
         <div>
+          <h2>Where it happened:</h2>
+          <p>REDACTED</p>
+        </div>
+        <div>
           <h2>What they call it:</h2>
           <p>REDACTED</p>
         </div>
