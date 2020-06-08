@@ -17,10 +17,12 @@ class Mapzone extends React.Component {
   }
 
   componentDidMount() {
-    let ghostMap = L.map('map-render-zone').setView([this.state.lat, this.state.long], this.state.zoom);
+    const ghostMap = L.map('map-render-zone', {
+      scrollWheelZoom: false,
+    }).setView([this.state.lat, this.state.long], this.state.zoom);
     L.tileLayer(
       'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       },
     ).addTo(ghostMap);
     const mapClick = this.onMapClick;
@@ -33,11 +35,12 @@ class Mapzone extends React.Component {
   onMapClick(event, map) {
     const newCoords = [event.latlng.lat, event.latlng.lng];
     if (this.state.lastMarker) {
-      console.log(this.state.lastMarker);
-      L.marker(this.state.lastMarker).removeFrom(map);
+      map.removeLayer(this.state.lastMarker);
     }
-    L.marker(newCoords).addTo(map).on('click', this.markerClick);
-    this.setState({ lastMarker: newCoords });
+    this.setState({
+      lastMarker: new L.Marker(newCoords),
+    });
+    map.addLayer(this.state.lastMarker);
     this.props.handleLocationClick(newCoords);
   }
 
@@ -49,8 +52,9 @@ class Mapzone extends React.Component {
   }
 
   markerClick(event) {
-    console.log(event.latlng);
-    this.props.handleLegendGet(event.latlng);
+    const newCoords = [event.latlng.lat, event.latlng.lng];
+    console.log(newCoords);
+    this.props.handleLegendGet(newCoords);
   }
 
   render() {
