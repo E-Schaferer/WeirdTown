@@ -39,6 +39,7 @@ class App extends React.Component {
 =====
   */
   handleLocationClick(location) {
+    console.log(location);
     document.getElementById('absent-story').classList.remove('hidden');
     document.getElementById('present-story').classList.add('hidden');
     this.state.lastMarker = location;
@@ -78,16 +79,23 @@ class App extends React.Component {
     this.setState({ storyForm: true });
   }
 
-  storyFormSubmit() {
+  storyFormSubmit(name, loc, saw, heard, story) {
     Axios.post('/storySubmit', {
-      data: 'blank',
+      story: story,
+      name: name,
+      loc: loc,
+      saw: saw,
+      heard: heard,
+      lat: this.state.lastMarker[0],
+      lng: this.state.lastMarker[1],
     })
-      .then((result) => {
-        console.log(result);
+      .then(() => {
+        alert('Story successfully posted!');
+        window.location.reload(true);
       })
       .catch((err) => {
         console.log(err);
-      })
+      });
   }
 
   /*
@@ -105,7 +113,7 @@ class App extends React.Component {
           />
         </div>
         <div className="hidden" id="absent-story">
-          <AbsentStory 
+          <AbsentStory
           storyFormRender={this.storyFormRender}
           storyFormSubmit={this.storyFormSubmit}
           />

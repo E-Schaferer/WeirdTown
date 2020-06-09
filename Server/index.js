@@ -5,6 +5,7 @@ const db = require('../database/index.js');
 const app = express();
 const port = 3777;
 
+app.use(express.json());
 app.use('/', express.static(path.join(__dirname, '../public/')));
 
 app.get('/allStories', (req, res) => {
@@ -30,7 +31,23 @@ app.get('/locationInfo', (req, res) => {
 });
 
 app.post('/storySubmit', (req, res) => {
-  res.send(200);
+  const queryArgs = [
+    req.body.lat,
+    req.body.lng,
+    req.body.name,
+    req.body.loc,
+    req.body.saw,
+    req.body.heard,
+    req.body.story,
+  ];
+  const queryStatement = 'INSERT INTO stories (latitude, longitude, storyname, storylocation, thingsseen, thingsheard, story) VALUES (?, ?, ?, ?, ?, ?, ?)';
+  db.connection.query(queryStatement, queryArgs, (err) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(200);
+    }
+  });
 });
 
 app.listen(port);

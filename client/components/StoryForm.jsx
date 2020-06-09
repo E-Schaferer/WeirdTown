@@ -8,7 +8,22 @@ class StoryForm extends React.Component {
   }
 
   onStorySubmit() {
-    this.props.storyFormSubmit();
+    const storyName = document.getElementById('input-name').value;
+    const storyLoc = document.getElementById('input-location').value;
+    const storySaw = document.getElementById('input-saw').value;
+    const storyHeard = document.getElementById('input-heard').value;
+    const story = document.getElementById('input-story').value;
+    if (
+      storyName === ''
+      || storyLoc === ''
+      || storySaw === ''
+      || storyHeard === ''
+      || story === ''
+    ) {
+      alert('Please fill out all fields');
+    } else {
+      this.props.storyFormSubmit(storyName, storyLoc, storySaw, storyHeard, story);
+    }
   }
 
   render() {

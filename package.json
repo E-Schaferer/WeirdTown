@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node Server/index.js",
+    "start": "nodemon Server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode production --watch"
   },
@@ -31,6 +31,7 @@
     "leaflet": "^1.6.0",
     "mysql": "^2.18.1",
     "node": "^14.4.0",
+    "nodemon": "^2.0.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-leaflet": "^2.7.0"
