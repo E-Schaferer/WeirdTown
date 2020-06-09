@@ -10,25 +10,36 @@ class PresentStory extends React.Component {
     const p = this.props;
     return (
       <div id="story-zone">
-        <div>
-          <h2>Where it happened:</h2>
-          <p>{p.currentStory.storylocation}</p>
+        <div id="story-header">
+          <div>
+            <h5>Department of Weird Stuff</h5>
+            <h5>Case No° 10000{p.currentStory.id}</h5>
+          </div>
         </div>
-        <div>
-          <h2>What they call it:</h2>
+        <div id="story-classified">
+          <div>
+            <h1>CLASSIFIED</h1>
+          </div>
+        </div>
+        <div id="story-name">
+          <h3 className="underlined">INCIDENT NAME:</h3>
           <p>{p.currentStory.storyname}</p>
         </div>
         <div>
-          <h2>What they saw:</h2>
-          <p>{p.currentStory.thingsseen}</p>
+          <h3 className="underlined">INCIDENT LOCATION:</h3>
+          <p>{p.currentStory.storylocation}</p>
         </div>
         <div>
-          <h2>What they heard:</h2>
-          <p>{p.currentStory.thingsheard}</p>
+          <h3 className="underlined">WITNESSES DESCRIPTION:</h3>
+          <p> - {p.currentStory.thingsseen}</p>
+          <p> - {p.currentStory.thingsheard}</p>
         </div>
         <div>
-          <h2>Their story:</h2>
+          <h3 className="underlined">TIMELINE OF EVENTS:</h3>
           <p>{p.currentStory.story}</p>
+        </div>
+        <div id="secret-footer">
+          <h5 id="top-secret">TOP SECRET</h5>
         </div>
       </div>
     );
