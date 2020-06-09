@@ -22,6 +22,24 @@ class App extends React.Component {
     this.handleLegendGet = this.handleLegendGet.bind(this);
   }
 
+  /*
+=====
+  - initialization
+=====
+  */
+  componentDidMount() {
+    Axios.get('/allStories')
+      .then((result) => {
+        console.log(result);
+        this.setState({
+          coords: [],
+        });
+      })
+      .catch((err) => {
+        alert('Could not load map data, please reload the page');
+        console.log(err);
+      });
+  }
 
   /*
 =====
