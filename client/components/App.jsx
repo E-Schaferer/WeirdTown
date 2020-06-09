@@ -41,7 +41,9 @@ class App extends React.Component {
   handleLocationClick(location) {
     console.log(location);
     document.getElementById('absent-story').classList.remove('hidden');
+    document.getElementById('submission-prompt').classList.remove('hidden');
     document.getElementById('present-story').classList.add('hidden');
+    document.getElementById('story-form-zone').classList.add('hidden');
     this.state.lastMarker = location;
     this.setState({
       locationSelected: true,
@@ -76,6 +78,7 @@ class App extends React.Component {
   */
   storyFormRender() {
     document.getElementById('story-form-zone').classList.remove('hidden');
+    document.getElementById('submission-prompt').classList.add('hidden');
     this.setState({ storyForm: true });
   }
 
@@ -106,6 +109,11 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <div id="title-zone">
+          <div id="title-zone-inner">
+            <h1>My <span className="redacted">Weird</span> Normal Town</h1>
+          </div>
+        </div>
         <div id="map-zone">
           <Mapzone
           handleLocationClick={this.handleLocationClick}
@@ -113,13 +121,19 @@ class App extends React.Component {
           />
         </div>
         <div className="hidden" id="absent-story">
-          <AbsentStory
-          storyFormRender={this.storyFormRender}
-          storyFormSubmit={this.storyFormSubmit}
-          />
+          <div id="absent-story-inner">
+            <AbsentStory
+            storyFormRender={this.storyFormRender}
+            storyFormSubmit={this.storyFormSubmit}
+            />
+          </div>
         </div>
         <div className="hidden" id="present-story">
-          <PresentStory currentStory={this.state.currentStory} />
+          <div id="present-story-flex">
+            <div className="flex-center">
+              <PresentStory currentStory={this.state.currentStory} />
+            </div>
+          </div>
         </div>
       </div>
     );

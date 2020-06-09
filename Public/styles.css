@@ -1,5 +1,148 @@
+html {
+  font-family: BaltimoreTypewriter;
+
+  background-color: #11131d;
+  color: white;
+}
+
+body {
+  font-family: BaltimoreTypewriter;
+}
+
+input, label, textarea {
+  display: block;
+  padding: 5px;
+}
+
+#title-zone {
+  background-color: #f2eecb;
+  color: black;
+  margin: 5px auto 5px auto;
+  width: 25%;
+  padding: 1px 5px 1px 5px;
+}
+
+#title-zone-inner {
+  display: flex;
+  justify-content: center;
+}
+
+/*
+=====
+  - map config
+=====
+*/
+#map-render-zone {
+  height: 380px;
+  width: 95%;
+  margin: 0 auto;
+}
+
+/*
+=====
+  - present story config
+=====
+*/
+#present-story {
+  width: 70%;
+  background-color: #f2eecb;
+  color: black;
+  margin: 0 auto;
+}
+
+#story-zone {
+  margin: 10px;
+  padding: 10px 0 10px 10px;
+}
+
+#story-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#story-classified {
+  display: flex;
+  justify-content: center;
+  width: 95%;
+}
+
+#story-name {
+  border-bottom: 1px black solid;
+}
+
+/*
+=====
+  - absent story config
+=====
+*/
+#absent-story-inner {
+  display: flex;
+  justify-content: center;
+}
+
+#prompt-question, #prompt-button {
+  display: flex;
+  justify-content: center;
+}
+
+#absent-story-zone {
+  background-color: #f2eecb;
+  color: black;
+  padding: 5px;
+  width: 70%;
+}
+
+#absent-story-inner {
+  padding: 10px;
+}
+
+#input-header {
+  display: flex;
+  justify-content: center;
+}
+
+#input-weird-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#submit-zone {
+  display: flex;
+  justify-content: center;
+  margin: 5px;
+}
+
+#secret-footer {
+  color: red;
+  display: flex;
+  justify-content: center;
+}
+
+#top-secret {
+  border: 1px solid red;
+  padding: 0.5px
+}
+
+/*
+=====
+  - text customization
+=====
+*/
+
+.redacted {
+  background-color: black;
+}
+
+.underlined {
+  text-decoration: underline;
+}
+
+/*
+=====
+  - div manipulation
+=====
+*/
+
 .hidden {
   display: none;
 }
-
-#map-render-zone { height: 380px; }
