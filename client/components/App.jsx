@@ -12,9 +12,14 @@ class App extends React.Component {
       locationSelected: false,
       storyForm: false,
       storyPresent: 2,
-      coords: [[47.571806504300895, -122.22178459167482],
-        [47.57519395538315, -122.22873687744142]],
       lastMarker: undefined,
+      currentStory: {
+        story: 'REDACTED',
+        storylocation: 'REDACTED',
+        storyname: 'REDACTED',
+        thingsseen: 'REDACTED',
+        thingsheard: 'REDACTED',
+      },
     };
     this.handleLocationClick = this.handleLocationClick.bind(this);
     this.storyFormRender = this.storyFormRender.bind(this);
@@ -27,19 +32,6 @@ class App extends React.Component {
   - initialization
 =====
   */
-  componentDidMount() {
-    Axios.get('/allStories')
-      .then((result) => {
-        console.log(result);
-        this.setState({
-          coords: [],
-        });
-      })
-      .catch((err) => {
-        alert('Could not load map data, please reload the page');
-        console.log(err);
-      });
-  }
 
   /*
 =====
@@ -67,6 +59,7 @@ class App extends React.Component {
           locationSelected: true,
           storyForm: false,
           storyPresent: 1,
+          currentStory: result.data[0],
         });
       })
       .catch((err) => {
@@ -106,8 +99,7 @@ class App extends React.Component {
     return (
       <div>
         <div id="map-zone">
-          <Mapzone 
-          coords={this.state.coords}
+          <Mapzone
           handleLocationClick={this.handleLocationClick}
           handleLegendGet={this.handleLegendGet}
           />
@@ -119,7 +111,7 @@ class App extends React.Component {
           />
         </div>
         <div className="hidden" id="present-story">
-          <PresentStory />
+          <PresentStory currentStory={this.state.currentStory} />
         </div>
       </div>
     );

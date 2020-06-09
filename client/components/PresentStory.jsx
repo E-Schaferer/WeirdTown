@@ -7,27 +7,28 @@ class PresentStory extends React.Component {
   }
 
   render() {
+    const p = this.props;
     return (
       <div id="story-zone">
         <div>
           <h2>Where it happened:</h2>
-          <p>REDACTED</p>
+          <p>{p.currentStory.storylocation}</p>
         </div>
         <div>
           <h2>What they call it:</h2>
-          <p>REDACTED</p>
+          <p>{p.currentStory.storyname}</p>
         </div>
         <div>
           <h2>What they saw:</h2>
-          <p>REDACTED</p>
+          <p>{p.currentStory.thingsseen}</p>
         </div>
         <div>
           <h2>What they heard:</h2>
-          <p>REDACTED</p>
+          <p>{p.currentStory.thingsheard}</p>
         </div>
         <div>
           <h2>Their story:</h2>
-          <p>REDACTED</p>
+          <p>{p.currentStory.story}</p>
         </div>
       </div>
     );

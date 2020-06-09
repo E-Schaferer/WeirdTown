@@ -10,6 +10,8 @@ class Mapzone extends React.Component {
       long: -122.2221,
       zoom: 15,
       lastMarker: undefined,
+      map: undefined,
+      coords: [],
     };
     this.onMapClick = this.onMapClick.bind(this);
     this.distributeMarkers = this.distributeMarkers.bind(this);
@@ -22,19 +24,33 @@ class Mapzone extends React.Component {
 =====
   */
   componentDidMount() {
-    const ghostMap = L.map('map-render-zone', {
-      scrollWheelZoom: false,
-    }).setView([this.state.lat, this.state.long], this.state.zoom);
-    L.tileLayer(
-      'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      },
-    ).addTo(ghostMap);
-    const mapClick = this.onMapClick;
-    ghostMap.on('click', function(event) {
-      mapClick(event, ghostMap);
-    });
-    this.distributeMarkers(ghostMap);
+    const here = this;
+    Axios.get('/allStories')
+      .then((result) => {
+        for (let i = 0; i < result.data.length; i += 1) {
+          here.state.coords.push([result.data[i].latitude, result.data[i].longitude]);
+        }
+        here.setState({
+          coords: here.state.coords,
+        });
+        const ghostMap = L.map('map-render-zone', {
+          scrollWheelZoom: false,
+        }).setView([this.state.lat, this.state.long], this.state.zoom);
+        L.tileLayer(
+          'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+          },
+        ).addTo(ghostMap);
+        const mapClick = this.onMapClick;
+        ghostMap.on('click', function(event) {
+          mapClick(event, ghostMap);
+        });
+        this.distributeMarkers(ghostMap);
+      })
+      .catch((err) => {
+        alert('Could not load map data, please reload the page');
+        console.log(err);
+      });
   }
 
   /*
@@ -56,9 +72,8 @@ class Mapzone extends React.Component {
   }
 
   distributeMarkers(map) {
-    const p = this.props;
-    for (let i = 0; i < p.coords.length; i += 1) {
-      L.marker(p.coords[i]).addTo(map).on('click', this.markerClick);
+    for (let i = 0; i < this.state.coords.length; i += 1) {
+      L.marker(this.state.coords[i]).addTo(map).on('click', this.markerClick);
     }
   }
 
@@ -72,9 +87,12 @@ class Mapzone extends React.Component {
   - render
 =====
   */
+
   render() {
     return (
-      <div id="map-render-zone"></div>
+      <div>
+        <div id="map-render-zone"></div>
+      </div>
     );
   }
 }

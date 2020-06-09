@@ -18,7 +18,15 @@ app.get('/allStories', (req, res) => {
 });
 
 app.get('/locationInfo', (req, res) => {
-  res.send(200);
+  const queryArgs = [req.query.lat, req.query.lng];
+  const queryStatement = 'SELECT * FROM stories WHERE (latitude = ? AND longitude = ?)';
+  db.connection.query(queryStatement, queryArgs, (err, result) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(result);
+    }
+  });
 });
 
 app.post('/storySubmit', (req, res) => {
