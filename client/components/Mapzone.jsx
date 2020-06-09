@@ -16,6 +16,11 @@ class Mapzone extends React.Component {
     this.markerClick = this.markerClick.bind(this);
   }
 
+  /*
+=====
+  - initialization
+=====
+  */
   componentDidMount() {
     const ghostMap = L.map('map-render-zone', {
       scrollWheelZoom: false,
@@ -32,9 +37,15 @@ class Mapzone extends React.Component {
     this.distributeMarkers(ghostMap);
   }
 
+  /*
+=====
+  - click handlers and marker distribution
+=====
+  */
   onMapClick(event, map) {
     const newCoords = [event.latlng.lat, event.latlng.lng];
     if (this.state.lastMarker) {
+      console.log(this.state.lastMarker._latlng);
       map.removeLayer(this.state.lastMarker);
     }
     this.setState({
@@ -56,7 +67,11 @@ class Mapzone extends React.Component {
     console.log(newCoords);
     this.props.handleLegendGet(newCoords);
   }
-
+  /*
+=====
+  - render
+=====
+  */
   render() {
     return (
       <div id="map-render-zone"></div>
