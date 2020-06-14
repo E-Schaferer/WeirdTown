@@ -4,7 +4,11 @@ Weird Town is a community collaborative creative writing application. with it, u
 
 ## Getting Started
 
-placeholder
+Clone this repo with the following command:
+
+```
+$ git clone https://github.com/E-Schaferer/WeirdTown.git
+```
 
 ## Functionality
 
