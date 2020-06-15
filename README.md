@@ -20,7 +20,7 @@ $ git clone https://github.com/E-Schaferer/WeirdTown.git
 
 ![clickingMarker](./Screenshots/markerClick.png "clicking on a marker")
 
-![markerStory](./Screenshots/markerClick.png "story of clicked marker")
+![markerStory](./Screenshots/clickStory.png "story of clicked marker")
 
 * Clicking on an area of the map that does not have an associated marker will place a temporary one and prompt the user to write their own story. The user will then fill out the form that will make up the story they write.
 
