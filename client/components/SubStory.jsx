@@ -5,17 +5,24 @@ class SubStory extends React.Component {
   constructor(props) {
     super(props);
     this.showSubForm = this.showSubForm.bind(this);
+    this.showSubStories = this.showSubStories.bind(this);
   }
 
   showSubForm() {
     document.getElementById("sub-story-form").classList.toggle("hidden");
   }
 
+  showSubStories() {
+    
+  }
+
   render() {
     return (
       <div>
         <div id="substory-list">
-          <p>placeholder</p>
+          <p>There are {this.props.subNum} addendum files associated with this file</p>
+          <button onClick={this.showSubStories}>Show addendum files</button>
+          <div id="substory-list-zone"></div>
         </div>
         <div id="sub-story-button">
           <button onClick={this.showSubForm}>Write Your Own Sub-Story</button>

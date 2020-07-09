@@ -43,8 +43,8 @@ app.get('/substoryNameGet', (req, res) => {
 });
 
 app.get('/substoryGet', (req, res) => {
-  const queryArgs = [req.body.subname];
-  const queryStatement = 'SELECT * from substories WHERE subname = ?';
+  const queryArgs = [req.query.storyId];
+  const queryStatement = 'SELECT * from substories WHERE storyid = ?';
   db.connection.query(queryStatement, queryArgs, (err, result) => {
     if (err) {
       res.send(err);

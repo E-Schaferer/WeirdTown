@@ -1,17 +1,31 @@
 import React from 'react';
 import SubStory from './SubStory.jsx';
+import Axios from 'axios';
 
 class PresentStory extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      subNum: 0,
+      subs: undefined
+    };
     this.showSub = this.showSub.bind(this);
   }
 
 //this function will query the database for substories related to the current story
   showSub() {
-    document.getElementById("substory").classList.toggle("hidden");
-    document.getElementById("substory-prompt").classList.toggle("hidden");
+    Axios.get(`/subStoryGet?storyId=${this.props.currentStory.id}`)
+      .then((result) => {
+        this.setState({
+          subNum: result.data.length,
+          subs: result.data
+        });
+        document.getElementById("substory").classList.toggle("hidden");
+        document.getElementById("substory-prompt").classList.toggle("hidden");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   render() {
@@ -62,7 +76,7 @@ class PresentStory extends React.Component {
           </div>
         </div>
         <div id="substory" className="hidden">
-          <SubStory subSubmit={this.props.subSubmit} />
+          <SubStory subNum={this.state.subNum} subs={this.state.subs} subSubmit={this.props.subSubmit} />
         </div>
       </div>
     );
