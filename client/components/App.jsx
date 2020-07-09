@@ -14,6 +14,7 @@ class App extends React.Component {
       storyPresent: 2,
       lastMarker: undefined,
       currentStory: {
+        storyId: 'REDACTED',
         story: 'REDACTED',
         storylocation: 'REDACTED',
         storyname: 'REDACTED',
