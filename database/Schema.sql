@@ -1,6 +1,7 @@
 DROP DATABASE IF EXISTS legends;
 CREATE DATABASE legends;
 USE legends;
+
 CREATE TABLE stories(
   id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
   latitude DECIMAL(50, 30) NOT NULL,
@@ -10,6 +11,16 @@ CREATE TABLE stories(
   thingsseen VARCHAR(200) NOT NULL,
   thingsheard VARCHAR(200) NOT NULL,
   story VARCHAR(10000) NOT NULL
+);
+
+CREATE TABLE substories(
+  id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  storyid INT(20) NOT NULL,
+  subname VARCHAR(50) NOT NULL,
+  sublocation VARCHAR(100) NOT NULL,
+  subseen VARCHAR(200) NOT NULL,
+  subheard VARCHAR(200) NOT NULL,
+  substory VARCHAR(10000) NOT NULL
 );
 
 INSERT INTO stories (latitude, longitude, storyName, storyLocation, thingsSeen, thingsHeard, story) VALUES ( 47.573456828354466, -122.2159481048584, 'lorem spectrum', 'Mercer Island High School', 'A ghastly white spectre', 'The chains of death rattling in the night', 'It was actually just a grocery bag');
@@ -81,3 +92,15 @@ Theyre not gonna make their money back, you know
 I told them, I said to him, Bernie, I said theyll never make their money back
 (Always look on the right side of life)
 ");
+
+INSERT INTO substories (storyid, subname, sublocation, subseen, subheard, substory) VALUES (1, '1asdf', 'asdf', 'asdf', 'asdf', 'asdf');
+INSERT INTO substories (storyid, subname, sublocation, subseen, subheard, substory) VALUES (2, '2asdf', 'asdf', 'asdf', 'asdf', 'asdf');
+INSERT INTO substories (storyid, subname, sublocation, subseen, subheard, substory) VALUES (3, '3asdf', 'asdf', 'asdf', 'asdf', 'asdf');
+INSERT INTO substories (storyid, subname, sublocation, subseen, subheard, substory) VALUES (4, '4asdf', 'asdf', 'asdf', 'asdf', 'asdf');
+INSERT INTO substories (storyid, subname, sublocation, subseen, subheard, substory) VALUES (5, '5asdf', 'asdf', 'asdf', 'asdf', 'asdf');
+INSERT INTO substories (storyid, subname, sublocation, subseen, subheard, substory) VALUES (6, '6asdf', 'asdf', 'asdf', 'asdf', 'asdf');
+INSERT INTO substories (storyid, subname, sublocation, subseen, subheard, substory) VALUES (7, '7asdf', 'asdf', 'asdf', 'asdf', 'asdf');
+INSERT INTO substories (storyid, subname, sublocation, subseen, subheard, substory) VALUES (8, '8asdf', 'asdf', 'asdf', 'asdf', 'asdf');
+INSERT INTO substories (storyid, subname, sublocation, subseen, subheard, substory) VALUES (9, '9asdf', 'asdf', 'asdf', 'asdf', 'asdf');
+INSERT INTO substories (storyid, subname, sublocation, subseen, subheard, substory) VALUES (10, '10asdf', 'asdf', 'asdf', 'asdf', 'asdf');
+INSERT INTO substories (storyid, subname, sublocation, subseen, subheard, substory) VALUES (11, '11asdf', 'asdf', 'asdf', 'asdf', 'asdf');

@@ -25,6 +25,7 @@ class App extends React.Component {
     this.storyFormRender = this.storyFormRender.bind(this);
     this.storyFormSubmit = this.storyFormSubmit.bind(this);
     this.handleLegendGet = this.handleLegendGet.bind(this);
+    this.subStoryFormSubmit = this.subStoryFormSubmit.bind(this);
   }
 
   /*
@@ -103,6 +104,30 @@ class App extends React.Component {
 
   /*
 =====
+  - sub story form functions
+=====
+  */
+
+  subStoryFormSubmit(name, loc, heard, saw, story) {
+    Axios.post('/subStorySubmit', {
+      id: this.state.currentStory.id,
+      name: name,
+      location: loc,
+      heard: heard,
+      saw: saw,
+      story: story
+    })
+    .then(() => {
+      alert('Substory successfully posted!');
+      window.location.reload(true);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
+
+  /*
+=====
   - render
 =====
   */
@@ -131,7 +156,10 @@ class App extends React.Component {
         <div className="hidden" id="present-story">
           <div id="present-story-flex">
             <div className="flex-center">
-              <PresentStory currentStory={this.state.currentStory} />
+              <PresentStory
+              currentStory={this.state.currentStory}
+              subSubmit={this.subStoryFormSubmit}
+              />
             </div>
           </div>
         </div>

@@ -30,6 +30,30 @@ app.get('/locationInfo', (req, res) => {
   });
 });
 
+app.get('/substoryNameGet', (req, res) => {
+  const queryArgs = [req.body.storyid];
+  const queryStatement = 'SELECT subName FROM substories WHERE storyid = ?';
+  db.connection.query(queryStatement, queryArgs, (err, result) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+app.get('/substoryGet', (req, res) => {
+  const queryArgs = [req.body.subname];
+  const queryStatement = 'SELECT * from substories WHERE subname = ?';
+  db.connection.query(queryStatement, queryArgs, (err, result) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+
 app.post('/storySubmit', (req, res) => {
   const queryArgs = [
     req.body.lat,
@@ -41,6 +65,25 @@ app.post('/storySubmit', (req, res) => {
     req.body.story,
   ];
   const queryStatement = 'INSERT INTO stories (latitude, longitude, storyname, storylocation, thingsseen, thingsheard, story) VALUES (?, ?, ?, ?, ?, ?, ?)';
+  db.connection.query(queryStatement, queryArgs, (err) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(200);
+    }
+  });
+});
+
+app.post('/subStorySubmit', (req, res) => {
+  const queryArgs = [
+    req.body.id,
+    req.body.name,
+    req.body.location,
+    req.body.saw,
+    req.body.heard,
+    req.body.story,
+  ];
+  const queryStatement = 'INSERT INTO substories (storyid, subname, sublocation, subseen, subheard, substory) VALUES(?, ?, ?, ?, ?, ?)';
   db.connection.query(queryStatement, queryArgs, (err) => {
     if (err) {
       res.send(err);

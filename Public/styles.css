@@ -45,7 +45,6 @@ input, label, textarea {
 */
 #present-story {
   width: 70%;
-  background-color: #f2eecb;
   color: black;
   margin: 0 auto;
 }
@@ -53,6 +52,7 @@ input, label, textarea {
 #story-zone {
   margin: 10px;
   padding: 10px 0 10px 10px;
+  background-color: #f2eecb;
 }
 
 #story-header {
@@ -66,13 +66,24 @@ input, label, textarea {
   width: 95%;
 }
 
-#story-name {
-  border-bottom: 1px black solid;
+/*
+=====
+  - sub story config
+=====
+*/
+
+.substory-prompt {
+  color: white;
+}
+
+.substory-prompt-text, .substory-prompt-button {
+  display: flex;
+  justify-content: center;
 }
 
 /*
 =====
-  - absent story config
+  - absent story / substory config
 =====
 */
 #absent-story-inner {
@@ -92,16 +103,22 @@ input, label, textarea {
   width: 70%;
 }
 
+#sub-story-form {
+  background-color: #f2eecb;
+  color: black;
+  padding: 5px;
+}
+
 #absent-story-inner {
   padding: 10px;
 }
 
-#input-header {
+#input-header, #substory-header {
   display: flex;
   justify-content: center;
 }
 
-#input-weird-header {
+#input-weird-header, #substory-weird-header {
   display: flex;
   justify-content: flex-end;
 }
@@ -112,13 +129,13 @@ input, label, textarea {
   margin: 5px;
 }
 
-#secret-footer {
+#secret-footer, #sub-footer {
   color: red;
   display: flex;
   justify-content: center;
 }
 
-#top-secret {
+.top-secret {
   border: 1px solid red;
   padding: 0.5px
 }
