@@ -18,7 +18,7 @@ class PresentStory extends React.Component {
       .then((result) => {
         this.setState({
           subNum: result.data.length,
-          subs: result.data
+          subs: result.data,
         });
         document.getElementById("substory").classList.toggle("hidden");
         document.getElementById("substory-prompt").classList.toggle("hidden");
@@ -67,7 +67,7 @@ class PresentStory extends React.Component {
         </div>
         <div id="substory-prompt">
           <div id="substory-prompt-content">
-            <div className="substory-prompt-text">
+            <div className="substory-prompt-text white-text">
               <p>Show related case files</p>
             </div>
             <div className="substory-prompt-button">

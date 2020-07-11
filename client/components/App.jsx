@@ -4,6 +4,7 @@ import LocationInfo from './LocationInfo.jsx';
 import AbsentStory from './AbsentStory.jsx';
 import PresentStory from './PresentStory.jsx';
 import Mapzone from './Mapzone.jsx'
+import { defaultCoreCipherList } from 'constants';
 
 class App extends React.Component {
   constructor(props) {
@@ -41,7 +42,6 @@ class App extends React.Component {
 =====
   */
   handleLocationClick(location) {
-    console.log(location);
     document.getElementById('absent-story').classList.remove('hidden');
     document.getElementById('submission-prompt').classList.remove('hidden');
     document.getElementById('present-story').classList.add('hidden');
@@ -56,10 +56,13 @@ class App extends React.Component {
   handleLegendGet(location) {
     Axios.get(`/locationInfo?lat=${location[0]}&lng=${location[1]}`)
       .then((result) => {
-        console.log(result);
         document.getElementById('present-story').classList.remove('hidden');
         document.getElementById('absent-story').classList.add('hidden');
         document.getElementById('story-form-zone').classList.add('hidden');
+        document.getElementById('substory').classList.add('hidden');
+        document.getElementById('substory-prompt').classList.remove('hidden');
+        document.getElementById('sub-story-form').classList.add('hidden');
+        document.getElementById('substory-list-zone').classList.add('hidden');
         this.setState({
           locationSelected: true,
           storyForm: false,

@@ -154,6 +154,10 @@ input, label, textarea {
   text-decoration: underline;
 }
 
+.white-text {
+  color: white;
+}
+
 /*
 =====
   - div manipulation
