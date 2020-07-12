@@ -81,6 +81,11 @@ input, label, textarea {
   justify-content: center;
 }
 
+#substory-list-flex, #substory-list-button-flex, #substory-story-button-flex {
+  display: flex;
+  justify-content: center;
+}
+
 /*
 =====
   - absent story / substory config

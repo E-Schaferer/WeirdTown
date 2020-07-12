@@ -28,15 +28,23 @@ class SubStory extends React.Component {
   render() {
     return (
       <div>
-        <div className="white-text" id="substory-list">
-          { this.props.subNum === 1 ?
-            <p>There is 1 addendum file associated with this file</p>
-            : <p>There are {this.props.subNum} addendum files associated with this file</p> }
-          <button onClick={this.showSubStories}>Show addendum files</button>
-          <div id="substory-list-zone"></div>
+        <div id="substory-list-flex">
+          <div className="white-text" id="substory-list">
+            { this.props.subNum === 1 ?
+              <p>There is 1 addendum file associated with this file</p>
+              : <p>There are {this.props.subNum} addendum files associated with this file</p> }
+            <div id="substory-list-zone"></div>
+          </div>
         </div>
-        <div id="sub-story-button">
-          <button onClick={this.showSubForm}>Write Your Own Sub-Story</button>
+        <div id="substory-list-button-flex">
+          <div>
+            <button onClick={this.showSubStories}>Show addendum files</button>
+          </div>
+        </div>
+        <div id="substory-story-button-flex">
+          <div id="sub-story-button">
+            <button onClick={this.showSubForm}>Write Your Own Sub-Story</button>
+          </div>
         </div>
         <div className="hidden" id="sub-story-form">
           <SubStoryForm subSubmit={this.props.subSubmit} />
