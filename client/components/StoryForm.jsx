@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class StoryForm extends React.Component {
   constructor(props) {
@@ -8,6 +9,7 @@ class StoryForm extends React.Component {
   }
 
   onStorySubmit() {
+    const { storyFormSubmit } = this.props;
     const storyName = document.getElementById('input-name').value;
     const storyLoc = document.getElementById('input-location').value;
     const storySaw = document.getElementById('input-saw').value;
@@ -22,7 +24,7 @@ class StoryForm extends React.Component {
     ) {
       alert('Please fill out all fields');
     } else {
-      this.props.storyFormSubmit(storyName, storyLoc, storySaw, storyHeard, story);
+      storyFormSubmit(storyName, storyLoc, storySaw, storyHeard, story);
     }
   }
 
@@ -36,27 +38,37 @@ class StoryForm extends React.Component {
           <h1>WEIRD INCIDENT SUBMISSION FORM</h1>
         </div>
         <div id="story-name-input">
-          <label for="name">What do you call it?</label>
-          <input name="name" id="input-name" type="text"></input>
+          <label htmlFor="name">
+            What do you call it?
+            <input name="name" id="input-name" type="text" />
+          </label>
         </div>
         <div>
-          <label for="location">Where did it happen?</label>
-          <textarea name="location" rows="5" cols="75" id="input-location" type="text"></textarea>
+          <label htmlFor="location">
+            Where did it happen?
+            <textarea name="location" rows="5" cols="75" id="input-location" type="text" />
+          </label>
         </div>
         <div id="story-saw">
-          <label for="saw">What did you see?</label>
-          <textarea name="saw" rows="5" cols="75" id="input-saw" type="text"></textarea>
+          <label htmlFor="saw">
+            What did you see?
+            <textarea name="saw" rows="5" cols="75" id="input-saw" type="text" />
+          </label>
         </div>
         <div id="story-heard">
-          <label for="heard">What did you hear?</label>
-          <textarea name="heard" rows="5" cols="75" id="input-heard" type="text"></textarea>
+          <label htmlFor="heard">
+            What did you hear?
+            <textarea name="heard" rows="5" cols="75" id="input-heard" type="text" />
+          </label>
         </div>
         <div id="story-body">
-          <label id="story-body" for="body">Tell us your story</label>
-          <textarea name="body" rows="5" cols="75" id="input-story" type="text"></textarea>
+          <label id="story-body" htmlFor="body">
+            Tell us your story
+            <textarea name="body" rows="5" cols="75" id="input-story" type="text" />
+          </label>
         </div>
         <div id="submit-zone">
-          <button onClick={this.onStorySubmit}>Submit your story!</button>
+          <button type="submit" onClick={this.onStorySubmit}>Submit your story!</button>
         </div>
         <div id="secret-footer">
           <h5 className="top-secret">TOP SECRET</h5>
@@ -65,5 +77,8 @@ class StoryForm extends React.Component {
     );
   }
 }
+StoryForm.propTypes = {
+  storyFormSubmit: PropTypes.func.isRequired,
+};
 
 export default StoryForm;

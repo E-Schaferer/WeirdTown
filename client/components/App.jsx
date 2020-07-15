@@ -1,18 +1,17 @@
 import React from 'react';
 import Axios from 'axios';
-import LocationInfo from './LocationInfo.jsx';
-import AbsentStory from './AbsentStory.jsx';
-import PresentStory from './PresentStory.jsx';
-import Mapzone from './Mapzone.jsx'
-import { defaultCoreCipherList } from 'constants';
+// import LocationInfo from './LocationInfo';
+import AbsentStory from './AbsentStory';
+import PresentStory from './PresentStory';
+import Mapzone from './Mapzone';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      locationSelected: false,
-      storyForm: false,
-      storyPresent: 2,
+      // locationSelected: false,
+      // storyForm: false,
+      // storyPresent: 2,
       lastMarker: undefined,
       currentStory: {
         storyId: 'REDACTED',
@@ -48,8 +47,8 @@ class App extends React.Component {
     document.getElementById('story-form-zone').classList.add('hidden');
     this.state.lastMarker = location;
     this.setState({
-      locationSelected: true,
-      storyPresent: 0,
+      // locationSelected: true,
+      // storyPresent: 0,
     });
   }
 
@@ -64,14 +63,14 @@ class App extends React.Component {
         document.getElementById('sub-story-form').classList.add('hidden');
         document.getElementById('substory-list-zone').classList.add('hidden');
         this.setState({
-          locationSelected: true,
-          storyForm: false,
-          storyPresent: 1,
+          // locationSelected: true,
+          // storyForm: false,
+          // storyPresent: 1,
           currentStory: result.data[0],
         });
       })
       .catch((err) => {
-        alert('Something went wrong! Please try again.')
+        alert('Something went wrong! Please try again.');
         console.log(err);
       });
   }
@@ -84,18 +83,21 @@ class App extends React.Component {
   storyFormRender() {
     document.getElementById('story-form-zone').classList.remove('hidden');
     document.getElementById('submission-prompt').classList.add('hidden');
-    this.setState({ storyForm: true });
+    this.setState({
+      // storyForm: true
+    });
   }
 
   storyFormSubmit(name, loc, saw, heard, story) {
+    const { lastMarker } = this.state;
     Axios.post('/storySubmit', {
-      story: story,
-      name: name,
-      loc: loc,
-      saw: saw,
-      heard: heard,
-      lat: this.state.lastMarker[0],
-      lng: this.state.lastMarker[1],
+      story,
+      name,
+      loc,
+      saw,
+      heard,
+      lat: lastMarker[0],
+      lng: lastMarker[1],
     })
       .then(() => {
         alert('Story successfully posted!');
@@ -113,21 +115,22 @@ class App extends React.Component {
   */
 
   subStoryFormSubmit(name, loc, heard, saw, story) {
+    const { currentStory } = this.state;
     Axios.post('/subStorySubmit', {
-      id: this.state.currentStory.id,
-      name: name,
+      id: currentStory.id,
+      name,
       location: loc,
-      heard: heard,
-      saw: saw,
-      story: story
+      heard,
+      saw,
+      story,
     })
-    .then(() => {
-      alert('Substory successfully posted!');
-      window.location.reload(true);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+      .then(() => {
+        alert('Substory successfully posted!');
+        window.location.reload(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   /*
@@ -136,24 +139,29 @@ class App extends React.Component {
 =====
   */
   render() {
+    const { currentStory } = this.state;
     return (
       <div>
         <div id="title-zone">
           <div id="title-zone-inner">
-            <h1>My <span className="redacted">Weird</span> Normal Town</h1>
+            <h1>
+              My
+              <span className="redacted">Weird</span>
+              Normal Town
+            </h1>
           </div>
         </div>
         <div id="map-zone">
           <Mapzone
-          handleLocationClick={this.handleLocationClick}
-          handleLegendGet={this.handleLegendGet}
+            handleLocationClick={this.handleLocationClick}
+            handleLegendGet={this.handleLegendGet}
           />
         </div>
         <div className="hidden" id="absent-story">
           <div id="absent-story-inner">
             <AbsentStory
-            storyFormRender={this.storyFormRender}
-            storyFormSubmit={this.storyFormSubmit}
+              storyFormRender={this.storyFormRender}
+              storyFormSubmit={this.storyFormSubmit}
             />
           </div>
         </div>
@@ -161,8 +169,8 @@ class App extends React.Component {
           <div id="present-story-flex">
             <div className="flex-center">
               <PresentStory
-              currentStory={this.state.currentStory}
-              subSubmit={this.subStoryFormSubmit}
+                currentStory={currentStory}
+                subSubmit={this.subStoryFormSubmit}
               />
             </div>
           </div>

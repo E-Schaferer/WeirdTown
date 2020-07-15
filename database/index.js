@@ -12,4 +12,4 @@ module.exports.connection.connect((err) => {
   } else {
     console.log('Reading stories not meant to be read...');
   }
-})
+});
