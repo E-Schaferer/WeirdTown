@@ -69,7 +69,7 @@ app.post('/storySubmit', (req, res) => {
     if (err) {
       res.send(err);
     } else {
-      res.send(200);
+      res.sendStatus(200);
     }
   });
 });
@@ -88,7 +88,7 @@ app.post('/subStorySubmit', (req, res) => {
     if (err) {
       res.send(err);
     } else {
-      res.send(200);
+      res.sendStatus(200);
     }
   });
 });
