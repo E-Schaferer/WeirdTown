@@ -71,7 +71,7 @@ class SubStoryForm extends React.Component {
           </label>
         </div>
         <div id="substory-button">
-          <button type="submit" id="substory-submit-button" onClick={this.onSubSubmit}>Submit Substory</button>
+          <button className="clickable" type="submit" id="substory-submit-button" onClick={this.onSubSubmit}>Submit Substory</button>
         </div>
         <div id="sub-footer">
           <h5 className="top-secret">TOP SECRET</h5>
