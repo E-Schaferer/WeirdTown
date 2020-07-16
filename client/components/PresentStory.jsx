@@ -8,7 +8,7 @@ class PresentStory extends React.Component {
     super(props);
     this.state = {
       subNum: 0,
-      subs: undefined,
+      subs: [],
     };
     this.showSub = this.showSub.bind(this);
   }
@@ -83,7 +83,7 @@ class PresentStory extends React.Component {
               <p>Show related case files</p>
             </div>
             <div className="substory-prompt-button">
-              <button type="button" onClick={this.showSub}>Show Files</button>
+              <button className="clickable" type="button" onClick={this.showSub}>Show Files</button>
             </div>
           </div>
         </div>

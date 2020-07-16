@@ -108,7 +108,7 @@ input, label, textarea {
   width: 70%;
 }
 
-#sub-story-form {
+#sub-story-form, #substory-list-zone {
   background-color: #f2eecb;
   color: black;
   padding: 5px;
@@ -171,4 +171,16 @@ input, label, textarea {
 
 .hidden {
   display: none;
+}
+
+/*
+=====
+  - clickables
+=====
+*/
+.clickable-hightlight:hover {
+}
+
+.clickable:hover {
+  cursor: pointer;
 }

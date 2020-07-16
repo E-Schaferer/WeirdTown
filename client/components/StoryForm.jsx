@@ -68,7 +68,7 @@ class StoryForm extends React.Component {
           </label>
         </div>
         <div id="submit-zone">
-          <button type="submit" onClick={this.onStorySubmit}>Submit your story!</button>
+          <button className="clickable" type="submit" onClick={this.onStorySubmit}>Submit your story!</button>
         </div>
         <div id="secret-footer">
           <h5 className="top-secret">TOP SECRET</h5>
