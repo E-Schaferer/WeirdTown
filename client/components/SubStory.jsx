@@ -10,6 +10,8 @@ class SubStory extends React.Component {
 
   static showSubStories() {
     document.getElementById('substory-list-zone').classList.remove('hidden');
+    document.getElementById('substory-list').classList.add('hidden');
+    document.getElementById('substory-list-button-flex').classList.add('hidden');
   }
 
   render() {
@@ -23,7 +25,9 @@ class SubStory extends React.Component {
               : (
                 <p>
                   There are
+                  { ' ' }
                   { subNum }
+                  { ' ' }
                   addendum files associated with this file
                 </p>
               ) }

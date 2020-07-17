@@ -44,7 +44,19 @@ app.get('/substoryNameGet', (req, res) => {
 
 app.get('/substoryGet', (req, res) => {
   const queryArgs = [req.query.storyId];
-  const queryStatement = 'SELECT * from substories WHERE storyid = ?';
+  const queryStatement = 'SELECT id, subname from substories WHERE storyid = ?';
+  db.connection.query(queryStatement, queryArgs, (err, result) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+app.get('/substoryGetSpec', (req, res) => {
+  const queryArgs = [req.query.id];
+  const queryStatement = 'SELECT * from substories WHERE id = ?';
   db.connection.query(queryStatement, queryArgs, (err, result) => {
     if (err) {
       res.send(err);
