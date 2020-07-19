@@ -35,8 +35,10 @@ class SubStoryForm extends React.Component {
         </div>
         <div id="substory-header">
           <h1>
-            INCIDENT 10000
-            {1}
+            INCIDENT
+            { ' ' }
+            {10000 + 1 }
+            { ' ' }
             ADDENDUM FORM
           </h1>
         </div>

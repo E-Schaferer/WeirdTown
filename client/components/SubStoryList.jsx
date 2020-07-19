@@ -4,6 +4,11 @@ import PropTypes from 'prop-types';
 import SubStoryRender from './SubStoryRender';
 
 class SubStoryList extends React.Component {
+  static goBack() {
+    document.getElementById('substory-sub-list').classList.remove('hidden');
+    document.getElementById('substory-render-zone').classList.add('hidden');
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -24,7 +29,7 @@ class SubStoryList extends React.Component {
     Axios.get(`/substoryGetSpec?id=${event.target.getAttribute('name')}`)
       .then((result) => {
         document.getElementById('substory-sub-list').classList.add('hidden');
-        document.getElementById('substory-render').classList.remove('hidden');
+        document.getElementById('substory-render-zone').classList.remove('hidden');
         this.setState({
           subStory: result.data[0],
         });
@@ -49,8 +54,11 @@ class SubStoryList extends React.Component {
             { subList }
           </div>
         </div>
-        <div className="hidden" id="substory-render">
+        <div className="hidden" id="substory-render-zone">
           <div>
+            <h3 id="substory-render-goback" className="underlined clickable" onClick={SubStoryList.goBack}>Return to the substory list</h3>
+          </div>
+          <div id="substory-render-actual">
             <SubStoryRender subStory={subStory} />
           </div>
         </div>
