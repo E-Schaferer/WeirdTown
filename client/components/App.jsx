@@ -146,7 +146,9 @@ class App extends React.Component {
           <div id="title-zone-inner">
             <h1>
               My
+              { ' ' }
               <span className="redacted">Weird</span>
+              { ' ' }
               Normal Town
             </h1>
           </div>

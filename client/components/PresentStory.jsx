@@ -40,8 +40,9 @@ class PresentStory extends React.Component {
             <div>
               <h5>Department of Weird Stuff</h5>
               <h5>
-                Case No° 10000
-                {currentStory.id}
+                Case No°
+                { ' ' }
+                {10000 + currentStory.id}
               </h5>
             </div>
           </div>
