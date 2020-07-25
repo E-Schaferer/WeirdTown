@@ -10,7 +10,8 @@ CREATE TABLE stories(
   storylocation VARCHAR(100) NOT NULL,
   thingsseen VARCHAR(200) NOT NULL,
   thingsheard VARCHAR(200) NOT NULL,
-  story VARCHAR(10000) NOT NULL
+  story VARCHAR(10000) NOT NULL,
+  likes INT(20) NOT NULL
 );
 
 CREATE TABLE substories(
@@ -20,20 +21,21 @@ CREATE TABLE substories(
   sublocation VARCHAR(100) NOT NULL,
   subseen VARCHAR(200) NOT NULL,
   subheard VARCHAR(200) NOT NULL,
-  substory VARCHAR(10000) NOT NULL
+  substory VARCHAR(10000) NOT NULL,
+  sublikes INT(20) NOT NULL
 );
 
-INSERT INTO stories (latitude, longitude, storyName, storyLocation, thingsSeen, thingsHeard, story) VALUES ( 47.573456828354466, -122.2159481048584, 'lorem spectrum', 'Mercer Island High School', 'A ghastly white spectre', 'The chains of death rattling in the night', 'It was actually just a grocery bag');
-INSERT INTO stories (latitude, longitude, storyName, storyLocation, thingsSeen, thingsHeard, story) VALUES ( 47.572327664883744, -122.21534729003908, 'lorem ghostum', 'The haunted Wendys', 'A ghost!', 'A ghosts wail!', 'BOO!');
-INSERT INTO stories (latitude, longitude, storyName, storyLocation, thingsSeen, thingsHeard, story) VALUES ( 47.56833196787364, -122.20792293548584, 'lorem vampirum', 'The docks', 'A vampire!', '1 cookie, 2 cookie, AH AH AHHHHH', 'A thrilling narrative goes here');
-INSERT INTO stories (latitude, longitude, storyName, storyLocation, thingsSeen, thingsHeard, story) VALUES ( 47.56798450155298, -122.22088336944581, 'lorem wolfmanum', 'Freshys', 'A werewolf of London', 'A great song by Warren Zevon', 'The melody from All Summer Long was stolen from this song.');
-INSERT INTO stories (latitude, longitude, storyName, storyLocation, thingsSeen, thingsHeard, story) VALUES ( 47.56728956199636, -122.23298549652101, 'lorem fishmanum', 'At the grocery store', 'I think he was flounder, but he could have been a dab too', 'lots of gurgling', 'The only thing scarier than fish monsters is mercury poisoning');
-INSERT INTO stories (latitude, longitude, storyName, storyLocation, thingsSeen, thingsHeard, story) VALUES ( 47.55127444247759, -122.22435951232912, 'lorem demonum', 'At town hall', 'it was wearing a suit and promising anything it thought we wanted', 'A lot of questions and not a lot of answers', 'The real demon is whoever wrote this friggin code base');
-INSERT INTO stories (latitude, longitude, storyName, storyLocation, thingsSeen, thingsHeard, story) VALUES ( 47.52485183309594, -122.22719192504884, 'lorem monstrum', 'On TV', 'I dunno, but it had like 6 heads so there you go', 'it just kinda kept screaming in horror. after this year I dont blame it', 'Maybe the real monsters are the friends we made along the way');
-INSERT INTO stories (latitude, longitude, storyName, storyLocation, thingsSeen, thingsHeard, story) VALUES ( 47.55521351530769, -122.21517562866212, 'lorem alienum', 'In the one place I would be without a decent camera. Typical.', 'A small gray man with big black eyes', 'A bunch of science-y noises like PEW PEW WHOOOSH WUM WUM WUM NEEEEEOWN', 'Technically Earth is in space so were all aliens');
-INSERT INTO stories (latitude, longitude, storyName, storyLocation, thingsSeen, thingsHeard, story) VALUES ( 47.53679001170843, -122.22873687744142, 'lorem mummum', 'On a movie set', 'A famous movie star', 'Something about a weird cult I think', 'for a mummified corpse thats thousands of years old, hes still in excellent shape!');
-INSERT INTO stories (latitude, longitude, storyName, storyLocation, thingsSeen, thingsHeard, story) VALUES ( 47.55069514208837, -122.23354339599611, 'lorem poltergeistum', 'At the liquor store', 'A huge bottle', 'Crashing and angry yelling', 'I knew they sold spirits here, but this is ridiculous!');
-INSERT INTO stories (latitude, longitude, storyName, storyLocation, thingsSeen, thingsHeard, story) VALUES ( 47.56482824357802, -122.21294403076173, 'lorem grudgum', 'In my own soul', 'All of my errands and projects that Ive been putting off working on', 'my subconcious nagging me to stop being so lazy', 
+INSERT INTO stories (latitude, longitude, storyName, storyLocation, thingsSeen, thingsHeard, story, likes) VALUES ( 47.573456828354466, -122.2159481048584, 'lorem spectrum', 'Mercer Island High School', 'A ghastly white spectre', 'The chains of death rattling in the night', 'It was actually just a grocery bag', 0);
+INSERT INTO stories (latitude, longitude, storyName, storyLocation, thingsSeen, thingsHeard, story, likes) VALUES ( 47.572327664883744, -122.21534729003908, 'lorem ghostum', 'The haunted Wendys', 'A ghost!', 'A ghosts wail!', 'BOO!', 1);
+INSERT INTO stories (latitude, longitude, storyName, storyLocation, thingsSeen, thingsHeard, story, likes) VALUES ( 47.56833196787364, -122.20792293548584, 'lorem vampirum', 'The docks', 'A vampire!', '1 cookie, 2 cookie, AH AH AHHHHH', 'A thrilling narrative goes here', 2);
+INSERT INTO stories (latitude, longitude, storyName, storyLocation, thingsSeen, thingsHeard, story, likes) VALUES ( 47.56798450155298, -122.22088336944581, 'lorem wolfmanum', 'Freshys', 'A werewolf of London', 'A great song by Warren Zevon', 'The melody from All Summer Long was stolen from this song.', 3);
+INSERT INTO stories (latitude, longitude, storyName, storyLocation, thingsSeen, thingsHeard, story, likes) VALUES ( 47.56728956199636, -122.23298549652101, 'lorem fishmanum', 'At the grocery store', 'I think he was flounder, but he could have been a dab too', 'lots of gurgling', 'The only thing scarier than fish monsters is mercury poisoning', 4);
+INSERT INTO stories (latitude, longitude, storyName, storyLocation, thingsSeen, thingsHeard, story, likes) VALUES ( 47.55127444247759, -122.22435951232912, 'lorem demonum', 'At town hall', 'it was wearing a suit and promising anything it thought we wanted', 'A lot of questions and not a lot of answers', 'The real demon is whoever wrote this friggin code base', 5);
+INSERT INTO stories (latitude, longitude, storyName, storyLocation, thingsSeen, thingsHeard, story, likes) VALUES ( 47.52485183309594, -122.22719192504884, 'lorem monstrum', 'On TV', 'I dunno, but it had like 6 heads so there you go', 'it just kinda kept screaming in horror. after this year I dont blame it', 'Maybe the real monsters are the friends we made along the way', 6);
+INSERT INTO stories (latitude, longitude, storyName, storyLocation, thingsSeen, thingsHeard, story, likes) VALUES ( 47.55521351530769, -122.21517562866212, 'lorem alienum', 'In the one place I would be without a decent camera. Typical.', 'A small gray man with big black eyes', 'A bunch of science-y noises like PEW PEW WHOOOSH WUM WUM WUM NEEEEEOWN', 'Technically Earth is in space so were all aliens', 7);
+INSERT INTO stories (latitude, longitude, storyName, storyLocation, thingsSeen, thingsHeard, story, likes) VALUES ( 47.53679001170843, -122.22873687744142, 'lorem mummum', 'On a movie set', 'A famous movie star', 'Something about a weird cult I think', 'for a mummified corpse thats thousands of years old, hes still in excellent shape!', 8);
+INSERT INTO stories (latitude, longitude, storyName, storyLocation, thingsSeen, thingsHeard, story, likes) VALUES ( 47.55069514208837, -122.23354339599611, 'lorem poltergeistum', 'At the liquor store', 'A huge bottle', 'Crashing and angry yelling', 'I knew they sold spirits here, but this is ridiculous!', 9);
+INSERT INTO stories (latitude, longitude, storyName, storyLocation, thingsSeen, thingsHeard, story, likes) VALUES ( 47.56482824357802, -122.21294403076173, 'lorem grudgum', 'In my own soul', 'All of my errands and projects that Ive been putting off working on', 'my subconcious nagging me to stop being so lazy', 
 "Some things in life are bad
 They can really make you mad
 Other things just make you swear and curse
@@ -91,16 +93,16 @@ Who do you think pays for all this rubbish
 Theyre not gonna make their money back, you know
 I told them, I said to him, Bernie, I said theyll never make their money back
 (Always look on the right side of life)
-");
+", 10);
 
-INSERT INTO substories (storyid, subname, sublocation, subseen, subheard, substory) VALUES (1, '1asdf', 'asdf', 'asdf', 'asdf', 'asdf');
-INSERT INTO substories (storyid, subname, sublocation, subseen, subheard, substory) VALUES (2, '2asdf', 'asdf', 'asdf', 'asdf', 'asdf');
-INSERT INTO substories (storyid, subname, sublocation, subseen, subheard, substory) VALUES (3, '3asdf', 'asdf', 'asdf', 'asdf', 'asdf');
-INSERT INTO substories (storyid, subname, sublocation, subseen, subheard, substory) VALUES (4, '4asdf', 'asdf', 'asdf', 'asdf', 'asdf');
-INSERT INTO substories (storyid, subname, sublocation, subseen, subheard, substory) VALUES (5, '5asdf', 'asdf', 'asdf', 'asdf', 'asdf');
-INSERT INTO substories (storyid, subname, sublocation, subseen, subheard, substory) VALUES (6, '6asdf', 'asdf', 'asdf', 'asdf', 'asdf');
-INSERT INTO substories (storyid, subname, sublocation, subseen, subheard, substory) VALUES (7, '7asdf', 'asdf', 'asdf', 'asdf', 'asdf');
-INSERT INTO substories (storyid, subname, sublocation, subseen, subheard, substory) VALUES (8, '8asdf', 'asdf', 'asdf', 'asdf', 'asdf');
-INSERT INTO substories (storyid, subname, sublocation, subseen, subheard, substory) VALUES (9, '9asdf', 'asdf', 'asdf', 'asdf', 'asdf');
-INSERT INTO substories (storyid, subname, sublocation, subseen, subheard, substory) VALUES (10, '10asdf', 'asdf', 'asdf', 'asdf', 'asdf');
-INSERT INTO substories (storyid, subname, sublocation, subseen, subheard, substory) VALUES (11, '11asdf', 'asdf', 'asdf', 'asdf', 'asdf');
+INSERT INTO substories (storyid, subname, sublocation, subseen, subheard, substory, sublikes) VALUES (1, '1asdf', 'asdf', 'asdf', 'asdf', 'asdf', 1);
+INSERT INTO substories (storyid, subname, sublocation, subseen, subheard, substory, sublikes) VALUES (2, '2asdf', 'asdf', 'asdf', 'asdf', 'asdf', 2);
+INSERT INTO substories (storyid, subname, sublocation, subseen, subheard, substory, sublikes) VALUES (3, '3asdf', 'asdf', 'asdf', 'asdf', 'asdf', 3);
+INSERT INTO substories (storyid, subname, sublocation, subseen, subheard, substory, sublikes) VALUES (4, '4asdf', 'asdf', 'asdf', 'asdf', 'asdf', 4);
+INSERT INTO substories (storyid, subname, sublocation, subseen, subheard, substory, sublikes) VALUES (5, '5asdf', 'asdf', 'asdf', 'asdf', 'asdf', 5);
+INSERT INTO substories (storyid, subname, sublocation, subseen, subheard, substory, sublikes) VALUES (6, '6asdf', 'asdf', 'asdf', 'asdf', 'asdf', 6);
+INSERT INTO substories (storyid, subname, sublocation, subseen, subheard, substory, sublikes) VALUES (7, '7asdf', 'asdf', 'asdf', 'asdf', 'asdf', 7);
+INSERT INTO substories (storyid, subname, sublocation, subseen, subheard, substory, sublikes) VALUES (8, '8asdf', 'asdf', 'asdf', 'asdf', 'asdf', 8);
+INSERT INTO substories (storyid, subname, sublocation, subseen, subheard, substory, sublikes) VALUES (9, '9asdf', 'asdf', 'asdf', 'asdf', 'asdf', 9);
+INSERT INTO substories (storyid, subname, sublocation, subseen, subheard, substory, sublikes) VALUES (10, '10asdf', 'asdf', 'asdf', 'asdf', 'asdf', 10);
+INSERT INTO substories (storyid, subname, sublocation, subseen, subheard, substory, sublikes) VALUES (11, '11asdf', 'asdf', 'asdf', 'asdf', 'asdf', 11);

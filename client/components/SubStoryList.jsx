@@ -20,6 +20,7 @@ class SubStoryList extends React.Component {
         subseen: 'REDACTED',
         subname: 'REDACTED',
         substory: 'REDACTED',
+        sublikes: 'REDACTED',
       },
     };
     this.listClick = this.listClick.bind(this);
@@ -28,6 +29,7 @@ class SubStoryList extends React.Component {
   listClick() {
     Axios.get(`/substoryGetSpec?id=${event.target.getAttribute('name')}`)
       .then((result) => {
+        console.log(result);
         document.getElementById('substory-sub-list').classList.add('hidden');
         document.getElementById('substory-render-zone').classList.remove('hidden');
         this.setState({
@@ -50,6 +52,9 @@ class SubStoryList extends React.Component {
     return (
       <div>
         <div id="substory-sub-list">
+          <div id="substory-weird-header">
+            <h5>Department of Weird Stuff</h5>
+          </div>
           <div>
             { subList }
           </div>
