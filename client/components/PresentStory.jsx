@@ -51,6 +51,13 @@ class PresentStory extends React.Component {
               <h1>CLASSIFIED</h1>
             </div>
           </div>
+          <div id="story-likes">
+            <h4>
+              likes:
+              { ' ' }
+              {currentStory.likes}
+            </h4>
+          </div>
           <div id="story-name">
             <h3 className="underlined">INCIDENT NAME:</h3>
             <p>{currentStory.storyname}</p>

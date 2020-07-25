@@ -22,6 +22,13 @@ const SubStoryRender = (props) => {
           <h1>CLASSIFIED</h1>
         </div>
       </div>
+      <div id="substory-likes">
+        <h4>
+          likes:
+          { ' ' }
+          {subStory.sublikes}
+        </h4>
+      </div>
       <div>
         <h3 className="underlined">INCIDENT NAME:</h3>
         {subStory.subname}
