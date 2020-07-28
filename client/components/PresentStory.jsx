@@ -24,6 +24,7 @@ class PresentStory extends React.Component {
         });
         document.getElementById('substory').classList.toggle('hidden');
         document.getElementById('substory-prompt').classList.toggle('hidden');
+        document.getElementById('sub-story-button').classList.remove('hidden');
       })
       .catch((error) => {
         console.log(error);

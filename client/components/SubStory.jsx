@@ -6,6 +6,7 @@ import SubStoryList from './SubStoryList';
 class SubStory extends React.Component {
   static showSubForm() {
     document.getElementById('sub-story-form').classList.toggle('hidden');
+    document.getElementById('sub-story-button').classList.add('hidden');
   }
 
   static showSubStories() {
