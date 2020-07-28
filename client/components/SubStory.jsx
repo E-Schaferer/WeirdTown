@@ -12,6 +12,8 @@ class SubStory extends React.Component {
     document.getElementById('substory-list-zone').classList.remove('hidden');
     document.getElementById('substory-list').classList.add('hidden');
     document.getElementById('substory-list-button-flex-zone').classList.add('hidden');
+    document.getElementById('substory-sub-list').classList.remove('hidden');
+    document.getElementById('substory-render-zone').classList.add('hidden');
   }
 
   render() {

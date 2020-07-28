@@ -108,10 +108,10 @@ input, label, textarea {
   width: 70%;
 }
 
-#sub-story-form, #substory-list-zone {
+#sub-story-form, #substory-sub-list, #substory-render-actual {
+  padding: 20px;
   background-color: #f2eecb;
   color: black;
-  padding: 5px;
 }
 
 #absent-story-inner {
