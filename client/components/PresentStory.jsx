@@ -96,7 +96,7 @@ class PresentStory extends React.Component {
           </div>
         </div>
         <div id="substory" className="hidden">
-          <SubStory subNum={subNum} subs={subs} subSubmit={subSubmit} />
+          <SubStory currentStory={currentStory} subNum={subNum} subs={subs} subSubmit={subSubmit} />
         </div>
       </div>
     );

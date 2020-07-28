@@ -26,7 +26,7 @@ class SubStoryList extends React.Component {
     this.listClick = this.listClick.bind(this);
   }
 
-  listClick() {
+  listClick(event) {
     Axios.get(`/substoryGetSpec?id=${event.target.getAttribute('name')}`)
       .then((result) => {
         console.log(result);
@@ -42,18 +42,22 @@ class SubStoryList extends React.Component {
   }
 
   render() {
-    const { subs } = this.props;
+    const { subs, currentStory } = this.props;
     const { subStory } = this.state;
-    const subList = subs.map((sub) => {
-      return (
-        <li name={sub.id} className="clickable clickable-highlight" onClick={this.listClick}>{sub.subname}</li>
-      );
-    });
+    const subList = subs.map((sub) => <li name={sub.id} role="presentation" className="clickable clickable-highlight" onClick={this.listClick}>{sub.subname}</li>);
     return (
       <div>
         <div id="substory-sub-list">
           <div id="substory-weird-header">
             <h5>Department of Weird Stuff</h5>
+          </div>
+          <div id="substory-list-main-header">
+            <h1>
+              Files associated with file No°
+              { ' ' }
+              {currentStory.id}
+              :
+            </h1>
           </div>
           <div>
             { subList }
@@ -61,7 +65,7 @@ class SubStoryList extends React.Component {
         </div>
         <div className="hidden" id="substory-render-zone">
           <div>
-            <h3 id="substory-render-goback" className="underlined clickable" onClick={SubStoryList.goBack}>Return to the substory list</h3>
+            <h3 id="substory-render-goback" role="presentation" className="underlined clickable" onClick={SubStoryList.goBack}>Return to the substory list</h3>
           </div>
           <div id="substory-render-actual">
             <SubStoryRender subStory={subStory} />
@@ -73,6 +77,7 @@ class SubStoryList extends React.Component {
 }
 SubStoryList.propTypes = {
   subs: PropTypes.isRequired,
+  currentStory: PropTypes.isRequired,
 };
 
 export default SubStoryList;
