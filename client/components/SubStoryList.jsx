@@ -65,7 +65,7 @@ class SubStoryList extends React.Component {
         </div>
         <div className="hidden" id="substory-render-zone">
           <div>
-            <h3 id="substory-render-goback" role="presentation" className="underlined clickable" onClick={SubStoryList.goBack}>Return to the substory list</h3>
+            <h3 id="substory-render-goback" role="presentation" className="underlined clickable white-text" onClick={SubStoryList.goBack}>Return to the substory list</h3>
           </div>
           <div id="substory-render-actual">
             <SubStoryRender subStory={subStory} />

@@ -62,6 +62,8 @@ class App extends React.Component {
         document.getElementById('substory-prompt').classList.remove('hidden');
         document.getElementById('sub-story-form').classList.add('hidden');
         document.getElementById('substory-list-zone').classList.add('hidden');
+        document.getElementById('substory-list-button-flex-zone').classList.remove('hidden');
+        document.getElementById('substory-list').classList.remove('hidden');
         this.setState({
           // locationSelected: true,
           // storyForm: false,
