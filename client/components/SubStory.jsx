@@ -11,11 +11,13 @@ class SubStory extends React.Component {
   static showSubStories() {
     document.getElementById('substory-list-zone').classList.remove('hidden');
     document.getElementById('substory-list').classList.add('hidden');
-    document.getElementById('substory-list-button-flex').classList.add('hidden');
+    document.getElementById('substory-list-button-flex-zone').classList.add('hidden');
   }
 
   render() {
-    const { subs, subNum, subSubmit } = this.props;
+    const {
+      subs, subNum, subSubmit, currentStory,
+    } = this.props;
     return (
       <div>
         <div id="substory-list-flex">
@@ -34,7 +36,7 @@ class SubStory extends React.Component {
           </div>
         </div>
         <div id="substory-list-button-flex">
-          <div>
+          <div id="substory-list-button-flex-zone">
             <button className="clickable" type="button" onClick={SubStory.showSubStories}>Show addendum files</button>
           </div>
         </div>
@@ -42,7 +44,7 @@ class SubStory extends React.Component {
           <div>
             <div id="substory-list-zone">
               <ol id="substory-list-zone-list">
-                <SubStoryList subs={subs} />
+                <SubStoryList subs={subs} currentStory={currentStory} />
               </ol>
             </div>
           </div>
@@ -63,6 +65,7 @@ SubStory.propTypes = {
   subs: PropTypes.isRequired,
   subNum: PropTypes.number.isRequired,
   subSubmit: PropTypes.func.isRequired,
+  currentStory: PropTypes.isRequired,
 };
 
 export default SubStory;
