@@ -105,5 +105,29 @@ app.post('/subStorySubmit', (req, res) => {
   });
 });
 
+app.put('/subLike', (req, res) => {
+  const queryArgs = [req.body.id];
+  const queryStatement = 'UPDATE substories SET sublikes = sublikes + 1 WHERE id = ?';
+  db.connection.query(queryStatement, queryArgs, (err) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.sendStatus(200);
+    }
+  });
+});
+
+app.put('/subDislike', (req, res) => {
+  const queryArgs = [req.body.id];
+  const queryStatement = 'UPDATE substories SET sublikes = sublikes - 1 WHERE id = ?';
+  db.connection.query(queryStatement, queryArgs, (err) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.sendStatus(200);
+    }
+  });
+});
+
 app.listen(port);
 console.log(`time to get weird on port ${port}`);

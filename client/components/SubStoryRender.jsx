@@ -11,21 +11,8 @@ class SubStoryRender extends React.Component {
 
   like() {
     const { subStory } = this.props;
-    Axios.post('/subLike', {
-      subName: subStory.subname,
-    })
-      .then((result) => {
-        console.log(result);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-
-  dislike() {
-    const { subStory } = this.props;
-    Axios.post('/subDislike', {
-      subName: subStory.subname,
+    Axios.put('/subLike', {
+      id: subStory.id,
     })
       .then((result) => {
         console.log(result);
@@ -34,8 +21,21 @@ class SubStoryRender extends React.Component {
       })
       .catch((err) => {
         console.log(err);
+      });
+  }
+
+  dislike() {
+    const { subStory } = this.props;
+    Axios.put('/subDislike', {
+      id: subStory.id,
+    })
+      .then((result) => {
+        console.log(result);
         subStory.subLikes -= 1;
         this.setState({});
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }
 
