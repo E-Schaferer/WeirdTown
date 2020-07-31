@@ -24,6 +24,20 @@ class SubStoryList extends React.Component {
       },
     };
     this.listClick = this.listClick.bind(this);
+    this.likeGoUp = this.likeGoUp.bind(this);
+    this.likeGoDown = this.likeGoDown.bind(this);
+  }
+
+  likeGoUp() {
+    const { subStory } = this.state;
+    subStory.sublikes += 1;
+    this.setState({});
+  }
+
+  likeGoDown() {
+    const { subStory } = this.state;
+    subStory.sublikes -= 1;
+    this.setState({});
   }
 
   listClick(event) {
@@ -68,7 +82,7 @@ class SubStoryList extends React.Component {
             <h3 id="substory-render-goback" role="presentation" className="underlined clickable white-text" onClick={SubStoryList.goBack}>Return to the substory list</h3>
           </div>
           <div id="substory-render-actual">
-            <SubStoryRender subStory={subStory} />
+            <SubStoryRender likeGoUp={this.likeGoUp} likeGoDown={this.likeGoDown} subStory={subStory} />
           </div>
         </div>
       </div>

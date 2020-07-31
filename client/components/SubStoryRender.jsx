@@ -10,14 +10,13 @@ class SubStoryRender extends React.Component {
   }
 
   like() {
-    const { subStory } = this.props;
+    const { subStory, likeGoUp } = this.props;
     Axios.put('/subLike', {
       id: subStory.id,
     })
       .then((result) => {
         console.log(result);
-        subStory.subLikes += 1;
-        this.setState({});
+        likeGoUp();
       })
       .catch((err) => {
         console.log(err);
@@ -25,14 +24,13 @@ class SubStoryRender extends React.Component {
   }
 
   dislike() {
-    const { subStory } = this.props;
+    const { subStory, likeGoDown } = this.props;
     Axios.put('/subDislike', {
       id: subStory.id,
     })
       .then((result) => {
         console.log(result);
-        subStory.subLikes -= 1;
-        this.setState({});
+        likeGoDown();
       })
       .catch((err) => {
         console.log(err);
@@ -96,6 +94,8 @@ class SubStoryRender extends React.Component {
 
 SubStoryRender.propTypes = {
   subStory: PropTypes.isRequired,
+  likeGoUp: PropTypes.isRequired,
+  likeGoDown: PropTypes.isRequired,
 };
 
 export default SubStoryRender;
