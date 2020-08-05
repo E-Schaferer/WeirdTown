@@ -10,31 +10,39 @@ class SubStoryRender extends React.Component {
   }
 
   like() {
-    const { subStory, likeGoUp } = this.props;
-    Axios.put('/subLike', {
-      id: subStory.id,
-    })
-      .then((result) => {
-        console.log(result);
-        likeGoUp();
+    if (!document.getElementById('like-click').classList.contains('disabled')) {
+      const { subStory, likeGoUp } = this.props;
+      Axios.put('/subLike', {
+        id: subStory.id,
       })
-      .catch((err) => {
-        console.log(err);
-      });
+        .then((result) => {
+          console.log(result);
+          likeGoUp();
+          document.getElementById('like-click').classList.add('disabled');
+          document.getElementById('dislike-click').classList.remove('disabled');
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   }
 
   dislike() {
-    const { subStory, likeGoDown } = this.props;
-    Axios.put('/subDislike', {
-      id: subStory.id,
-    })
-      .then((result) => {
-        console.log(result);
-        likeGoDown();
+    if (!document.getElementById('dislike-click').classList.contains('disabled')) {
+      const { subStory, likeGoDown } = this.props;
+      Axios.put('/subDislike', {
+        id: subStory.id,
       })
-      .catch((err) => {
-        console.log(err);
-      });
+        .then((result) => {
+          console.log(result);
+          likeGoDown();
+          document.getElementById('like-click').classList.remove('disabled');
+          document.getElementById('dislike-click').classList.add('disabled');
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   }
 
   render() {

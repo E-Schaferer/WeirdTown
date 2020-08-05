@@ -184,3 +184,7 @@ input, label, textarea {
 .clickable:hover {
   cursor: pointer;
 }
+
+.disabled {
+  color: red;
+}
