@@ -2,3 +2,4 @@ node_modules
 storage.txt
 BaltimoreTypewriter.otf
 BaltimoreTypewriter.woff
+.env

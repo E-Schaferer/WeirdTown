@@ -3,6 +3,7 @@ import Axios from 'axios';
 // import LocationInfo from './LocationInfo';
 import AbsentStory from './AbsentStory';
 import PresentStory from './PresentStory';
+import AuthBar from './AuthBar';
 import Mapzone from './Mapzone';
 
 class App extends React.Component {
@@ -144,6 +145,9 @@ class App extends React.Component {
     const { currentStory } = this.state;
     return (
       <div>
+        <div id="auth-zone">
+          <AuthBar />
+        </div>
         <div id="title-zone">
           <div id="title-zone-inner">
             <h1>
