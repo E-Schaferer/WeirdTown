@@ -3,6 +3,7 @@ import Axios from 'axios';
 // import LocationInfo from './LocationInfo';
 import AbsentStory from './AbsentStory';
 import PresentStory from './PresentStory';
+import CurrentUser from './CurrentUser';
 import AuthBar from './AuthBar';
 import Mapzone from './Mapzone';
 
@@ -146,6 +147,7 @@ class App extends React.Component {
     return (
       <div>
         <div id="auth-zone">
+          <CurrentUser />
           <AuthBar />
         </div>
         <div id="title-zone">
