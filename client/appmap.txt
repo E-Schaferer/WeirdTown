@@ -1,13 +1,13 @@
 -index
-  -Router
-    -Auth0ProviderWithHistory
+  -Router (no file)
+    -Auth0ProviderWithHistory (no file)
       -App (state)
         -CurrentUser
         -AuthBar
           -AuthBar-Interactions
         -Mapzone (state)
-        -AbsentStory (state?)
-          -StoryForm (state?)
+        -AbsentStory
+          -StoryForm
         -PresentStory (state)
           -SubStory
             -SubStoryList (state)

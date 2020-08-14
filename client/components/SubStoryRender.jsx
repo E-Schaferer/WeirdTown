@@ -3,9 +3,6 @@ import PropTypes from 'prop-types';
 import SubStoryLike from './SubStoryRender-Interactions/SubStoryLike';
 import SubStoryDislike from './SubStoryRender-Interactions/SubStoryDislike';
 
-// <p id="like-click" role="presentation" className="underlined clickable" onClick={this.like}>like</p>
-// <p id="dislike-click" role="presentation" className="underlined clickable" onClick={this.dislike}>dislike</p>
-
 const SubStoryRender = (props) => {
   const { subStory, likeGoDown, likeGoUp } = props;
   return (

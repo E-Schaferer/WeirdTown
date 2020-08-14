@@ -29,6 +29,7 @@ class App extends React.Component {
     this.storyFormSubmit = this.storyFormSubmit.bind(this);
     this.handleLegendGet = this.handleLegendGet.bind(this);
     this.subStoryFormSubmit = this.subStoryFormSubmit.bind(this);
+    // this.handleUserData = this.handleUserData.bind(this);
   }
 
   /*
@@ -139,6 +140,14 @@ class App extends React.Component {
 
   /*
 =====
+  - user data
+=====
+  */
+
+  // handleUserData(data) {}
+
+  /*
+=====
   - render
 =====
   */
@@ -147,7 +156,7 @@ class App extends React.Component {
     return (
       <div>
         <div id="auth-zone">
-          <CurrentUser />
+          <CurrentUser handleUserData={this.handleUserData} />
           <AuthBar />
         </div>
         <div id="title-zone">

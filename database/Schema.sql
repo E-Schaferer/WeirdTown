@@ -4,20 +4,20 @@ USE legends;
 
 CREATE TABLE users(
   id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  email VARCHAR(100) NOT NULL,
+  email VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE storylikes(
   userid INT(100) NOT NULL,
   storyid INT(100) NOT NULL,
-  likestatus INT(1) NOT NULL,
+  likestatus INT(1) NOT NULL
 );
 
 CREATE TABLE substorylikes(
   userid INT(100) NOT NULL,
   storyid INT(100) NOT NULL,
   likestatus INT(1) NOT NULL
-)
+);
 
 CREATE TABLE stories(
   id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
