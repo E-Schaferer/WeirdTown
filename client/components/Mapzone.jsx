@@ -81,6 +81,13 @@ class Mapzone extends React.Component {
   }
 
   markerClick(event) {
+    const { lastMarker } = this.state;
+    if (lastMarker) {
+      lastMarker.remove();
+      this.setState({
+        lastMarker: undefined,
+      });
+    }
     const { handleLegendGet } = this.props;
     const newCoords = [event.latlng.lat, event.latlng.lng];
     handleLegendGet(newCoords);
