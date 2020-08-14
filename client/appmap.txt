@@ -1,0 +1,16 @@
+-index
+  -Router
+    -Auth0ProviderWithHistory
+      -App (state)
+        -CurrentUser
+        -AuthBar
+          -AuthBar-Interactions
+        -Mapzone (state)
+        -AbsentStory (state?)
+          -StoryForm (state?)
+        -PresentStory (state)
+          -SubStory
+            -SubStoryList (state)
+              -SubStoryRender
+                -SubStoryRender-Interactions
+            -SubStoryForm
