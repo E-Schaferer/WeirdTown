@@ -11,7 +11,7 @@ class Mapzone extends React.Component {
       long: -122.2221,
       zoom: 15,
       lastMarker: undefined,
-      // map: undefined, (unsure if I was using this for anything, keep it here for now)
+      // map: undefined,
       coords: [],
     };
     this.onMapClick = this.onMapClick.bind(this);
@@ -61,17 +61,15 @@ class Mapzone extends React.Component {
 =====
   */
   onMapClick(event, map) {
-    console.log(map);
     const { lastMarker } = this.state;
     const { handleLocationClick } = this.props;
     const newCoords = [event.latlng.lat, event.latlng.lng];
     if (lastMarker) {
-      map.removeLayer(lastMarker);
+      lastMarker.remove();
     }
     this.setState({
-      lastMarker: new L.Marker(newCoords),
+      lastMarker: L.marker(newCoords).addTo(map),
     });
-    map.addLayer(lastMarker);
     handleLocationClick(newCoords);
   }
 
