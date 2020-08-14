@@ -61,6 +61,7 @@ class Mapzone extends React.Component {
 =====
   */
   onMapClick(event, map) {
+    console.log(map);
     const { lastMarker } = this.state;
     const { handleLocationClick } = this.props;
     const newCoords = [event.latlng.lat, event.latlng.lng];

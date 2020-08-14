@@ -66,6 +66,18 @@ app.get('/substoryGetSpec', (req, res) => {
   });
 });
 
+app.get('/userdata', (req, res) => {
+  const queryArgs = [req.query.user];
+  const queryStatement = '';
+  db.connection.query(queryStatement, queryArgs, (err, result) => {
+    if (err) {
+      res.send(err);
+    } else {
+      console.log(result);
+    }
+  });
+});
+
 app.post('/storySubmit', (req, res) => {
   const queryArgs = [
     req.body.lat,
