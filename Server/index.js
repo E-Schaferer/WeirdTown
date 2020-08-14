@@ -88,7 +88,7 @@ app.post('/storySubmit', (req, res) => {
     req.body.heard,
     req.body.story,
   ];
-  const queryStatement = 'INSERT INTO stories (latitude, longitude, storyname, storylocation, thingsseen, thingsheard, story) VALUES (?, ?, ?, ?, ?, ?, ?)';
+  const queryStatement = 'INSERT INTO stories (latitude, longitude, storyname, storylocation, thingsseen, thingsheard, story, likes) VALUES (?, ?, ?, ?, ?, ?, ?, 0)';
   db.connection.query(queryStatement, queryArgs, (err) => {
     if (err) {
       res.send(err);
@@ -107,7 +107,7 @@ app.post('/subStorySubmit', (req, res) => {
     req.body.heard,
     req.body.story,
   ];
-  const queryStatement = 'INSERT INTO substories (storyid, subname, sublocation, subseen, subheard, substory) VALUES(?, ?, ?, ?, ?, ?)';
+  const queryStatement = 'INSERT INTO substories (storyid, subname, sublocation, subseen, subheard, substory, sublikes) VALUES(?, ?, ?, ?, ?, ?, 0)';
   db.connection.query(queryStatement, queryArgs, (err) => {
     if (err) {
       res.send(err);
