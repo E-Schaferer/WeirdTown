@@ -32,8 +32,8 @@ class PresentStory extends React.Component {
   }
 
   render() {
-    const { currentStory } = this.props;
-    const { subNum, subs, subSubmit } = this.state;
+    const { currentStory, subStoryFormSubmit } = this.props;
+    const { subNum, subs } = this.state;
     return (
       <div>
         <div id="story-zone">
@@ -97,7 +97,12 @@ class PresentStory extends React.Component {
           </div>
         </div>
         <div id="substory" className="hidden">
-          <SubStory currentStory={currentStory} subNum={subNum} subs={subs} subSubmit={subSubmit} />
+          <SubStory
+            currentStory={currentStory}
+            subNum={subNum}
+            subs={subs}
+            subStoryFormSubmit={subStoryFormSubmit}
+          />
         </div>
       </div>
     );
@@ -105,6 +110,7 @@ class PresentStory extends React.Component {
 }
 PresentStory.propTypes = {
   currentStory: PropTypes.isRequired,
+  subStoryFormSubmit: PropTypes.isRequired,
 };
 
 export default PresentStory;

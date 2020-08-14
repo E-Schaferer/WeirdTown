@@ -2,13 +2,9 @@ import React from 'react';
 import Axios from 'axios';
 import PropTypes from 'prop-types';
 import SubStoryRender from './SubStoryRender';
+import GoBack from './SubStoryList-Interactions/GoBack';
 
 class SubStoryList extends React.Component {
-  static goBack() {
-    document.getElementById('substory-sub-list').classList.remove('hidden');
-    document.getElementById('substory-render-zone').classList.add('hidden');
-  }
-
   constructor(props) {
     super(props);
     this.state = {
@@ -79,10 +75,14 @@ class SubStoryList extends React.Component {
         </div>
         <div className="hidden" id="substory-render-zone">
           <div>
-            <h3 id="substory-render-goback" role="presentation" className="underlined clickable white-text" onClick={SubStoryList.goBack}>Return to the substory list</h3>
+            <GoBack />
           </div>
           <div id="substory-render-actual">
-            <SubStoryRender likeGoUp={this.likeGoUp} likeGoDown={this.likeGoDown} subStory={subStory} />
+            <SubStoryRender
+              likeGoUp={this.likeGoUp}
+              likeGoDown={this.likeGoDown}
+              subStory={subStory}
+            />
           </div>
         </div>
       </div>

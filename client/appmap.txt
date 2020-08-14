@@ -4,7 +4,6 @@
       -App (state)
         -CurrentUser
         -AuthBar
-          -AuthBar-Interactions
         -Mapzone (state)
         -AbsentStory
           -StoryForm
@@ -12,5 +11,4 @@
           -SubStory
             -SubStoryList (state)
               -SubStoryRender
-                -SubStoryRender-Interactions
             -SubStoryForm

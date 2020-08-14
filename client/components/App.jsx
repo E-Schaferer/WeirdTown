@@ -29,7 +29,7 @@ class App extends React.Component {
     this.storyFormSubmit = this.storyFormSubmit.bind(this);
     this.handleLegendGet = this.handleLegendGet.bind(this);
     this.subStoryFormSubmit = this.subStoryFormSubmit.bind(this);
-    // this.handleUserData = this.handleUserData.bind(this);
+    this.handleUserData = this.handleUserData.bind(this);
   }
 
   /*
@@ -144,7 +144,9 @@ class App extends React.Component {
 =====
   */
 
-  // handleUserData(data) {}
+  handleUserData(data) {
+    console.log(data);
+  }
 
   /*
 =====
@@ -189,7 +191,7 @@ class App extends React.Component {
             <div className="flex-center">
               <PresentStory
                 currentStory={currentStory}
-                subSubmit={this.subStoryFormSubmit}
+                subStoryFormSubmit={this.subStoryFormSubmit}
               />
             </div>
           </div>

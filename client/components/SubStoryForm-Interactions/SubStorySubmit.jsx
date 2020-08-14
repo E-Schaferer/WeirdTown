@@ -3,8 +3,8 @@ import { Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 const SubStorySubmit = (props) => {
-  const { subSubmit } = props;
   const subSubmitClick = () => {
+    const { subStoryFormSubmit } = props;
     const subName = document.getElementById('input-substory-name').value;
     const subLoc = document.getElementById('input-substory-location').value;
     const subSaw = document.getElementById('input-substory-saw').value;
@@ -19,7 +19,7 @@ const SubStorySubmit = (props) => {
     ) {
       alert('Please fill out all fields');
     } else {
-      subSubmit(subName, subLoc, subHeard, subSaw, subStory);
+      subStoryFormSubmit(subName, subLoc, subHeard, subSaw, subStory);
     }
   };
   return (
@@ -33,7 +33,7 @@ const SubStorySubmit = (props) => {
   );
 };
 SubStorySubmit.propTypes = {
-  subSubmit: PropTypes.isRequired,
+  subStoryFormSubmit: PropTypes.isRequired,
 };
 
 export default SubStorySubmit;
