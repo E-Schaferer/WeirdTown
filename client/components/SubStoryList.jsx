@@ -1,8 +1,8 @@
 import React from 'react';
-import Axios from 'axios';
 import PropTypes from 'prop-types';
 import SubStoryRender from './SubStoryRender';
 import GoBack from './SubStoryList-Interactions/GoBack';
+import SubStoryListItem from './SubStoryList-Interactions/SubStoryListItem';
 
 class SubStoryList extends React.Component {
   constructor(props) {
@@ -19,7 +19,7 @@ class SubStoryList extends React.Component {
         sublikes: 'REDACTED',
       },
     };
-    this.listClick = this.listClick.bind(this);
+    this.handleListClick = this.handleListClick.bind(this);
     this.likeGoUp = this.likeGoUp.bind(this);
     this.likeGoDown = this.likeGoDown.bind(this);
   }
@@ -36,25 +36,15 @@ class SubStoryList extends React.Component {
     this.setState({});
   }
 
-  listClick(event) {
-    Axios.get(`/substoryGetSpec?id=${event.target.getAttribute('name')}`)
-      .then((result) => {
-        console.log(result);
-        document.getElementById('substory-sub-list').classList.add('hidden');
-        document.getElementById('substory-render-zone').classList.remove('hidden');
-        this.setState({
-          subStory: result.data[0],
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  handleListClick(result) {
+    this.setState({
+      subStory: result.data[0],
+    });
   }
 
   render() {
     const { subs, currentStory } = this.props;
     const { subStory } = this.state;
-    const subList = subs.map((sub) => <li name={sub.id} role="presentation" className="clickable clickable-highlight" onClick={this.listClick}>{sub.subname}</li>);
     return (
       <div>
         <div id="substory-sub-list">
@@ -70,7 +60,7 @@ class SubStoryList extends React.Component {
             </h1>
           </div>
           <div>
-            { subList }
+            <SubStoryListItem subs={subs} handleListClick={this.handleListClick} />
           </div>
         </div>
         <div className="hidden" id="substory-render-zone">
