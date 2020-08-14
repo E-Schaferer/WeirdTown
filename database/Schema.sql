@@ -7,6 +7,18 @@ CREATE TABLE users(
   email VARCHAR(100) NOT NULL,
 );
 
+CREATE TABLE storylikes(
+  userid INT(100) NOT NULL,
+  storyid INT(100) NOT NULL,
+  likestatus INT(1) NOT NULL,
+);
+
+CREATE TABLE substorylikes(
+  userid INT(100) NOT NULL,
+  storyid INT(100) NOT NULL,
+  likestatus INT(1) NOT NULL
+)
+
 CREATE TABLE stories(
   id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
   latitude DECIMAL(50, 30) NOT NULL,
