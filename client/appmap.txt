@@ -1,6 +1,6 @@
 -index
   -Router (no file)
-    -Auth0ProviderWithHistory (no file)
+    -Auth0ProviderWithHistory
       -App (state)
         -CurrentUser
         -AuthBar

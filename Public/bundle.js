@@ -122,6 +122,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
 
 /***/ }),
 
+/***/ "./client/components/Auth0ProviderWithHistory.jsx":
+/*!********************************************************!*\
+  !*** ./client/components/Auth0ProviderWithHistory.jsx ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ \"./node_modules/react-router-dom/esm/react-router-dom.js\");\n/* harmony import */ var _auth0_auth0_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @auth0/auth0-react */ \"./node_modules/@auth0/auth0-react/dist/auth0-react.esm.js\");\n\n\n\n\nvar Auth0ProviderWithHistory = function Auth0ProviderWithHistory(_ref) {\n  var children = _ref.children;\n  var domain = \"dev-bhav7r4r.us.auth0.com\";\n  var clientId = \"KmUkETgGD552QW25GMlI6hMMTgkWnFtl\";\n  var history = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__[\"useHistory\"])();\n\n  var onRedirectCallback = function onRedirectCallback(appState) {\n    history.push((appState === null || appState === void 0 ? void 0 : appState.returnTo) || window.location.pathname);\n  };\n\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_auth0_auth0_react__WEBPACK_IMPORTED_MODULE_2__[\"Auth0Provider\"], {\n    domain: domain,\n    clientId: clientId,\n    redirectUri: window.location.origin,\n    onRedirectCallback: onRedirectCallback\n  }, children);\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Auth0ProviderWithHistory);\n\n//# sourceURL=webpack:///./client/components/Auth0ProviderWithHistory.jsx?");
+
+/***/ }),
+
 /***/ "./client/components/AuthBar-Interactions/LoginButton.jsx":
 /*!****************************************************************!*\
   !*** ./client/components/AuthBar-Interactions/LoginButton.jsx ***!
@@ -338,18 +350,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
 
 /***/ }),
 
-/***/ "./client/components/auth0-provider-with-history.jsx":
-/*!***********************************************************!*\
-  !*** ./client/components/auth0-provider-with-history.jsx ***!
-  \***********************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ \"./node_modules/react-router-dom/esm/react-router-dom.js\");\n/* harmony import */ var _auth0_auth0_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @auth0/auth0-react */ \"./node_modules/@auth0/auth0-react/dist/auth0-react.esm.js\");\n\n\n\n\nvar Auth0ProviderWithHistory = function Auth0ProviderWithHistory(_ref) {\n  var children = _ref.children;\n  var domain = \"dev-bhav7r4r.us.auth0.com\";\n  var clientId = \"KmUkETgGD552QW25GMlI6hMMTgkWnFtl\";\n  var history = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__[\"useHistory\"])();\n\n  var onRedirectCallback = function onRedirectCallback(appState) {\n    history.push((appState === null || appState === void 0 ? void 0 : appState.returnTo) || window.location.pathname);\n  };\n\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_auth0_auth0_react__WEBPACK_IMPORTED_MODULE_2__[\"Auth0Provider\"], {\n    domain: domain,\n    clientId: clientId,\n    redirectUri: window.location.origin,\n    onRedirectCallback: onRedirectCallback\n  }, children);\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Auth0ProviderWithHistory);\n\n//# sourceURL=webpack:///./client/components/auth0-provider-with-history.jsx?");
-
-/***/ }),
-
 /***/ "./client/index.jsx":
 /*!**************************!*\
   !*** ./client/index.jsx ***!
@@ -358,7 +358,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ \"./node_modules/react-router-dom/esm/react-router-dom.js\");\n/* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/App */ \"./client/components/App.jsx\");\n/* harmony import */ var _components_auth0_provider_with_history__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/auth0-provider-with-history */ \"./client/components/auth0-provider-with-history.jsx\");\n\n\n\n\n\nreact_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__[\"BrowserRouter\"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_auth0_provider_with_history__WEBPACK_IMPORTED_MODULE_4__[\"default\"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_App__WEBPACK_IMPORTED_MODULE_3__[\"default\"], null))), document.getElementById('render-zone'));\n\n//# sourceURL=webpack:///./client/index.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ \"./node_modules/react-router-dom/esm/react-router-dom.js\");\n/* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/App */ \"./client/components/App.jsx\");\n/* harmony import */ var _components_Auth0ProviderWithHistory__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Auth0ProviderWithHistory */ \"./client/components/Auth0ProviderWithHistory.jsx\");\n\n\n\n\n\nreact_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__[\"BrowserRouter\"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Auth0ProviderWithHistory__WEBPACK_IMPORTED_MODULE_4__[\"default\"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_App__WEBPACK_IMPORTED_MODULE_3__[\"default\"], null))), document.getElementById('render-zone'));\n\n//# sourceURL=webpack:///./client/index.jsx?");
 
 /***/ }),
 
