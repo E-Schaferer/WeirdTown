@@ -32,6 +32,6 @@ const StoryFormSubmit = (props) => {
   );
 };
 StoryFormSubmit.propTypes = {
-  storyFormSubmit: PropTypes.isRequired,
+  storyFormSubmit: PropTypes.func.isRequired,
 };
 export default StoryFormSubmit;

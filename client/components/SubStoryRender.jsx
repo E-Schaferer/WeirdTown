@@ -57,9 +57,18 @@ const SubStoryRender = (props) => {
   );
 };
 SubStoryRender.propTypes = {
-  subStory: PropTypes.isRequired,
-  likeGoUp: PropTypes.isRequired,
-  likeGoDown: PropTypes.isRequired,
+  subStory: PropTypes.shape({
+    id: PropTypes.number,
+    storyid: PropTypes.number,
+    sublocation: PropTypes.string,
+    subheard: PropTypes.string,
+    subseen: PropTypes.string,
+    subname: PropTypes.string,
+    substory: PropTypes.string,
+    sublikes: PropTypes.number,
+  }).isRequired,
+  likeGoUp: PropTypes.func.isRequired,
+  likeGoDown: PropTypes.func.isRequired,
 };
 
 export default SubStoryRender;

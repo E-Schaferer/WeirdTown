@@ -7,7 +7,7 @@ import ShowSubStories from './SubStory-Interactions/ShowSubStories';
 
 const SubStory = (props) => {
   const {
-    subs, subNum, subStoryFormSubmit, currentStory,
+    subs, subNum, subStoryFormSubmit, currentStory, handleSort,
   } = props;
   return (
     <div>
@@ -35,7 +35,7 @@ const SubStory = (props) => {
         <div>
           <div id="substory-list-zone">
             <ol id="substory-list-zone-list">
-              <SubStoryList subs={subs} currentStory={currentStory} />
+              <SubStoryList subs={subs} currentStory={currentStory} handleSort={handleSort} />
             </ol>
           </div>
         </div>
@@ -52,10 +52,18 @@ const SubStory = (props) => {
   );
 };
 SubStory.propTypes = {
-  subs: PropTypes.isRequired,
+  subs: PropTypes.arrayOf(PropTypes.object).isRequired,
   subNum: PropTypes.number.isRequired,
   subStoryFormSubmit: PropTypes.func.isRequired,
-  currentStory: PropTypes.isRequired,
+  currentStory: PropTypes.shape({
+    storyid: PropTypes.number,
+    story: PropTypes.string,
+    storylocation: PropTypes.string,
+    storyname: PropTypes.string,
+    thingsseen: PropTypes.string,
+    thingsheard: PropTypes.string,
+  }).isRequired,
+  handleSort: PropTypes.func.isRequired,
 };
 
 export default SubStory;

@@ -33,7 +33,7 @@ const SubStorySubmit = (props) => {
   );
 };
 SubStorySubmit.propTypes = {
-  subStoryFormSubmit: PropTypes.isRequired,
+  subStoryFormSubmit: PropTypes.func.isRequired,
 };
 
 export default SubStorySubmit;

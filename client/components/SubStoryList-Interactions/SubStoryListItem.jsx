@@ -7,7 +7,6 @@ const SubStoryListItem = (props) => {
   const onClick = (event) => {
     Axios.get(`/substoryGetSpec?id=${event.target.getAttribute('name')}`)
       .then((result) => {
-        console.log(result);
         document.getElementById('substory-sub-list').classList.add('hidden');
         document.getElementById('substory-render-zone').classList.remove('hidden');
         handleListClick(result);
@@ -16,7 +15,7 @@ const SubStoryListItem = (props) => {
         console.log(err);
       });
   };
-  const subList = subs.map((sub) => <li name={sub.id} role="presentation" className="clickable clickable-highlight" onClick={onClick}>{sub.subname}</li>);
+  const subList = subs.map((sub) => <li name={sub.id} key={sub.id} role="presentation" className="clickable clickable-highlight" onClick={onClick}>{sub.subname}</li>);
   return (
     <div>
       <ol>
@@ -26,8 +25,8 @@ const SubStoryListItem = (props) => {
   );
 };
 SubStoryListItem.propTypes = {
-  subs: PropTypes.isRequired,
-  handleListClick: PropTypes.isRequired,
+  subs: PropTypes.arrayOf(PropTypes.object).isRequired,
+  handleListClick: PropTypes.func.isRequired,
 };
 
 export default SubStoryListItem;

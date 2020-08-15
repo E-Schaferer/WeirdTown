@@ -31,7 +31,7 @@ const CurrentUser = (props) => {
   );
 };
 CurrentUser.propTypes = {
-  handleUserData: PropTypes.isRequired,
+  handleUserData: PropTypes.func.isRequired,
 };
 
 export default CurrentUser;
