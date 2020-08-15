@@ -57,9 +57,9 @@ const SubStoryRender = (props) => {
   );
 };
 SubStoryRender.propTypes = {
-  subStory: PropTypes.isRequired,
-  likeGoUp: PropTypes.isRequired,
-  likeGoDown: PropTypes.isRequired,
+  subStory: PropTypes.objectOf().isRequired,
+  likeGoUp: PropTypes.func.isRequired,
+  likeGoDown: PropTypes.func.isRequired,
 };
 
 export default SubStoryRender;

@@ -11,6 +11,7 @@ class PresentStory extends React.Component {
       subs: [],
     };
     this.showSub = this.showSub.bind(this);
+    this.handleSort = this.handleSort.bind(this);
   }
 
   // this function will query the database for substories related to the current story
@@ -29,6 +30,13 @@ class PresentStory extends React.Component {
       .catch((error) => {
         console.log(error);
       });
+  }
+
+  // this function will handle re-rendering a list of resorted subs
+  handleSort(subs) {
+    this.setState({
+      subs,
+    });
   }
 
   render() {
@@ -102,6 +110,7 @@ class PresentStory extends React.Component {
             subNum={subNum}
             subs={subs}
             subStoryFormSubmit={subStoryFormSubmit}
+            handleSort={this.handleSort}
           />
         </div>
       </div>
@@ -109,8 +118,8 @@ class PresentStory extends React.Component {
   }
 }
 PresentStory.propTypes = {
-  currentStory: PropTypes.isRequired,
-  subStoryFormSubmit: PropTypes.isRequired,
+  currentStory: PropTypes.objectOf().isRequired,
+  subStoryFormSubmit: PropTypes.func.isRequired,
 };
 
 export default PresentStory;

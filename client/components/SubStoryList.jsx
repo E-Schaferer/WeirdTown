@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import SubStoryRender from './SubStoryRender';
 import GoBack from './SubStoryList-Interactions/GoBack';
 import SubStoryListItem from './SubStoryList-Interactions/SubStoryListItem';
+import SubstorySort from './SubStoryList-Interactions/SubstorySort';
+
+//            <SubstorySort handleSort={handleSort} subs={subs} />
 
 class SubStoryList extends React.Component {
   constructor(props) {
@@ -43,7 +46,7 @@ class SubStoryList extends React.Component {
   }
 
   render() {
-    const { subs, currentStory } = this.props;
+    const { subs, currentStory, handleSort } = this.props;
     const { subStory } = this.state;
     return (
       <div>
@@ -59,7 +62,10 @@ class SubStoryList extends React.Component {
               :
             </h1>
           </div>
-          <div>
+          <div id="substory-sort">
+            <SubstorySort handleSort={handleSort} subs={subs} />
+          </div>
+          <div id="substory-list-item-render">
             <SubStoryListItem subs={subs} handleListClick={this.handleListClick} />
           </div>
         </div>
@@ -80,8 +86,9 @@ class SubStoryList extends React.Component {
   }
 }
 SubStoryList.propTypes = {
-  subs: PropTypes.isRequired,
-  currentStory: PropTypes.isRequired,
+  subs: PropTypes.arrayOf().isRequired,
+  currentStory: PropTypes.objectOf().isRequired,
+  handleSort: PropTypes.func.isRequired,
 };
 
 export default SubStoryList;

@@ -1,14 +1,32 @@
--index
-  -Router (no file)
-    -Auth0ProviderWithHistory
-      -App (state)
-        -CurrentUser
-        -AuthBar
-        -Mapzone (state)
-        -AbsentStory
-          -StoryForm
-        -PresentStory (state)
-          -SubStory
-            -SubStoryList (state)
-              -SubStoryRender
-            -SubStoryForm
+Legend:
+  = : component
+  > : helper function
+
+Map:
+=index
+  =Router (no file)
+    =Auth0ProviderWithHistory
+      =App (state)
+        =CurrentUser
+        =AuthBar
+          >LoginButton
+          >LogoutButton
+          >SignUpButton
+        =Mapzone (state)
+        =AbsentStory
+          >StoryButtonClick
+          =StoryForm
+            >StoryFormSubmit
+        =PresentStory (state)
+          =SubStory
+            >ShowSubForm
+            >ShowSubStories
+            =SubStoryList (state)
+              >GoBack
+              >SubStoryListItem
+              >SubStorySort
+              =SubStoryRender
+                >SubStoryDislike
+                >SubStoryLike
+            =SubStoryForm
+              >SubStorySubmit
