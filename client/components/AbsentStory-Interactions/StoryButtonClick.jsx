@@ -14,7 +14,7 @@ const StoryButtonClick = (props) => {
   );
 };
 StoryButtonClick.propTypes = {
-  storyFormRender: PropTypes.isRequired,
+  storyFormRender: PropTypes.func.isRequired,
 };
 
 export default StoryButtonClick;

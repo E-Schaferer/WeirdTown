@@ -52,10 +52,17 @@ const SubStory = (props) => {
   );
 };
 SubStory.propTypes = {
-  subs: PropTypes.arrayOf().isRequired,
+  subs: PropTypes.arrayOf(PropTypes.object).isRequired,
   subNum: PropTypes.number.isRequired,
   subStoryFormSubmit: PropTypes.func.isRequired,
-  currentStory: PropTypes.objectOf().isRequired,
+  currentStory: PropTypes.shape({
+    storyid: PropTypes.number,
+    story: PropTypes.string,
+    storylocation: PropTypes.string,
+    storyname: PropTypes.string,
+    thingsseen: PropTypes.string,
+    thingsheard: PropTypes.string,
+  }).isRequired,
   handleSort: PropTypes.func.isRequired,
 };
 

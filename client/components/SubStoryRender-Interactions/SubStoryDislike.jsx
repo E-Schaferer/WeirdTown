@@ -35,7 +35,16 @@ const SubStoryDislike = (props) => {
   );
 };
 SubStoryDislike.propTypes = {
-  subStory: PropTypes.isRequired,
-  dislike: PropTypes.isRequired,
+  subStory: PropTypes.shape({
+    id: PropTypes.number,
+    storyid: PropTypes.number,
+    sublocation: PropTypes.string,
+    subheard: PropTypes.string,
+    subseen: PropTypes.string,
+    subname: PropTypes.string,
+    substory: PropTypes.string,
+    sublikes: PropTypes.number,
+  }).isRequired,
+  dislike: PropTypes.func.isRequired,
 };
 export default SubStoryDislike;

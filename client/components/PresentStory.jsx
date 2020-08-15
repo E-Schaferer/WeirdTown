@@ -118,7 +118,14 @@ class PresentStory extends React.Component {
   }
 }
 PresentStory.propTypes = {
-  currentStory: PropTypes.objectOf().isRequired,
+  currentStory: PropTypes.shape({
+    storyid: PropTypes.number,
+    story: PropTypes.string,
+    storylocation: PropTypes.string,
+    storyname: PropTypes.string,
+    thingsseen: PropTypes.string,
+    thingsheard: PropTypes.string,
+  }).isRequired,
   subStoryFormSubmit: PropTypes.func.isRequired,
 };
 

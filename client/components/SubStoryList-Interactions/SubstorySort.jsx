@@ -32,8 +32,8 @@ const SubstorySort = (props) => {
   );
 };
 SubstorySort.propTypes = {
-  handleSort: PropTypes.isRequired,
-  subs: PropTypes.isRequired,
+  handleSort: PropTypes.func.isRequired,
+  subs: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default SubstorySort;

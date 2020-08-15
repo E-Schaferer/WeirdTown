@@ -35,8 +35,17 @@ const SubStoryLike = (props) => {
   );
 };
 SubStoryLike.propTypes = {
-  subStory: PropTypes.isRequired,
-  like: PropTypes.isRequired,
+  subStory: PropTypes.shape({
+    id: PropTypes.number,
+    storyid: PropTypes.number,
+    sublocation: PropTypes.string,
+    subheard: PropTypes.string,
+    subseen: PropTypes.string,
+    subname: PropTypes.string,
+    substory: PropTypes.string,
+    sublikes: PropTypes.number,
+  }).isRequired,
+  like: PropTypes.func.isRequired,
 };
 
 export default SubStoryLike;

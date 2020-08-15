@@ -5,21 +5,19 @@ import GoBack from './SubStoryList-Interactions/GoBack';
 import SubStoryListItem from './SubStoryList-Interactions/SubStoryListItem';
 import SubstorySort from './SubStoryList-Interactions/SubstorySort';
 
-//            <SubstorySort handleSort={handleSort} subs={subs} />
-
 class SubStoryList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       subStory: {
-        id: 'REDACTED',
-        storyid: 'REDACTED',
+        id: 0,
+        storyid: 0,
         sublocation: 'REDACTED',
         subheard: 'REDACTED',
         subseen: 'REDACTED',
         subname: 'REDACTED',
         substory: 'REDACTED',
-        sublikes: 'REDACTED',
+        sublikes: 0,
       },
     };
     this.handleListClick = this.handleListClick.bind(this);
@@ -58,7 +56,7 @@ class SubStoryList extends React.Component {
             <h1>
               Files associated with file No°
               { ' ' }
-              {currentStory.id}
+              {currentStory.storyid}
               :
             </h1>
           </div>
@@ -86,8 +84,15 @@ class SubStoryList extends React.Component {
   }
 }
 SubStoryList.propTypes = {
-  subs: PropTypes.arrayOf().isRequired,
-  currentStory: PropTypes.objectOf().isRequired,
+  subs: PropTypes.arrayOf(PropTypes.object).isRequired,
+  currentStory: PropTypes.shape({
+    storyid: PropTypes.number,
+    story: PropTypes.string,
+    storylocation: PropTypes.string,
+    storyname: PropTypes.string,
+    thingsseen: PropTypes.string,
+    thingsheard: PropTypes.string,
+  }).isRequired,
   handleSort: PropTypes.func.isRequired,
 };
 
