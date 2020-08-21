@@ -50,7 +50,8 @@ class Mapzone extends React.Component {
         this.distributeMarkers(ghostMap);
       })
       .catch((err) => {
-        alert('Could not load map data, please reload the page');
+        // needs alert
+        console.log('Could not load map data, please reload the page');
         console.log(err);
       });
   }

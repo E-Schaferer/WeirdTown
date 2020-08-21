@@ -119,12 +119,13 @@ class PresentStory extends React.Component {
 }
 PresentStory.propTypes = {
   currentStory: PropTypes.shape({
-    storyid: PropTypes.number,
+    id: PropTypes.number,
     story: PropTypes.string,
     storylocation: PropTypes.string,
     storyname: PropTypes.string,
     thingsseen: PropTypes.string,
     thingsheard: PropTypes.string,
+    likes: PropTypes.number,
   }).isRequired,
   subStoryFormSubmit: PropTypes.func.isRequired,
 };

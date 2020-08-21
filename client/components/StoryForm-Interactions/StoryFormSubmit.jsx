@@ -17,7 +17,8 @@ const StoryFormSubmit = (props) => {
       || storyHeard === ''
       || story === ''
     ) {
-      alert('Please fill out all fields');
+      // needs alert
+      console.log('Please fill out all fields');
     } else {
       storyFormSubmit(storyName, storyLoc, storySaw, storyHeard, story);
     }

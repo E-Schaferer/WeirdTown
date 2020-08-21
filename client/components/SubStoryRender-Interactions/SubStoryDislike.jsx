@@ -22,7 +22,8 @@ const SubStoryDislike = (props) => {
           console.log(err);
         });
     } else {
-      alert('Please log in to dislike a story.');
+      // needs alert
+      console.log('Please log in to dislike a story.');
     }
   };
 
