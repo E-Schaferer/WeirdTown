@@ -22,6 +22,9 @@ class App extends React.Component {
         storyname: 'REDACTED',
         thingsseen: 'REDACTED',
         thingsheard: 'REDACTED',
+        absentStoryRender: false,
+        presentStoryRender: false,
+        storySubmissionPrompt: false,
       },
     };
     this.handleLocationClick = this.handleLocationClick.bind(this);
@@ -44,38 +47,42 @@ class App extends React.Component {
 =====
   */
   handleLocationClick(location) {
-    document.getElementById('absent-story').classList.remove('hidden');
+    /*
     document.getElementById('submission-prompt').classList.remove('hidden');
-    document.getElementById('present-story').classList.add('hidden');
     document.getElementById('story-form-zone').classList.add('hidden');
+    */
     this.state.lastMarker = location;
     this.setState({
       // locationSelected: true,
       // storyPresent: 0,
+      absentStoryRender: true,
+      presentStoryRender: false,
     });
   }
 
   handleLegendGet(location) {
     Axios.get(`/locationInfo?lat=${location[0]}&lng=${location[1]}`)
       .then((result) => {
-        document.getElementById('present-story').classList.remove('hidden');
-        document.getElementById('absent-story').classList.add('hidden');
+        /*
         document.getElementById('story-form-zone').classList.add('hidden');
         document.getElementById('substory').classList.add('hidden');
         document.getElementById('substory-prompt').classList.remove('hidden');
         document.getElementById('sub-story-form').classList.add('hidden');
         document.getElementById('substory-list-zone').classList.add('hidden');
-        document.getElementById('substory-list-button-flex-zone').classList.remove('hidden');
-        document.getElementById('substory-list').classList.remove('hidden');
+        document.getElementById('substory-list-button-flex-zone').classList.remove('
+        */
         this.setState({
           // locationSelected: true,
           // storyForm: false,
           // storyPresent: 1,
           currentStory: result.data[0],
+          absentStoryRender: false,
+          presentStoryRender: true,
         });
       })
       .catch((err) => {
-        alert('Something went wrong! Please try again.');
+        // needs alert
+        console.log('Something went wrong! Please try again.');
         console.log(err);
       });
   }
@@ -105,7 +112,8 @@ class App extends React.Component {
       lng: lastMarker[1],
     })
       .then(() => {
-        alert('Story successfully posted!');
+        // needs alert
+        console.log('Story successfully posted!');
         window.location.reload(true);
       })
       .catch((err) => {
@@ -130,7 +138,8 @@ class App extends React.Component {
       story,
     })
       .then(() => {
-        alert('Substory successfully posted!');
+        // needs alert
+        console.log('Substory successfully posted!');
         window.location.reload(true);
       })
       .catch((err) => {
@@ -154,7 +163,33 @@ class App extends React.Component {
 =====
   */
   render() {
-    const { currentStory } = this.state;
+    const {
+      currentStory,
+      absentStoryRender,
+      presentStoryRender,
+    } = this.state;
+    const abs = (
+      <div id="absent-story">
+        <div id="absent-story-inner">
+          <AbsentStory
+            storyFormRender={this.storyFormRender}
+            storyFormSubmit={this.storyFormSubmit}
+          />
+        </div>
+      </div>
+    );
+    const pres = (
+      <div id="present-story">
+        <div id="present-story-flex">
+          <div className="flex-center">
+            <PresentStory
+              currentStory={currentStory}
+              subStoryFormSubmit={this.subStoryFormSubmit}
+            />
+          </div>
+        </div>
+      </div>
+    );
     return (
       <div>
         <div id="auth-zone">
@@ -178,24 +213,8 @@ class App extends React.Component {
             handleLegendGet={this.handleLegendGet}
           />
         </div>
-        <div className="hidden" id="absent-story">
-          <div id="absent-story-inner">
-            <AbsentStory
-              storyFormRender={this.storyFormRender}
-              storyFormSubmit={this.storyFormSubmit}
-            />
-          </div>
-        </div>
-        <div className="hidden" id="present-story">
-          <div id="present-story-flex">
-            <div className="flex-center">
-              <PresentStory
-                currentStory={currentStory}
-                subStoryFormSubmit={this.subStoryFormSubmit}
-              />
-            </div>
-          </div>
-        </div>
+        {absentStoryRender ? abs : <div></div>}
+        {presentStoryRender ? pres : <div></div>}
       </div>
     );
   }

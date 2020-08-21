@@ -10,4 +10,14 @@ describe('app tests', () => {
   it('should render', () => {
     expect(docWrapper).toBeTruthy();
   });
+  it('should update absentStoryRender and presentStoryRender when handleLocationClick runs, and to properly add input location to state', () => {
+    docWrapper.setState({
+      absentStoryRender: false,
+      presentStoryRender: false,
+    });
+    docWrapper.instance().handleLocationClick([100, 50]);
+    expect(docWrapper.instance().state.lastMarker).toContain(100);
+    expect(docWrapper.instance().state.absentStoryRender).toBe(true);
+    expect(docWrapper.instance().state.presentStoryRender).toBe(false);
+  });
 });

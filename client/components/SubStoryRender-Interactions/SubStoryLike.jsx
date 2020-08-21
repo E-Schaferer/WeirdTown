@@ -22,7 +22,8 @@ const SubStoryLike = (props) => {
           console.log(err);
         });
     } else {
-      alert('Please log in to like a story.');
+      // needs alert
+      console.log('Please log in to like a story.');
     }
   };
 

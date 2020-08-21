@@ -17,7 +17,8 @@ const SubStorySubmit = (props) => {
       || subHeard === ''
       || subStory === ''
     ) {
-      alert('Please fill out all fields');
+      // needs alert
+      console.log('Please fill out all fields');
     } else {
       subStoryFormSubmit(subName, subLoc, subHeard, subSaw, subStory);
     }
