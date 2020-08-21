@@ -38,47 +38,65 @@ class SubStoryList extends React.Component {
   }
 
   handleListClick(result) {
+    const { onSubStoryListItemClick } = this.props;
+    onSubStoryListItemClick();
     this.setState({
       subStory: result.data[0],
     });
   }
 
   render() {
-    const { subs, currentStory, handleSort } = this.props;
+    const {
+      subs,
+      currentStory,
+      handleSort,
+      onGoBack,
+      subStorySubList,
+      subStoryRenderZone,
+    } = this.props;
     const { subStory } = this.state;
     return (
       <div>
-        <div id="substory-sub-list">
-          <div id="substory-weird-header">
-            <h5>Department of Weird Stuff</h5>
-          </div>
-          <div id="substory-list-main-header">
-            <h1>
-              Files associated with file No°
-              { ' ' }
-              {currentStory.storyid}
-              :
-            </h1>
-          </div>
-          <div id="substory-sort">
-            <SubstorySort handleSort={handleSort} subs={subs} />
-          </div>
-          <div id="substory-list-item-render">
-            <SubStoryListItem subs={subs} handleListClick={this.handleListClick} />
-          </div>
-        </div>
-        <div className="hidden" id="substory-render-zone">
-          <div>
-            <GoBack />
-          </div>
-          <div id="substory-render-actual">
-            <SubStoryRender
-              likeGoUp={this.likeGoUp}
-              likeGoDown={this.likeGoDown}
-              subStory={subStory}
-            />
-          </div>
-        </div>
+        {subStorySubList
+          ? (
+            <div id="substory-sub-list">
+              <div id="substory-weird-header">
+                <h5>Department of Weird Stuff</h5>
+              </div>
+              <div id="substory-list-main-header">
+                <h1>
+                  Files associated with file No°
+                  { ' ' }
+                  {currentStory.storyid}
+                  :
+                </h1>
+              </div>
+              <div id="substory-sort">
+                <SubstorySort handleSort={handleSort} subs={subs} />
+              </div>
+              <div id="substory-list-item-render">
+                <SubStoryListItem
+                  handleListClick={this.handleListClick}
+                  subs={subs}
+                />
+              </div>
+            </div>
+          ) : <div />}
+        {subStoryRenderZone
+          ? (
+            <div id="substory-render-zone">
+              <div>
+                <GoBack onGoBack={onGoBack} />
+              </div>
+              <div id="substory-render-actual">
+                <SubStoryRender
+                  likeGoUp={this.likeGoUp}
+                  likeGoDown={this.likeGoDown}
+                  subStory={subStory}
+                />
+              </div>
+            </div>
+          ) : <div />}
       </div>
     );
   }
@@ -94,6 +112,10 @@ SubStoryList.propTypes = {
     thingsheard: PropTypes.string,
   }).isRequired,
   handleSort: PropTypes.func.isRequired,
+  onSubStoryListItemClick: PropTypes.func.isRequired,
+  onGoBack: PropTypes.func.isRequired,
+  subStoryRenderZone: PropTypes.bool.isRequired,
+  subStorySubList: PropTypes.bool.isRequired,
 };
 
 export default SubStoryList;

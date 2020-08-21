@@ -7,8 +7,6 @@ const SubStoryListItem = (props) => {
   const onClick = (event) => {
     Axios.get(`/substoryGetSpec?id=${event.target.getAttribute('name')}`)
       .then((result) => {
-        document.getElementById('substory-sub-list').classList.add('hidden');
-        document.getElementById('substory-render-zone').classList.remove('hidden');
         handleListClick(result);
       })
       .catch((err) => {

@@ -16,16 +16,14 @@ class PresentStory extends React.Component {
 
   // this function will query the database for substories related to the current story
   showSub() {
-    const { currentStory } = this.props;
+    const { currentStory, onShowSub } = this.props;
     Axios.get(`/subStoryGet?storyId=${currentStory.id}`)
       .then((result) => {
         this.setState({
           subNum: result.data.length,
           subs: result.data,
         });
-        document.getElementById('substory').classList.toggle('hidden');
-        document.getElementById('substory-prompt').classList.toggle('hidden');
-        document.getElementById('sub-story-button').classList.remove('hidden');
+        onShowSub();
       })
       .catch((error) => {
         console.log(error);
@@ -40,7 +38,23 @@ class PresentStory extends React.Component {
   }
 
   render() {
-    const { currentStory, subStoryFormSubmit } = this.props;
+    const {
+      currentStory,
+      onGoBack,
+      onShowSubStories,
+      onSubStoryListItemClick,
+      onShowSubForm,
+      subStoryFormSubmit,
+      subStoryPrompt,
+      subStory,
+      subStoryListButtonFlex,
+      subStoryList,
+      subStoryListZone,
+      subStoryButton,
+      subStoryForm,
+      subStoryRenderZone,
+      subStorySubList,
+    } = this.props;
     const { subNum, subs } = this.state;
     return (
       <div>
@@ -94,25 +108,43 @@ class PresentStory extends React.Component {
             <h5 className="top-secret">TOP SECRET</h5>
           </div>
         </div>
-        <div id="substory-prompt">
-          <div id="substory-prompt-content">
-            <div className="substory-prompt-text white-text">
-              <p>Show related case files</p>
+        {subStoryPrompt
+          ? (
+            <div id="substory-prompt">
+              <div id="substory-prompt-content">
+                <div className="substory-prompt-text white-text">
+                  <p>Show related case files</p>
+                </div>
+                <div className="substory-prompt-button">
+                  <button className="clickable" type="button" onClick={this.showSub}>Show Files</button>
+                </div>
+              </div>
             </div>
-            <div className="substory-prompt-button">
-              <button className="clickable" type="button" onClick={this.showSub}>Show Files</button>
+          )
+          : <div />}
+        {subStory
+          ? (
+            <div id="substory">
+              <SubStory
+                handleSort={this.handleSort}
+                onSubStoryListItemClick={onSubStoryListItemClick}
+                onGoBack={onGoBack}
+                onShowSubStories={onShowSubStories}
+                onShowSubForm={onShowSubForm}
+                currentStory={currentStory}
+                subNum={subNum}
+                subs={subs}
+                subStoryFormSubmit={subStoryFormSubmit}
+                subStoryList={subStoryList}
+                subStoryListButtonFlex={subStoryListButtonFlex}
+                subStoryListZone={subStoryListZone}
+                subStoryButton={subStoryButton}
+                subStoryForm={subStoryForm}
+                subStoryRenderZone={subStoryRenderZone}
+                subStorySubList={subStorySubList}
+              />
             </div>
-          </div>
-        </div>
-        <div id="substory" className="hidden">
-          <SubStory
-            currentStory={currentStory}
-            subNum={subNum}
-            subs={subs}
-            subStoryFormSubmit={subStoryFormSubmit}
-            handleSort={this.handleSort}
-          />
-        </div>
+          ) : <div />}
       </div>
     );
   }
@@ -128,6 +160,20 @@ PresentStory.propTypes = {
     likes: PropTypes.number,
   }).isRequired,
   subStoryFormSubmit: PropTypes.func.isRequired,
+  onShowSub: PropTypes.func.isRequired,
+  onShowSubForm: PropTypes.func.isRequired,
+  onShowSubStories: PropTypes.func.isRequired,
+  onSubStoryListItemClick: PropTypes.func.isRequired,
+  onGoBack: PropTypes.func.isRequired,
+  subStoryPrompt: PropTypes.bool.isRequired,
+  subStory: PropTypes.bool.isRequired,
+  subStoryListButtonFlex: PropTypes.bool.isRequired,
+  subStoryList: PropTypes.bool.isRequired,
+  subStoryListZone: PropTypes.bool.isRequired,
+  subStoryButton: PropTypes.bool.isRequired,
+  subStoryForm: PropTypes.bool.isRequired,
+  subStoryRenderZone: PropTypes.bool.isRequired,
+  subStorySubList: PropTypes.bool.isRequired,
 };
 
 export default PresentStory;
