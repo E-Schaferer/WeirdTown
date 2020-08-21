@@ -104,7 +104,7 @@ class App extends React.Component {
       lat: lastMarker[0],
       lng: lastMarker[1],
     })
-      .then((result) => {
+      .then(() => {
         alert('Story successfully posted!');
         window.location.reload(true);
       })
