@@ -20,4 +20,19 @@ describe('app tests', () => {
     expect(docWrapper.instance().state.absentStoryRender).toBe(true);
     expect(docWrapper.instance().state.presentStoryRender).toBe(false);
   });
+  it('should not render elements before buttons rendering them are clicked', () => {
+    const wrapper = mount(<App />);
+    expect(wrapper.find('#auth-zone').exists()).toBeTruthy();
+    expect(wrapper.find('#map-zone').exists()).toBeTruthy();
+    expect(wrapper.find('#absent-story').exists()).toBeFalsy();
+    expect(wrapper.find('#present-story').exists()).toBeFalsy();
+  });
+  it('should render elements after buttons rendering them are clicked', () => {
+    const wrapper = mount(<App />);
+    wrapper.instance().handleLocationClick([100, 50]);
+    wrapper.update();
+    expect(wrapper.instance().state.absentStoryRender).toBe(true);
+    expect(wrapper.find('#absent-story').exists()).toBeTruthy();
+    expect(wrapper.find('#present-story').exists()).toBeFalsy();
+  });
 });

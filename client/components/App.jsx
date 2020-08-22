@@ -281,7 +281,7 @@ class App extends React.Component {
               </div>
             </div>
           )
-          : <div />}
+          : null}
         {presentStoryRender
           ? (
             <div id="present-story">
@@ -308,7 +308,7 @@ class App extends React.Component {
                 </div>
               </div>
             </div>
-          ) : <div />}
+          ) : null}
       </div>
     );
   }
