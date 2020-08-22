@@ -121,7 +121,7 @@ class PresentStory extends React.Component {
               </div>
             </div>
           )
-          : <div />}
+          : null}
         {subStory
           ? (
             <div id="substory">
@@ -144,7 +144,7 @@ class PresentStory extends React.Component {
                 subStorySubList={subStorySubList}
               />
             </div>
-          ) : <div />}
+          ) : null}
       </div>
     );
   }

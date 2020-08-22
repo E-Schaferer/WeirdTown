@@ -69,7 +69,7 @@ const SubStory = (props) => {
                   />
                 </ol>
               </div>
-            ) : <div />}
+            ) : null}
         </div>
       </div>
       <div id="substory-story-button-flex">
@@ -85,7 +85,7 @@ const SubStory = (props) => {
           <div id="sub-story-form">
             <SubStoryForm subStoryFormSubmit={subStoryFormSubmit} />
           </div>
-        ) : <div />}
+        ) : null}
     </div>
   );
 };

@@ -81,7 +81,7 @@ class SubStoryList extends React.Component {
                 />
               </div>
             </div>
-          ) : <div />}
+          ) : null}
         {subStoryRenderZone
           ? (
             <div id="substory-render-zone">
@@ -96,7 +96,7 @@ class SubStoryList extends React.Component {
                 />
               </div>
             </div>
-          ) : <div />}
+          ) : null}
       </div>
     );
   }
