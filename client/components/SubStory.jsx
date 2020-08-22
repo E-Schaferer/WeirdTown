@@ -9,13 +9,8 @@ const SubStory = (props) => {
   const {
     subs,
     subNum,
-    subStoryFormSubmit,
     currentStory,
     handleSort,
-    onShowSubStories,
-    onSubStoryListItemClick,
-    onGoBack,
-    onShowSubForm,
     subStoryList,
     subStoryListButtonFlex,
     subStoryListZone,
@@ -23,6 +18,11 @@ const SubStory = (props) => {
     subStoryForm,
     subStorySubList,
     subStoryRenderZone,
+    subStoryFormSubmit,
+    onShowSubStories,
+    onSubStoryListItemClick,
+    onGoBack,
+    onShowSubForm,
   } = props;
   return (
     <div>
@@ -90,9 +90,6 @@ const SubStory = (props) => {
   );
 };
 SubStory.propTypes = {
-  subs: PropTypes.arrayOf(PropTypes.object).isRequired,
-  subNum: PropTypes.number.isRequired,
-  subStoryFormSubmit: PropTypes.func.isRequired,
   currentStory: PropTypes.shape({
     storyid: PropTypes.number,
     story: PropTypes.string,
@@ -101,18 +98,21 @@ SubStory.propTypes = {
     thingsseen: PropTypes.string,
     thingsheard: PropTypes.string,
   }).isRequired,
+  subs: PropTypes.arrayOf(PropTypes.object).isRequired,
+  subNum: PropTypes.number.isRequired,
   handleSort: PropTypes.func.isRequired,
-  onShowSubStories: PropTypes.func.isRequired,
-  subStoryListButtonFlex: PropTypes.func.isRequired,
-  subStoryListZone: PropTypes.func.isRequired,
-  onSubStoryListItemClick: PropTypes.func.isRequired,
-  onGoBack: PropTypes.func.isRequired,
-  onShowSubForm: PropTypes.func.isRequired,
   subStoryList: PropTypes.bool.isRequired,
+  subStoryListButtonFlex: PropTypes.bool.isRequired,
+  subStoryListZone: PropTypes.bool.isRequired,
   subStoryButton: PropTypes.bool.isRequired,
   subStoryForm: PropTypes.bool.isRequired,
   subStorySubList: PropTypes.bool.isRequired,
   subStoryRenderZone: PropTypes.bool.isRequired,
+  subStoryFormSubmit: PropTypes.func.isRequired,
+  onShowSubStories: PropTypes.func.isRequired,
+  onSubStoryListItemClick: PropTypes.func.isRequired,
+  onGoBack: PropTypes.func.isRequired,
+  onShowSubForm: PropTypes.func.isRequired,
 };
 
 export default SubStory;

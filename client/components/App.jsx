@@ -20,9 +20,9 @@ class App extends React.Component {
         thingsseen: 'REDACTED',
         thingsheard: 'REDACTED',
         absentStoryRender: false, // AbsentStory
-        presentStoryRender: false, // PresentStory
         storySubmissionPrompt: false, // submission-prompt
         storyFormZone: false, // story-form-zone
+        presentStoryRender: false, // PresentStory
         subStory: false, // substory
         subStoryPrompt: false, // substory-prompt
         subStoryListZone: false, // substory-list-zone
@@ -232,9 +232,9 @@ class App extends React.Component {
     const {
       currentStory,
       absentStoryRender,
-      presentStoryRender,
       storySubmissionPrompt,
       storyFormZone,
+      presentStoryRender,
       subStory,
       subStoryPrompt,
       subStoryList,
