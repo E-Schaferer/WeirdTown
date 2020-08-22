@@ -47,11 +47,11 @@ class SubStoryList extends React.Component {
 
   render() {
     const {
-      currentStory,
       subs,
-      handleSort,
       subStorySubList,
       subStoryRenderZone,
+      currentStory,
+      handleSort,
       onGoBack,
     } = this.props;
     const { subStory } = this.state;
@@ -76,8 +76,8 @@ class SubStoryList extends React.Component {
               </div>
               <div id="substory-list-item-render">
                 <SubStoryListItem
-                  handleListClick={this.handleListClick}
                   subs={subs}
+                  handleListClick={this.handleListClick}
                 />
               </div>
             </div>
@@ -102,6 +102,7 @@ class SubStoryList extends React.Component {
   }
 }
 SubStoryList.propTypes = {
+  subs: PropTypes.arrayOf(PropTypes.object).isRequired,
   currentStory: PropTypes.shape({
     storyid: PropTypes.number,
     story: PropTypes.string,
@@ -110,10 +111,9 @@ SubStoryList.propTypes = {
     thingsseen: PropTypes.string,
     thingsheard: PropTypes.string,
   }).isRequired,
-  subs: PropTypes.arrayOf(PropTypes.object).isRequired,
-  handleSort: PropTypes.func.isRequired,
   subStorySubList: PropTypes.bool.isRequired,
   subStoryRenderZone: PropTypes.bool.isRequired,
+  handleSort: PropTypes.func.isRequired,
   onSubStoryListItemClick: PropTypes.func.isRequired,
   onGoBack: PropTypes.func.isRequired,
 };

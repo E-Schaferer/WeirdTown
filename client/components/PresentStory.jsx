@@ -49,11 +49,11 @@ class PresentStory extends React.Component {
       subStoryForm,
       subStorySubList,
       subStoryRenderZone,
-      subStoryFormSubmit,
-      onGoBack,
       onShowSubStories,
-      onSubStoryListItemClick,
       onShowSubForm,
+      onSubStoryListItemClick,
+      onGoBack,
+      subStoryFormSubmit,
     } = this.props;
     const { subNum, subs } = this.state;
     return (

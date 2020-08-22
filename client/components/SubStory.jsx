@@ -7,8 +7,8 @@ import ShowSubStories from './SubStory-Interactions/ShowSubStories';
 
 const SubStory = (props) => {
   const {
-    subs,
     subNum,
+    subs,
     currentStory,
     handleSort,
     subStoryList,
@@ -18,11 +18,11 @@ const SubStory = (props) => {
     subStoryForm,
     subStorySubList,
     subStoryRenderZone,
-    subStoryFormSubmit,
     onShowSubStories,
+    onShowSubForm,
     onSubStoryListItemClick,
     onGoBack,
-    onShowSubForm,
+    subStoryFormSubmit,
   } = props;
   return (
     <div>
@@ -61,11 +61,11 @@ const SubStory = (props) => {
                   <SubStoryList
                     subs={subs}
                     currentStory={currentStory}
+                    subStorySubList={subStorySubList}
+                    subStoryRenderZone={subStoryRenderZone}
                     handleSort={handleSort}
                     onSubStoryListItemClick={onSubStoryListItemClick}
                     onGoBack={onGoBack}
-                    subStorySubList={subStorySubList}
-                    subStoryRenderZone={subStoryRenderZone}
                   />
                 </ol>
               </div>
@@ -90,6 +90,8 @@ const SubStory = (props) => {
   );
 };
 SubStory.propTypes = {
+  subNum: PropTypes.number.isRequired,
+  subs: PropTypes.arrayOf(PropTypes.object).isRequired,
   currentStory: PropTypes.shape({
     storyid: PropTypes.number,
     story: PropTypes.string,
@@ -98,9 +100,6 @@ SubStory.propTypes = {
     thingsseen: PropTypes.string,
     thingsheard: PropTypes.string,
   }).isRequired,
-  subs: PropTypes.arrayOf(PropTypes.object).isRequired,
-  subNum: PropTypes.number.isRequired,
-  handleSort: PropTypes.func.isRequired,
   subStoryList: PropTypes.bool.isRequired,
   subStoryListButtonFlex: PropTypes.bool.isRequired,
   subStoryListZone: PropTypes.bool.isRequired,
@@ -108,11 +107,12 @@ SubStory.propTypes = {
   subStoryForm: PropTypes.bool.isRequired,
   subStorySubList: PropTypes.bool.isRequired,
   subStoryRenderZone: PropTypes.bool.isRequired,
-  subStoryFormSubmit: PropTypes.func.isRequired,
+  handleSort: PropTypes.func.isRequired,
   onShowSubStories: PropTypes.func.isRequired,
+  onShowSubForm: PropTypes.func.isRequired,
   onSubStoryListItemClick: PropTypes.func.isRequired,
   onGoBack: PropTypes.func.isRequired,
-  onShowSubForm: PropTypes.func.isRequired,
+  subStoryFormSubmit: PropTypes.func.isRequired,
 };
 
 export default SubStory;
