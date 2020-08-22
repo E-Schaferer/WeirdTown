@@ -7,15 +7,10 @@ import ShowSubStories from './SubStory-Interactions/ShowSubStories';
 
 const SubStory = (props) => {
   const {
-    subs,
     subNum,
-    subStoryFormSubmit,
+    subs,
     currentStory,
     handleSort,
-    onShowSubStories,
-    onSubStoryListItemClick,
-    onGoBack,
-    onShowSubForm,
     subStoryList,
     subStoryListButtonFlex,
     subStoryListZone,
@@ -23,6 +18,11 @@ const SubStory = (props) => {
     subStoryForm,
     subStorySubList,
     subStoryRenderZone,
+    onShowSubStories,
+    onShowSubForm,
+    onSubStoryListItemClick,
+    onGoBack,
+    subStoryFormSubmit,
   } = props;
   return (
     <div>
@@ -61,11 +61,11 @@ const SubStory = (props) => {
                   <SubStoryList
                     subs={subs}
                     currentStory={currentStory}
+                    subStorySubList={subStorySubList}
+                    subStoryRenderZone={subStoryRenderZone}
                     handleSort={handleSort}
                     onSubStoryListItemClick={onSubStoryListItemClick}
                     onGoBack={onGoBack}
-                    subStorySubList={subStorySubList}
-                    subStoryRenderZone={subStoryRenderZone}
                   />
                 </ol>
               </div>
@@ -90,9 +90,8 @@ const SubStory = (props) => {
   );
 };
 SubStory.propTypes = {
-  subs: PropTypes.arrayOf(PropTypes.object).isRequired,
   subNum: PropTypes.number.isRequired,
-  subStoryFormSubmit: PropTypes.func.isRequired,
+  subs: PropTypes.arrayOf(PropTypes.object).isRequired,
   currentStory: PropTypes.shape({
     storyid: PropTypes.number,
     story: PropTypes.string,
@@ -101,18 +100,19 @@ SubStory.propTypes = {
     thingsseen: PropTypes.string,
     thingsheard: PropTypes.string,
   }).isRequired,
-  handleSort: PropTypes.func.isRequired,
-  onShowSubStories: PropTypes.func.isRequired,
-  subStoryListButtonFlex: PropTypes.func.isRequired,
-  subStoryListZone: PropTypes.func.isRequired,
-  onSubStoryListItemClick: PropTypes.func.isRequired,
-  onGoBack: PropTypes.func.isRequired,
-  onShowSubForm: PropTypes.func.isRequired,
   subStoryList: PropTypes.bool.isRequired,
+  subStoryListButtonFlex: PropTypes.bool.isRequired,
+  subStoryListZone: PropTypes.bool.isRequired,
   subStoryButton: PropTypes.bool.isRequired,
   subStoryForm: PropTypes.bool.isRequired,
   subStorySubList: PropTypes.bool.isRequired,
   subStoryRenderZone: PropTypes.bool.isRequired,
+  handleSort: PropTypes.func.isRequired,
+  onShowSubStories: PropTypes.func.isRequired,
+  onShowSubForm: PropTypes.func.isRequired,
+  onSubStoryListItemClick: PropTypes.func.isRequired,
+  onGoBack: PropTypes.func.isRequired,
+  subStoryFormSubmit: PropTypes.func.isRequired,
 };
 
 export default SubStory;

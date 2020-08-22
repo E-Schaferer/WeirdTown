@@ -20,31 +20,31 @@ class App extends React.Component {
         thingsseen: 'REDACTED',
         thingsheard: 'REDACTED',
         absentStoryRender: false, // AbsentStory
-        presentStoryRender: false, // PresentStory
         storySubmissionPrompt: false, // submission-prompt
         storyFormZone: false, // story-form-zone
-        subStory: false, // substory
+        presentStoryRender: false, // PresentStory
         subStoryPrompt: false, // substory-prompt
-        subStoryListZone: false, // substory-list-zone
+        subStory: false, // substory
         subStoryList: false, // substory-list
         subStoryListButtonFlex: false, // substory-list-button-flex-zone
+        subStoryListZone: false, // substory-list-zone
+        subStoryButton: false, // sub-story-button
+        subStoryForm: false, // sub-story-form
         subStorySubList: false, // substory-sub-list
         subStoryRenderZone: false, // substory-render-zone
-        subStoryForm: false, // sub-story-form
-        subStoryButton: false, // sub-story-button
       },
     };
-    this.storyFormRender = this.storyFormRender.bind(this);
-    this.storyFormSubmit = this.storyFormSubmit.bind(this);
-    this.handleLegendGet = this.handleLegendGet.bind(this);
-    this.subStoryFormSubmit = this.subStoryFormSubmit.bind(this);
-    this.handleUserData = this.handleUserData.bind(this);
     this.onShowSub = this.onShowSub.bind(this);
-    this.onShowSubForm = this.onShowSubForm.bind(this);
-    this.handleLocationClick = this.handleLocationClick.bind(this);
     this.onShowSubStories = this.onShowSubStories.bind(this);
+    this.onShowSubForm = this.onShowSubForm.bind(this);
     this.onSubStoryListItemClick = this.onSubStoryListItemClick.bind(this);
     this.onGoBack = this.onGoBack.bind(this);
+    this.handleLocationClick = this.handleLocationClick.bind(this);
+    this.handleLegendGet = this.handleLegendGet.bind(this);
+    this.storyFormRender = this.storyFormRender.bind(this);
+    this.storyFormSubmit = this.storyFormSubmit.bind(this);
+    this.subStoryFormSubmit = this.subStoryFormSubmit.bind(this);
+    this.handleUserData = this.handleUserData.bind(this);
   }
 
   /*
@@ -232,9 +232,9 @@ class App extends React.Component {
     const {
       currentStory,
       absentStoryRender,
-      presentStoryRender,
       storySubmissionPrompt,
       storyFormZone,
+      presentStoryRender,
       subStory,
       subStoryPrompt,
       subStoryList,
@@ -273,10 +273,10 @@ class App extends React.Component {
             <div id="absent-story">
               <div id="absent-story-inner">
                 <AbsentStory
-                  storyFormRender={this.storyFormRender}
-                  storyFormSubmit={this.storyFormSubmit}
                   storySubmissionPrompt={storySubmissionPrompt}
                   storyFormZone={storyFormZone}
+                  storyFormRender={this.storyFormRender}
+                  storyFormSubmit={this.storyFormSubmit}
                 />
               </div>
             </div>
@@ -288,22 +288,22 @@ class App extends React.Component {
               <div id="present-story-flex">
                 <div className="flex-center">
                   <PresentStory
-                    subStoryFormSubmit={this.subStoryFormSubmit}
-                    onShowSub={this.onShowSub}
-                    onShowSubForm={this.onShowSubForm}
-                    onShowSubStories={this.onShowSubStories}
-                    onSubStoryListItemClick={this.onSubStoryListItemClick}
-                    onGoBack={this.onGoBack}
                     currentStory={currentStory}
                     subStoryPrompt={subStoryPrompt}
                     subStory={subStory}
                     subStoryList={subStoryList}
-                    subStoryListZone={subStoryListZone}
                     subStoryListButtonFlex={subStoryListButtonFlex}
-                    subStorySubList={subStorySubList}
-                    subStoryRenderZone={subStoryRenderZone}
+                    subStoryListZone={subStoryListZone}
                     subStoryButton={subStoryButton}
                     subStoryForm={subStoryForm}
+                    subStorySubList={subStorySubList}
+                    subStoryRenderZone={subStoryRenderZone}
+                    onShowSub={this.onShowSub}
+                    onShowSubStories={this.onShowSubStories}
+                    onShowSubForm={this.onShowSubForm}
+                    onSubStoryListItemClick={this.onSubStoryListItemClick}
+                    onGoBack={this.onGoBack}
+                    subStoryFormSubmit={this.subStoryFormSubmit}
                   />
                 </div>
               </div>

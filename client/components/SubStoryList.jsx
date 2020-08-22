@@ -48,11 +48,11 @@ class SubStoryList extends React.Component {
   render() {
     const {
       subs,
+      subStorySubList,
+      subStoryRenderZone,
       currentStory,
       handleSort,
       onGoBack,
-      subStorySubList,
-      subStoryRenderZone,
     } = this.props;
     const { subStory } = this.state;
     return (
@@ -76,8 +76,8 @@ class SubStoryList extends React.Component {
               </div>
               <div id="substory-list-item-render">
                 <SubStoryListItem
-                  handleListClick={this.handleListClick}
                   subs={subs}
+                  handleListClick={this.handleListClick}
                 />
               </div>
             </div>
@@ -111,11 +111,11 @@ SubStoryList.propTypes = {
     thingsseen: PropTypes.string,
     thingsheard: PropTypes.string,
   }).isRequired,
+  subStorySubList: PropTypes.bool.isRequired,
+  subStoryRenderZone: PropTypes.bool.isRequired,
   handleSort: PropTypes.func.isRequired,
   onSubStoryListItemClick: PropTypes.func.isRequired,
   onGoBack: PropTypes.func.isRequired,
-  subStoryRenderZone: PropTypes.bool.isRequired,
-  subStorySubList: PropTypes.bool.isRequired,
 };
 
 export default SubStoryList;
