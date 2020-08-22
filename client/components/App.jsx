@@ -11,9 +11,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // locationSelected: false,
-      // storyForm: false,
-      // storyPresent: 2,
       lastMarker: undefined,
       currentStory: {
         storyId: 'REDACTED',
@@ -22,24 +19,99 @@ class App extends React.Component {
         storyname: 'REDACTED',
         thingsseen: 'REDACTED',
         thingsheard: 'REDACTED',
-        absentStoryRender: false,
-        presentStoryRender: false,
-        storySubmissionPrompt: false,
+        absentStoryRender: false, // AbsentStory
+        presentStoryRender: false, // PresentStory
+        storySubmissionPrompt: false, // submission-prompt
+        storyFormZone: false, // story-form-zone
+        subStory: false, // substory
+        subStoryPrompt: false, // substory-prompt
+        subStoryListZone: false, // substory-list-zone
+        subStoryList: false, // substory-list
+        subStoryListButtonFlex: false, // substory-list-button-flex-zone
+        subStorySubList: false, // substory-sub-list
+        subStoryRenderZone: false, // substory-render-zone
+        subStoryForm: false, // sub-story-form
+        subStoryButton: false, // sub-story-button
       },
     };
-    this.handleLocationClick = this.handleLocationClick.bind(this);
     this.storyFormRender = this.storyFormRender.bind(this);
     this.storyFormSubmit = this.storyFormSubmit.bind(this);
     this.handleLegendGet = this.handleLegendGet.bind(this);
     this.subStoryFormSubmit = this.subStoryFormSubmit.bind(this);
     this.handleUserData = this.handleUserData.bind(this);
+    this.onShowSub = this.onShowSub.bind(this);
+    this.onShowSubForm = this.onShowSubForm.bind(this);
+    this.handleLocationClick = this.handleLocationClick.bind(this);
+    this.onShowSubStories = this.onShowSubStories.bind(this);
+    this.onSubStoryListItemClick = this.onSubStoryListItemClick.bind(this);
+    this.onGoBack = this.onGoBack.bind(this);
   }
 
   /*
 =====
-  - initialization
+  - presentStory.jsx
 =====
   */
+  onShowSub() {
+    this.setState({
+      subStory: true,
+      subStoryList: true,
+      subStoryListButtonFlex: true,
+      subStoryButton: true,
+      subStoryPrompt: false,
+    });
+  }
+
+  /*
+=====
+  - ShowSubStories.jsx
+=====
+  */
+  onShowSubStories() {
+    this.setState({
+      subStoryListZone: true,
+      subStorySubList: true,
+      subStoryList: false,
+      subStoryListButtonFlex: false,
+      subStoryRenderZone: false,
+    });
+  }
+
+  /*
+=====
+  - ShowSubForm.jsx
+=====
+  */
+  onShowSubForm() {
+    this.setState({
+      subStoryForm: true,
+      subStoryButton: false,
+    });
+  }
+
+  /*
+=====
+  - SubStoryList.jsx
+=====
+  */
+  onSubStoryListItemClick() {
+    this.setState({
+      subStoryRenderZone: true,
+      subStorySubList: false,
+    });
+  }
+
+  /*
+=====
+  - GoBack.jsx
+=====
+  */
+  onGoBack() {
+    this.setState({
+      subStorySubList: true,
+      subStoryRenderZone: false,
+    });
+  }
 
   /*
 =====
@@ -47,37 +119,31 @@ class App extends React.Component {
 =====
   */
   handleLocationClick(location) {
-    /*
-    document.getElementById('submission-prompt').classList.remove('hidden');
-    document.getElementById('story-form-zone').classList.add('hidden');
-    */
     this.state.lastMarker = location;
     this.setState({
-      // locationSelected: true,
-      // storyPresent: 0,
+      storySubmissionPrompt: true,
       absentStoryRender: true,
+      storyFormZone: false,
       presentStoryRender: false,
+      subStoryList: false,
+      subStoryListButtonFlex: false,
     });
   }
 
   handleLegendGet(location) {
     Axios.get(`/locationInfo?lat=${location[0]}&lng=${location[1]}`)
       .then((result) => {
-        /*
-        document.getElementById('story-form-zone').classList.add('hidden');
-        document.getElementById('substory').classList.add('hidden');
-        document.getElementById('substory-prompt').classList.remove('hidden');
-        document.getElementById('sub-story-form').classList.add('hidden');
-        document.getElementById('substory-list-zone').classList.add('hidden');
-        document.getElementById('substory-list-button-flex-zone').classList.remove('
-        */
         this.setState({
-          // locationSelected: true,
-          // storyForm: false,
-          // storyPresent: 1,
           currentStory: result.data[0],
-          absentStoryRender: false,
           presentStoryRender: true,
+          subStoryPrompt: true,
+          absentStoryRender: false,
+          subStory: false,
+          subStoryForm: false,
+          subStoryList: false,
+          subStoryListZone: false,
+          subStoryListButtonFlex: false,
+          storyFormZone: false,
         });
       })
       .catch((err) => {
@@ -93,10 +159,9 @@ class App extends React.Component {
 =====
   */
   storyFormRender() {
-    document.getElementById('story-form-zone').classList.remove('hidden');
-    document.getElementById('submission-prompt').classList.add('hidden');
     this.setState({
-      // storyForm: true
+      storyFormZone: true,
+      storySubmissionPrompt: false,
     });
   }
 
@@ -155,6 +220,7 @@ class App extends React.Component {
 
   handleUserData(data) {
     console.log(data);
+    this.setState({});
   }
 
   /*
@@ -167,29 +233,18 @@ class App extends React.Component {
       currentStory,
       absentStoryRender,
       presentStoryRender,
+      storySubmissionPrompt,
+      storyFormZone,
+      subStory,
+      subStoryPrompt,
+      subStoryList,
+      subStoryListZone,
+      subStoryListButtonFlex,
+      subStorySubList,
+      subStoryRenderZone,
+      subStoryForm,
+      subStoryButton,
     } = this.state;
-    const abs = (
-      <div id="absent-story">
-        <div id="absent-story-inner">
-          <AbsentStory
-            storyFormRender={this.storyFormRender}
-            storyFormSubmit={this.storyFormSubmit}
-          />
-        </div>
-      </div>
-    );
-    const pres = (
-      <div id="present-story">
-        <div id="present-story-flex">
-          <div className="flex-center">
-            <PresentStory
-              currentStory={currentStory}
-              subStoryFormSubmit={this.subStoryFormSubmit}
-            />
-          </div>
-        </div>
-      </div>
-    );
     return (
       <div>
         <div id="auth-zone">
@@ -213,8 +268,47 @@ class App extends React.Component {
             handleLegendGet={this.handleLegendGet}
           />
         </div>
-        {absentStoryRender ? abs : <div></div>}
-        {presentStoryRender ? pres : <div></div>}
+        {absentStoryRender
+          ? (
+            <div id="absent-story">
+              <div id="absent-story-inner">
+                <AbsentStory
+                  storyFormRender={this.storyFormRender}
+                  storyFormSubmit={this.storyFormSubmit}
+                  storySubmissionPrompt={storySubmissionPrompt}
+                  storyFormZone={storyFormZone}
+                />
+              </div>
+            </div>
+          )
+          : <div />}
+        {presentStoryRender
+          ? (
+            <div id="present-story">
+              <div id="present-story-flex">
+                <div className="flex-center">
+                  <PresentStory
+                    subStoryFormSubmit={this.subStoryFormSubmit}
+                    onShowSub={this.onShowSub}
+                    onShowSubForm={this.onShowSubForm}
+                    onShowSubStories={this.onShowSubStories}
+                    onSubStoryListItemClick={this.onSubStoryListItemClick}
+                    onGoBack={this.onGoBack}
+                    currentStory={currentStory}
+                    subStoryPrompt={subStoryPrompt}
+                    subStory={subStory}
+                    subStoryList={subStoryList}
+                    subStoryListZone={subStoryListZone}
+                    subStoryListButtonFlex={subStoryListButtonFlex}
+                    subStorySubList={subStorySubList}
+                    subStoryRenderZone={subStoryRenderZone}
+                    subStoryButton={subStoryButton}
+                    subStoryForm={subStoryForm}
+                  />
+                </div>
+              </div>
+            </div>
+          ) : <div />}
       </div>
     );
   }
