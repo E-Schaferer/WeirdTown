@@ -19,20 +19,20 @@ class App extends React.Component {
         storyname: 'REDACTED',
         thingsseen: 'REDACTED',
         thingsheard: 'REDACTED',
-        absentStoryRender: false, // AbsentStory
-        storySubmissionPrompt: false, // submission-prompt
-        storyFormZone: false, // story-form-zone
-        presentStoryRender: false, // PresentStory
-        subStoryPrompt: false, // substory-prompt
-        subStory: false, // substory
-        subStoryList: false, // substory-list
-        subStoryListButtonFlex: false, // substory-list-button-flex-zone
-        subStoryListZone: false, // substory-list-zone
-        subStoryButton: false, // sub-story-button
-        subStoryForm: false, // sub-story-form
-        subStorySubList: false, // substory-sub-list
-        subStoryRenderZone: false, // substory-render-zone
       },
+      absentStoryRender: false, // AbsentStory
+      storySubmissionPrompt: false, // submission-prompt
+      storyFormZone: false, // story-form-zone
+      presentStoryRender: false, // PresentStory
+      subStoryPrompt: false, // substory-prompt
+      subStory: false, // substory
+      subStoryList: false, // substory-list
+      subStoryListButtonFlex: false, // substory-list-button-flex-zone
+      subStoryListZone: false, // substory-list-zone
+      subStoryButton: false, // sub-story-button
+      subStoryForm: false, // sub-story-form
+      subStorySubList: false, // substory-sub-list
+      subStoryRenderZone: false, // substory-render-zone
     };
     this.onShowSub = this.onShowSub.bind(this);
     this.onShowSubStories = this.onShowSubStories.bind(this);
