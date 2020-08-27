@@ -108,8 +108,12 @@ class Mapzone extends React.Component {
   }
 }
 Mapzone.propTypes = {
-  handleLegendGet: PropTypes.func.isRequired,
-  handleLocationClick: PropTypes.func.isRequired,
+  handleLegendGet: PropTypes.func,
+  handleLocationClick: PropTypes.func,
+};
+Mapzone.defaultProps = {
+  handleLegendGet: undefined,
+  handleLocationClick: undefined,
 };
 
 export default Mapzone;

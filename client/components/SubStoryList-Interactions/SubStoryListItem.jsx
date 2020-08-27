@@ -24,7 +24,10 @@ const SubStoryListItem = (props) => {
 };
 SubStoryListItem.propTypes = {
   subs: PropTypes.arrayOf(PropTypes.object).isRequired,
-  handleListClick: PropTypes.func.isRequired,
+  handleListClick: PropTypes.func,
+};
+SubStoryListItem.defaultProps = {
+  handleListClick: undefined,
 };
 
 export default SubStoryListItem;

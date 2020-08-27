@@ -45,7 +45,21 @@ SubStoryDislike.propTypes = {
     subname: PropTypes.string,
     substory: PropTypes.string,
     sublikes: PropTypes.number,
-  }).isRequired,
-  dislike: PropTypes.func.isRequired,
+  }),
+  dislike: PropTypes.func,
 };
+SubStoryDislike.defaultProps = {
+  subStory: {
+    id: 0,
+    storyid: 0,
+    sublocation: 'REDACTED',
+    subheard: 'REDACTED',
+    subseen: 'REDACTED',
+    subname: 'REDACTED',
+    substory: 'REDACTED',
+    sublikes: 0,
+  },
+  dislike: undefined,
+};
+
 export default SubStoryDislike;

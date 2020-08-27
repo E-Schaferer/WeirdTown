@@ -101,8 +101,9 @@ class SubStoryList extends React.Component {
     );
   }
 }
+
 SubStoryList.propTypes = {
-  subs: PropTypes.arrayOf(PropTypes.object).isRequired,
+  subs: PropTypes.arrayOf(PropTypes.object),
   currentStory: PropTypes.shape({
     storyid: PropTypes.number,
     story: PropTypes.string,
@@ -110,12 +111,29 @@ SubStoryList.propTypes = {
     storyname: PropTypes.string,
     thingsseen: PropTypes.string,
     thingsheard: PropTypes.string,
-  }).isRequired,
-  subStorySubList: PropTypes.bool.isRequired,
-  subStoryRenderZone: PropTypes.bool.isRequired,
-  handleSort: PropTypes.func.isRequired,
-  onSubStoryListItemClick: PropTypes.func.isRequired,
-  onGoBack: PropTypes.func.isRequired,
+  }),
+  subStorySubList: PropTypes.bool,
+  subStoryRenderZone: PropTypes.bool,
+  handleSort: PropTypes.func,
+  onSubStoryListItemClick: PropTypes.func,
+  onGoBack: PropTypes.func,
+};
+
+SubStoryList.defaultProps = {
+  subs: undefined,
+  currentStory: {
+    storyId: 'REDACTED',
+    story: 'REDACTED',
+    storylocation: 'REDACTED',
+    storyname: 'REDACTED',
+    thingsseen: 'REDACTED',
+    thingsheard: 'REDACTED',
+  },
+  subStorySubList: undefined,
+  subStoryRenderZone: undefined,
+  handleSort: undefined,
+  onSubStoryListItemClick: undefined,
+  onGoBack: undefined,
 };
 
 export default SubStoryList;

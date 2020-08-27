@@ -14,7 +14,11 @@ const ShowSubStories = (props) => {
   );
 };
 ShowSubStories.propTypes = {
-  onShowSubStories: PropTypes.func.isRequired,
+  onShowSubStories: PropTypes.func,
+};
+
+ShowSubStories.defaultProps = {
+  onShowSubStories: undefined,
 };
 
 export default ShowSubStories;
