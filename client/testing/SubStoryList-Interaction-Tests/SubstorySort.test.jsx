@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import SubstorySort from '../components/SubStoryList-Interactions/SubstorySort';
+import SubstorySort from '../../components/SubStoryList-Interactions/SubstorySort';
 
 configure({ adapter: new Adapter() });
 

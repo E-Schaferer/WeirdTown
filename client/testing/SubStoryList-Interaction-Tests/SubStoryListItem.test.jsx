@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import SubStoryListItem from '../components/SubStoryList-Interactions/SubStoryListItem';
+import SubStoryListItem from '../../components/SubStoryList-Interactions/SubStoryListItem';
 
 configure({ adapter: new Adapter() });
 
