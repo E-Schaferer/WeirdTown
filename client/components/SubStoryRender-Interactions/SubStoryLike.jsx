@@ -45,8 +45,21 @@ SubStoryLike.propTypes = {
     subname: PropTypes.string,
     substory: PropTypes.string,
     sublikes: PropTypes.number,
-  }).isRequired,
-  like: PropTypes.func.isRequired,
+  }),
+  like: PropTypes.func,
+};
+SubStoryLike.defaultProps = {
+  subStory: {
+    id: 0,
+    storyid: 0,
+    sublocation: 'REDACTED',
+    subheard: 'REDACTED',
+    subseen: 'REDACTED',
+    subname: 'REDACTED',
+    substory: 'REDACTED',
+    sublikes: 0,
+  },
+  like: undefined,
 };
 
 export default SubStoryLike;

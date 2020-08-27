@@ -56,6 +56,7 @@ const SubStoryRender = (props) => {
     </div>
   );
 };
+
 SubStoryRender.propTypes = {
   subStory: PropTypes.shape({
     id: PropTypes.number,
@@ -66,9 +67,24 @@ SubStoryRender.propTypes = {
     subname: PropTypes.string,
     substory: PropTypes.string,
     sublikes: PropTypes.number,
-  }).isRequired,
-  likeGoUp: PropTypes.func.isRequired,
-  likeGoDown: PropTypes.func.isRequired,
+  }),
+  likeGoUp: PropTypes.func,
+  likeGoDown: PropTypes.func,
+};
+
+SubStoryRender.defaultProps = {
+  subStory: {
+    id: 0,
+    storyid: 0,
+    sublocation: 'REDACTED',
+    subheard: 'REDACTED',
+    subseen: 'REDACTED',
+    subname: 'REDACTED',
+    substory: 'REDACTED',
+    sublikes: 0,
+  },
+  likeGoUp: undefined,
+  likeGoDown: undefined,
 };
 
 export default SubStoryRender;

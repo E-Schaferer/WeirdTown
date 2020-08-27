@@ -14,7 +14,10 @@ const ShowSubForm = (props) => {
   );
 };
 ShowSubForm.propTypes = {
-  onShowSubForm: PropTypes.func.isRequired,
+  onShowSubForm: PropTypes.func,
+};
+ShowSubForm.defaultProps = {
+  onShowSubForm: undefined,
 };
 
 export default ShowSubForm;

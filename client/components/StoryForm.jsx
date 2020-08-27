@@ -52,7 +52,10 @@ const StoryForm = (props) => {
   );
 };
 StoryForm.propTypes = {
-  storyFormSubmit: PropTypes.func.isRequired,
+  storyFormSubmit: PropTypes.func,
+};
+StoryForm.defaultProps = {
+  storyFormSubmit: undefined,
 };
 
 export default StoryForm;

@@ -33,10 +33,16 @@ const AbsentStory = (props) => {
   );
 };
 AbsentStory.propTypes = {
-  storyFormRender: PropTypes.func.isRequired,
-  storyFormSubmit: PropTypes.func.isRequired,
-  storyFormZone: PropTypes.bool.isRequired,
-  storySubmissionPrompt: PropTypes.bool.isRequired,
+  storyFormRender: PropTypes.func,
+  storyFormSubmit: PropTypes.func,
+  storyFormZone: PropTypes.bool,
+  storySubmissionPrompt: PropTypes.bool,
+};
+AbsentStory.defaultProps = {
+  storyFormRender: undefined,
+  storyFormSubmit: undefined,
+  storyFormZone: undefined,
+  storySubmissionPrompt: undefined,
 };
 
 export default AbsentStory;

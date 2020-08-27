@@ -15,7 +15,10 @@ const GoBack = (props) => {
   );
 };
 GoBack.propTypes = {
-  onGoBack: PropTypes.func.isRequired,
+  onGoBack: PropTypes.func,
+};
+GoBack.defaultProps = {
+  onGoBack: undefined,
 };
 
 export default GoBack;
