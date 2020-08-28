@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import SubStorySubmit from './SubStoryForm-Interactions/SubStorySubmit';
 
 const SubStoryForm = (props) => {
-  const { subStoryFormSubmit } = props;
+  const { subStoryFormSubmit, handleError } = props;
   return (
     <div id="sub-story-form-zone">
       <div id="substory-weird-header">
@@ -49,7 +49,7 @@ const SubStoryForm = (props) => {
         </label>
       </div>
       <div id="substory-button">
-        <SubStorySubmit subStoryFormSubmit={subStoryFormSubmit} />
+        <SubStorySubmit subStoryFormSubmit={subStoryFormSubmit} handleError={handleError} />
       </div>
       <div id="sub-footer">
         <h5 className="top-secret">TOP SECRET</h5>
@@ -59,9 +59,11 @@ const SubStoryForm = (props) => {
 };
 SubStoryForm.propTypes = {
   subStoryFormSubmit: PropTypes.func,
+  handleError: PropTypes.func,
 };
 SubStoryForm.defaultProps = {
   subStoryFormSubmit: undefined,
+  handleError: undefined,
 };
 
 export default SubStoryForm;

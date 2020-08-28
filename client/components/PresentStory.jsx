@@ -16,7 +16,7 @@ class PresentStory extends React.Component {
 
   // this function will query the database for substories related to the current story
   showSub() {
-    const { currentStory, onShowSub } = this.props;
+    const { currentStory, onShowSub, handleError } = this.props;
     Axios.get(`/subStoryGet?storyId=${currentStory.id}`)
       .then((result) => {
         this.setState({
@@ -25,8 +25,8 @@ class PresentStory extends React.Component {
         });
         onShowSub();
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        handleError('showSub', err);
       });
   }
 
@@ -54,6 +54,7 @@ class PresentStory extends React.Component {
       onSubStoryListItemClick,
       onGoBack,
       subStoryFormSubmit,
+      handleError,
     } = this.props;
     const { subNum, subs } = this.state;
     return (
@@ -142,6 +143,7 @@ class PresentStory extends React.Component {
                 subStoryForm={subStoryForm}
                 subStoryRenderZone={subStoryRenderZone}
                 subStorySubList={subStorySubList}
+                handleError={handleError}
               />
             </div>
           ) : null}
@@ -174,6 +176,7 @@ PresentStory.propTypes = {
   onShowSubStories: PropTypes.func,
   onSubStoryListItemClick: PropTypes.func,
   onGoBack: PropTypes.func,
+  handleError: PropTypes.func,
 };
 PresentStory.defaultProps = {
   currentStory: {
@@ -199,6 +202,7 @@ PresentStory.defaultProps = {
   onShowSubStories: undefined,
   onSubStoryListItemClick: undefined,
   onGoBack: undefined,
+  handleError: undefined,
 };
 
 export default PresentStory;

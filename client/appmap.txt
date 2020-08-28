@@ -1,6 +1,6 @@
 Legend:
   = : component
-  > : helper function
+  > : helper function/component
 
 Map:
 =index

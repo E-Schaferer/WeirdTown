@@ -1,4 +1,5 @@
 const path = require('path');
+const fs = require('fs');
 const express = require('../node_modules/express');
 const db = require('../database/index.js');
 
@@ -7,6 +8,12 @@ const port = 3777;
 
 app.use(express.json());
 app.use('/', express.static(path.join(__dirname, '../public/')));
+
+app.get('/errorLog', (req) => {
+  const time = new Date().toUTCString;
+  const data = [time, req.funcname, req.err];
+  fs.writeFile('./ErrorLog/ErrorLog.txt', data);
+});
 
 app.get('/allStories', (req, res) => {
   db.connection.query('SELECT latitude, longitude FROM stories', (err, result) => {

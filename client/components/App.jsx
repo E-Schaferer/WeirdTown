@@ -1,6 +1,5 @@
 import React from 'react';
 import Axios from 'axios';
-// import LocationInfo from './LocationInfo';
 import AbsentStory from './AbsentStory';
 import PresentStory from './PresentStory';
 import CurrentUser from './CurrentUser';
@@ -8,6 +7,10 @@ import AuthBar from './AuthBar';
 import Mapzone from './Mapzone';
 
 class App extends React.Component {
+  static handleError(funcName, err) {
+    Axios.get(`/errorLog?funcname=${funcName}&err=${err}`);
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -148,8 +151,7 @@ class App extends React.Component {
       })
       .catch((err) => {
         // needs alert
-        console.log('Something went wrong! Please try again.');
-        console.log(err);
+        this.handleError('handleLegendGet', err);
       });
   }
 
@@ -178,11 +180,10 @@ class App extends React.Component {
     })
       .then(() => {
         // needs alert
-        console.log('Story successfully posted!');
         window.location.reload(true);
       })
       .catch((err) => {
-        console.log(err);
+        this.handleError(['storyFormSubmit', err]);
       });
   }
 
@@ -204,11 +205,10 @@ class App extends React.Component {
     })
       .then(() => {
         // needs alert
-        console.log('Substory successfully posted!');
         window.location.reload(true);
       })
       .catch((err) => {
-        console.log(err);
+        this.handleError(['subStoryFormSubmit', err]);
       });
   }
 
@@ -219,6 +219,7 @@ class App extends React.Component {
   */
 
   handleUserData(data) {
+    // need to actually do things with user data
     console.log(data);
     this.setState({});
   }
@@ -248,7 +249,7 @@ class App extends React.Component {
     return (
       <div>
         <div id="auth-zone">
-          <CurrentUser handleUserData={this.handleUserData} />
+          <CurrentUser handleUserData={this.handleUserData} handleError={this.handleError} />
           <AuthBar />
         </div>
         <div id="title-zone">
@@ -266,6 +267,7 @@ class App extends React.Component {
           <Mapzone
             handleLocationClick={this.handleLocationClick}
             handleLegendGet={this.handleLegendGet}
+            handleError={this.handleError}
           />
         </div>
         {absentStoryRender
@@ -304,6 +306,7 @@ class App extends React.Component {
                     onSubStoryListItemClick={this.onSubStoryListItemClick}
                     onGoBack={this.onGoBack}
                     subStoryFormSubmit={this.subStoryFormSubmit}
+                    handleError={this.handleError}
                   />
                 </div>
               </div>

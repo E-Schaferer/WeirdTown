@@ -4,7 +4,12 @@ import SubStoryLike from './SubStoryRender-Interactions/SubStoryLike';
 import SubStoryDislike from './SubStoryRender-Interactions/SubStoryDislike';
 
 const SubStoryRender = (props) => {
-  const { subStory, likeGoDown, likeGoUp } = props;
+  const {
+    subStory,
+    likeGoDown,
+    likeGoUp,
+    handleError,
+  } = props;
   return (
     <div>
       <div id="story-header">
@@ -30,8 +35,8 @@ const SubStoryRender = (props) => {
           { ' ' }
           {subStory.sublikes}
         </h4>
-        <SubStoryLike subStory={subStory} like={likeGoUp} />
-        <SubStoryDislike subStory={subStory} dislike={likeGoDown} />
+        <SubStoryLike subStory={subStory} like={likeGoUp} handleError={handleError} />
+        <SubStoryDislike subStory={subStory} dislike={likeGoDown} handleError={handleError} />
       </div>
       <div>
         <h3 className="underlined">INCIDENT NAME:</h3>
@@ -70,6 +75,7 @@ SubStoryRender.propTypes = {
   }),
   likeGoUp: PropTypes.func,
   likeGoDown: PropTypes.func,
+  handleError: PropTypes.func,
 };
 
 SubStoryRender.defaultProps = {
@@ -85,6 +91,7 @@ SubStoryRender.defaultProps = {
   },
   likeGoUp: undefined,
   likeGoDown: undefined,
+  handleError: undefined,
 };
 
 export default SubStoryRender;

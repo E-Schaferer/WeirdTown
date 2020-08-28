@@ -23,6 +23,7 @@ const SubStory = (props) => {
     onSubStoryListItemClick,
     onGoBack,
     subStoryFormSubmit,
+    handleError,
   } = props;
   return (
     <div>
@@ -66,6 +67,7 @@ const SubStory = (props) => {
                     handleSort={handleSort}
                     onSubStoryListItemClick={onSubStoryListItemClick}
                     onGoBack={onGoBack}
+                    handleError={handleError}
                   />
                 </ol>
               </div>
@@ -113,6 +115,7 @@ SubStory.propTypes = {
   onSubStoryListItemClick: PropTypes.func,
   onGoBack: PropTypes.func,
   subStoryFormSubmit: PropTypes.func,
+  handleError: PropTypes.func,
 };
 SubStory.defaultProps = {
   subNum: undefined,
@@ -138,6 +141,7 @@ SubStory.defaultProps = {
   onSubStoryListItemClick: undefined,
   onGoBack: undefined,
   subStoryFormSubmit: undefined,
+  handleError: undefined,
 };
 
 export default SubStory;
