@@ -8,18 +8,17 @@ const SubStoryDislike = (props) => {
   const { user, isAuthenticated } = useAuth0();
 
   const dislikeClick = () => {
-    const { subStory, dislike } = props;
+    const { subStory, dislike, handleError } = props;
     if (isAuthenticated) {
       Axios.put('/subDislike', {
         id: subStory.id,
         userid: user.email,
       })
-        .then((result) => {
-          console.log(result);
+        .then(() => {
           dislike();
         })
         .catch((err) => {
-          console.log(err);
+          handleError(['dislikeClick', err]);
         });
     } else {
       // needs alert
@@ -47,6 +46,7 @@ SubStoryDislike.propTypes = {
     sublikes: PropTypes.number,
   }),
   dislike: PropTypes.func,
+  handleError: PropTypes.func,
 };
 SubStoryDislike.defaultProps = {
   subStory: {
@@ -60,6 +60,7 @@ SubStoryDislike.defaultProps = {
     sublikes: 0,
   },
   dislike: undefined,
+  handleError: undefined,
 };
 
 export default SubStoryDislike;

@@ -27,6 +27,7 @@ class Mapzone extends React.Component {
   componentDidMount() {
     const here = this;
     const { lat, long, zoom } = this.state;
+    const { handleError } = this.props;
     Axios.get('/allStories')
       .then((result) => {
         for (let i = 0; i < result.data.length; i += 1) {
@@ -51,8 +52,7 @@ class Mapzone extends React.Component {
       })
       .catch((err) => {
         // needs alert
-        console.log('Could not load map data, please reload the page');
-        console.log(err);
+        handleError(['mapzone did mount', err]);
       });
   }
 
@@ -110,10 +110,12 @@ class Mapzone extends React.Component {
 Mapzone.propTypes = {
   handleLegendGet: PropTypes.func,
   handleLocationClick: PropTypes.func,
+  handleError: PropTypes.func,
 };
 Mapzone.defaultProps = {
   handleLegendGet: undefined,
   handleLocationClick: undefined,
+  handleError: undefined,
 };
 
 export default Mapzone;

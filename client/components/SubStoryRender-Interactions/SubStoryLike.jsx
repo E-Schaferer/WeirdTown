@@ -8,18 +8,17 @@ const SubStoryLike = (props) => {
   const { user, isAuthenticated } = useAuth0();
 
   const likeClick = () => {
-    const { subStory, like } = props;
+    const { subStory, like, handleError } = props;
     if (isAuthenticated) {
       Axios.put('/subLike', {
         id: subStory.id,
         user: user.email,
       })
-        .then((result) => {
-          console.log(result);
+        .then(() => {
           like();
         })
         .catch((err) => {
-          console.log(err);
+          handleError(['likeClick', err]);
         });
     } else {
       // needs alert
@@ -47,6 +46,7 @@ SubStoryLike.propTypes = {
     sublikes: PropTypes.number,
   }),
   like: PropTypes.func,
+  handleError: PropTypes.func,
 };
 SubStoryLike.defaultProps = {
   subStory: {
@@ -60,6 +60,7 @@ SubStoryLike.defaultProps = {
     sublikes: 0,
   },
   like: undefined,
+  handleError: undefined,
 };
 
 export default SubStoryLike;
