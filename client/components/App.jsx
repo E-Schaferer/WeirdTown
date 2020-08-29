@@ -8,7 +8,9 @@ import Mapzone from './Mapzone';
 
 class App extends React.Component {
   static handleError(funcName, err) {
-    Axios.get(`/errorLog?funcname=${funcName}&err=${err}`);
+    const promise = Axios.get(`/errorLog?funcname=${funcName}&err=${err}`);
+    const result = promise.then(() => {});
+    return result;
   }
 
   constructor(props) {
@@ -134,25 +136,26 @@ class App extends React.Component {
   }
 
   handleLegendGet(location) {
-    Axios.get(`/locationInfo?lat=${location[0]}&lng=${location[1]}`)
-      .then((result) => {
-        this.setState({
-          currentStory: result.data[0],
-          presentStoryRender: true,
-          subStoryPrompt: true,
-          absentStoryRender: false,
-          subStory: false,
-          subStoryForm: false,
-          subStoryList: false,
-          subStoryListZone: false,
-          subStoryListButtonFlex: false,
-          storyFormZone: false,
-        });
-      })
-      .catch((err) => {
-        // needs alert
-        this.handleError('handleLegendGet', err);
+    const promise = Axios.get(`/locationInfo?lat=${location[0]}&lng=${location[1]}`);
+    const result = promise.then((res) => {
+      this.setState({
+        currentStory: res.data[0],
+        presentStoryRender: true,
+        subStoryPrompt: true,
+        absentStoryRender: false,
+        subStory: false,
+        subStoryForm: false,
+        subStoryList: false,
+        subStoryListZone: false,
+        subStoryListButtonFlex: false,
+        storyFormZone: false,
       });
+    });
+    const catcher = promise.catch((err) => {
+      // needs alert
+      this.handleError('handleLegendGet', err);
+    });
+    return result || catcher;
   }
 
   /*
@@ -169,7 +172,7 @@ class App extends React.Component {
 
   storyFormSubmit(name, loc, saw, heard, story) {
     const { lastMarker } = this.state;
-    Axios.post('/storySubmit', {
+    const promise = Axios.post('/storySubmit', {
       story,
       name,
       loc,
@@ -177,14 +180,15 @@ class App extends React.Component {
       heard,
       lat: lastMarker[0],
       lng: lastMarker[1],
-    })
-      .then(() => {
-        // needs alert
-        window.location.reload(true);
-      })
-      .catch((err) => {
-        this.handleError(['storyFormSubmit', err]);
-      });
+    });
+    const result = promise.then(() => {
+      // needs alert
+      window.location.reload(true);
+    });
+    const catcher = promise.catch((err) => {
+      this.handleError(['storyFormSubmit', err]);
+    });
+    return result || catcher;
   }
 
   /*
@@ -195,21 +199,22 @@ class App extends React.Component {
 
   subStoryFormSubmit(name, loc, heard, saw, story) {
     const { currentStory } = this.state;
-    Axios.post('/subStorySubmit', {
+    const promise = Axios.post('/subStorySubmit', {
       id: currentStory.id,
       name,
       location: loc,
       heard,
       saw,
       story,
-    })
-      .then(() => {
-        // needs alert
-        window.location.reload(true);
-      })
-      .catch((err) => {
-        this.handleError(['subStoryFormSubmit', err]);
-      });
+    });
+    const result = promise.then(() => {
+      // needs alert
+      window.location.reload(true);
+    });
+    const catcher = promise.catch((err) => {
+      this.handleError(['subStoryFormSubmit', err]);
+    });
+    return result || catcher;
   }
 
   /*
