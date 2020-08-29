@@ -9,10 +9,11 @@ const port = 3777;
 app.use(express.json());
 app.use('/', express.static(path.join(__dirname, '../public/')));
 
-app.get('/errorLog', (req) => {
+app.get('/errorLog', (req, res) => {
   const time = new Date().toUTCString;
   const data = [time, req.funcname, req.err];
   fs.writeFile('./ErrorLog/ErrorLog.txt', data);
+  res.sendStatus(200);
 });
 
 app.get('/allStories', (req, res) => {
