@@ -3,7 +3,6 @@ import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import mockAxios from 'jest-mock-axios';
 import PresentStory from '../components/PresentStory';
-import MockAxios from 'jest-mock-axios';
 
 configure({ adapter: new Adapter() });
 
@@ -50,7 +49,7 @@ describe('PresentStory tests', () => {
       message: 'show sub error message',
     };
     wrapper.instance().showSub();
-    MockAxios.mockError(errObj);
+    mockAxios.mockError(errObj);
     expect(spy).toHaveBeenCalled();
   });
   it('should render substory-prompt based on given props', () => {

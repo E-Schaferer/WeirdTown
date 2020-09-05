@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1599276604113" clover="3.2.0">
-  <project timestamp="1599276604113" name="All files">
-    <metrics statements="280" coveredstatements="193" conditionals="62" coveredconditionals="24" methods="90" coveredmethods="53" elements="432" coveredelements="270" complexity="0" loc="280" ncloc="280" packages="8" files="26" classes="26"/>
+<coverage generated="1599282195517" clover="3.2.0">
+  <project timestamp="1599282195517" name="All files">
+    <metrics statements="282" coveredstatements="197" conditionals="62" coveredconditionals="26" methods="91" coveredmethods="56" elements="435" coveredelements="279" complexity="0" loc="282" ncloc="282" packages="8" files="26" classes="26"/>
     <package name="components">
-      <metrics statements="168" coveredstatements="125" conditionals="44" coveredconditionals="24" methods="54" coveredmethods="39"/>
+      <metrics statements="170" coveredstatements="129" conditionals="44" coveredconditionals="26" methods="55" coveredmethods="42"/>
       <file name="AbsentStory.jsx" path="/Users/hermit/mvp/client/components/AbsentStory.jsx">
         <metrics statements="5" coveredstatements="5" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
         <line num="6" count="2" type="stmt"/>
@@ -79,17 +79,19 @@
         <line num="12" count="1" type="stmt"/>
       </file>
       <file name="CurrentUser.jsx" path="/Users/hermit/mvp/client/components/CurrentUser.jsx">
-        <metrics statements="10" coveredstatements="8" conditionals="4" coveredconditionals="2" methods="3" coveredmethods="1"/>
+        <metrics statements="12" coveredstatements="12" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="4"/>
         <line num="6" count="2" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="10" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="7" count="4" type="stmt"/>
+        <line num="9" count="4" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="20" count="1" type="stmt"/>
-        <line num="33" count="2" type="stmt"/>
-        <line num="37" count="2" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="27" count="5" type="stmt"/>
+        <line num="29" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="30" count="4" type="stmt"/>
+        <line num="33" count="5" type="stmt"/>
       </file>
       <file name="LocationInfo.jsx" path="/Users/hermit/mvp/client/components/LocationInfo.jsx">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
