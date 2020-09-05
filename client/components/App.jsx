@@ -10,7 +10,7 @@ class App extends React.Component {
   static handleError(funcName, err) {
     const promise = Axios.get(`/errorLog?funcname=${funcName}&err=${err}`);
     const result = promise.then(() => {});
-    return result;
+    return 'result';
   }
 
   constructor(props) {
@@ -136,8 +136,8 @@ class App extends React.Component {
   }
 
   handleLegendGet(location) {
-    const promise = Axios.get(`/locationInfo?lat=${location[0]}&lng=${location[1]}`);
-    const result = promise.then((res) => {
+    let promise = Axios.get(`/locationInfo?lat=${location[0]}&lng=${location[1]}`);
+    promise = promise.then((res) => {
       this.setState({
         currentStory: res.data[0],
         presentStoryRender: true,
@@ -150,12 +150,12 @@ class App extends React.Component {
         subStoryListButtonFlex: false,
         storyFormZone: false,
       });
-    });
-    const catcher = promise.catch((err) => {
+    })
+      .catch((err) => {
       // needs alert
-      this.handleError('handleLegendGet', err);
-    });
-    return result || catcher;
+        App.handleError('handleLegendGet', err);
+      });
+    return promise;
   }
 
   /*
@@ -186,7 +186,7 @@ class App extends React.Component {
       window.location.reload(true);
     });
     const catcher = promise.catch((err) => {
-      this.handleError(['storyFormSubmit', err]);
+      App.handleError(['storyFormSubmit', err]);
     });
     return result || catcher;
   }
@@ -212,7 +212,7 @@ class App extends React.Component {
       window.location.reload(true);
     });
     const catcher = promise.catch((err) => {
-      this.handleError(['subStoryFormSubmit', err]);
+      App.handleError(['subStoryFormSubmit', err]);
     });
     return result || catcher;
   }
@@ -254,7 +254,7 @@ class App extends React.Component {
     return (
       <div>
         <div id="auth-zone">
-          <CurrentUser handleUserData={this.handleUserData} handleError={this.handleError} />
+          <CurrentUser handleUserData={this.handleUserData} handleError={App.handleError} />
           <AuthBar />
         </div>
         <div id="title-zone">
@@ -272,7 +272,7 @@ class App extends React.Component {
           <Mapzone
             handleLocationClick={this.handleLocationClick}
             handleLegendGet={this.handleLegendGet}
-            handleError={this.handleError}
+            handleError={App.handleError}
           />
         </div>
         {absentStoryRender
@@ -311,7 +311,7 @@ class App extends React.Component {
                     onSubStoryListItemClick={this.onSubStoryListItemClick}
                     onGoBack={this.onGoBack}
                     subStoryFormSubmit={this.subStoryFormSubmit}
-                    handleError={this.handleError}
+                    handleError={App.handleError}
                   />
                 </div>
               </div>
