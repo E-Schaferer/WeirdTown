@@ -7,6 +7,15 @@ import App from '../components/App';
 configure({ adapter: new Adapter() });
 
 describe('app tests', () => {
+  const { location } = window;
+  const errorHolder = App.handleError;
+  beforeAll(() => {
+    delete window.location;
+    window.location = { reload: jest.fn() };
+  });
+  afterAll(() => {
+    window.location = location;
+  });
   afterEach(() => {
     mockAxios.reset();
   });
@@ -87,18 +96,16 @@ describe('app tests', () => {
   });
   it('should make an axios request to the correct address after receiving an error', () => {
     const funcName = 'testName';
-    const errMsg = 'testMessage';
+    const errMsg = {
+      errMsg: 'errTest',
+    };
     App.handleError(funcName, errMsg);
     expect(mockAxios.get).toHaveBeenCalledWith(`/errorLog?funcname=${funcName}&err=${errMsg}`);
   });
   it('should call the correct address when handleLegendGet is Called and update state afterwards', () => {
     const wrapper = shallow(<App />);
-    const thenFunc = jest.fn();
-    const catchFunc = jest.fn();
     const body = ['test', 'test'];
-    wrapper.instance().handleLegendGet(body)
-      .then(thenFunc)
-      .catch(catchFunc);
+    wrapper.instance().handleLegendGet(body);
     expect(mockAxios.get).toHaveBeenCalledWith(`/locationInfo?lat=${body[0]}&lng=${body[1]}`);
     const response = {
       data: [{
@@ -128,6 +135,18 @@ describe('app tests', () => {
     expect(wrapper.find('#absent-story').exists()).toBeFalsy();
     expect(wrapper.find('#present-story').exists()).toBeTruthy();
   });
+  it('should correctly call the error handling function when an error is received by handleLegendGet', () => {
+    const wrapper = shallow(<App />);
+    App.handleError = jest.fn();
+    const body = ['test', 'test'];
+    wrapper.instance().handleLegendGet(body);
+    const errObj = {
+      message: 'errTest',
+    };
+    mockAxios.mockError(errObj);
+    expect(App.handleError).toHaveBeenCalled();
+    App.handleError = errorHolder;
+  });
   it('should call the correct address when storyFormSubmit is called', () => {
     const wrapper = shallow(<App />);
     wrapper.instance().state.lastMarker = [0, 1];
@@ -146,6 +165,8 @@ describe('app tests', () => {
       saw,
       story,
     });
+    mockAxios.mockResponse();
+    expect(window.location.reload).toHaveBeenCalled();
   });
   it('should call the correct address when subStoryFormSubmit is called', () => {
     const wrapper = shallow(<App />);
