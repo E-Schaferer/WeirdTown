@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1599265675282" clover="3.2.0">
-  <project timestamp="1599265675283" name="All files">
-    <metrics statements="280" coveredstatements="183" conditionals="62" coveredconditionals="20" methods="90" coveredmethods="46" elements="432" coveredelements="249" complexity="0" loc="280" ncloc="280" packages="8" files="26" classes="26"/>
+<coverage generated="1599276604113" clover="3.2.0">
+  <project timestamp="1599276604113" name="All files">
+    <metrics statements="280" coveredstatements="193" conditionals="62" coveredconditionals="24" methods="90" coveredmethods="53" elements="432" coveredelements="270" complexity="0" loc="280" ncloc="280" packages="8" files="26" classes="26"/>
     <package name="components">
-      <metrics statements="168" coveredstatements="115" conditionals="44" coveredconditionals="20" methods="54" coveredmethods="32"/>
+      <metrics statements="168" coveredstatements="125" conditionals="44" coveredconditionals="24" methods="54" coveredmethods="39"/>
       <file name="AbsentStory.jsx" path="/Users/hermit/mvp/client/components/AbsentStory.jsx">
-        <metrics statements="5" coveredstatements="5" conditionals="4" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <metrics statements="5" coveredstatements="5" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
         <line num="6" count="2" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
+        <line num="12" count="5" type="stmt"/>
+        <line num="13" count="5" type="stmt"/>
         <line num="35" count="2" type="stmt"/>
         <line num="41" count="2" type="stmt"/>
       </file>
       <file name="App.jsx" path="/Users/hermit/mvp/client/components/App.jsx">
-        <metrics statements="47" coveredstatements="42" conditionals="8" coveredconditionals="6" methods="21" coveredmethods="16"/>
+        <metrics statements="47" coveredstatements="45" conditionals="8" coveredconditionals="6" methods="21" coveredmethods="19"/>
         <line num="11" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
-        <line num="17" count="14" type="stmt"/>
-        <line num="18" count="14" type="stmt"/>
-        <line num="42" count="14" type="stmt"/>
-        <line num="43" count="14" type="stmt"/>
-        <line num="44" count="14" type="stmt"/>
-        <line num="45" count="14" type="stmt"/>
-        <line num="46" count="14" type="stmt"/>
-        <line num="47" count="14" type="stmt"/>
-        <line num="48" count="14" type="stmt"/>
-        <line num="49" count="14" type="stmt"/>
-        <line num="50" count="14" type="stmt"/>
-        <line num="51" count="14" type="stmt"/>
-        <line num="52" count="14" type="stmt"/>
+        <line num="17" count="16" type="stmt"/>
+        <line num="18" count="16" type="stmt"/>
+        <line num="42" count="16" type="stmt"/>
+        <line num="43" count="16" type="stmt"/>
+        <line num="44" count="16" type="stmt"/>
+        <line num="45" count="16" type="stmt"/>
+        <line num="46" count="16" type="stmt"/>
+        <line num="47" count="16" type="stmt"/>
+        <line num="48" count="16" type="stmt"/>
+        <line num="49" count="16" type="stmt"/>
+        <line num="50" count="16" type="stmt"/>
+        <line num="51" count="16" type="stmt"/>
+        <line num="52" count="16" type="stmt"/>
         <line num="61" count="1" type="stmt"/>
         <line num="76" count="1" type="stmt"/>
         <line num="91" count="1" type="stmt"/>
@@ -43,24 +43,24 @@
         <line num="156" count="1" type="stmt"/>
         <line num="158" count="2" type="stmt"/>
         <line num="167" count="1" type="stmt"/>
-        <line num="174" count="1" type="stmt"/>
-        <line num="175" count="1" type="stmt"/>
-        <line num="184" count="1" type="stmt"/>
+        <line num="174" count="2" type="stmt"/>
+        <line num="175" count="2" type="stmt"/>
+        <line num="184" count="2" type="stmt"/>
         <line num="186" count="1" type="stmt"/>
-        <line num="188" count="1" type="stmt"/>
-        <line num="189" count="0" type="stmt"/>
-        <line num="191" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="201" count="1" type="stmt"/>
-        <line num="202" count="1" type="stmt"/>
-        <line num="210" count="1" type="stmt"/>
-        <line num="212" count="0" type="stmt"/>
-        <line num="214" count="1" type="stmt"/>
-        <line num="215" count="0" type="stmt"/>
-        <line num="217" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="188" count="2" type="stmt"/>
+        <line num="189" count="1" type="stmt"/>
+        <line num="191" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="201" count="2" type="stmt"/>
+        <line num="202" count="2" type="stmt"/>
+        <line num="210" count="2" type="stmt"/>
+        <line num="212" count="1" type="stmt"/>
+        <line num="214" count="2" type="stmt"/>
+        <line num="215" count="1" type="stmt"/>
+        <line num="217" count="2" type="cond" truecount="1" falsecount="1"/>
         <line num="228" count="0" type="stmt"/>
         <line num="229" count="0" type="stmt"/>
-        <line num="253" count="23" type="stmt"/>
-        <line num="254" count="23" type="stmt"/>
+        <line num="253" count="25" type="stmt"/>
+        <line num="254" count="25" type="stmt"/>
       </file>
       <file name="Auth0ProviderWithHistory.jsx" path="/Users/hermit/mvp/client/components/Auth0ProviderWithHistory.jsx">
         <metrics statements="7" coveredstatements="6" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="1"/>
@@ -79,12 +79,12 @@
         <line num="12" count="1" type="stmt"/>
       </file>
       <file name="CurrentUser.jsx" path="/Users/hermit/mvp/client/components/CurrentUser.jsx">
-        <metrics statements="10" coveredstatements="7" conditionals="4" coveredconditionals="2" methods="3" coveredmethods="1"/>
+        <metrics statements="10" coveredstatements="8" conditionals="4" coveredconditionals="2" methods="3" coveredmethods="1"/>
         <line num="6" count="2" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
         <line num="10" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="11" count="0" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
         <line num="13" count="0" type="stmt"/>
         <line num="16" count="0" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
@@ -140,20 +140,20 @@
         <line num="115" count="2" type="stmt"/>
       </file>
       <file name="PresentStory.jsx" path="/Users/hermit/mvp/client/components/PresentStory.jsx">
-        <metrics statements="15" coveredstatements="9" conditionals="4" coveredconditionals="2" methods="6" coveredmethods="2"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
-        <line num="58" count="1" type="stmt"/>
-        <line num="59" count="1" type="stmt"/>
-        <line num="60" count="1" type="stmt"/>
+        <metrics statements="15" coveredstatements="15" conditionals="4" coveredconditionals="4" methods="6" coveredmethods="6"/>
+        <line num="8" count="8" type="stmt"/>
+        <line num="9" count="8" type="stmt"/>
+        <line num="13" count="8" type="stmt"/>
+        <line num="14" count="8" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="58" count="10" type="stmt"/>
+        <line num="59" count="10" type="stmt"/>
+        <line num="60" count="10" type="stmt"/>
         <line num="154" count="2" type="stmt"/>
         <line num="181" count="2" type="stmt"/>
       </file>

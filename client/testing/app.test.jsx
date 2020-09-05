@@ -141,7 +141,40 @@ describe('app tests', () => {
     const body = ['test', 'test'];
     wrapper.instance().handleLegendGet(body);
     const errObj = {
-      message: 'errTest',
+      message: 'errTestHandleLegendGet',
+    };
+    mockAxios.mockError(errObj);
+    expect(App.handleError).toHaveBeenCalled();
+    App.handleError = errorHolder;
+  });
+  it('should correctly call the error handling function when an error is received by subStoryFormSubmit', () => {
+    const wrapper = shallow(<App />);
+    App.handleError = jest.fn();
+    const name = 'testName';
+    const loc = 'testLoc';
+    const heard = 'testHeard';
+    const saw = 'testSaw';
+    const story = 'testStory';
+    wrapper.instance().subStoryFormSubmit(name, loc, heard, saw, story);
+    const errObj = {
+      message: 'errTestSubStoryFormSubmit',
+    };
+    mockAxios.mockError(errObj);
+    expect(App.handleError).toHaveBeenCalled();
+    App.handleError = errorHolder;
+  });
+  it('should correctly call the error handling function when an error is received by storyFormSubmit', () => {
+    const wrapper = shallow(<App />);
+    App.handleError = jest.fn();
+    wrapper.instance().state.lastMarker = [0, 1];
+    const name = 'testName';
+    const loc = 'testLoc';
+    const heard = 'testHeard';
+    const saw = 'testSaw';
+    const story = 'testStory';
+    wrapper.instance().storyFormSubmit(name, loc, heard, saw, story);
+    const errObj = {
+      message: 'errTestStoryFormSubmit',
     };
     mockAxios.mockError(errObj);
     expect(App.handleError).toHaveBeenCalled();
@@ -187,5 +220,7 @@ describe('app tests', () => {
       saw,
       story,
     });
+    mockAxios.mockResponse();
+    expect(window.location.reload).toHaveBeenCalled();
   });
 });
