@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1600376087121" clover="3.2.0">
-  <project timestamp="1600376087121" name="All files">
-    <metrics statements="282" coveredstatements="197" conditionals="62" coveredconditionals="34" methods="91" coveredmethods="56" elements="435" coveredelements="287" complexity="0" loc="282" ncloc="282" packages="8" files="26" classes="26"/>
+<coverage generated="1600380337311" clover="3.2.0">
+  <project timestamp="1600380337311" name="All files">
+    <metrics statements="282" coveredstatements="206" conditionals="62" coveredconditionals="36" methods="91" coveredmethods="59" elements="435" coveredelements="301" complexity="0" loc="282" ncloc="282" packages="8" files="26" classes="26"/>
     <package name="components">
-      <metrics statements="170" coveredstatements="129" conditionals="44" coveredconditionals="34" methods="55" coveredmethods="42"/>
+      <metrics statements="170" coveredstatements="138" conditionals="44" coveredconditionals="36" methods="55" coveredmethods="45"/>
       <file name="AbsentStory.jsx" path="/Users/hermit/mvp/client/components/AbsentStory.jsx">
         <metrics statements="5" coveredstatements="5" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
         <line num="6" count="2" type="stmt"/>
@@ -184,24 +184,24 @@
         <line num="64" count="3" type="stmt"/>
       </file>
       <file name="SubStoryList.jsx" path="/Users/hermit/mvp/client/components/SubStoryList.jsx">
-        <metrics statements="19" coveredstatements="10" conditionals="4" coveredconditionals="2" methods="5" coveredmethods="2"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="23" count="1" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
-        <line num="25" count="1" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
-        <line num="36" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
-        <line num="41" count="0" type="stmt"/>
-        <line num="42" count="0" type="stmt"/>
-        <line num="43" count="0" type="stmt"/>
-        <line num="57" count="1" type="stmt"/>
-        <line num="58" count="1" type="stmt"/>
-        <line num="59" count="1" type="stmt"/>
+        <metrics statements="19" coveredstatements="19" conditionals="4" coveredconditionals="4" methods="5" coveredmethods="5"/>
+        <line num="10" count="6" type="stmt"/>
+        <line num="11" count="6" type="stmt"/>
+        <line num="23" count="6" type="stmt"/>
+        <line num="24" count="6" type="stmt"/>
+        <line num="25" count="6" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="57" count="9" type="stmt"/>
+        <line num="58" count="9" type="stmt"/>
+        <line num="59" count="9" type="stmt"/>
         <line num="107" count="4" type="stmt"/>
         <line num="125" count="4" type="stmt"/>
       </file>
