@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1600372963246" clover="3.2.0">
-  <project timestamp="1600372963246" name="All files">
-    <metrics statements="282" coveredstatements="197" conditionals="62" coveredconditionals="27" methods="91" coveredmethods="56" elements="435" coveredelements="280" complexity="0" loc="282" ncloc="282" packages="8" files="26" classes="26"/>
+<coverage generated="1600376087121" clover="3.2.0">
+  <project timestamp="1600376087121" name="All files">
+    <metrics statements="282" coveredstatements="197" conditionals="62" coveredconditionals="34" methods="91" coveredmethods="56" elements="435" coveredelements="287" complexity="0" loc="282" ncloc="282" packages="8" files="26" classes="26"/>
     <package name="components">
-      <metrics statements="170" coveredstatements="129" conditionals="44" coveredconditionals="27" methods="55" coveredmethods="42"/>
+      <metrics statements="170" coveredstatements="129" conditionals="44" coveredconditionals="34" methods="55" coveredmethods="42"/>
       <file name="AbsentStory.jsx" path="/Users/hermit/mvp/client/components/AbsentStory.jsx">
         <metrics statements="5" coveredstatements="5" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
         <line num="6" count="2" type="stmt"/>
@@ -168,10 +168,10 @@
         <line num="57" count="3" type="stmt"/>
       </file>
       <file name="SubStory.jsx" path="/Users/hermit/mvp/client/components/SubStory.jsx">
-        <metrics statements="5" coveredstatements="5" conditionals="12" coveredconditionals="5" methods="1" coveredmethods="1"/>
+        <metrics statements="5" coveredstatements="5" conditionals="12" coveredconditionals="12" methods="1" coveredmethods="1"/>
         <line num="8" count="3" type="stmt"/>
-        <line num="27" count="1" type="stmt"/>
-        <line num="28" count="1" type="stmt"/>
+        <line num="27" count="8" type="stmt"/>
+        <line num="28" count="8" type="stmt"/>
         <line num="94" count="3" type="stmt"/>
         <line num="120" count="3" type="stmt"/>
       </file>
