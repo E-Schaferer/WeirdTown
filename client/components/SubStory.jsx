@@ -32,9 +32,9 @@ const SubStory = (props) => {
           ? (
             <div className="white-text" id="substory-list">
               { subNum === 1
-                ? <p>There is 1 addendum file associated with this file</p>
+                ? <p id="one-addendum">There is 1 addendum file associated with this file</p>
                 : (
-                  <p>
+                  <p id="multiple-addendums">
                     There are
                     { ' ' }
                     { subNum }
