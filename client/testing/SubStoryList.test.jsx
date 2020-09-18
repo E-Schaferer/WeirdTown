@@ -31,7 +31,7 @@ describe('substory list tests', () => {
     expect(wrapper.instance().state.subStory).toBe('winner');
   });
   it('should render the list of substories if subStorySubList is passed as true as a prop', () => {
-    const wrapper = shallow(<SubStoryList subStorySubList />);
+    const wrapper = shallow(<SubStoryList subStorySubList subs={[{}]} />);
     expect(wrapper.find('#substory-sub-list').exists()).toBeTruthy();
     expect(wrapper.find('#substory-render-zone').exists()).toBeFalsy();
   });
