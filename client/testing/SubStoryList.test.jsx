@@ -2,7 +2,6 @@ import React from 'react';
 import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import SubStoryList from '../components/SubStoryList';
-import SubStoryLike from '../components/SubStoryRender-Interactions/SubStoryLike';
 
 configure({ adapter: new Adapter() });
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1600381592019" clover="3.2.0">
-  <project timestamp="1600381592019" name="All files">
-    <metrics statements="282" coveredstatements="208" conditionals="62" coveredconditionals="36" methods="91" coveredmethods="60" elements="435" coveredelements="304" complexity="0" loc="282" ncloc="282" packages="8" files="26" classes="26"/>
+<coverage generated="1600410962380" clover="3.2.0">
+  <project timestamp="1600410962380" name="All files">
+    <metrics statements="282" coveredstatements="210" conditionals="62" coveredconditionals="36" methods="91" coveredmethods="62" elements="435" coveredelements="308" complexity="0" loc="282" ncloc="282" packages="8" files="26" classes="26"/>
     <package name="components">
       <metrics statements="170" coveredstatements="140" conditionals="44" coveredconditionals="36" methods="55" coveredmethods="46"/>
       <file name="AbsentStory.jsx" path="/Users/hermit/mvp/client/components/AbsentStory.jsx">
@@ -226,20 +226,20 @@
       </file>
     </package>
     <package name="components.AuthBar-Interactions">
-      <metrics statements="12" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="3"/>
+      <metrics statements="12" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="5"/>
       <file name="LoginButton.jsx" path="/Users/hermit/mvp/client/components/AuthBar-Interactions/LoginButton.jsx">
-        <metrics statements="4" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="5" count="3" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
       </file>
       <file name="LogoutButton.jsx" path="/Users/hermit/mvp/client/components/AuthBar-Interactions/LogoutButton.jsx">
-        <metrics statements="4" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="5" count="3" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
       </file>
       <file name="SignUpButton.jsx" path="/Users/hermit/mvp/client/components/AuthBar-Interactions/SignUpButton.jsx">
         <metrics statements="4" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
