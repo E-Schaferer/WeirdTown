@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1600473965068" clover="3.2.0">
-  <project timestamp="1600473965068" name="All files">
-    <metrics statements="282" coveredstatements="222" conditionals="62" coveredconditionals="36" methods="91" coveredmethods="74" elements="435" coveredelements="332" complexity="0" loc="282" ncloc="282" packages="8" files="26" classes="26"/>
+<coverage generated="1600484171617" clover="3.2.0">
+  <project timestamp="1600484171617" name="All files">
+    <metrics statements="282" coveredstatements="234" conditionals="62" coveredconditionals="40" methods="91" coveredmethods="80" elements="435" coveredelements="354" complexity="0" loc="282" ncloc="282" packages="8" files="26" classes="26"/>
     <package name="components">
       <metrics statements="170" coveredstatements="140" conditionals="44" coveredconditionals="36" methods="55" coveredmethods="46"/>
       <file name="AbsentStory.jsx" path="/Users/hermit/mvp/client/components/AbsentStory.jsx">
@@ -74,9 +74,9 @@
       </file>
       <file name="AuthBar.jsx" path="/Users/hermit/mvp/client/components/AuthBar.jsx">
         <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
-        <line num="9" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
         <line num="10" count="3" type="stmt"/>
-        <line num="12" count="3" type="stmt"/>
       </file>
       <file name="CurrentUser.jsx" path="/Users/hermit/mvp/client/components/CurrentUser.jsx">
         <metrics statements="12" coveredstatements="12" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="4"/>
@@ -354,36 +354,36 @@
       </file>
     </package>
     <package name="components.SubStoryRender-Interactions">
-      <metrics statements="24" coveredstatements="12" conditionals="4" coveredconditionals="0" methods="8" coveredmethods="2"/>
+      <metrics statements="24" coveredstatements="24" conditionals="4" coveredconditionals="4" methods="8" coveredmethods="8"/>
       <file name="SubStoryDislike.jsx" path="/Users/hermit/mvp/client/components/SubStoryRender-Interactions/SubStoryDislike.jsx">
-        <metrics statements="12" coveredstatements="6" conditionals="2" coveredconditionals="0" methods="4" coveredmethods="1"/>
+        <metrics statements="12" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
         <line num="7" count="6" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="12" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
+        <line num="8" count="4" type="stmt"/>
+        <line num="10" count="4" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
+        <line num="17" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
         <line num="29" count="1" type="stmt"/>
-        <line num="37" count="6" type="stmt"/>
-        <line num="51" count="6" type="stmt"/>
+        <line num="33" count="4" type="stmt"/>
+        <line num="42" count="6" type="stmt"/>
+        <line num="57" count="6" type="stmt"/>
       </file>
       <file name="SubStoryLike.jsx" path="/Users/hermit/mvp/client/components/SubStoryRender-Interactions/SubStoryLike.jsx">
-        <metrics statements="12" coveredstatements="6" conditionals="2" coveredconditionals="0" methods="4" coveredmethods="1"/>
+        <metrics statements="12" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
         <line num="7" count="6" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="12" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
+        <line num="8" count="4" type="stmt"/>
+        <line num="10" count="4" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
+        <line num="17" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
         <line num="29" count="1" type="stmt"/>
-        <line num="37" count="6" type="stmt"/>
-        <line num="51" count="6" type="stmt"/>
+        <line num="33" count="4" type="stmt"/>
+        <line num="42" count="6" type="stmt"/>
+        <line num="57" count="6" type="stmt"/>
       </file>
     </package>
   </project>
