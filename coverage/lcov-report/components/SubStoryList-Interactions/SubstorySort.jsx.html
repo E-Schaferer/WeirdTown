@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">45.45% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>10/22</span>
+                <span class='fraction'>22/22</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">11.11% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/9</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">55.56% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/18</span>
+                <span class='fraction'>18/18</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -104,26 +104,26 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -148,29 +148,29 @@ import { DropdownButton, Dropdown, ButtonGroup } from 'react-bootstrap';
 const SubstorySort = (props) =&gt; {
   const { handleSort, subs } = props;
   const output = subs.slice();
-  const sortDateAsc = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
-<span class="cstat-no" title="statement not covered" >    output.sort(<span class="fstat-no" title="function not covered" >(a</span>, b) =&gt; <span class="cstat-no" title="statement not covered" >b.id - a.id)</span>;</span>
-<span class="cstat-no" title="statement not covered" >    handleSort(output);</span>
+  const sortDateAsc = () =&gt; {
+    output.sort((a, b) =&gt; b.id - a.id);
+    handleSort(output);
   };
-  const sortDateDesc = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
-<span class="cstat-no" title="statement not covered" >    output.sort(<span class="fstat-no" title="function not covered" >(a</span>, b) =&gt; <span class="cstat-no" title="statement not covered" >a.id - b.id)</span>;</span>
-<span class="cstat-no" title="statement not covered" >    handleSort(output);</span>
+  const sortDateDesc = () =&gt; {
+    output.sort((a, b) =&gt; a.id - b.id);
+    handleSort(output);
   };
-  const sortLikesAsc = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
-<span class="cstat-no" title="statement not covered" >    output.sort(<span class="fstat-no" title="function not covered" >(a</span>, b) =&gt; <span class="cstat-no" title="statement not covered" >a.sublikes - b.sublikes)</span>;</span>
-<span class="cstat-no" title="statement not covered" >    handleSort(output);</span>
+  const sortLikesAsc = () =&gt; {
+    output.sort((a, b) =&gt; a.sublikes - b.sublikes);
+    handleSort(output);
   };
-  const sortLikesDesc = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
-<span class="cstat-no" title="statement not covered" >    output.sort(<span class="fstat-no" title="function not covered" >(a</span>, b) =&gt; <span class="cstat-no" title="statement not covered" >b.sublikes - a.sublikes)</span>;</span>
-<span class="cstat-no" title="statement not covered" >    handleSort(output);</span>
+  const sortLikesDesc = () =&gt; {
+    output.sort((a, b) =&gt; b.sublikes - a.sublikes);
+    handleSort(output);
   };
 &nbsp;
   return (
     &lt;DropdownButton as={ButtonGroup} id="substory-dropdown-sort" title="Sort By"&gt;
-      &lt;Dropdown.Item as="button" onClick={sortDateDesc}&gt;Date (Descending)&lt;/Dropdown.Item&gt;
-      &lt;Dropdown.Item as="button" onClick={sortDateAsc}&gt;Date (Ascending)&lt;/Dropdown.Item&gt;
-      &lt;Dropdown.Item as="button" onClick={sortLikesDesc}&gt;Likes (Descending)&lt;/Dropdown.Item&gt;
-      &lt;Dropdown.Item as="button" onClick={sortLikesAsc}&gt;Likes (Ascending)&lt;/Dropdown.Item&gt;
+      &lt;Dropdown.Item as="button" id="sort-date-desc" onClick={sortDateDesc}&gt;Date (Descending)&lt;/Dropdown.Item&gt;
+      &lt;Dropdown.Item as="button" id="sort-date-asc" onClick={sortDateAsc}&gt;Date (Ascending)&lt;/Dropdown.Item&gt;
+      &lt;Dropdown.Item as="button" id="sort-like-desc" onClick={sortLikesDesc}&gt;Likes (Descending)&lt;/Dropdown.Item&gt;
+      &lt;Dropdown.Item as="button" id="sort-like-asc" onClick={sortLikesAsc}&gt;Likes (Ascending)&lt;/Dropdown.Item&gt;
     &lt;/DropdownButton&gt;
   );
 };
@@ -190,7 +190,7 @@ export default SubstorySort;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Fri Sep 18 2020 16:04:10 GMT-0700 (Pacific Daylight Time)
+                at Fri Sep 18 2020 17:06:04 GMT-0700 (Pacific Daylight Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>
