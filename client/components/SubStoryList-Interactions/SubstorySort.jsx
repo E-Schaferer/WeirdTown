@@ -24,10 +24,10 @@ const SubstorySort = (props) => {
 
   return (
     <DropdownButton as={ButtonGroup} id="substory-dropdown-sort" title="Sort By">
-      <Dropdown.Item as="button" onClick={sortDateDesc}>Date (Descending)</Dropdown.Item>
-      <Dropdown.Item as="button" onClick={sortDateAsc}>Date (Ascending)</Dropdown.Item>
-      <Dropdown.Item as="button" onClick={sortLikesDesc}>Likes (Descending)</Dropdown.Item>
-      <Dropdown.Item as="button" onClick={sortLikesAsc}>Likes (Ascending)</Dropdown.Item>
+      <Dropdown.Item as="button" id="sort-date-desc" onClick={sortDateDesc}>Date (Descending)</Dropdown.Item>
+      <Dropdown.Item as="button" id="sort-date-asc" onClick={sortDateAsc}>Date (Ascending)</Dropdown.Item>
+      <Dropdown.Item as="button" id="sort-like-desc" onClick={sortLikesDesc}>Likes (Descending)</Dropdown.Item>
+      <Dropdown.Item as="button" id="sort-like-asc" onClick={sortLikesAsc}>Likes (Ascending)</Dropdown.Item>
     </DropdownButton>
   );
 };

@@ -8,7 +8,12 @@ const SubStoryDislike = (props) => {
   const { user, isAuthenticated } = useAuth0();
 
   const dislikeClick = () => {
-    const { subStory, dislike, handleError } = props;
+    const {
+      subStory,
+      dislike,
+      handleError,
+      handleUnauthenticated,
+    } = props;
     if (isAuthenticated) {
       Axios.put('/subDislike', {
         id: subStory.id,
@@ -21,14 +26,14 @@ const SubStoryDislike = (props) => {
           handleError(['dislikeClick', err]);
         });
     } else {
-      // needs alert
-      console.log('Please log in to dislike a story.');
+      handleUnauthenticated();
     }
   };
 
   return (
     <Button
       onClick={dislikeClick}
+      id="dislike-click"
     >
       Dislike
     </Button>
@@ -47,6 +52,7 @@ SubStoryDislike.propTypes = {
   }),
   dislike: PropTypes.func,
   handleError: PropTypes.func,
+  handleUnauthenticated: PropTypes.func,
 };
 SubStoryDislike.defaultProps = {
   subStory: {
@@ -61,6 +67,7 @@ SubStoryDislike.defaultProps = {
   },
   dislike: undefined,
   handleError: undefined,
+  handleUnauthenticated: undefined,
 };
 
 export default SubStoryDislike;

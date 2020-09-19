@@ -79,6 +79,7 @@ class SubStoryList extends React.Component {
                 <SubStoryListItem
                   subs={subs}
                   handleListClick={this.handleListClick}
+                  handleError={handleError}
                 />
               </div>
             </div>

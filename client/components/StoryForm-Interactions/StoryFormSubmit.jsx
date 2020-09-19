@@ -27,6 +27,7 @@ const StoryFormSubmit = (props) => {
     <Button
       className="clickable"
       onClick={onStorySubmit}
+      id="story-form-button"
     >
       Submit your story!
     </Button>

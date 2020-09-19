@@ -8,7 +8,12 @@ const SubStoryLike = (props) => {
   const { user, isAuthenticated } = useAuth0();
 
   const likeClick = () => {
-    const { subStory, like, handleError } = props;
+    const {
+      subStory,
+      like,
+      handleError,
+      handleUnauthenticated,
+    } = props;
     if (isAuthenticated) {
       Axios.put('/subLike', {
         id: subStory.id,
@@ -21,14 +26,14 @@ const SubStoryLike = (props) => {
           handleError(['likeClick', err]);
         });
     } else {
-      // needs alert
-      console.log('Please log in to like a story.');
+      handleUnauthenticated();
     }
   };
 
   return (
     <Button
       onClick={likeClick}
+      id="like-click"
     >
       Like
     </Button>
@@ -47,6 +52,7 @@ SubStoryLike.propTypes = {
   }),
   like: PropTypes.func,
   handleError: PropTypes.func,
+  handleUnauthenticated: PropTypes.func,
 };
 SubStoryLike.defaultProps = {
   subStory: {
@@ -61,6 +67,7 @@ SubStoryLike.defaultProps = {
   },
   like: undefined,
   handleError: undefined,
+  handleUnauthenticated: undefined,
 };
 
 export default SubStoryLike;
