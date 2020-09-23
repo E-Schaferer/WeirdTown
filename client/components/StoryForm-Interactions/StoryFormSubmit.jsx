@@ -4,23 +4,25 @@ import { Button } from 'react-bootstrap';
 
 const StoryFormSubmit = (props) => {
   const onStorySubmit = () => {
-    const { storyFormSubmit } = props;
-    const storyName = document.getElementById('input-name').value;
-    const storyLoc = document.getElementById('input-location').value;
-    const storySaw = document.getElementById('input-saw').value;
-    const storyHeard = document.getElementById('input-heard').value;
-    const story = document.getElementById('input-story').value;
+    const {
+      storyFormSubmit,
+      inputName,
+      inputLocation,
+      inputSaw,
+      inputHeard,
+      inputStory,
+    } = props;
     if (
-      storyName === ''
-      || storyLoc === ''
-      || storySaw === ''
-      || storyHeard === ''
-      || story === ''
+      inputName === ''
+      || inputLocation === ''
+      || inputSaw === ''
+      || inputHeard === ''
+      || inputStory === ''
     ) {
       // needs alert
       console.log('Please fill out all fields');
     } else {
-      storyFormSubmit(storyName, storyLoc, storySaw, storyHeard, story);
+      storyFormSubmit(inputName, inputLocation, inputSaw, inputHeard, inputStory);
     }
   };
   return (
@@ -35,9 +37,19 @@ const StoryFormSubmit = (props) => {
 };
 StoryFormSubmit.propTypes = {
   storyFormSubmit: PropTypes.func,
+  inputName: PropTypes.string,
+  inputLocation: PropTypes.string,
+  inputSaw: PropTypes.string,
+  inputHeard: PropTypes.string,
+  inputStory: PropTypes.string,
 };
 StoryFormSubmit.defaultProps = {
   storyFormSubmit: undefined,
+  inputName: '',
+  inputLocation: '',
+  inputSaw: '',
+  inputHeard: '',
+  inputStory: '',
 };
 
 export default StoryFormSubmit;

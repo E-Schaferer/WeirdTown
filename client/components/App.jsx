@@ -38,6 +38,16 @@ class App extends React.Component {
       subStoryForm: false, // sub-story-form
       subStorySubList: false, // substory-sub-list
       subStoryRenderZone: false, // substory-render-zone
+      inputName: '',
+      inputLocation: '',
+      inputSaw: '',
+      inputHeard: '',
+      inputStory: '',
+      inputSubName: '',
+      inputSubLocation: '',
+      inputSubSaw: '',
+      inputSubHeard: '',
+      inputSubStory: '',
     };
     this.onShowSub = this.onShowSub.bind(this);
     this.onShowSubStories = this.onShowSubStories.bind(this);
@@ -50,6 +60,7 @@ class App extends React.Component {
     this.storyFormSubmit = this.storyFormSubmit.bind(this);
     this.subStoryFormSubmit = this.subStoryFormSubmit.bind(this);
     this.handleUserData = this.handleUserData.bind(this);
+    this.handleTextAreaChange = this.handleTextAreaChange.bind(this);
   }
 
   /*
@@ -219,6 +230,19 @@ class App extends React.Component {
 
   /*
 =====
+  - text area change handler
+=====
+  */
+
+  handleTextAreaChange(event) {
+    const { id, value } = event.target;
+    this.setState({
+      [id]: value,
+    });
+  }
+
+  /*
+=====
   - user data
 =====
   */
@@ -250,6 +274,11 @@ class App extends React.Component {
       subStoryRenderZone,
       subStoryForm,
       subStoryButton,
+      inputName,
+      inputLocation,
+      inputSaw,
+      inputHeard,
+      inputStory,
     } = this.state;
     return (
       <div>
@@ -284,6 +313,12 @@ class App extends React.Component {
                   storyFormZone={storyFormZone}
                   storyFormRender={this.storyFormRender}
                   storyFormSubmit={this.storyFormSubmit}
+                  handleTextAreaChange={this.handleTextAreaChange}
+                  inputName={inputName}
+                  inputLocation={inputLocation}
+                  inputSaw={inputSaw}
+                  inputHeard={inputHeard}
+                  inputStory={inputStory}
                 />
               </div>
             </div>
