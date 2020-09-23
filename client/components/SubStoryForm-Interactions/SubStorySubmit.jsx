@@ -4,23 +4,26 @@ import PropTypes from 'prop-types';
 
 const SubStorySubmit = (props) => {
   const subSubmitClick = () => {
-    const { subStoryFormSubmit } = props;
-    const subName = document.getElementById('input-substory-name').value;
-    const subLoc = document.getElementById('input-substory-location').value;
-    const subSaw = document.getElementById('input-substory-saw').value;
-    const subHeard = document.getElementById('input-substory-heard').value;
-    const subStory = document.getElementById('input-substory-story').value;
+    const {
+      subStoryFormSubmit,
+      inputSubName,
+      inputSubLocation,
+      inputSubSaw,
+      inputSubHeard,
+      inputSubStory,
+      handleUserError,
+    } = props;
     if (
-      subName === ''
-      || subLoc === ''
-      || subSaw === ''
-      || subHeard === ''
-      || subStory === ''
+      inputSubName === ''
+      || inputSubLocation === ''
+      || inputSubSaw === ''
+      || inputSubHeard === ''
+      || inputSubStory === ''
     ) {
-      // needs alert
-      console.log('Please fill out all fields');
+      const message = 'please fill out all fields';
+      handleUserError(message);
     } else {
-      subStoryFormSubmit(subName, subLoc, subHeard, subSaw, subStory);
+      subStoryFormSubmit(inputSubName, inputSubLocation, inputSubHeard, inputSubSaw, inputSubStory);
     }
   };
   return (
@@ -35,9 +38,21 @@ const SubStorySubmit = (props) => {
 };
 SubStorySubmit.propTypes = {
   subStoryFormSubmit: PropTypes.func,
+  inputSubName: PropTypes.string,
+  inputSubLocation: PropTypes.string,
+  inputSubSaw: PropTypes.string,
+  inputSubHeard: PropTypes.string,
+  inputSubStory: PropTypes.string,
+  handleUserError: PropTypes.func,
 };
 SubStorySubmit.defaultProps = {
   subStoryFormSubmit: undefined,
+  inputSubName: undefined,
+  inputSubLocation: undefined,
+  inputSubSaw: undefined,
+  inputSubHeard: undefined,
+  inputSubStory: undefined,
+  handleUserError: undefined,
 };
 
 export default SubStorySubmit;

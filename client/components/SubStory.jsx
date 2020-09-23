@@ -24,6 +24,13 @@ const SubStory = (props) => {
     onGoBack,
     subStoryFormSubmit,
     handleError,
+    handleTextAreaChange,
+    inputSubName,
+    inputSubLocation,
+    inputSubSaw,
+    inputSubHeard,
+    inputSubStory,
+    handleUserError,
   } = props;
   return (
     <div>
@@ -78,14 +85,22 @@ const SubStory = (props) => {
         {subStoryButton
           ? (
             <div id="sub-story-button">
-              <ShowSubForm onShowSubForm={onShowSubForm} />
+              <ShowSubForm onShowSubForm={onShowSubForm} handleUserError={handleUserError} />
             </div>
           ) : <div />}
       </div>
       {subStoryForm
         ? (
           <div id="sub-story-form">
-            <SubStoryForm subStoryFormSubmit={subStoryFormSubmit} />
+            <SubStoryForm
+              subStoryFormSubmit={subStoryFormSubmit}
+              handleTextAreaChange={handleTextAreaChange}
+              inputSubName={inputSubName}
+              inputSubLocation={inputSubLocation}
+              inputSubSaw={inputSubSaw}
+              inputSubHeard={inputSubHeard}
+              inputSubStory={inputSubStory}
+            />
           </div>
         ) : null}
     </div>
@@ -116,6 +131,13 @@ SubStory.propTypes = {
   onGoBack: PropTypes.func,
   subStoryFormSubmit: PropTypes.func,
   handleError: PropTypes.func,
+  handleTextAreaChange: PropTypes.func,
+  inputSubName: PropTypes.string,
+  inputSubLocation: PropTypes.string,
+  inputSubSaw: PropTypes.string,
+  inputSubHeard: PropTypes.string,
+  inputSubStory: PropTypes.string,
+  handleUserError: PropTypes.func,
 };
 SubStory.defaultProps = {
   subNum: undefined,
@@ -142,6 +164,13 @@ SubStory.defaultProps = {
   onGoBack: undefined,
   subStoryFormSubmit: undefined,
   handleError: undefined,
+  handleTextAreaChange: undefined,
+  inputSubName: undefined,
+  inputSubLocation: undefined,
+  inputSubSaw: undefined,
+  inputSubHeard: undefined,
+  inputSubStory: undefined,
+  handleUserError: undefined,
 };
 
 export default SubStory;

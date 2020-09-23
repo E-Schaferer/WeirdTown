@@ -55,6 +55,13 @@ class PresentStory extends React.Component {
       onGoBack,
       subStoryFormSubmit,
       handleError,
+      handleTextAreaChange,
+      inputSubName,
+      inputSubLocation,
+      inputSubSaw,
+      inputSubHeard,
+      inputSubStory,
+      handleUserError,
     } = this.props;
     const { subNum, subs } = this.state;
     return (
@@ -144,6 +151,13 @@ class PresentStory extends React.Component {
                 subStoryRenderZone={subStoryRenderZone}
                 subStorySubList={subStorySubList}
                 handleError={handleError}
+                handleTextAreaChange={handleTextAreaChange}
+                inputSubName={inputSubName}
+                inputSubLocation={inputSubLocation}
+                inputSubSaw={inputSubSaw}
+                inputSubHeard={inputSubHeard}
+                inputSubStory={inputSubStory}
+                handleUserError={handleUserError}
               />
             </div>
           ) : null}
@@ -177,6 +191,13 @@ PresentStory.propTypes = {
   onSubStoryListItemClick: PropTypes.func,
   onGoBack: PropTypes.func,
   handleError: PropTypes.func,
+  handleTextAreaChange: PropTypes.func,
+  inputSubName: PropTypes.string,
+  inputSubLocation: PropTypes.string,
+  inputSubSaw: PropTypes.string,
+  inputSubHeard: PropTypes.string,
+  inputSubStory: PropTypes.string,
+  handleUserError: PropTypes.func,
 };
 PresentStory.defaultProps = {
   currentStory: {
@@ -203,6 +224,13 @@ PresentStory.defaultProps = {
   onSubStoryListItemClick: undefined,
   onGoBack: undefined,
   handleError: undefined,
+  handleTextAreaChange: undefined,
+  inputSubName: undefined,
+  inputSubLocation: undefined,
+  inputSubSaw: undefined,
+  inputSubHeard: undefined,
+  inputSubStory: undefined,
+  handleUserError: undefined,
 };
 
 export default PresentStory;
