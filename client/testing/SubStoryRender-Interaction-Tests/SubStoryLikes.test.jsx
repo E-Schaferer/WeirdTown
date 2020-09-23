@@ -49,7 +49,7 @@ describe('is not authenticated tests', () => {
   });
   it('should call handleUnauthenticated if the user tries to click like but is not authenticated', () => {
     const test = jest.fn();
-    const wrapper = shallow(<SubStoryLike handleUnauthenticated={test} />);
+    const wrapper = shallow(<SubStoryLike handleUserError={test} />);
     wrapper.find('#like-click').simulate('click');
     expect(test).toHaveBeenCalled();
   });

@@ -12,7 +12,7 @@ const SubStoryLike = (props) => {
       subStory,
       like,
       handleError,
-      handleUnauthenticated,
+      handleUserError,
     } = props;
     if (isAuthenticated) {
       Axios.put('/subLike', {
@@ -26,7 +26,8 @@ const SubStoryLike = (props) => {
           handleError(['likeClick', err]);
         });
     } else {
-      handleUnauthenticated();
+      const message = 'Please sign in first.';
+      handleUserError(message);
     }
   };
 
@@ -52,7 +53,7 @@ SubStoryLike.propTypes = {
   }),
   like: PropTypes.func,
   handleError: PropTypes.func,
-  handleUnauthenticated: PropTypes.func,
+  handleUserError: PropTypes.func,
 };
 SubStoryLike.defaultProps = {
   subStory: {
@@ -67,7 +68,7 @@ SubStoryLike.defaultProps = {
   },
   like: undefined,
   handleError: undefined,
-  handleUnauthenticated: undefined,
+  handleUserError: undefined,
 };
 
 export default SubStoryLike;

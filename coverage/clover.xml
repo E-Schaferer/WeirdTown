@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1600904270756" clover="3.2.0">
-  <project timestamp="1600904270756" name="All files">
-    <metrics statements="278" coveredstatements="236" conditionals="62" coveredconditionals="40" methods="93" coveredmethods="80" elements="433" coveredelements="356" complexity="0" loc="278" ncloc="278" packages="8" files="26" classes="26"/>
+<coverage generated="1600904851800" clover="3.2.0">
+  <project timestamp="1600904851800" name="All files">
+    <metrics statements="280" coveredstatements="238" conditionals="62" coveredconditionals="40" methods="93" coveredmethods="80" elements="435" coveredelements="358" complexity="0" loc="280" ncloc="280" packages="8" files="26" classes="26"/>
     <package name="components">
       <metrics statements="175" coveredstatements="142" conditionals="44" coveredconditionals="36" methods="57" coveredmethods="46"/>
       <file name="AbsentStory.jsx" path="/Users/hermit/mvp/client/components/AbsentStory.jsx">
@@ -177,8 +177,8 @@
         <line num="8" count="3" type="stmt"/>
         <line num="34" count="8" type="stmt"/>
         <line num="35" count="8" type="stmt"/>
-        <line num="109" count="3" type="stmt"/>
-        <line num="142" count="3" type="stmt"/>
+        <line num="110" count="3" type="stmt"/>
+        <line num="143" count="3" type="stmt"/>
       </file>
       <file name="SubStoryForm.jsx" path="/Users/hermit/mvp/client/components/SubStoryForm.jsx">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
@@ -204,19 +204,19 @@
         <line num="41" count="1" type="stmt"/>
         <line num="42" count="1" type="stmt"/>
         <line num="43" count="1" type="stmt"/>
-        <line num="57" count="9" type="stmt"/>
         <line num="58" count="9" type="stmt"/>
         <line num="59" count="9" type="stmt"/>
-        <line num="108" count="4" type="stmt"/>
-        <line num="126" count="4" type="stmt"/>
+        <line num="60" count="9" type="stmt"/>
+        <line num="110" count="4" type="stmt"/>
+        <line num="129" count="4" type="stmt"/>
       </file>
       <file name="SubStoryRender.jsx" path="/Users/hermit/mvp/client/components/SubStoryRender.jsx">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="6" count="5" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
-        <line num="65" count="5" type="stmt"/>
-        <line num="81" count="5" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="76" count="5" type="stmt"/>
+        <line num="93" count="5" type="stmt"/>
       </file>
     </package>
     <package name="components.AbsentStory-Interactions">
@@ -350,9 +350,9 @@
       </file>
     </package>
     <package name="components.SubStoryRender-Interactions">
-      <metrics statements="24" coveredstatements="24" conditionals="4" coveredconditionals="4" methods="8" coveredmethods="8"/>
+      <metrics statements="26" coveredstatements="26" conditionals="4" coveredconditionals="4" methods="8" coveredmethods="8"/>
       <file name="SubStoryDislike.jsx" path="/Users/hermit/mvp/client/components/SubStoryRender-Interactions/SubStoryDislike.jsx">
-        <metrics statements="12" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
+        <metrics statements="13" coveredstatements="13" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
         <line num="7" count="6" type="stmt"/>
         <line num="8" count="4" type="stmt"/>
         <line num="10" count="4" type="stmt"/>
@@ -362,12 +362,13 @@
         <line num="23" count="1" type="stmt"/>
         <line num="26" count="1" type="stmt"/>
         <line num="29" count="1" type="stmt"/>
-        <line num="33" count="4" type="stmt"/>
-        <line num="42" count="6" type="stmt"/>
-        <line num="57" count="6" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="34" count="4" type="stmt"/>
+        <line num="43" count="6" type="stmt"/>
+        <line num="58" count="6" type="stmt"/>
       </file>
       <file name="SubStoryLike.jsx" path="/Users/hermit/mvp/client/components/SubStoryRender-Interactions/SubStoryLike.jsx">
-        <metrics statements="12" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
+        <metrics statements="13" coveredstatements="13" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
         <line num="7" count="6" type="stmt"/>
         <line num="8" count="4" type="stmt"/>
         <line num="10" count="4" type="stmt"/>
@@ -377,9 +378,10 @@
         <line num="23" count="1" type="stmt"/>
         <line num="26" count="1" type="stmt"/>
         <line num="29" count="1" type="stmt"/>
-        <line num="33" count="4" type="stmt"/>
-        <line num="42" count="6" type="stmt"/>
-        <line num="57" count="6" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="34" count="4" type="stmt"/>
+        <line num="43" count="6" type="stmt"/>
+        <line num="58" count="6" type="stmt"/>
       </file>
     </package>
   </project>

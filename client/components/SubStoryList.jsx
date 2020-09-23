@@ -54,6 +54,7 @@ class SubStoryList extends React.Component {
       handleSort,
       onGoBack,
       handleError,
+      handleUserError,
     } = this.props;
     const { subStory } = this.state;
     return (
@@ -96,6 +97,7 @@ class SubStoryList extends React.Component {
                   likeGoDown={this.likeGoDown}
                   subStory={subStory}
                   handleError={handleError}
+                  handleUserError={handleUserError}
                 />
               </div>
             </div>
@@ -121,6 +123,7 @@ SubStoryList.propTypes = {
   onSubStoryListItemClick: PropTypes.func,
   onGoBack: PropTypes.func,
   handleError: PropTypes.func,
+  handleUserError: PropTypes.func,
 };
 
 SubStoryList.defaultProps = {
@@ -139,6 +142,7 @@ SubStoryList.defaultProps = {
   onSubStoryListItemClick: undefined,
   onGoBack: undefined,
   handleError: undefined,
+  handleUserError: undefined,
 };
 
 export default SubStoryList;

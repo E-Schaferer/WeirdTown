@@ -75,6 +75,7 @@ const SubStory = (props) => {
                     onSubStoryListItemClick={onSubStoryListItemClick}
                     onGoBack={onGoBack}
                     handleError={handleError}
+                    handleUserError={handleUserError}
                   />
                 </ol>
               </div>
@@ -85,7 +86,7 @@ const SubStory = (props) => {
         {subStoryButton
           ? (
             <div id="sub-story-button">
-              <ShowSubForm onShowSubForm={onShowSubForm} handleUserError={handleUserError} />
+              <ShowSubForm onShowSubForm={onShowSubForm} />
             </div>
           ) : <div />}
       </div>
@@ -100,6 +101,7 @@ const SubStory = (props) => {
               inputSubSaw={inputSubSaw}
               inputSubHeard={inputSubHeard}
               inputSubStory={inputSubStory}
+              handleUserError={handleUserError}
             />
           </div>
         ) : null}

@@ -71,7 +71,7 @@ class App extends React.Component {
   */
   handleUserError(message) {
     // change this to a modal at some point
-    console.alert(message);
+    alert(message);
   }
 
   /*
