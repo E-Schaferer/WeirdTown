@@ -12,6 +12,28 @@ describe('substory sort tests', () => {
   });
   it('should call storyFormSubmit if all fields are populated', () => {
     const test = jest.fn();
-    const wrapper = shallow(<StoryFormSubmit />);
+    const wrapper = shallow(<StoryFormSubmit
+      storyFormSubmit={test}
+      inputName="testName"
+      inputLocation="testLoc"
+      inputSaw="testSaw"
+      inputHeard="testHeard"
+      inputStory="testStory"
+    />);
+    wrapper.find('#story-form-button').simulate('click');
+    expect(test).toHaveBeenCalled();
+  });
+  it('should call handleUserError if not all fields are populated', () => {
+    const test = jest.fn();
+    const wrapper = shallow(<StoryFormSubmit
+      handleUserError={test}
+      inputName=""
+      inputLocation="testLoc"
+      inputSaw="testSaw"
+      inputHeard="testHeard"
+      inputStory="testStory"
+    />);
+    wrapper.find('#story-form-button').simulate('click');
+    expect(test).toHaveBeenCalled();
   });
 });
