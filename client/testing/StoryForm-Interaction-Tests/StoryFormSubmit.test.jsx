@@ -37,13 +37,3 @@ describe('substory sort tests', () => {
     expect(test).toHaveBeenCalled();
   });
 });
-
-/*
-      storyFormSubmit,
-      inputName,
-      inputLocation,
-      inputSaw,
-      inputHeard,
-      inputStory,
-      handleUserError,
-*/

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1600906678549" clover="3.2.0">
-  <project timestamp="1600906678549" name="All files">
-    <metrics statements="281" coveredstatements="243" conditionals="62" coveredconditionals="47" methods="93" coveredmethods="81" elements="436" coveredelements="371" complexity="0" loc="281" ncloc="281" packages="8" files="26" classes="26"/>
+<coverage generated="1600907965197" clover="3.2.0">
+  <project timestamp="1600907965197" name="All files">
+    <metrics statements="281" coveredstatements="248" conditionals="62" coveredconditionals="54" methods="93" coveredmethods="82" elements="436" coveredelements="384" complexity="0" loc="281" ncloc="281" packages="8" files="26" classes="26"/>
     <package name="components">
       <metrics statements="175" coveredstatements="142" conditionals="44" coveredconditionals="36" methods="57" coveredmethods="46"/>
       <file name="AbsentStory.jsx" path="/Users/hermit/mvp/client/components/AbsentStory.jsx">
@@ -290,17 +290,17 @@
       </file>
     </package>
     <package name="components.SubStoryForm-Interactions">
-      <metrics statements="10" coveredstatements="5" conditionals="7" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <metrics statements="10" coveredstatements="10" conditionals="7" coveredconditionals="7" methods="2" coveredmethods="2"/>
       <file name="SubStorySubmit.jsx" path="/Users/hermit/mvp/client/components/SubStoryForm-Interactions/SubStorySubmit.jsx">
-        <metrics statements="10" coveredstatements="5" conditionals="7" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <metrics statements="10" coveredstatements="10" conditionals="7" coveredconditionals="7" methods="2" coveredmethods="2"/>
         <line num="5" count="5" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="16" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="29" count="1" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="29" count="3" type="stmt"/>
         <line num="39" count="5" type="stmt"/>
         <line num="48" count="5" type="stmt"/>
       </file>
