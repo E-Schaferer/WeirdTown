@@ -12,7 +12,7 @@ const SubStoryDislike = (props) => {
       subStory,
       dislike,
       handleError,
-      handleUnauthenticated,
+      handleUserError,
     } = props;
     if (isAuthenticated) {
       Axios.put('/subDislike', {
@@ -26,7 +26,8 @@ const SubStoryDislike = (props) => {
           handleError(['dislikeClick', err]);
         });
     } else {
-      handleUnauthenticated();
+      const message = 'Please sign in first.';
+      handleUserError(message);
     }
   };
 
@@ -52,7 +53,7 @@ SubStoryDislike.propTypes = {
   }),
   dislike: PropTypes.func,
   handleError: PropTypes.func,
-  handleUnauthenticated: PropTypes.func,
+  handleUserError: PropTypes.func,
 };
 SubStoryDislike.defaultProps = {
   subStory: {
@@ -67,7 +68,7 @@ SubStoryDislike.defaultProps = {
   },
   dislike: undefined,
   handleError: undefined,
-  handleUnauthenticated: undefined,
+  handleUserError: undefined,
 };
 
 export default SubStoryDislike;

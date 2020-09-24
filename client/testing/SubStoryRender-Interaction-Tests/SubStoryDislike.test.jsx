@@ -49,7 +49,7 @@ describe('is not authenticated tests', () => {
   });
   it('should call the handleUnauthenticated function when the dislike button is clicked but no user is authenticated', () => {
     const test = jest.fn();
-    const wrapper = shallow(<SubStoryDislike handleUnauthenticated={test} />);
+    const wrapper = shallow(<SubStoryDislike handleUserError={test} />);
     wrapper.find('#dislike-click').simulate('click');
     expect(test).toHaveBeenCalled();
   });

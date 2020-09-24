@@ -61,6 +61,17 @@ class App extends React.Component {
     this.subStoryFormSubmit = this.subStoryFormSubmit.bind(this);
     this.handleUserData = this.handleUserData.bind(this);
     this.handleTextAreaChange = this.handleTextAreaChange.bind(this);
+    this.handleUserError = this.handleUserError.bind(this);
+  }
+
+  /*
+=====
+  - error handling
+=====
+  */
+  handleUserError(message) {
+    // change this to a modal at some point
+    alert(message);
   }
 
   /*
@@ -279,6 +290,11 @@ class App extends React.Component {
       inputSaw,
       inputHeard,
       inputStory,
+      inputSubName,
+      inputSubLocation,
+      inputSubSaw,
+      inputSubHeard,
+      inputSubStory,
     } = this.state;
     return (
       <div>
@@ -319,6 +335,7 @@ class App extends React.Component {
                   inputSaw={inputSaw}
                   inputHeard={inputHeard}
                   inputStory={inputStory}
+                  handleUserError={this.handleUserError}
                 />
               </div>
             </div>
@@ -340,13 +357,20 @@ class App extends React.Component {
                     subStoryForm={subStoryForm}
                     subStorySubList={subStorySubList}
                     subStoryRenderZone={subStoryRenderZone}
+                    inputSubName={inputSubName}
+                    inputSubLocation={inputSubLocation}
+                    inputSubSaw={inputSubSaw}
+                    inputSubHeard={inputSubHeard}
+                    inputSubStory={inputSubStory}
                     onShowSub={this.onShowSub}
                     onShowSubStories={this.onShowSubStories}
                     onShowSubForm={this.onShowSubForm}
                     onSubStoryListItemClick={this.onSubStoryListItemClick}
                     onGoBack={this.onGoBack}
                     subStoryFormSubmit={this.subStoryFormSubmit}
+                    handleTextAreaChange={this.handleTextAreaChange}
                     handleError={App.handleError}
+                    handleUserError={this.handleUserError}
                   />
                 </div>
               </div>

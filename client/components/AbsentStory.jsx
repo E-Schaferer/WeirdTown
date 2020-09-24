@@ -9,12 +9,13 @@ const AbsentStory = (props) => {
     storyFormRender,
     storyFormZone,
     storySubmissionPrompt,
-    handleTextAreaChange,
     inputName,
     inputLocation,
     inputSaw,
     inputHeard,
     inputStory,
+    handleTextAreaChange,
+    handleUserError,
   } = props;
   return (
     <div id="absent-story-zone">
@@ -40,6 +41,7 @@ const AbsentStory = (props) => {
               inputHeard={inputHeard}
               inputStory={inputStory}
               handleTextAreaChange={handleTextAreaChange}
+              handleUserError={handleUserError}
             />
           </div>
         ) : <div />}
@@ -56,6 +58,8 @@ AbsentStory.propTypes = {
   inputSaw: PropTypes.string,
   inputHeard: PropTypes.string,
   inputStory: PropTypes.string,
+  handleTextAreaChange: PropTypes.func,
+  handleUserError: PropTypes.func,
 };
 AbsentStory.defaultProps = {
   storyFormRender: undefined,
@@ -67,6 +71,8 @@ AbsentStory.defaultProps = {
   inputSaw: '',
   inputHeard: '',
   inputStory: '',
+  handleTextAreaChange: undefined,
+  handleUserError: undefined,
 };
 
 export default AbsentStory;

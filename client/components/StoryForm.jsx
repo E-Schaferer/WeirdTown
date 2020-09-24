@@ -11,6 +11,7 @@ const StoryForm = (props) => {
     inputHeard,
     inputStory,
     handleTextAreaChange,
+    handleUserError,
   } = props;
   return (
     <div id="story-form">
@@ -58,6 +59,7 @@ const StoryForm = (props) => {
           inputSaw={inputSaw}
           inputHeard={inputHeard}
           inputStory={inputStory}
+          handleUserError={handleUserError}
         />
       </div>
       <div id="secret-footer">
@@ -74,6 +76,7 @@ StoryForm.propTypes = {
   inputSaw: PropTypes.string,
   inputHeard: PropTypes.string,
   inputStory: PropTypes.string,
+  handleUserError: PropTypes.func,
 };
 StoryForm.defaultProps = {
   storyFormSubmit: undefined,
@@ -83,6 +86,7 @@ StoryForm.defaultProps = {
   inputSaw: '',
   inputHeard: '',
   inputStory: '',
+  handleUserError: undefined,
 };
 
 export default StoryForm;
