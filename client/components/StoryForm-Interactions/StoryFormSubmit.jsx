@@ -11,6 +11,7 @@ const StoryFormSubmit = (props) => {
       inputSaw,
       inputHeard,
       inputStory,
+      handleUserError,
     } = props;
     if (
       inputName === ''
@@ -19,8 +20,8 @@ const StoryFormSubmit = (props) => {
       || inputHeard === ''
       || inputStory === ''
     ) {
-      // needs alert
-      console.log('Please fill out all fields');
+      const message = 'Please fill out all fields.';
+      handleUserError(message);
     } else {
       storyFormSubmit(inputName, inputLocation, inputSaw, inputHeard, inputStory);
     }
@@ -42,6 +43,7 @@ StoryFormSubmit.propTypes = {
   inputSaw: PropTypes.string,
   inputHeard: PropTypes.string,
   inputStory: PropTypes.string,
+  handleUserError: PropTypes.func,
 };
 StoryFormSubmit.defaultProps = {
   storyFormSubmit: undefined,
@@ -50,6 +52,7 @@ StoryFormSubmit.defaultProps = {
   inputSaw: '',
   inputHeard: '',
   inputStory: '',
+  handleUserError: undefined,
 };
 
 export default StoryFormSubmit;
