@@ -7,8 +7,6 @@ class Mapzone extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      lat: 47.5707,
-      long: -122.2221,
       zoom: 15,
       lastMarker: undefined,
       // map: undefined,
@@ -26,8 +24,8 @@ class Mapzone extends React.Component {
   */
   componentDidMount() {
     const here = this;
-    const { lat, long, zoom } = this.state;
-    const { handleError } = this.props;
+    const { zoom } = this.state;
+    const { handleError, lat, long } = this.props;
     Axios.get('/allStories')
       .then((result) => {
         for (let i = 0; i < result.data.length; i += 1) {
@@ -111,11 +109,15 @@ Mapzone.propTypes = {
   handleLegendGet: PropTypes.func,
   handleLocationClick: PropTypes.func,
   handleError: PropTypes.func,
+  lat: PropTypes.number,
+  long: PropTypes.number,
 };
 Mapzone.defaultProps = {
   handleLegendGet: undefined,
   handleLocationClick: undefined,
   handleError: undefined,
+  lat: undefined,
+  long: undefined,
 };
 
 export default Mapzone;

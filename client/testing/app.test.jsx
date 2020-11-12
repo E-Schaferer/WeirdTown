@@ -33,6 +33,8 @@ describe('app tests', () => {
   });
   it('should not render elements before buttons rendering them are clicked', () => {
     const wrapper = shallow(<App />);
+    wrapper.instance().handleStartingCitySubmit([0, 0]);
+    wrapper.update();
     expect(wrapper.find('#auth-zone').exists()).toBeTruthy();
     expect(wrapper.find('#map-zone').exists()).toBeTruthy();
     expect(wrapper.find('#absent-story').exists()).toBeFalsy();
@@ -41,6 +43,8 @@ describe('app tests', () => {
   it('should render elements after buttons rendering them are clicked', () => {
     const wrapper = shallow(<App />);
     wrapper.instance().handleLocationClick([100, 50]);
+    wrapper.update();
+    wrapper.instance().handleStartingCitySubmit([0, 0]);
     wrapper.update();
     expect(wrapper.instance().state.absentStoryRender).toBe(true);
     expect(wrapper.find('#absent-story').exists()).toBeTruthy();
@@ -104,6 +108,8 @@ describe('app tests', () => {
   });
   it('should call the correct address when handleLegendGet is Called and update state afterwards', () => {
     const wrapper = shallow(<App />);
+    wrapper.instance().handleStartingCitySubmit([0, 0]);
+    wrapper.update();
     const body = ['test', 'test'];
     wrapper.instance().handleLegendGet(body);
     expect(mockAxios.get).toHaveBeenCalledWith(`/locationInfo?lat=${body[0]}&lng=${body[1]}`);
