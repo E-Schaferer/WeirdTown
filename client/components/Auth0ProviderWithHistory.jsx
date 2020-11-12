@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { Auth0Provider } from '@auth0/auth0-react';
 
@@ -23,5 +24,10 @@ const Auth0ProviderWithHistory = ({ children }) => {
     </Auth0Provider>
   );
 };
-
+Auth0ProviderWithHistory.propTypes = {
+  children: PropTypes.shape({}),
+};
+Auth0ProviderWithHistory.defaultProps = {
+  children: null,
+};
 export default Auth0ProviderWithHistory;

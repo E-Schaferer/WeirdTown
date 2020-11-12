@@ -12,9 +12,13 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        },
+        enforce: 'pre',
+        use: [
+          {
+            loader: 'babel-loader',
+          },
+          'source-map-loader',
+        ],
       },
     ],
   },
