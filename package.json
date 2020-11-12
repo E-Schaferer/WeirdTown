@@ -24,6 +24,7 @@
     "eslint-plugin-react": "^7.20.6",
     "eslint-plugin-react-hooks": "^2.5.1",
     "jest-mock-axios": "^4.2.1",
+    "source-map-loader": "^1.1.2",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
   },
