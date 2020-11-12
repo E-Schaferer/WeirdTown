@@ -5,6 +5,7 @@ import PresentStory from './PresentStory';
 import CurrentUser from './CurrentUser';
 import AuthBar from './AuthBar';
 import Mapzone from './Mapzone';
+import CitySelection from './CitySelection';
 
 class App extends React.Component {
   static handleError(funcName, err) {
@@ -17,6 +18,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       lastMarker: undefined,
+      lat: 47.5707, // starting latitude position for the map
+      long: -122.2221, // starting longitude position for the map
       currentStory: {
         storyId: 'REDACTED',
         story: 'REDACTED',
@@ -38,16 +41,18 @@ class App extends React.Component {
       subStoryForm: false, // sub-story-form
       subStorySubList: false, // substory-sub-list
       subStoryRenderZone: false, // substory-render-zone
-      inputName: '',
-      inputLocation: '',
-      inputSaw: '',
-      inputHeard: '',
-      inputStory: '',
-      inputSubName: '',
-      inputSubLocation: '',
-      inputSubSaw: '',
-      inputSubHeard: '',
-      inputSubStory: '',
+      inputName: '', // story form input
+      inputLocation: '', // story form input
+      inputSaw: '', // story form input
+      inputHeard: '', // story form input
+      inputStory: '', // story form input
+      inputSubName: '', // sub story form input
+      inputSubLocation: '', // sub story form input
+      inputSubSaw: '', // sub story form input
+      inputSubHeard: '', // sub story form input
+      inputSubStory: '', // sub story form input
+      citySelected: false, // keeps track of if the user has declared their current location
+      cityLocationInput: '', // city selection text input
     };
     this.onShowSub = this.onShowSub.bind(this);
     this.onShowSubStories = this.onShowSubStories.bind(this);
@@ -62,6 +67,7 @@ class App extends React.Component {
     this.handleUserData = this.handleUserData.bind(this);
     this.handleTextAreaChange = this.handleTextAreaChange.bind(this);
     this.handleUserError = this.handleUserError.bind(this);
+    this.handleStartingCitySubmit = this.handleStartingCitySubmit.bind(this);
   }
 
   /*
@@ -137,6 +143,19 @@ class App extends React.Component {
     this.setState({
       subStorySubList: true,
       subStoryRenderZone: false,
+    });
+  }
+
+  /*
+=====
+  - CityButtonPress.jsx
+=====
+  */
+  handleStartingCitySubmit(data) {
+    this.setState({
+      lat: data[0],
+      long: data[1],
+      citySelected: true,
     });
   }
 
@@ -271,6 +290,8 @@ class App extends React.Component {
   */
   render() {
     const {
+      lat,
+      long,
       currentStory,
       absentStoryRender,
       storySubmissionPrompt,
@@ -295,6 +316,8 @@ class App extends React.Component {
       inputSubSaw,
       inputSubHeard,
       inputSubStory,
+      citySelected,
+      cityLocationInput,
     } = this.state;
     return (
       <div>
@@ -302,80 +325,98 @@ class App extends React.Component {
           <CurrentUser handleUserData={this.handleUserData} handleError={App.handleError} />
           <AuthBar />
         </div>
-        <div id="title-zone">
-          <div id="title-zone-inner">
-            <h1>
-              My
-              { ' ' }
-              <span className="redacted">Weird</span>
-              { ' ' }
-              Normal Town
-            </h1>
-          </div>
-        </div>
-        <div id="map-zone">
-          <Mapzone
-            handleLocationClick={this.handleLocationClick}
-            handleLegendGet={this.handleLegendGet}
-            handleError={App.handleError}
-          />
-        </div>
-        {absentStoryRender
+        {!citySelected
           ? (
-            <div id="absent-story">
-              <div id="absent-story-inner">
-                <AbsentStory
-                  storySubmissionPrompt={storySubmissionPrompt}
-                  storyFormZone={storyFormZone}
-                  storyFormRender={this.storyFormRender}
-                  storyFormSubmit={this.storyFormSubmit}
-                  handleTextAreaChange={this.handleTextAreaChange}
-                  inputName={inputName}
-                  inputLocation={inputLocation}
-                  inputSaw={inputSaw}
-                  inputHeard={inputHeard}
-                  inputStory={inputStory}
-                  handleUserError={this.handleUserError}
-                />
-              </div>
-            </div>
+            <CitySelection
+              cityLocationInput={cityLocationInput}
+              handleTextAreaChange={this.handleTextAreaChange}
+              handleStartingCitySubmit={this.handleStartingCitySubmit}
+            />
           )
-          : null}
-        {presentStoryRender
-          ? (
-            <div id="present-story">
-              <div id="present-story-flex">
-                <div className="flex-center">
-                  <PresentStory
-                    currentStory={currentStory}
-                    subStoryPrompt={subStoryPrompt}
-                    subStory={subStory}
-                    subStoryList={subStoryList}
-                    subStoryListButtonFlex={subStoryListButtonFlex}
-                    subStoryListZone={subStoryListZone}
-                    subStoryButton={subStoryButton}
-                    subStoryForm={subStoryForm}
-                    subStorySubList={subStorySubList}
-                    subStoryRenderZone={subStoryRenderZone}
-                    inputSubName={inputSubName}
-                    inputSubLocation={inputSubLocation}
-                    inputSubSaw={inputSubSaw}
-                    inputSubHeard={inputSubHeard}
-                    inputSubStory={inputSubStory}
-                    onShowSub={this.onShowSub}
-                    onShowSubStories={this.onShowSubStories}
-                    onShowSubForm={this.onShowSubForm}
-                    onSubStoryListItemClick={this.onSubStoryListItemClick}
-                    onGoBack={this.onGoBack}
-                    subStoryFormSubmit={this.subStoryFormSubmit}
-                    handleTextAreaChange={this.handleTextAreaChange}
-                    handleError={App.handleError}
-                    handleUserError={this.handleUserError}
-                  />
+          : (
+            <div>
+              <div id="title-zone">
+                <div id="title-zone-inner">
+                  <h1>
+                    My
+                    {' '}
+                    <span className="redacted">Weird</span>
+                    {' '}
+                    Normal Town
+                  </h1>
                 </div>
               </div>
+              <div id="map-zone">
+                <Mapzone
+                  handleLocationClick={this.handleLocationClick}
+                  handleLegendGet={this.handleLegendGet}
+                  handleError={App.handleError}
+                  lat={lat}
+                  long={long}
+                />
+              </div>
+              <div>
+                {absentStoryRender
+                  ? (
+                    <div id="absent-story">
+                      <div id="absent-story-inner">
+                        <AbsentStory
+                          storySubmissionPrompt={storySubmissionPrompt}
+                          storyFormZone={storyFormZone}
+                          storyFormRender={this.storyFormRender}
+                          storyFormSubmit={this.storyFormSubmit}
+                          handleTextAreaChange={this.handleTextAreaChange}
+                          inputName={inputName}
+                          inputLocation={inputLocation}
+                          inputSaw={inputSaw}
+                          inputHeard={inputHeard}
+                          inputStory={inputStory}
+                          handleUserError={this.handleUserError}
+                        />
+                      </div>
+                    </div>
+                  )
+                  : null}
+              </div>
+              <div>
+                {presentStoryRender
+                  ? (
+                    <div id="present-story">
+                      <div id="present-story-flex">
+                        <div className="flex-center">
+                          <PresentStory
+                            currentStory={currentStory}
+                            subStoryPrompt={subStoryPrompt}
+                            subStory={subStory}
+                            subStoryList={subStoryList}
+                            subStoryListButtonFlex={subStoryListButtonFlex}
+                            subStoryListZone={subStoryListZone}
+                            subStoryButton={subStoryButton}
+                            subStoryForm={subStoryForm}
+                            subStorySubList={subStorySubList}
+                            subStoryRenderZone={subStoryRenderZone}
+                            inputSubName={inputSubName}
+                            inputSubLocation={inputSubLocation}
+                            inputSubSaw={inputSubSaw}
+                            inputSubHeard={inputSubHeard}
+                            inputSubStory={inputSubStory}
+                            onShowSub={this.onShowSub}
+                            onShowSubStories={this.onShowSubStories}
+                            onShowSubForm={this.onShowSubForm}
+                            onSubStoryListItemClick={this.onSubStoryListItemClick}
+                            onGoBack={this.onGoBack}
+                            subStoryFormSubmit={this.subStoryFormSubmit}
+                            handleTextAreaChange={this.handleTextAreaChange}
+                            handleError={App.handleError}
+                            handleUserError={this.handleUserError}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  ) : null}
+              </div>
             </div>
-          ) : null}
+          )}
       </div>
     );
   }

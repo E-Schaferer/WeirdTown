@@ -26,6 +26,10 @@ app.get('/allStories', (req, res) => {
   });
 });
 
+app.get('/cityAPI', (req, res) => {
+  
+});
+
 app.get('/locationInfo', (req, res) => {
   const queryArgs = [req.query.lat, req.query.lng];
   const queryStatement = 'SELECT * FROM stories WHERE (latitude = ? AND longitude = ?)';
