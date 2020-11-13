@@ -4,14 +4,18 @@ import Axios from 'axios';
 
 const CityButtonPress = ({ handleStartingCitySubmit, cityLocationInput }) => {
   const handleButtonClick = () => {
-    Axios.get('/cityAPI', {
-      params: {
-        loc: cityLocationInput,
-      },
-    })
-      .then((data) => {
-        handleStartingCitySubmit(data);
-      });
+    if (cityLocationInput === '') {
+      alert('please enter a location');
+    } else {
+      Axios.get('/cityAPI', {
+        params: {
+          loc: cityLocationInput,
+        },
+      })
+        .then((result) => {
+          handleStartingCitySubmit([result.data.lat, result.data.lng]);
+        });
+    }
   };
   return (
     <button type="button" onClick={handleButtonClick}>Submit</button>
