@@ -1,7 +1,9 @@
 const path = require('path');
 const fs = require('fs');
+const Axios = require('axios');
 const express = require('../node_modules/express');
 const db = require('../database/index.js');
+require('dotenv').config();
 
 const app = express();
 const port = 3777;
@@ -27,7 +29,14 @@ app.get('/allStories', (req, res) => {
 });
 
 app.get('/cityAPI', (req, res) => {
-  
+  const city = req.query.loc.split(' ').join('+');
+  const key = process.env.GEOCODE_KEY;
+  Axios.get(
+    `https://maps.googleapis.com/maps/api/geocode/json?address=+${city},+WA&key=${key}`,
+  )
+    .then((result) => {
+      res.send(result.data.results[0].geometry.location);
+    });
 });
 
 app.get('/locationInfo', (req, res) => {
