@@ -1,11 +1,11 @@
 import React from 'react';
 import Axios from 'axios';
-import AbsentStory from './AbsentStory';
-import PresentStory from './PresentStory';
-import CurrentUser from './CurrentUser';
-import AuthBar from './AuthBar';
-import Mapzone from './Mapzone';
-import CitySelection from './CitySelection';
+import AbsentStory from './AbsentStory/AbsentStory';
+import PresentStory from './PresentStory/PresentStory';
+import CurrentUser from './CurrentUser/CurrentUser';
+import AuthBar from './AuthBar/AuthBar';
+import Mapzone from './MapZone/Mapzone';
+import CitySelection from './CitySelection/CitySelection';
 
 class App extends React.Component {
   static handleError(funcName, err) {
