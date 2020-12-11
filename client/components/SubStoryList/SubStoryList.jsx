@@ -1,0 +1,148 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import SubStoryRender from '../SubStoryRender/SubStoryRender';
+import GoBack from './GoBack';
+import SubStoryListItem from './SubStoryListItem';
+import SubstorySort from './SubstorySort';
+
+class SubStoryList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      subStory: {
+        id: 0,
+        storyid: 0,
+        sublocation: 'REDACTED',
+        subheard: 'REDACTED',
+        subseen: 'REDACTED',
+        subname: 'REDACTED',
+        substory: 'REDACTED',
+        sublikes: 0,
+      },
+    };
+    this.handleListClick = this.handleListClick.bind(this);
+    this.likeGoUp = this.likeGoUp.bind(this);
+    this.likeGoDown = this.likeGoDown.bind(this);
+  }
+
+  likeGoUp() {
+    const { subStory } = this.state;
+    subStory.sublikes += 1;
+    this.setState({});
+  }
+
+  likeGoDown() {
+    const { subStory } = this.state;
+    subStory.sublikes -= 1;
+    this.setState({});
+  }
+
+  handleListClick(result) {
+    const { onSubStoryListItemClick } = this.props;
+    onSubStoryListItemClick();
+    this.setState({
+      subStory: result.data[0],
+    });
+  }
+
+  render() {
+    const {
+      subs,
+      subStorySubList,
+      subStoryRenderZone,
+      currentStory,
+      handleSort,
+      onGoBack,
+      handleError,
+      handleUserError,
+    } = this.props;
+    const { subStory } = this.state;
+    return (
+      <div>
+        {subStorySubList
+          ? (
+            <div id="substory-sub-list">
+              <div id="substory-weird-header">
+                <h5>Department of Weird Stuff</h5>
+              </div>
+              <div id="substory-list-main-header">
+                <h1>
+                  Files associated with file No°
+                  { ' ' }
+                  {currentStory.storyid}
+                  :
+                </h1>
+              </div>
+              <div id="substory-sort">
+                <SubstorySort handleSort={handleSort} subs={subs} />
+              </div>
+              <div id="substory-list-item-render">
+                <SubStoryListItem
+                  subs={subs}
+                  handleListClick={this.handleListClick}
+                  handleError={handleError}
+                />
+              </div>
+            </div>
+          ) : null}
+        {subStoryRenderZone
+          ? (
+            <div id="substory-render-zone">
+              <div>
+                <GoBack onGoBack={onGoBack} />
+              </div>
+              <div id="substory-render-actual">
+                <SubStoryRender
+                  likeGoUp={this.likeGoUp}
+                  likeGoDown={this.likeGoDown}
+                  subStory={subStory}
+                  handleError={handleError}
+                  handleUserError={handleUserError}
+                />
+              </div>
+            </div>
+          ) : null}
+      </div>
+    );
+  }
+}
+
+SubStoryList.propTypes = {
+  subs: PropTypes.arrayOf(PropTypes.object),
+  currentStory: PropTypes.shape({
+    storyid: PropTypes.number,
+    story: PropTypes.string,
+    storylocation: PropTypes.string,
+    storyname: PropTypes.string,
+    thingsseen: PropTypes.string,
+    thingsheard: PropTypes.string,
+  }),
+  subStorySubList: PropTypes.bool,
+  subStoryRenderZone: PropTypes.bool,
+  handleSort: PropTypes.func,
+  onSubStoryListItemClick: PropTypes.func,
+  onGoBack: PropTypes.func,
+  handleError: PropTypes.func,
+  handleUserError: PropTypes.func,
+};
+
+SubStoryList.defaultProps = {
+  subs: undefined,
+  currentStory: {
+    storyId: 'REDACTED',
+    story: 'REDACTED',
+    storylocation: 'REDACTED',
+    storyname: 'REDACTED',
+    thingsseen: 'REDACTED',
+    thingsheard: 'REDACTED',
+  },
+  subStorySubList: undefined,
+  subStoryRenderZone: undefined,
+  handleSort: undefined,
+  onSubStoryListItemClick: undefined,
+  onGoBack: undefined,
+  handleError: undefined,
+  handleUserError: undefined,
+};
+
+export default SubStoryList;
