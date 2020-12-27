@@ -6,7 +6,10 @@ import GoBack from './GoBack';
 import SubStoryListItem from './SubStoryListItem';
 import SubstorySort from './SubstorySort';
 
+// subStoryListZone
+
 const SubStoryList = (props) => {
+  const subStoryListZone = useSelector((state) => state.subStoryListZone);
   const subStorySubList = useSelector((state) => state.subStorySubList);
   const currentStory = useSelector((state) => state.currentStory);
   const subStoryRenderZone = useSelector((state) => state.subStoryRenderZone);
@@ -15,11 +18,11 @@ const SubStoryList = (props) => {
     <div>
       {subStorySubList
         ? (
-          <div id="substory-sub-list">
-            <div id="substory-weird-header">
+          <div>
+            <div>
               <h5>Department of Weird Stuff</h5>
             </div>
-            <div id="substory-list-main-header">
+            <div>
               <h1>
                 Files associated with file No°
                 {' '}
@@ -27,21 +30,21 @@ const SubStoryList = (props) => {
                 :
               </h1>
             </div>
-            <div id="substory-sort">
+            <div>
               <SubstorySort />
             </div>
-            <div id="substory-list-item-render">
+            <div>
               <SubStoryListItem />
             </div>
           </div>
         ) : null}
       {subStoryRenderZone
         ? (
-          <div id="substory-render-zone">
+          <div>
             <div>
               <GoBack />
             </div>
-            <div id="substory-render-actual">
+            <div>
               <SubStoryRender
                 handleError={handleError}
                 handleUserError={handleUserError}

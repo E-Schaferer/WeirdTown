@@ -11,14 +11,13 @@ import CitySelection from './CitySelection/CitySelection';
 
 class App extends React.Component {
   static handleError(funcName, err) {
-    const promise = Axios.get(`/errorLog?funcname=${funcName}&err=${err}`);
-    const result = promise.then(() => { });
+    console.log(funcName, err);
+    Axios.get(`/errorLog?funcname=${funcName}&err=${err}`);
     return 'result';
   }
 
   constructor(props) {
     super(props);
-    this.state = {};
     this.handleUserData = this.handleUserData.bind(this);
     this.handleUserError = this.handleUserError.bind(this);
   }
@@ -52,69 +51,47 @@ class App extends React.Component {
 =====
   */
   render() {
-    const {
-      citySelected,
-      absentStoryRender,
-      presentStoryRender,
-    } = this.props;
     return (
       <div>
         <div>
           <CurrentUser handleUserData={this.handleUserData} handleError={App.handleError} />
           <AuthBar />
         </div>
-        {
-          !citySelected
-            ? (
-              <CitySelection />
-            )
-            : (
-              <div>
-                <h1>
-                  My
-                  {' '}
-                  <span className="redacted">Weird</span>
-                  {' '}
-                  Normal Town
-                </h1>
-                <div>
-                  <Mapzone
-                    handleError={App.handleError}
-                  />
-                  {absentStoryRender
-                    ? (
-                      <div>
-                        <AbsentStory
-                          handleUserError={this.handleUserError}
-                        />
-                      </div>
-                    )
-                    : null}
-                  {presentStoryRender
-                    ? (
-                      <div className="flex-center">
-                        <PresentStory
-                          handleError={App.handleError}
-                          handleUserError={this.handleUserError}
-                        />
-                      </div>
-                    ) : null}
-                </div>
-
-              </div>
-            )
-        }
+        <CitySelection />
+        <div>
+          <h1>
+            My
+            {' '}
+            <span className="redacted">Weird</span>
+            {' '}
+            Normal Town
+          </h1>
+          <div>
+            <Mapzone
+              handleError={App.handleError}
+            />
+            <div>
+              <AbsentStory
+                handleUserError={this.handleUserError}
+              />
+            </div>
+            <div className="flex-center">
+              <PresentStory
+                handleError={App.handleError}
+                handleUserError={this.handleUserError}
+              />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    citySelected: state.citySelected,
-    absentStoryRender: state.absentStoryRender,
-    presentStoryRender: state.presentStoryRender,
-  };
-}
+export default App;
 
-export default connect(mapStateToProps)(App);
+/*
+citySelected
+presentStoryRender
+absentStoryRender
+*/

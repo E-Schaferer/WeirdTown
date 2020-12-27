@@ -1,32 +1,38 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import CityButtonPress from './CityButtonPress';
 
-const CitySelection = (props) => {
-  const {
-    handleStartingCitySubmit,
-    cityLocationInput,
-  } = props;
-  return (
-    <div>
-      <label htmlFor="city-location">
-        Where do you live?
-        <input name="city-location" />
-        <CityButtonPress
-          handleStartingCitySubmit={handleStartingCitySubmit}
-          cityLocationInput={cityLocationInput}
-        />
-      </label>
-    </div>
-  );
-};
-CitySelection.propTypes = {
-  handleStartingCitySubmit: PropTypes.func,
-  cityLocationInput: PropTypes.string,
-};
-CitySelection.defaultProps = {
-  handleStartingCitySubmit: undefined,
-  cityLocationInput: undefined,
-};
+class CitySelection extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      cityLocationInput: '',
+    };
+    this.handleTextAreaChange = this.handleTextAreaChange.bind(this);
+  }
+
+  handleTextAreaChange(event) {
+    const { value } = event.target;
+    this.setState({
+      cityLocationInput: value,
+    });
+  }
+
+  render() {
+    const {
+      cityLocationInput,
+    } = this.state;
+    return (
+      <div>
+        <label htmlFor="cityLocationInput">
+          Where do you live?
+          <input name="cityLocationInput" onChange={this.handleTextAreaChange} />
+          <CityButtonPress
+            cityLocationInput={cityLocationInput}
+          />
+        </label>
+      </div>
+    );
+  }
+}
 
 export default CitySelection;

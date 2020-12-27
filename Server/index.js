@@ -13,9 +13,14 @@ app.use('/', express.static(path.join(__dirname, '../public/')));
 
 app.get('/errorLog', (req, res) => {
   const time = new Date().toUTCString;
-  const data = [time, req.funcname, req.err];
-  fs.writeFile('./ErrorLog/ErrorLog.txt', data);
-  res.sendStatus(200);
+  const data = `${time}\n ${req.funcname}\n ${req.err}\n END REPORT\n\n`;
+  fs.writeFile('./server/ErrorLog/ErrorLog.txt', data, (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.sendStatus(200);
+    }
+  });
 });
 
 app.get('/allStories', (req, res) => {

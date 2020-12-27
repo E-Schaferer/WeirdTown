@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Axios from 'axios';
+import { useDispatch } from 'react-redux';
 
-const CityButtonPress = ({ handleStartingCitySubmit, cityLocationInput }) => {
+const CityButtonPress = ({ cityLocationInput }) => {
+  const dispatch = useDispatch();
   const handleButtonClick = () => {
     if (cityLocationInput === '') {
       alert('please enter a location');
@@ -13,7 +15,13 @@ const CityButtonPress = ({ handleStartingCitySubmit, cityLocationInput }) => {
         },
       })
         .then((result) => {
-          handleStartingCitySubmit([result.data.lat, result.data.lng]);
+          dispatch({
+            type: 'cityButtonPress/handleStartingCitySubmit',
+            payload: {
+              lat: result.data.lat,
+              long: result.data.long,
+            },
+          });
         });
     }
   };
@@ -22,11 +30,9 @@ const CityButtonPress = ({ handleStartingCitySubmit, cityLocationInput }) => {
   );
 };
 CityButtonPress.propTypes = {
-  handleStartingCitySubmit: PropTypes.func,
   cityLocationInput: PropTypes.string,
 };
 CityButtonPress.defaultProps = {
-  handleStartingCitySubmit: null,
   cityLocationInput: undefined,
 };
 

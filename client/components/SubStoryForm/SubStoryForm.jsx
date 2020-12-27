@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SubStorySubmit from './SubStorySubmit';
 
+// subStoryForm
+
 class SubStoryForm extends React.Component {
   constructor(props) {
     super(props);

@@ -9,18 +9,18 @@ import ShowSubStories from './ShowSubStories';
 const SubStory = (props) => {
   const subStoryList = useSelector((state) => state.subStoryList);
   const subNum = useSelector((state) => state.subNum);
-  const subStoryListButtonFlex = useSelector((state) => state.subStoryListButtonFlex);
-  const subStoryListZone = useSelector((state) => state.subStoryListZone);
   const subStoryButton = useSelector((state) => state.subStoryButton);
   const subStoryForm = useSelector((state) => state.subStoryForm);
+  const subStoryPrompt = useSelector((state) => state.subStoryPrompt);
+  const subStory = useSelector((state) => state.renderReducer.subStory);
   const {
     handleError,
     handleUserError,
   } = props;
   return (
     <div>
-      {subStoryList
-        ? (
+      {subStory ? (
+        <div>
           <div className="white-text">
             {subNum === 1
               ? <p>There is 1 addendum file associated with this file</p>
@@ -34,15 +34,7 @@ const SubStory = (props) => {
                 </p>
               )}
           </div>
-        ) : <div />}
-      {subStoryListButtonFlex
-        ? (
-          <div>
-            <ShowSubStories />
-          </div>
-        ) : <div />}
-      {subStoryListZone
-        ? (
+          <ShowSubStories />
           <div>
             <ol>
               <SubStoryList
@@ -51,21 +43,12 @@ const SubStory = (props) => {
               />
             </ol>
           </div>
-        ) : null}
-      {subStoryButton
-        ? (
-          <div>
-            <ShowSubForm />
-          </div>
-        ) : <div />}
-      {subStoryForm
-        ? (
-          <div>
-            <SubStoryForm
-              handleUserError={handleUserError}
-            />
-          </div>
-        ) : null}
+          <ShowSubForm />
+          <SubStoryForm
+            handleUserError={handleUserError}
+          />
+        </div>
+      ) : (<div />)}
     </div>
   );
 };

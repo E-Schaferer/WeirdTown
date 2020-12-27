@@ -7,11 +7,20 @@ import SubStory from '../SubStory/SubStory';
 const PresentStory = (props) => {
   const { handleError, handleUserError } = props;
   const dispatch = useDispatch();
-  const select = useSelector();
+  const {
+    storyId,
+    likes,
+    storyName,
+    storyLocation,
+    thingsSeen,
+    thingsHeard,
+    story,
+  } = useSelector(((state) => state.storyReducer.currentStory), shallowEqual);
+  const presentStoryRender = useSelector((state) => state.renderReducer.presentStoryRender);
+
   // this function will query the database for substories related to the current story
   const showSub = () => {
-    const currentStory = select((state) => state.currentStory.id);
-    Axios.get(`/subStoryGet?storyId=${currentStory.id}`)
+    Axios.get(`/subStoryGet?storyId=${storyId}`)
       .then((result) => {
         dispatch({
           type: 'presentStory/showSub',
@@ -26,82 +35,66 @@ const PresentStory = (props) => {
       });
   };
 
-  const subStoryPrompt = useSelector((state) => state.subStoryPrompt);
-  const subStory = useSelector((state) => state.subStory);
-  const {
-    storyId,
-    likes,
-    storyName,
-    storyLocation,
-    thingsSeen,
-    thingsHeard,
-    story,
-  } = useSelector(((state) => state.currentStory), shallowEqual);
   return (
     <div>
-      <div>
+      {presentStoryRender ? (
         <div>
-          <h5>Department of Weird Stuff</h5>
-          <h5>
-            Case No°
-            {' '}
-            {10000 + storyId}
-          </h5>
-        </div>
-        <div>
-          <h1>CLASSIFIED</h1>
-        </div>
-        <div>
-          <h4>
-            likes:
-            {' '}
-            {likes}
-          </h4>
-        </div>
-        <div>
-          <h3 className="underlined">INCIDENT NAME:</h3>
-          <p>{storyName}</p>
-        </div>
-        <div>
-          <h3 className="underlined">INCIDENT LOCATION:</h3>
-          <p>{storyLocation}</p>
-        </div>
-        <div>
-          <h3 className="underlined">WITNESSES DESCRIPTION:</h3>
-          <p>
-            -
-            {thingsSeen}
-          </p>
-          <p>
-            -
-            {thingsHeard}
-          </p>
-        </div>
-        <div>
-          <h3 className="underlined">TIMELINE OF EVENTS:</h3>
-          <p>{story}</p>
-        </div>
-        <div>
-          <h5 className="top-secret">TOP SECRET</h5>
-        </div>
-      </div>
-      {subStoryPrompt
-        ? (
           <div>
-            <p>Show related case files</p>
-            <button className="clickable" type="button" onClick={showSub}>Show Files</button>
+            <div>
+              <h5>Department of Weird Stuff</h5>
+              <h5>
+                Case No°
+                {' '}
+                {10000 + storyId}
+              </h5>
+            </div>
+            <div>
+              <h1>CLASSIFIED</h1>
+            </div>
+            <div>
+              <h4>
+                likes:
+                {' '}
+                {likes}
+              </h4>
+            </div>
+            <div>
+              <h3 className="underlined">INCIDENT NAME:</h3>
+              <p>{storyName}</p>
+            </div>
+            <div>
+              <h3 className="underlined">INCIDENT LOCATION:</h3>
+              <p>{storyLocation}</p>
+            </div>
+            <div>
+              <h3 className="underlined">WITNESSES DESCRIPTION:</h3>
+              <p>
+                -
+                {thingsSeen}
+              </p>
+              <p>
+                -
+                {thingsHeard}
+              </p>
+            </div>
+            <div>
+              <h3 className="underlined">TIMELINE OF EVENTS:</h3>
+              <p>{story}</p>
+            </div>
+            <div>
+              <h5 className="top-secret">TOP SECRET</h5>
+            </div>
           </div>
-        )
-        : null}
-      {subStory
-        ? (
           <div id="substory">
             <SubStory
               handleError={handleError}
               handleUserError={handleUserError}
             />
           </div>
-        ) : null}
+        </div>
+      ) : (
+        <div />
+      )}
     </div>
   );
 };
@@ -115,3 +108,10 @@ PresentStory.defaultProps = {
 };
 
 export default PresentStory;
+
+/*
+          <div>
+            <p>Show related case files</p>
+            <button className="clickable" type="button" onClick={showSub}>Show Files</button>
+          </div>
+*/

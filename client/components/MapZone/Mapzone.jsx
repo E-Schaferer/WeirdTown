@@ -2,7 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Axios from 'axios';
 import L from 'leaflet';
-import { useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
+
+// handleLocationClick
+
+function mapDispatchToProps(dispatch) {
+  return {
+    legendGet: (res) => dispatch({ type: 'mapzone/handleLegendGet', payload: res.data[0] }),
+  };
+}
+
+function mapStateToProps(state) {
+  return {
+    lat: state.mapReducer.lat,
+    long: state.mapReducer.long,
+  };
+}
 
 class Mapzone extends React.Component {
   constructor(props) {
@@ -17,7 +32,6 @@ class Mapzone extends React.Component {
     this.distributeMarkers = this.distributeMarkers.bind(this);
     this.markerClick = this.markerClick.bind(this);
     this.handleLegendGet = this.handleLegendGet.bind(this);
-    this.dispatch = useDispatch();
   }
 
   /*
@@ -29,8 +43,10 @@ class Mapzone extends React.Component {
     const here = this;
     const { zoom } = this.state;
     const { handleError, lat, long } = this.props;
+    console.log(lat, long);
     Axios.get('/allStories')
       .then((result) => {
+        console.log(result);
         for (let i = 0; i < result.data.length; i += 1) {
           here.state.coords.push([result.data[i].latitude, result.data[i].longitude]);
         }
@@ -53,7 +69,7 @@ class Mapzone extends React.Component {
       })
       .catch((err) => {
         // needs alert
-        handleError(['mapzone did mount', err]);
+        handleError('mapzone did mount', err);
       });
   }
 
@@ -76,13 +92,10 @@ class Mapzone extends React.Component {
   }
 
   handleLegendGet(location) {
-    const { handleError } = this.props;
+    const { handleError, legendGet } = this.props;
     let promise = Axios.get(`/locationInfo?lat=${location[0]}&lng=${location[1]}`);
     promise = promise.then((res) => {
-      this.dispatch({
-        type: 'mapzone/handleLegendGet',
-        payload: res.data[0],
-      });
+      legendGet(res);
     })
       .catch((err) => {
       // needs alert
@@ -128,12 +141,14 @@ Mapzone.propTypes = {
   handleError: PropTypes.func,
   lat: PropTypes.number,
   long: PropTypes.number,
+  legendGet: PropTypes.func,
 };
 Mapzone.defaultProps = {
   handleLocationClick: undefined,
   handleError: undefined,
   lat: undefined,
   long: undefined,
+  legendGet: undefined,
 };
 
-export default Mapzone;
+export default connect(mapStateToProps, mapDispatchToProps)(Mapzone);

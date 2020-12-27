@@ -1,16 +1,21 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const ShowSubStories = () => {
   const dispatch = useDispatch();
+  const subStoryListButtonFlex = useSelector((state) => state.subStoryListButtonFlex);
   return (
-    <Button
-      className="clickable"
-      onClick={dispatch({ type: 'showSubStories/onShowSubStories' })}
-    >
-      Show Addendum Files
-    </Button>
+    <div>
+      {subStoryListButtonFlex ? (
+        <Button
+          className="clickable"
+          onClick={dispatch({ type: 'showSubStories/onShowSubStories' })}
+        >
+          Show Addendum Files
+        </Button>
+      ) : (<div />)}
+    </div>
   );
 };
 
