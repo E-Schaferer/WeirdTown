@@ -1,24 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
 
-const ShowSubStories = (props) => {
-  const { onShowSubStories } = props;
-  return (
-    <Button
-      className="clickable"
-      onClick={onShowSubStories}
-    >
-      Show Addendum Files
-    </Button>
-  );
-};
-ShowSubStories.propTypes = {
-  onShowSubStories: PropTypes.func,
-};
-
-ShowSubStories.defaultProps = {
-  onShowSubStories: undefined,
-};
+const ShowSubStories = () => (
+  <Button
+    className="clickable"
+    onClick={useDispatch({ type: 'showSubStories/onShowSubStories' })}
+  >
+    Show Addendum Files
+  </Button>
+);
 
 export default ShowSubStories;
