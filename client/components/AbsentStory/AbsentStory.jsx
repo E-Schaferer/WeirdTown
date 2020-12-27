@@ -1,22 +1,15 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import StoryForm from '../StoryForm/StoryForm';
 import StoryButtonClick from './StoryButtonClick';
 
 const AbsentStory = (props) => {
   const {
-    storyFormSubmit,
-    storyFormRender,
-    storyFormZone,
-    storySubmissionPrompt,
-    inputName,
-    inputLocation,
-    inputSaw,
-    inputHeard,
-    inputStory,
-    handleTextAreaChange,
     handleUserError,
   } = props;
+  const storySubmissionPrompt = useSelector((state) => state.storySubmissionPrompt);
+  const storyFormZone = useSelector((state) => state.storyFormZone);
   return (
     <div id="absent-story-zone">
       {storySubmissionPrompt
@@ -26,7 +19,7 @@ const AbsentStory = (props) => {
               <h2>No stories have been told about this place. Would you like to share one?</h2>
             </div>
             <div id="prompt-button">
-              <StoryButtonClick storyFormRender={storyFormRender} />
+              <StoryButtonClick />
             </div>
           </div>
         ) : <div />}
@@ -34,13 +27,6 @@ const AbsentStory = (props) => {
         ? (
           <div id="story-form-zone">
             <StoryForm
-              storyFormSubmit={storyFormSubmit}
-              inputName={inputName}
-              inputLocation={inputLocation}
-              inputSaw={inputSaw}
-              inputHeard={inputHeard}
-              inputStory={inputStory}
-              handleTextAreaChange={handleTextAreaChange}
               handleUserError={handleUserError}
             />
           </div>
@@ -49,29 +35,9 @@ const AbsentStory = (props) => {
   );
 };
 AbsentStory.propTypes = {
-  storyFormRender: PropTypes.func,
-  storyFormSubmit: PropTypes.func,
-  storyFormZone: PropTypes.bool,
-  storySubmissionPrompt: PropTypes.bool,
-  inputName: PropTypes.string,
-  inputLocation: PropTypes.string,
-  inputSaw: PropTypes.string,
-  inputHeard: PropTypes.string,
-  inputStory: PropTypes.string,
-  handleTextAreaChange: PropTypes.func,
   handleUserError: PropTypes.func,
 };
 AbsentStory.defaultProps = {
-  storyFormRender: undefined,
-  storyFormSubmit: undefined,
-  storyFormZone: undefined,
-  storySubmissionPrompt: undefined,
-  inputName: '',
-  inputLocation: '',
-  inputSaw: '',
-  inputHeard: '',
-  inputStory: '',
-  handleTextAreaChange: undefined,
   handleUserError: undefined,
 };
 

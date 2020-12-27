@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Axios from 'axios';
 import L from 'leaflet';
+import { useDispatch } from 'react-redux';
 
 class Mapzone extends React.Component {
   constructor(props) {
@@ -15,6 +16,7 @@ class Mapzone extends React.Component {
     this.onMapClick = this.onMapClick.bind(this);
     this.distributeMarkers = this.distributeMarkers.bind(this);
     this.markerClick = this.markerClick.bind(this);
+    this.handleLegendGet = this.handleLegendGet.bind(this);
   }
 
   /*
@@ -72,6 +74,22 @@ class Mapzone extends React.Component {
     handleLocationClick(newCoords);
   }
 
+  handleLegendGet(location) {
+    const { handleError } = this.props;
+    let promise = Axios.get(`/locationInfo?lat=${location[0]}&lng=${location[1]}`);
+    promise = promise.then((res) => {
+      useDispatch({
+        type: 'mapzone/handleLegendGet',
+        payload: res.data[0],
+      });
+    })
+      .catch((err) => {
+      // needs alert
+        handleError('handleLegendGet', err);
+      });
+    return promise;
+  }
+
   distributeMarkers(map) {
     const { coords } = this.state;
     for (let i = 0; i < coords.length; i += 1) {
@@ -87,9 +105,8 @@ class Mapzone extends React.Component {
         lastMarker: undefined,
       });
     }
-    const { handleLegendGet } = this.props;
     const newCoords = [event.latlng.lat, event.latlng.lng];
-    handleLegendGet(newCoords);
+    this.handleLegendGet(newCoords);
   }
   /*
 =====
@@ -106,14 +123,12 @@ class Mapzone extends React.Component {
   }
 }
 Mapzone.propTypes = {
-  handleLegendGet: PropTypes.func,
   handleLocationClick: PropTypes.func,
   handleError: PropTypes.func,
   lat: PropTypes.number,
   long: PropTypes.number,
 };
 Mapzone.defaultProps = {
-  handleLegendGet: undefined,
   handleLocationClick: undefined,
   handleError: undefined,
   lat: undefined,

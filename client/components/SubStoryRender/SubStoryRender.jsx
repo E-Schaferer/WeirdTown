@@ -1,16 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import SubStoryLike from './SubStoryLike';
 import SubStoryDislike from './SubStoryDislike';
 
 const SubStoryRender = (props) => {
   const {
-    subStory,
-    likeGoDown,
-    likeGoUp,
     handleError,
     handleUserError,
   } = props;
+  const subStory = useSelector((state) => state.subStory);
   return (
     <div>
       <div id="story-header">
@@ -37,14 +36,10 @@ const SubStoryRender = (props) => {
           {subStory.sublikes}
         </h4>
         <SubStoryLike
-          subStory={subStory}
-          like={likeGoUp}
           handleError={handleError}
           handleUserError={handleUserError}
         />
         <SubStoryDislike
-          subStory={subStory}
-          dislike={likeGoDown}
           handleError={handleError}
           handleUserError={handleUserError}
         />
@@ -74,35 +69,11 @@ const SubStoryRender = (props) => {
 };
 
 SubStoryRender.propTypes = {
-  subStory: PropTypes.shape({
-    id: PropTypes.number,
-    storyid: PropTypes.number,
-    sublocation: PropTypes.string,
-    subheard: PropTypes.string,
-    subseen: PropTypes.string,
-    subname: PropTypes.string,
-    substory: PropTypes.string,
-    sublikes: PropTypes.number,
-  }),
-  likeGoUp: PropTypes.func,
-  likeGoDown: PropTypes.func,
   handleError: PropTypes.func,
   handleUserError: PropTypes.func,
 };
 
 SubStoryRender.defaultProps = {
-  subStory: {
-    id: 0,
-    storyid: 0,
-    sublocation: 'REDACTED',
-    subheard: 'REDACTED',
-    subseen: 'REDACTED',
-    subname: 'REDACTED',
-    substory: 'REDACTED',
-    sublikes: 0,
-  },
-  likeGoUp: undefined,
-  likeGoDown: undefined,
   handleError: undefined,
   handleUserError: undefined,
 };

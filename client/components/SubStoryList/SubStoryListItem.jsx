@@ -1,9 +1,19 @@
 import React from 'react';
 import Axios from 'axios';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
 const SubStoryListItem = (props) => {
-  const { subs, handleListClick, handleError } = props;
+  const { handleError } = props;
+  const subs = useSelector((state) => state.subs);
+
+  const handleListClick = (result) => {
+    useDispatch({
+      type: 'subStoryList/handleListClick',
+      payload: result.data[0],
+    });
+  };
+
   const onClick = (event) => {
     Axios.get(`/substoryGetSpec?id=${event.target.getAttribute('name')}`)
       .then((result) => {
@@ -13,22 +23,20 @@ const SubStoryListItem = (props) => {
         handleError(err);
       });
   };
+
   const subList = subs.map((sub) => <li id={`sub-item-${sub.id}`} name={sub.id} key={sub.id} role="presentation" className="clickable clickable-highlight" onClick={onClick}>{sub.subname}</li>);
   return (
     <div>
-      <ol>
+      <ol data-testid="sub-list" className="sub-list">
         { subList }
       </ol>
     </div>
   );
 };
 SubStoryListItem.propTypes = {
-  subs: PropTypes.arrayOf(PropTypes.object).isRequired,
-  handleListClick: PropTypes.func,
   handleError: PropTypes.func,
 };
 SubStoryListItem.defaultProps = {
-  handleListClick: undefined,
   handleError: undefined,
 };
 
