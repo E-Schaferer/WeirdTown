@@ -9,14 +9,16 @@ import SubstorySort from './SubstorySort';
 // subStoryListZone
 
 const SubStoryList = (props) => {
-  const subStoryListZone = useSelector((state) => state.subStoryListZone);
-  const subStorySubList = useSelector((state) => state.subStorySubList);
-  const currentStory = useSelector((state) => state.currentStory);
-  const subStoryRenderZone = useSelector((state) => state.subStoryRenderZone);
+  // const subStoryListZone = useSelector((state) => state.renderReducer.subStoryListZone);
+  const subStoryListParent = useSelector((state) => state.renderReducer.subStoryListParent);
+  // formerly subStorySubList
+  const subStoryRenderParent = useSelector((state) => state.renderReducer.subStoryRenderZone);
+  // formerly subStoryRenderZone
+  const currentStory = useSelector((state) => state.storyReducer.currentStory);
   const { handleError, handleUserError } = props;
   return (
     <div>
-      {subStorySubList
+      {subStoryListParent
         ? (
           <div>
             <div>
@@ -37,8 +39,8 @@ const SubStoryList = (props) => {
               <SubStoryListItem />
             </div>
           </div>
-        ) : null}
-      {subStoryRenderZone
+        ) : <div />}
+      {subStoryRenderParent
         ? (
           <div>
             <div>
@@ -51,7 +53,7 @@ const SubStoryList = (props) => {
               />
             </div>
           </div>
-        ) : null}
+        ) : <div />}
     </div>
   );
 };

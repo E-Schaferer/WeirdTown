@@ -34,11 +34,6 @@ class Mapzone extends React.Component {
     this.handleLegendGet = this.handleLegendGet.bind(this);
   }
 
-  /*
-=====
-  - initialization
-=====
-  */
   componentDidMount() {
     const here = this;
     const { zoom } = this.state;
@@ -98,7 +93,7 @@ class Mapzone extends React.Component {
       legendGet(res);
     })
       .catch((err) => {
-      // needs alert
+        // needs alert
         handleError('handleLegendGet', err);
       });
     return promise;

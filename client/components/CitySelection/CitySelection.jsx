@@ -1,5 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import propTypes from 'prop-types';
 import CityButtonPress from './CityButtonPress';
+
+const mapStateToProps = (state) => ({
+  cityLocationInputRender: state.renderReducer.cityLocationInputRender,
+});
 
 class CitySelection extends React.Component {
   constructor(props) {
@@ -21,18 +27,28 @@ class CitySelection extends React.Component {
     const {
       cityLocationInput,
     } = this.state;
+    const { cityLocationInputRender } = this.props;
     return (
       <div>
-        <label htmlFor="cityLocationInput">
-          Where do you live?
-          <input name="cityLocationInput" onChange={this.handleTextAreaChange} />
-          <CityButtonPress
-            cityLocationInput={cityLocationInput}
-          />
-        </label>
+        {cityLocationInputRender ? (
+          <label htmlFor="cityLocationInput">
+            Where do you live?
+            <input name="cityLocationInput" onChange={this.handleTextAreaChange} />
+            <CityButtonPress
+              cityLocationInput={cityLocationInput}
+            />
+          </label>
+        ) : (<div />)}
       </div>
     );
   }
 }
 
-export default CitySelection;
+CitySelection.propTypes = {
+  cityLocationInputRender: propTypes.bool,
+};
+CitySelection.defaultProps = {
+  cityLocationInputRender: false,
+};
+
+export default connect(mapStateToProps)(CitySelection);

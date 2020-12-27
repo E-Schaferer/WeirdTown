@@ -1,18 +1,28 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-// subStoryButton
+// formerly subStoryButton
+// subStoryFormButton
 
 const ShowSubForm = () => {
+  const subStoryFormButton = useSelector((state) => state.renderReducer.subStoryFormButton);
   const dispatch = useDispatch();
+  const dispatcher = () => {
+    dispatch({ type: 'showSubForm/onShowSubForm' });
+  };
   return (
-    <Button
-      className="clickable"
-      onClick={dispatch({ type: 'showSubForm/onShowSubForm' })}
-    >
-      Write Your Own Sub-Story
-    </Button>
+    <div>
+      {subStoryFormButton ? (
+        <Button
+          className="clickable"
+          onClick={dispatcher}
+        >
+          Write Your Own Sub-Story
+        </Button>
+      )
+        : (<div />)}
+    </div>
   );
 };
 

@@ -7,19 +7,19 @@ import ShowSubForm from './ShowSubForm';
 import ShowSubStories from './ShowSubStories';
 
 const SubStory = (props) => {
-  const subStoryList = useSelector((state) => state.subStoryList);
-  const subNum = useSelector((state) => state.subNum);
-  const subStoryButton = useSelector((state) => state.subStoryButton);
-  const subStoryForm = useSelector((state) => state.subStoryForm);
-  const subStoryPrompt = useSelector((state) => state.subStoryPrompt);
-  const subStory = useSelector((state) => state.renderReducer.subStory);
+  // const subStoryList = useSelector((state) => state.subStoryList);
+  const subNum = useSelector((state) => state.storyReducer.subNum);
+  // const subStoryButton = useSelector((state) => state.subStoryButton);
+  // const subStoryForm = useSelector((state) => state.subStoryForm);
+  // const subStoryPrompt = useSelector((state) => state.subStoryPrompt);
+  const subStoryPrime = useSelector((state) => state.renderReducer.subStoryPrime);
   const {
     handleError,
     handleUserError,
   } = props;
   return (
     <div>
-      {subStory ? (
+      {subStoryPrime ? (
         <div>
           <div className="white-text">
             {subNum === 1

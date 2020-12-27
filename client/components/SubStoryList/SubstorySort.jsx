@@ -6,7 +6,7 @@ const actionCreate = (type, payload) => ({ type, payload });
 
 const SubstorySort = () => {
   const dispatch = useDispatch();
-  const subs = useSelector(((state) => state.subs), shallowEqual);
+  const subs = useSelector(((state) => state.storyReducer.subs), shallowEqual);
   const output = subs.slice();
 
   const handleSort = (method) => {

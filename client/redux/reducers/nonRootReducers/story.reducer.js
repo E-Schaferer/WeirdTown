@@ -1,6 +1,6 @@
 const initialState = {
   currentStory: {
-    storyId: 'REDACTED',
+    storyId: 'REDACTED', // look into this, seems to actually be id?
     story: 'REDACTED',
     storyLocation: 'REDACTED',
     storyName: 'REDACTED',

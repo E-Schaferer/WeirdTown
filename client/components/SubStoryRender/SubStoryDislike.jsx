@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const SubStoryDislike = (props) => {
   const { user, isAuthenticated } = useAuth0();
-  const id = useSelector((state) => state.subStory.id);
+  const id = useSelector((state) => state.storyReducer.subStory.id);
   const dispatch = useDispatch();
   const dislikeClick = () => {
     const {
@@ -35,10 +35,7 @@ const SubStoryDislike = (props) => {
   };
 
   return (
-    <Button
-      onClick={dislikeClick}
-      id="dislike-click"
-    >
+    <Button onClick={dislikeClick}>
       Dislike
     </Button>
   );

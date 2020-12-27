@@ -6,7 +6,7 @@ import AbsentStory from './AbsentStory/AbsentStory';
 import PresentStory from './PresentStory/PresentStory';
 import CurrentUser from './CurrentUser/CurrentUser';
 import AuthBar from './AuthBar/AuthBar';
-import Mapzone from './MapZone/Mapzone';
+import MapzoneWrapper from './MapZone/MapzoneWrapper';
 import CitySelection from './CitySelection/CitySelection';
 
 class App extends React.Component {
@@ -67,7 +67,7 @@ class App extends React.Component {
             Normal Town
           </h1>
           <div>
-            <Mapzone
+            <MapzoneWrapper
               handleError={App.handleError}
             />
             <div>

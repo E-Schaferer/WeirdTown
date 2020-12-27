@@ -19,7 +19,7 @@ const CityButtonPress = ({ cityLocationInput }) => {
             type: 'cityButtonPress/handleStartingCitySubmit',
             payload: {
               lat: result.data.lat,
-              long: result.data.long,
+              long: result.data.lng,
             },
           });
         });

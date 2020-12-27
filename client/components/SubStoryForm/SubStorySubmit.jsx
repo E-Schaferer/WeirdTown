@@ -5,10 +5,11 @@ import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
 const SubStorySubmit = (props) => {
-  const currentStory = useSelector((state) => state.currentStory);
+  const currentStoryId = useSelector((state) => state.storyReducer.currentStory.id);
+  console.log(currentStoryId);
   const subStoryFormSubmit = (name, loc, heard, saw, story) => {
     const promise = Axios.post('/subStorySubmit', {
-      id: currentStory.id,
+      id: currentStoryId,
       name,
       location: loc,
       heard,

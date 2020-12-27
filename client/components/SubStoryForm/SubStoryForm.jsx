@@ -1,8 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import SubStorySubmit from './SubStorySubmit';
 
-// subStoryForm
+// formerly subStoryForm
+// subStoryFormRender
+
+const mapStateToProps = (state) => ({
+  subStoryFormRender: state.renderReducer.subStoryFormRender,
+});
 
 class SubStoryForm extends React.Component {
   constructor(props) {
@@ -28,6 +34,7 @@ class SubStoryForm extends React.Component {
     const {
       handleError,
       handleUserError,
+      subStoryFormRender,
     } = this.props;
     const {
       inputSubName,
@@ -38,62 +45,67 @@ class SubStoryForm extends React.Component {
     } = this.state;
     return (
       <div>
-        <div>
-          <h5>Department of Weird Stuff</h5>
-        </div>
-        <div>
-          <h1>
-            INCIDENT
-            {' '}
-            {10000 + 1}
-            {' '}
-            ADDENDUM FORM
-          </h1>
-        </div>
-        <div>
-          <label htmlFor="inputSubName">
-            Give the incident a name
-            <textarea name="inputSubName" rows="5" cols="75" type="text" onChange={this.handleTextAreaChange} />
-          </label>
-        </div>
-        <div>
-          <label htmlFor="inputSubLocation">
-            Where did the incident take place?
-            <textarea name="inputSubLocation" rows="5" cols="75" type="text" onChange={this.handleTextAreaChange} />
-          </label>
-        </div>
-        <div>
-          <label htmlFor="inputSubSaw">
-            What did you see?
-            <textarea name="inputSubSaw" rows="5" cols="75" type="text" onChange={this.handleTextAreaChange} />
-          </label>
-        </div>
-        <div>
-          <label htmlFor="inputSubHeard">
-            What did you hear?
-            <textarea name="inputSubHeard" rows="5" cols="75" type="text" onChange={this.handleTextAreaChange} />
-          </label>
-        </div>
-        <div>
-          <label htmlFor="inputSubStory">
-            Describe the events that took place:
-            <textarea name="inputSubStory" rows="5" cols="75" type="text" onChange={this.handleTextAreaChange} />
-          </label>
-        </div>
-        <div>
-          <SubStorySubmit
-            handleError={handleError}
-            inputSubName={inputSubName}
-            inputSubLocation={inputSubLocation}
-            inputSubSaw={inputSubSaw}
-            inputSubHeard={inputSubHeard}
-            inputSubStory={inputSubStory}
-            handleUserError={handleUserError}
-          />
-        </div>
-        <div>
-          <h5 className="top-secret">TOP SECRET</h5>
-        </div>
+        {subStoryFormRender ? (
+          <div>
+            <div>
+              <h5>Department of Weird Stuff</h5>
+            </div>
+            <div>
+              <h1>
+                INCIDENT
+                {' '}
+                {10000 + 1}
+                {' '}
+                ADDENDUM FORM
+              </h1>
+            </div>
+            <div>
+              <label htmlFor="inputSubName">
+                Give the incident a name
+                <textarea name="inputSubName" rows="5" cols="75" type="text" onChange={this.handleTextAreaChange} />
+              </label>
+            </div>
+            <div>
+              <label htmlFor="inputSubLocation">
+                Where did the incident take place?
+                <textarea name="inputSubLocation" rows="5" cols="75" type="text" onChange={this.handleTextAreaChange} />
+              </label>
+            </div>
+            <div>
+              <label htmlFor="inputSubSaw">
+                What did you see?
+                <textarea name="inputSubSaw" rows="5" cols="75" type="text" onChange={this.handleTextAreaChange} />
+              </label>
+            </div>
+            <div>
+              <label htmlFor="inputSubHeard">
+                What did you hear?
+                <textarea name="inputSubHeard" rows="5" cols="75" type="text" onChange={this.handleTextAreaChange} />
+              </label>
+            </div>
+            <div>
+              <label htmlFor="inputSubStory">
+                Describe the events that took place:
+                <textarea name="inputSubStory" rows="5" cols="75" type="text" onChange={this.handleTextAreaChange} />
+              </label>
+            </div>
+            <div>
+              <SubStorySubmit
+                handleError={handleError}
+                inputSubName={inputSubName}
+                inputSubLocation={inputSubLocation}
+                inputSubSaw={inputSubSaw}
+                inputSubHeard={inputSubHeard}
+                inputSubStory={inputSubStory}
+                handleUserError={handleUserError}
+              />
+            </div>
+            <div>
+              <h5 className="top-secret">TOP SECRET</h5>
+            </div>
+          </div>
+        )
+          : (<div />)}
       </div>
     );
   }
@@ -101,10 +113,12 @@ class SubStoryForm extends React.Component {
 SubStoryForm.propTypes = {
   handleError: PropTypes.func,
   handleUserError: PropTypes.func,
+  subStoryFormRender: PropTypes.bool,
 };
 SubStoryForm.defaultProps = {
   handleError: undefined,
   handleUserError: undefined,
+  subStoryFormRender: false,
 };
 
-export default SubStoryForm;
+export default connect(mapStateToProps)(SubStoryForm);

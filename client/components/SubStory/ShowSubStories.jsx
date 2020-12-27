@@ -4,13 +4,16 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const ShowSubStories = () => {
   const dispatch = useDispatch();
-  const subStoryListButtonFlex = useSelector((state) => state.subStoryListButtonFlex);
+  const dispatcher = () => {
+    dispatch({ type: 'showSubStories/onShowSubStories' });
+  };
+  const showSubStoriesButton = useSelector((state) => state.renderReducer.showSubStoriesButton);
   return (
     <div>
-      {subStoryListButtonFlex ? (
+      {showSubStoriesButton ? (
         <Button
           className="clickable"
-          onClick={dispatch({ type: 'showSubStories/onShowSubStories' })}
+          onClick={dispatcher}
         >
           Show Addendum Files
         </Button>

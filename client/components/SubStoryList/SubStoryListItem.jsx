@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 const SubStoryListItem = (props) => {
   const { handleError } = props;
-  const subs = useSelector((state) => state.subs);
+  const subs = useSelector((state) => state.storyReducer.subs);
   const dispatch = useDispatch();
   const handleListClick = (result) => {
     dispatch({

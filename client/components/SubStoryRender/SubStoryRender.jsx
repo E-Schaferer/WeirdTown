@@ -9,10 +9,10 @@ const SubStoryRender = (props) => {
     handleError,
     handleUserError,
   } = props;
-  const subStory = useSelector((state) => state.subStory);
+  const subStory = useSelector((state) => state.storyRender.subStory);
   return (
     <div>
-      <div id="story-header">
+      <div>
         <div>
           <h5>Department of Weird Stuff</h5>
           <h5>
@@ -24,12 +24,12 @@ const SubStoryRender = (props) => {
           </h5>
         </div>
       </div>
-      <div id="story-classified">
+      <div>
         <div>
           <h1>CLASSIFIED</h1>
         </div>
       </div>
-      <div id="substory-likes">
+      <div>
         <h4>
           likes:
           { ' ' }
@@ -61,7 +61,7 @@ const SubStoryRender = (props) => {
         <h3 className="underlined">TIMELINE OF EVENTS:</h3>
         {subStory.substory}
       </div>
-      <div id="secret-footer">
+      <div>
         <h5 className="top-secret">TOP SECRET</h5>
       </div>
     </div>
