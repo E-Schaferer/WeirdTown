@@ -19,58 +19,48 @@ const SubStory = (props) => {
   } = props;
   return (
     <div>
-      <div id="substory-list-flex">
-        {subStoryList
-          ? (
-            <div className="white-text" id="substory-list">
-              { subNum === 1
-                ? <p id="one-addendum">There is 1 addendum file associated with this file</p>
-                : (
-                  <p id="multiple-addendums">
-                    There are
-                    { ' ' }
-                    { subNum }
-                    { ' ' }
-                    addendum files associated with this file
-                  </p>
-                ) }
-            </div>
-          ) : <div /> }
-      </div>
-      <div id="substory-list-button-flex">
-        {subStoryListButtonFlex
-          ? (
-            <div id="substory-list-button-flex-zone">
-              <ShowSubStories />
-            </div>
-          ) : <div />}
-      </div>
-      <div>
-        <div>
-          {subStoryListZone
-            ? (
-              <div id="substory-list-zone">
-                <ol id="substory-list-zone-list">
-                  <SubStoryList
-                    handleError={handleError}
-                    handleUserError={handleUserError}
-                  />
-                </ol>
-              </div>
-            ) : null}
-        </div>
-      </div>
-      <div id="substory-story-button-flex">
-        {subStoryButton
-          ? (
-            <div id="sub-story-button">
-              <ShowSubForm />
-            </div>
-          ) : <div />}
-      </div>
+      {subStoryList
+        ? (
+          <div className="white-text">
+            {subNum === 1
+              ? <p>There is 1 addendum file associated with this file</p>
+              : (
+                <p>
+                  There are
+                  { ' '}
+                  {subNum}
+                  {' '}
+                  addendum files associated with this file
+                </p>
+              )}
+          </div>
+        ) : <div />}
+      {subStoryListButtonFlex
+        ? (
+          <div>
+            <ShowSubStories />
+          </div>
+        ) : <div />}
+      {subStoryListZone
+        ? (
+          <div>
+            <ol>
+              <SubStoryList
+                handleError={handleError}
+                handleUserError={handleUserError}
+              />
+            </ol>
+          </div>
+        ) : null}
+      {subStoryButton
+        ? (
+          <div>
+            <ShowSubForm />
+          </div>
+        ) : <div />}
       {subStoryForm
         ? (
-          <div id="sub-story-form">
+          <div>
             <SubStoryForm
               handleUserError={handleUserError}
             />

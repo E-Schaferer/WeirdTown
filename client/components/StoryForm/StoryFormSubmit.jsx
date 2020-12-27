@@ -5,9 +5,9 @@ import { useSelector } from 'react-redux';
 import { Button } from 'react-bootstrap';
 
 const StoryFormSubmit = (props) => {
+  const lat = useSelector((state) => state.lat);
+  const long = useSelector((state) => state.long);
   const storyFormSubmit = (name, loc, saw, heard, story) => {
-    const lat = useSelector((state) => state.lat);
-    const long = useSelector((state) => state.long);
     const promise = axios.post('/storySubmit', {
       story,
       name,
@@ -54,7 +54,6 @@ const StoryFormSubmit = (props) => {
     <Button
       className="clickable"
       onClick={onStorySubmit}
-      id="story-form-button"
     >
       Submit your story!
     </Button>

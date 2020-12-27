@@ -6,13 +6,14 @@ import SubStory from '../SubStory/SubStory';
 
 const PresentStory = (props) => {
   const { handleError, handleUserError } = props;
-
+  const dispatch = useDispatch();
+  const select = useSelector();
   // this function will query the database for substories related to the current story
   const showSub = () => {
-    const currentStory = useSelector((state) => state.currentStory.id);
+    const currentStory = select((state) => state.currentStory.id);
     Axios.get(`/subStoryGet?storyId=${currentStory.id}`)
       .then((result) => {
-        useDispatch({
+        dispatch({
           type: 'presentStory/showSub',
           payload: {
             subNum: result.data.length,
@@ -38,30 +39,26 @@ const PresentStory = (props) => {
   } = useSelector(((state) => state.currentStory), shallowEqual);
   return (
     <div>
-      <div id="story-zone">
-        <div id="story-header">
-          <div>
-            <h5>Department of Weird Stuff</h5>
-            <h5>
-              Case No°
-              {' '}
-              {10000 + storyId}
-            </h5>
-          </div>
+      <div>
+        <div>
+          <h5>Department of Weird Stuff</h5>
+          <h5>
+            Case No°
+            {' '}
+            {10000 + storyId}
+          </h5>
         </div>
-        <div id="story-classified">
-          <div>
-            <h1>CLASSIFIED</h1>
-          </div>
+        <div>
+          <h1>CLASSIFIED</h1>
         </div>
-        <div id="story-likes">
+        <div>
           <h4>
             likes:
             {' '}
             {likes}
           </h4>
         </div>
-        <div id="story-name">
+        <div>
           <h3 className="underlined">INCIDENT NAME:</h3>
           <p>{storyName}</p>
         </div>
@@ -84,21 +81,15 @@ const PresentStory = (props) => {
           <h3 className="underlined">TIMELINE OF EVENTS:</h3>
           <p>{story}</p>
         </div>
-        <div id="secret-footer">
+        <div>
           <h5 className="top-secret">TOP SECRET</h5>
         </div>
       </div>
       {subStoryPrompt
         ? (
-          <div id="substory-prompt">
-            <div id="substory-prompt-content">
-              <div className="substory-prompt-text white-text">
-                <p>Show related case files</p>
-              </div>
-              <div className="substory-prompt-button">
-                <button className="clickable" type="button" onClick={showSub}>Show Files</button>
-              </div>
-            </div>
+          <div>
+            <p>Show related case files</p>
+            <button className="clickable" type="button" onClick={showSub}>Show Files</button>
           </div>
         )
         : null}

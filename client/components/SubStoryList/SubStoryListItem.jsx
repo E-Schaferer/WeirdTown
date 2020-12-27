@@ -1,14 +1,14 @@
 import React from 'react';
 import Axios from 'axios';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 const SubStoryListItem = (props) => {
   const { handleError } = props;
   const subs = useSelector((state) => state.subs);
-
+  const dispatch = useDispatch();
   const handleListClick = (result) => {
-    useDispatch({
+    dispatch({
       type: 'subStoryList/handleListClick',
       payload: result.data[0],
     });

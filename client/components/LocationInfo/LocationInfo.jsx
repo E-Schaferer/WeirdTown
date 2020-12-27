@@ -8,12 +8,12 @@ class LocationInfo extends React.Component {
 
   render() {
     return (
-      <div id="location-info-zone">
-        <div id="location-name">
+      <div>
+        <div>
           <h2>Name:</h2>
           <p>lorem namum</p>
         </div>
-        <div id="location-address">
+        <div>
           <h2>Address:</h2>
           <p>lorem addressum</p>
         </div>

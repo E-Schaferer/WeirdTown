@@ -9,8 +9,8 @@ const AuthNav = () => {
   const { isAuthenticated } = useAuth0();
   return (
     <Nav className="justify-content-end">
-      {isAuthenticated ? <div id="logout-button-zone"><LogoutButton /></div>
-        : <div id="login-button-zone"><LoginButton /></div>}
+      {isAuthenticated ? <div><LogoutButton /></div>
+        : <div><LoginButton /></div>}
     </Nav>
   );
 };

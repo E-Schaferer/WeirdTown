@@ -4,7 +4,6 @@ import CityButtonPress from './CityButtonPress';
 
 const CitySelection = (props) => {
   const {
-    handleTextAreaChange,
     handleStartingCitySubmit,
     cityLocationInput,
   } = props;
@@ -12,7 +11,7 @@ const CitySelection = (props) => {
     <div>
       <label htmlFor="city-location">
         Where do you live?
-        <input name="city-location" id="cityLocationInput" onChange={handleTextAreaChange} />
+        <input name="city-location" />
         <CityButtonPress
           handleStartingCitySubmit={handleStartingCitySubmit}
           cityLocationInput={cityLocationInput}
@@ -22,12 +21,10 @@ const CitySelection = (props) => {
   );
 };
 CitySelection.propTypes = {
-  handleTextAreaChange: PropTypes.func,
   handleStartingCitySubmit: PropTypes.func,
   cityLocationInput: PropTypes.string,
 };
 CitySelection.defaultProps = {
-  handleTextAreaChange: undefined,
   handleStartingCitySubmit: undefined,
   cityLocationInput: undefined,
 };

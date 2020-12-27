@@ -11,21 +11,17 @@ const AbsentStory = (props) => {
   const storySubmissionPrompt = useSelector((state) => state.storySubmissionPrompt);
   const storyFormZone = useSelector((state) => state.storyFormZone);
   return (
-    <div id="absent-story-zone">
+    <div>
       {storySubmissionPrompt
         ? (
-          <div id="submission-prompt">
-            <div id="prompt-question">
-              <h2>No stories have been told about this place. Would you like to share one?</h2>
-            </div>
-            <div id="prompt-button">
-              <StoryButtonClick />
-            </div>
+          <div>
+            <h2>No stories have been told about this place. Would you like to share one?</h2>
+            <StoryButtonClick />
           </div>
         ) : <div />}
       {storyFormZone
         ? (
-          <div id="story-form-zone">
+          <div>
             <StoryForm
               handleUserError={handleUserError}
             />

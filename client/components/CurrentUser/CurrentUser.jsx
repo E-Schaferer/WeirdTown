@@ -33,7 +33,7 @@ const CurrentUser = (props) => {
   return (
     <div>
       { isAuthenticated ? (
-        <p id="welcome-user">
+        <p>
           Welcome,
           {' '}
           {user.name}

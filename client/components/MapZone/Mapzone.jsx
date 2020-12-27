@@ -17,6 +17,7 @@ class Mapzone extends React.Component {
     this.distributeMarkers = this.distributeMarkers.bind(this);
     this.markerClick = this.markerClick.bind(this);
     this.handleLegendGet = this.handleLegendGet.bind(this);
+    this.dispatch = useDispatch();
   }
 
   /*
@@ -78,7 +79,7 @@ class Mapzone extends React.Component {
     const { handleError } = this.props;
     let promise = Axios.get(`/locationInfo?lat=${location[0]}&lng=${location[1]}`);
     promise = promise.then((res) => {
-      useDispatch({
+      this.dispatch({
         type: 'mapzone/handleLegendGet',
         payload: res.data[0],
       });

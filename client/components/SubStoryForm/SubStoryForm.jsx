@@ -16,9 +16,9 @@ class SubStoryForm extends React.Component {
   }
 
   handleTextAreaChange(event) {
-    const { id, value } = event.target;
+    const { name, value } = event.target;
     this.setState({
-      [id]: value,
+      [name]: value,
     });
   }
 
@@ -35,11 +35,11 @@ class SubStoryForm extends React.Component {
       inputSubStory,
     } = this.state;
     return (
-      <div id="sub-story-form-zone">
-        <div id="substory-weird-header">
+      <div>
+        <div>
           <h5>Department of Weird Stuff</h5>
         </div>
-        <div id="substory-header">
+        <div>
           <h1>
             INCIDENT
             {' '}
@@ -48,37 +48,37 @@ class SubStoryForm extends React.Component {
             ADDENDUM FORM
           </h1>
         </div>
-        <div id="substory-name">
-          <label htmlFor="sub-name">
+        <div>
+          <label htmlFor="inputSubName">
             Give the incident a name
-            <textarea name="sub-name" rows="5" cols="75" type="text" id="inputSubName" onChange={this.handleTextAreaChange} />
+            <textarea name="inputSubName" rows="5" cols="75" type="text" onChange={this.handleTextAreaChange} />
           </label>
         </div>
-        <div id="substory-location">
-          <label htmlFor="sub-location">
+        <div>
+          <label htmlFor="inputSubLocation">
             Where did the incident take place?
-            <textarea name="sub-location" rows="5" cols="75" type="text" id="inputSubLocation" onChange={this.handleTextAreaChange} />
+            <textarea name="inputSubLocation" rows="5" cols="75" type="text" onChange={this.handleTextAreaChange} />
           </label>
         </div>
-        <div id="substory-saw">
-          <label htmlFor="sub-saw">
+        <div>
+          <label htmlFor="inputSubSaw">
             What did you see?
-            <textarea name="sub-saw" rows="5" cols="75" type="text" id="inputSubSaw" onChange={this.handleTextAreaChange} />
+            <textarea name="inputSubSaw" rows="5" cols="75" type="text" onChange={this.handleTextAreaChange} />
           </label>
         </div>
-        <div id="substory-heard">
-          <label htmlFor="sub-heard">
+        <div>
+          <label htmlFor="inputSubHeard">
             What did you hear?
-            <textarea name="sub-heard" rows="5" cols="75" type="text" id="inputSubHeard" onChange={this.handleTextAreaChange} />
+            <textarea name="inputSubHeard" rows="5" cols="75" type="text" onChange={this.handleTextAreaChange} />
           </label>
         </div>
-        <div id="substory-story">
-          <label htmlFor="sub-story">
+        <div>
+          <label htmlFor="inputSubStory">
             Describe the events that took place:
-            <textarea name="sub-story" rows="5" cols="75" type="text" id="inputSubStory" onChange={this.handleTextAreaChange} />
+            <textarea name="inputSubStory" rows="5" cols="75" type="text" onChange={this.handleTextAreaChange} />
           </label>
         </div>
-        <div id="substory-button">
+        <div>
           <SubStorySubmit
             handleError={handleError}
             inputSubName={inputSubName}
@@ -89,7 +89,7 @@ class SubStoryForm extends React.Component {
             handleUserError={handleUserError}
           />
         </div>
-        <div id="sub-footer">
+        <div>
           <h5 className="top-secret">TOP SECRET</h5>
         </div>
       </div>

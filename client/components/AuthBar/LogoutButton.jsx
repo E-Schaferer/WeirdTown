@@ -11,7 +11,6 @@ const LogoutButton = () => {
       })}
       variant="danger"
       className="btn-margin"
-      id="logout-button"
     >
       Log Out
     </Button>

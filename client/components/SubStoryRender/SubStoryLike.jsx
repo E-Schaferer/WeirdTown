@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 const SubStoryLike = (props) => {
   const { user, isAuthenticated } = useAuth0();
   const id = useSelector((state) => state.subStory.id);
-
+  const dispatch = useDispatch();
   const likeClick = () => {
     const {
       handleError,
@@ -20,7 +20,7 @@ const SubStoryLike = (props) => {
         user: user.email,
       })
         .then(() => {
-          useDispatch({
+          dispatch({
             type: 'subStoryLike/like',
             payload: 1,
           });

@@ -16,9 +16,10 @@ class StoryForm extends React.Component {
   }
 
   handleTextAreaChange(event) {
-    const { id, value } = event.target;
+    console.log('ping');
+    const { name, value } = event.target;
     this.setState({
-      [id]: value,
+      [name]: value,
     });
   }
 
@@ -35,44 +36,42 @@ class StoryForm extends React.Component {
       inputStory,
     } = this.state;
     return (
-      <div id="story-form">
-        <div id="input-weird-header">
+      <div>
+        <div>
           <h5>Department of Weird Stuff</h5>
-        </div>
-        <div id="input-header">
           <h1>WEIRD INCIDENT SUBMISSION FORM</h1>
         </div>
-        <div id="story-name-input">
+        <div>
           <label htmlFor="name">
             What do you call it?
-            <input name="name" id="inputName" onChange={this.handleTextAreaChange} type="text" />
+            <input name="inputName" onChange={this.handleTextAreaChange} type="text" />
           </label>
         </div>
         <div>
-          <label htmlFor="location">
+          <label htmlFor="inputLocation">
             Where did it happen?
-            <textarea name="location" rows="5" cols="75" id="inputLocation" onChange={this.handleTextAreaChange} type="text" />
+            <textarea name="inputLocation" rows="5" cols="75" onChange={this.handleTextAreaChange} type="text" />
           </label>
         </div>
-        <div id="story-saw">
-          <label htmlFor="saw">
+        <div>
+          <label htmlFor="inputSaw">
             What did you see?
-            <textarea name="saw" rows="5" cols="75" id="inputSaw" onChange={this.handleTextAreaChange} type="text" />
+            <textarea name="inputSaw" rows="5" cols="75" onChange={this.handleTextAreaChange} type="text" />
           </label>
         </div>
-        <div id="story-heard">
-          <label htmlFor="heard">
+        <div>
+          <label htmlFor="inputHeard">
             What did you hear?
-            <textarea name="heard" rows="5" cols="75" id="inputHeard" onChange={this.handleTextAreaChange} type="text" />
+            <textarea name="inputHeard" rows="5" cols="75" onChange={this.handleTextAreaChange} type="text" />
           </label>
         </div>
-        <div id="story-body">
-          <label id="story-body" htmlFor="body">
+        <div>
+          <label htmlFor="inputStory">
             Tell us your story
-            <textarea name="body" rows="5" cols="75" id="inputStory" onChange={this.handleTextAreaChange} type="text" />
+            <textarea name="inputStory" rows="5" cols="75" onChange={this.handleTextAreaChange} type="text" />
           </label>
         </div>
-        <div id="submit-zone">
+        <div>
           <StoryFormSubmit
             inputName={inputName}
             inputLocation={inputLocation}
@@ -83,7 +82,7 @@ class StoryForm extends React.Component {
             handleError={handleError}
           />
         </div>
-        <div id="secret-footer">
+        <div>
           <h5 className="top-secret">TOP SECRET</h5>
         </div>
       </div>
