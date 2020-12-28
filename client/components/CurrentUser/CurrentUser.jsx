@@ -1,7 +1,7 @@
-import { useAuth0 } from '@auth0/auth0-react';
 import React from 'react';
 import Axios from 'axios';
 import PropTypes from 'prop-types';
+import { useAuth0 } from '@auth0/auth0-react';
 
 export const authGet = (props, email) => {
   const { handleUserData, handleError } = props;
@@ -14,6 +14,7 @@ export const authGet = (props, email) => {
       handleError(['isAuthenticated', err]);
     });
 };
+
 authGet.propTypes = {
   handleUserData: PropTypes.func,
   handleError: PropTypes.func,
@@ -33,13 +34,12 @@ const CurrentUser = (props) => {
   return (
     <div>
       { isAuthenticated ? (
-        <p id="welcome-user">
+        <p>
           Welcome,
           {' '}
           {user.name}
         </p>
-      )
-        : <p>No current user</p>}
+      ) : <p>No current user</p>}
     </div>
   );
 };

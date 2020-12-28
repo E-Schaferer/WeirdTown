@@ -2,7 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Axios from 'axios';
 import L from 'leaflet';
-import { useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
+
+function mapDispatchToProps(dispatch) {
+  return {
+    legendGet: (res) => dispatch({ type: 'mapzone/handleLegendGet', payload: res.data[0] }),
+    handleLocationClick: (coords) => dispatch({ type: 'mapzone/handleLocationClick', payload: coords }),
+  };
+}
+
+function mapStateToProps(state) {
+  return {
+    lat: state.mapReducer.lat,
+    long: state.mapReducer.long,
+  };
+}
 
 class Mapzone extends React.Component {
   constructor(props) {
@@ -19,11 +33,6 @@ class Mapzone extends React.Component {
     this.handleLegendGet = this.handleLegendGet.bind(this);
   }
 
-  /*
-=====
-  - initialization
-=====
-  */
   componentDidMount() {
     const here = this;
     const { zoom } = this.state;
@@ -52,7 +61,7 @@ class Mapzone extends React.Component {
       })
       .catch((err) => {
         // needs alert
-        handleError(['mapzone did mount', err]);
+        handleError('mapzone did mount', err);
       });
   }
 
@@ -75,16 +84,13 @@ class Mapzone extends React.Component {
   }
 
   handleLegendGet(location) {
-    const { handleError } = this.props;
+    const { handleError, legendGet } = this.props;
     let promise = Axios.get(`/locationInfo?lat=${location[0]}&lng=${location[1]}`);
     promise = promise.then((res) => {
-      useDispatch({
-        type: 'mapzone/handleLegendGet',
-        payload: res.data[0],
-      });
+      legendGet(res);
     })
       .catch((err) => {
-      // needs alert
+        // needs alert
         handleError('handleLegendGet', err);
       });
     return promise;
@@ -127,12 +133,14 @@ Mapzone.propTypes = {
   handleError: PropTypes.func,
   lat: PropTypes.number,
   long: PropTypes.number,
+  legendGet: PropTypes.func,
 };
 Mapzone.defaultProps = {
   handleLocationClick: undefined,
   handleError: undefined,
   lat: undefined,
   long: undefined,
+  legendGet: undefined,
 };
 
-export default Mapzone;
+export default connect(mapStateToProps, mapDispatchToProps)(Mapzone);

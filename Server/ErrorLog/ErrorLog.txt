@@ -1,0 +1,5 @@
+function toUTCString() { [native code] }
+ undefined
+ undefined
+ END REPORT
+

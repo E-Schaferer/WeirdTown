@@ -1,6 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
 import StoryFormSubmit from './StoryFormSubmit';
+
+const mapStateToProps = (state) => ({
+  storyFormRender: state.renderReducer.storyFormRender,
+});
 
 class StoryForm extends React.Component {
   constructor(props) {
@@ -16,9 +22,9 @@ class StoryForm extends React.Component {
   }
 
   handleTextAreaChange(event) {
-    const { id, value } = event.target;
+    const { name, value } = event.target;
     this.setState({
-      [id]: value,
+      [name]: value,
     });
   }
 
@@ -26,6 +32,7 @@ class StoryForm extends React.Component {
     const {
       handleUserError,
       handleError,
+      storyFormRender,
     } = this.props;
     const {
       inputName,
@@ -35,57 +42,59 @@ class StoryForm extends React.Component {
       inputStory,
     } = this.state;
     return (
-      <div id="story-form">
-        <div id="input-weird-header">
-          <h5>Department of Weird Stuff</h5>
-        </div>
-        <div id="input-header">
-          <h1>WEIRD INCIDENT SUBMISSION FORM</h1>
-        </div>
-        <div id="story-name-input">
-          <label htmlFor="name">
-            What do you call it?
-            <input name="name" id="inputName" onChange={this.handleTextAreaChange} type="text" />
-          </label>
-        </div>
-        <div>
-          <label htmlFor="location">
-            Where did it happen?
-            <textarea name="location" rows="5" cols="75" id="inputLocation" onChange={this.handleTextAreaChange} type="text" />
-          </label>
-        </div>
-        <div id="story-saw">
-          <label htmlFor="saw">
-            What did you see?
-            <textarea name="saw" rows="5" cols="75" id="inputSaw" onChange={this.handleTextAreaChange} type="text" />
-          </label>
-        </div>
-        <div id="story-heard">
-          <label htmlFor="heard">
-            What did you hear?
-            <textarea name="heard" rows="5" cols="75" id="inputHeard" onChange={this.handleTextAreaChange} type="text" />
-          </label>
-        </div>
-        <div id="story-body">
-          <label id="story-body" htmlFor="body">
-            Tell us your story
-            <textarea name="body" rows="5" cols="75" id="inputStory" onChange={this.handleTextAreaChange} type="text" />
-          </label>
-        </div>
-        <div id="submit-zone">
-          <StoryFormSubmit
-            inputName={inputName}
-            inputLocation={inputLocation}
-            inputSaw={inputSaw}
-            inputHeard={inputHeard}
-            inputStory={inputStory}
-            handleUserError={handleUserError}
-            handleError={handleError}
-          />
-        </div>
-        <div id="secret-footer">
-          <h5 className="top-secret">TOP SECRET</h5>
-        </div>
+      <div>
+        {storyFormRender ? (
+          <div>
+            <div>
+              <h5>Department of Weird Stuff</h5>
+              <h1>WEIRD INCIDENT SUBMISSION FORM</h1>
+            </div>
+            <div>
+              <label htmlFor="name">
+                What do you call it?
+                <input name="inputName" onChange={this.handleTextAreaChange} type="text" />
+              </label>
+            </div>
+            <div>
+              <label htmlFor="inputLocation">
+                Where did it happen?
+                <textarea name="inputLocation" rows="5" cols="75" onChange={this.handleTextAreaChange} type="text" />
+              </label>
+            </div>
+            <div>
+              <label htmlFor="inputSaw">
+                What did you see?
+                <textarea name="inputSaw" rows="5" cols="75" onChange={this.handleTextAreaChange} type="text" />
+              </label>
+            </div>
+            <div>
+              <label htmlFor="inputHeard">
+                What did you hear?
+                <textarea name="inputHeard" rows="5" cols="75" onChange={this.handleTextAreaChange} type="text" />
+              </label>
+            </div>
+            <div>
+              <label htmlFor="inputStory">
+                Tell us your story
+                <textarea name="inputStory" rows="5" cols="75" onChange={this.handleTextAreaChange} type="text" />
+              </label>
+            </div>
+            <div>
+              <StoryFormSubmit
+                inputName={inputName}
+                inputLocation={inputLocation}
+                inputSaw={inputSaw}
+                inputHeard={inputHeard}
+                inputStory={inputStory}
+                handleUserError={handleUserError}
+                handleError={handleError}
+              />
+            </div>
+            <div>
+              <h5 className="top-secret">TOP SECRET</h5>
+            </div>
+          </div>
+        ) : null}
       </div>
     );
   }
@@ -94,10 +103,12 @@ class StoryForm extends React.Component {
 StoryForm.propTypes = {
   handleUserError: PropTypes.func,
   handleError: PropTypes.func,
+  storyFormRender: PropTypes.bool,
 };
 StoryForm.defaultProps = {
   handleUserError: undefined,
   handleError: undefined,
+  storyFormRender: false,
 };
 
-export default StoryForm;
+export default connect(mapStateToProps)(StoryForm);

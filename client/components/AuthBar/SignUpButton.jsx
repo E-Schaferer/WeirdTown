@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap';
 
 const SignupButton = () => {
   const { loginWithRedirect } = useAuth0();
+
   return (
     <Button
       onClick={() => loginWithRedirect({
@@ -11,7 +12,6 @@ const SignupButton = () => {
       })}
       variant="primary"
       className="btn-margin"
-      id="signup-button"
     >
       Sign Up
     </Button>

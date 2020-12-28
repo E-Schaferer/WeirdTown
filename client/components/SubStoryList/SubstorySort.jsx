@@ -3,10 +3,11 @@ import { DropdownButton, Dropdown, ButtonGroup } from 'react-bootstrap';
 import { useSelector, shallowEqual, useDispatch } from 'react-redux';
 
 const actionCreate = (type, payload) => ({ type, payload });
+// use this more and replace other handwritten actions
 
 const SubstorySort = () => {
   const dispatch = useDispatch();
-  const subs = useSelector(((state) => state.subs), shallowEqual);
+  const subs = useSelector(((state) => state.storyReducer.subs), shallowEqual);
   const output = subs.slice();
 
   const handleSort = (method) => {

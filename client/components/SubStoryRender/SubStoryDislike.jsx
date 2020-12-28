@@ -5,22 +5,19 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 
-const SubStoryDislike = (props) => {
+const SubStoryDislike = ({ handleError, handleUserError }) => {
   const { user, isAuthenticated } = useAuth0();
-  const id = useSelector((state) => state.subStory.id);
+  const id = useSelector((state) => state.storyReducer.subStory.id);
+  const dispatch = useDispatch();
 
   const dislikeClick = () => {
-    const {
-      handleError,
-      handleUserError,
-    } = props;
     if (isAuthenticated) {
       Axios.put('/subDislike', {
         id,
         userid: user.email,
       })
         .then(() => {
-          useDispatch({
+          dispatch({
             type: 'subStoryDislike/dislike',
             payload: 1,
           });
@@ -35,14 +32,10 @@ const SubStoryDislike = (props) => {
   };
 
   return (
-    <Button
-      onClick={dislikeClick}
-      id="dislike-click"
-    >
-      Dislike
-    </Button>
+    <Button onClick={dislikeClick}>Dislike</Button>
   );
 };
+
 SubStoryDislike.propTypes = {
   handleError: PropTypes.func,
   handleUserError: PropTypes.func,

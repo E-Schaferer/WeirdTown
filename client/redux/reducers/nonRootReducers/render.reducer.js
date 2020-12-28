@@ -1,17 +1,21 @@
 const initialState = {
-  absentStoryRender: false, // AbsentStory
-  storySubmissionPrompt: false, // submission-prompt
-  storyFormZone: false, // story-form-zone
-  presentStoryRender: false, // PresentStory
-  subStoryPrompt: false, // substory-prompt
-  subStory: false, // substory
-  subStoryList: false, // substory-list
-  subStoryListButtonFlex: false, // substory-list-button-flex-zone
-  subStoryListZone: false, // substory-list-zone
-  subStoryButton: false, // sub-story-button
-  subStoryForm: false, // sub-story-form
-  subStorySubList: false, // substory-sub-list
-  subStoryRenderZone: false, // substory-render-zone
+  // present story state
+  presentStoryRender: false, // presentStory
+  subStoryPrime: false, // substory
+  showSubStoriesButton: false, // showsubstories
+  subStoryListParent: false, // substorylist
+  subStoryRenderParent: false, // substorylist
+  subStoryFormButton: false, // showsubform
+  subStoryFormRender: false, // substoryform
+
+  // absent story state
+  absentStoryPrime: false, // absentstory
+  storyFormButton: false, // storybuttonclick
+  storyFormRender: false, // storyform
+
+  // other state
+  cityLocationInputRender: true, // citySelection
+  mapZoneRender: false, // mapzone
   errorZone: false,
   errorMsg: '',
 };
@@ -19,71 +23,71 @@ const initialState = {
 const renderReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
-    case 'presentStory/showSub':
+    case 'showSubStories/showSub':
       return {
         ...state,
-        subStory: true,
-        subStoryList: true,
-        subStoryListButtonFlex: true,
-        subStoryButton: true,
-        subStoryPrompt: false,
-      };
-    case 'showSubStories/onShowSubStories':
-      return {
-        ...state,
-        subStoryListZone: true,
-        subStorySubList: true,
-        subStoryList: false,
-        subStoryListButtonFlex: false,
-        subStoryRenderZone: false,
+        showSubStoriesButton: false,
+        subStoryListParent: true,
+        subStoryFormButton: true,
       };
     case 'showSubForm/onShowSubForm':
       return {
         ...state,
-        subStoryForm: true,
-        subStoryButton: false,
+        subStoryFormButton: false,
+        subStoryListParent: false,
+        subStoryFormRender: true,
       };
-    case 'subStoryList/onSubStoryListItemClick':
+    case 'subStoryListItem/handleListClick':
       return {
         ...state,
-        subStoryRenderZone: true,
-        subStorySubList: false,
+        subStoryRenderParent: true,
+        subStoryListParent: false,
       };
     case 'goBack/onGoBack':
       return {
         ...state,
-        subStorySubList: true,
-        subStoryRenderZone: false,
+        subStoryRenderParent: false,
+        subStoryListParent: true,
       };
     case 'mapzone/handleLocationClick':
       return {
         ...state,
-        storySubmissionPrompt: true,
-        absentStoryRender: true,
-        storyFormZone: false,
+        absentStoryPrime: true,
+        storyFormButton: true,
+        storyFormRender: false,
         presentStoryRender: false,
-        subStoryList: false,
-        subStoryListButtonFlex: false,
+        subStoryPrime: false,
+        showSubStoriesButton: false,
+        subStoryListParent: false,
+        subStoryRenderParent: false,
+        subStoryFormButton: false,
+        subStoryFormRender: false,
       };
     case 'mapzone/handleLegendGet':
       return {
         ...state,
-        currentStory: 'FILL IN', // res.data[0],
+        absentStoryPrime: false,
+        storyFormButton: false,
+        storyFormRender: false,
         presentStoryRender: true,
-        subStoryPrompt: true,
-        absentStoryRender: false,
-        subStory: false,
-        subStoryForm: false,
-        subStoryList: false,
-        subStoryListZone: false,
-        subStoryListButtonFlex: false,
-        storyFormZone: false,
+        subStoryPrime: true,
+        showSubStoriesButton: true,
+        subStoryListParent: false,
+        subStoryRenderParent: false,
+        subStoryFormButton: false,
+        subStoryFormRender: false,
       };
     case 'StoryButtonClick/storyFormRender':
       return {
         ...state,
-        storyFormZone: true,
-        storySubmissionPrompt: false,
+        storyFormButton: false,
+        storyFormRender: true,
+      };
+    case 'cityButtonPress/handleStartingCitySubmit':
+      return {
+        ...state,
+        mapZoneRender: true,
+        cityLocationInputRender: false,
       };
     case 'TBA/showError':
       return {

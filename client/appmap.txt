@@ -6,7 +6,7 @@ Map:
 =index
   =Router (no file)
     =Auth0ProviderWithHistory
-      =App (state)
+      =App
         =CitySelection
           >CityButtonPress
         =CurrentUser
@@ -14,16 +14,17 @@ Map:
           >LoginButton
           >LogoutButton
           >SignUpButton
-        =Mapzone (state)
+        =MapzoneWrapper
+          =Mapzone
         =AbsentStory
           >StoryButtonClick
           =StoryForm
             >StoryFormSubmit
-        =PresentStory (state)
+        =PresentStory
           =SubStory
             >ShowSubForm
             >ShowSubStories
-            =SubStoryList (state)
+            =SubStoryList
               >GoBack
               >SubStoryListItem
               >SubStorySort

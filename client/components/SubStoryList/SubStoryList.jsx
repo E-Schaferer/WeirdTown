@@ -1,47 +1,53 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
+
 import SubStoryRender from '../SubStoryRender/SubStoryRender';
 import GoBack from './GoBack';
 import SubStoryListItem from './SubStoryListItem';
 import SubstorySort from './SubstorySort';
 
-const SubStoryList = (props) => {
-  const subStorySubList = useSelector((state) => state.subStorySubList);
-  const currentStory = useSelector((state) => state.currentStory);
-  const subStoryRenderZone = useSelector((state) => state.subStoryRenderZone);
-  const { handleError, handleUserError } = props;
+const SubStoryList = ({ handleError, handleUserError }) => {
+  const subStoryListParent = useSelector((state) => state.renderReducer.subStoryListParent);
+  const subStoryRenderParent = useSelector((state) => state.renderReducer.subStoryRenderParent);
+  const currentStory = useSelector((state) => state.storyReducer.currentStory);
+  const subNum = useSelector((state) => state.storyReducer.subNum);
+
   return (
     <div>
-      {subStorySubList
+      {subStoryListParent
         ? (
-          <div id="substory-sub-list">
-            <div id="substory-weird-header">
-              <h5>Department of Weird Stuff</h5>
-            </div>
-            <div id="substory-list-main-header">
-              <h1>
-                Files associated with file No°
-                {' '}
-                {currentStory.storyid}
-                :
-              </h1>
-            </div>
-            <div id="substory-sort">
-              <SubstorySort />
-            </div>
-            <div id="substory-list-item-render">
-              <SubStoryListItem />
-            </div>
+          <div>
+            {subNum > 0 ? (
+              <div>
+                <div>
+                  <h5>Department of Weird Stuff</h5>
+                </div>
+                <div>
+                  <h1>
+                    Files associated with file No°
+                    {' '}
+                    {currentStory.storyid}
+                    :
+                  </h1>
+                </div>
+                <div>
+                  <SubstorySort />
+                </div>
+                <div>
+                  <SubStoryListItem />
+                </div>
+              </div>
+            ) : <p>Sorry, there are no files associated with this one!</p>}
           </div>
         ) : null}
-      {subStoryRenderZone
+      {subStoryRenderParent
         ? (
-          <div id="substory-render-zone">
+          <div>
             <div>
               <GoBack />
             </div>
-            <div id="substory-render-actual">
+            <div>
               <SubStoryRender
                 handleError={handleError}
                 handleUserError={handleUserError}
@@ -52,6 +58,7 @@ const SubStoryList = (props) => {
     </div>
   );
 };
+
 SubStoryList.propTypes = {
   handleError: PropTypes.func,
   handleUserError: PropTypes.func,

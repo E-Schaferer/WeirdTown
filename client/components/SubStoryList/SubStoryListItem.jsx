@@ -1,15 +1,15 @@
 import React from 'react';
 import Axios from 'axios';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
-const SubStoryListItem = (props) => {
-  const { handleError } = props;
-  const subs = useSelector((state) => state.subs);
+const SubStoryListItem = ({ handleError }) => {
+  const subs = useSelector((state) => state.storyReducer.subs);
+  const dispatch = useDispatch();
 
   const handleListClick = (result) => {
-    useDispatch({
-      type: 'subStoryList/handleListClick',
+    dispatch({
+      type: 'subStoryListItem/handleListClick',
       payload: result.data[0],
     });
   };
@@ -24,6 +24,7 @@ const SubStoryListItem = (props) => {
       });
   };
 
+  // clean this subList up
   const subList = subs.map((sub) => <li id={`sub-item-${sub.id}`} name={sub.id} key={sub.id} role="presentation" className="clickable clickable-highlight" onClick={onClick}>{sub.subname}</li>);
   return (
     <div>
@@ -33,6 +34,7 @@ const SubStoryListItem = (props) => {
     </div>
   );
 };
+
 SubStoryListItem.propTypes = {
   handleError: PropTypes.func,
 };

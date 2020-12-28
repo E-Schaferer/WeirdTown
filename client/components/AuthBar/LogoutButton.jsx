@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap';
 
 const LogoutButton = () => {
   const { logout } = useAuth0();
+
   return (
     <Button
       onClick={() => logout({
@@ -11,7 +12,6 @@ const LogoutButton = () => {
       })}
       variant="danger"
       className="btn-margin"
-      id="logout-button"
     >
       Log Out
     </Button>

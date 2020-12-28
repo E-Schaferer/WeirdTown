@@ -1,35 +1,53 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
+import { connect } from 'react-redux';
+
 import CityButtonPress from './CityButtonPress';
 
-const CitySelection = (props) => {
-  const {
-    handleTextAreaChange,
-    handleStartingCitySubmit,
-    cityLocationInput,
-  } = props;
-  return (
-    <div>
-      <label htmlFor="city-location">
-        Where do you live?
-        <input name="city-location" id="cityLocationInput" onChange={handleTextAreaChange} />
-        <CityButtonPress
-          handleStartingCitySubmit={handleStartingCitySubmit}
-          cityLocationInput={cityLocationInput}
-        />
-      </label>
-    </div>
-  );
-};
+const mapStateToProps = (state) => ({
+  cityLocationInputRender: state.renderReducer.cityLocationInputRender,
+});
+
+class CitySelection extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      cityLocationInput: '',
+    };
+    this.handleTextAreaChange = this.handleTextAreaChange.bind(this);
+  }
+
+  handleTextAreaChange(event) {
+    const { value } = event.target;
+    this.setState({
+      cityLocationInput: value,
+    });
+  }
+
+  render() {
+    const { cityLocationInput } = this.state;
+    const { cityLocationInputRender } = this.props;
+    return (
+      <div>
+        {cityLocationInputRender ? (
+          <label htmlFor="cityLocationInput">
+            Where do you live?
+            <input name="cityLocationInput" onChange={this.handleTextAreaChange} />
+            <CityButtonPress
+              cityLocationInput={cityLocationInput}
+            />
+          </label>
+        ) : null}
+      </div>
+    );
+  }
+}
+
 CitySelection.propTypes = {
-  handleTextAreaChange: PropTypes.func,
-  handleStartingCitySubmit: PropTypes.func,
-  cityLocationInput: PropTypes.string,
+  cityLocationInputRender: propTypes.bool,
 };
 CitySelection.defaultProps = {
-  handleTextAreaChange: undefined,
-  handleStartingCitySubmit: undefined,
-  cityLocationInput: undefined,
+  cityLocationInputRender: false,
 };
 
-export default CitySelection;
+export default connect(mapStateToProps)(CitySelection);

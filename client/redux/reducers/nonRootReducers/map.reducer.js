@@ -15,14 +15,14 @@ const mapReducer = (state = initialState, action) => {
     case 'cityButtonPress/handleStartingCitySubmit':
       return {
         ...state,
-        lat: 'something', // data[0],
-        long: 'something', // data[1],
+        lat: payload.lat,
+        long: payload.long,
         citySelected: true,
       };
     case 'mapzone/handleLocationClick':
       return {
         ...state,
-        lastMarker: 'thing',
+        lastMarker: payload,
       };
     default:
       return state;
