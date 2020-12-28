@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+
 import StoryFormSubmit from './StoryFormSubmit';
 
 const mapStateToProps = (state) => ({
@@ -21,7 +22,6 @@ class StoryForm extends React.Component {
   }
 
   handleTextAreaChange(event) {
-    console.log('ping');
     const { name, value } = event.target;
     this.setState({
       [name]: value,
@@ -94,7 +94,7 @@ class StoryForm extends React.Component {
               <h5 className="top-secret">TOP SECRET</h5>
             </div>
           </div>
-        ) : (<div />)}
+        ) : null}
       </div>
     );
   }

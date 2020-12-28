@@ -1,40 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
+
 import SubStoryForm from '../SubStoryForm/SubStoryForm';
 import SubStoryList from '../SubStoryList/SubStoryList';
 import ShowSubForm from './ShowSubForm';
 import ShowSubStories from './ShowSubStories';
 
-const SubStory = (props) => {
-  // const subStoryList = useSelector((state) => state.subStoryList);
-  const subNum = useSelector((state) => state.storyReducer.subNum);
-  // const subStoryButton = useSelector((state) => state.subStoryButton);
-  // const subStoryForm = useSelector((state) => state.subStoryForm);
-  // const subStoryPrompt = useSelector((state) => state.subStoryPrompt);
+const SubStory = ({ handleError, handleUserError }) => {
   const subStoryPrime = useSelector((state) => state.renderReducer.subStoryPrime);
-  const {
-    handleError,
-    handleUserError,
-  } = props;
+
   return (
     <div>
       {subStoryPrime ? (
         <div>
-          <div className="white-text">
-            {subNum === 1
-              ? <p>There is 1 addendum file associated with this file</p>
-              : (
-                <p>
-                  There are
-                  { ' '}
-                  {subNum}
-                  {' '}
-                  addendum files associated with this file
-                </p>
-              )}
-          </div>
-          <ShowSubStories />
+          <ShowSubStories
+            handleError={handleError}
+          />
           <div>
             <ol>
               <SubStoryList
@@ -48,10 +30,11 @@ const SubStory = (props) => {
             handleUserError={handleUserError}
           />
         </div>
-      ) : (<div />)}
+      ) : null}
     </div>
   );
 };
+
 SubStory.propTypes = {
   handleError: PropTypes.func,
   handleUserError: PropTypes.func,

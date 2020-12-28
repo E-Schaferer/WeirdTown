@@ -4,11 +4,10 @@ import Axios from 'axios';
 import L from 'leaflet';
 import { connect } from 'react-redux';
 
-// handleLocationClick
-
 function mapDispatchToProps(dispatch) {
   return {
     legendGet: (res) => dispatch({ type: 'mapzone/handleLegendGet', payload: res.data[0] }),
+    handleLocationClick: (coords) => dispatch({ type: 'mapzone/handleLocationClick', payload: coords }),
   };
 }
 
@@ -38,10 +37,8 @@ class Mapzone extends React.Component {
     const here = this;
     const { zoom } = this.state;
     const { handleError, lat, long } = this.props;
-    console.log(lat, long);
     Axios.get('/allStories')
       .then((result) => {
-        console.log(result);
         for (let i = 0; i < result.data.length; i += 1) {
           here.state.coords.push([result.data[i].latitude, result.data[i].longitude]);
         }

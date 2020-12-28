@@ -1,12 +1,21 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
 import Axios from 'axios';
 import PropTypes from 'prop-types';
+import { Button } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 
 const SubStorySubmit = (props) => {
+  const {
+    inputSubName,
+    inputSubLocation,
+    inputSubSaw,
+    inputSubHeard,
+    inputSubStory,
+    handleError,
+    handleUserError,
+  } = props;
   const currentStoryId = useSelector((state) => state.storyReducer.currentStory.id);
-  console.log(currentStoryId);
+
   const subStoryFormSubmit = (name, loc, heard, saw, story) => {
     const promise = Axios.post('/subStorySubmit', {
       id: currentStoryId,
@@ -21,19 +30,12 @@ const SubStorySubmit = (props) => {
       window.location.reload(true);
     });
     const catcher = promise.catch((err) => {
-      props.handleError(['subStoryFormSubmit', err]);
+      handleError(['subStoryFormSubmit', err]);
     });
     return result || catcher;
   };
+
   const subSubmitClick = () => {
-    const {
-      inputSubName,
-      inputSubLocation,
-      inputSubSaw,
-      inputSubHeard,
-      inputSubStory,
-      handleUserError,
-    } = props;
     if (
       inputSubName === ''
       || inputSubLocation === ''
@@ -47,6 +49,7 @@ const SubStorySubmit = (props) => {
       subStoryFormSubmit(inputSubName, inputSubLocation, inputSubHeard, inputSubSaw, inputSubStory);
     }
   };
+
   return (
     <Button
       onClick={subSubmitClick}
@@ -56,6 +59,7 @@ const SubStorySubmit = (props) => {
     </Button>
   );
 };
+
 SubStorySubmit.propTypes = {
   inputSubName: PropTypes.string,
   inputSubLocation: PropTypes.string,

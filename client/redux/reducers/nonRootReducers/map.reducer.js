@@ -22,7 +22,7 @@ const mapReducer = (state = initialState, action) => {
     case 'mapzone/handleLocationClick':
       return {
         ...state,
-        lastMarker: 'thing',
+        lastMarker: payload,
       };
     default:
       return state;

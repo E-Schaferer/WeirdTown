@@ -1,11 +1,14 @@
 const initialState = {
   currentStory: {
-    storyId: 'REDACTED', // look into this, seems to actually be id?
+    id: 'REDACTED', // look into this, seems to actually be id?
+    latitude: 'REDACTED',
+    likes: 'REDACTED',
+    longitude: 'REDACTED',
     story: 'REDACTED',
-    storyLocation: 'REDACTED',
-    storyName: 'REDACTED',
-    thingsSeen: 'REDACTED',
-    thingsHeard: 'REDACTED',
+    storylocation: 'REDACTED',
+    storyname: 'REDACTED',
+    thingsseen: 'REDACTED',
+    thingsheard: 'REDACTED',
   },
   subNum: 0,
   subs: [],
@@ -24,7 +27,7 @@ const initialState = {
 const storyReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
-    case ('presentStory/showSub'):
+    case ('showSubStories/showSub'):
       return {
         ...state,
         subNum: payload.subNum,
@@ -35,12 +38,12 @@ const storyReducer = (state = initialState, action) => {
         ...state,
         currentStory: payload,
       };
-    case ('subStoryList/handleListClick'):
+    case ('subStoryListItem/handleListClick'):
       return {
         ...state,
         subStory: payload,
       };
-    case ('subStorySort/sort'):
+    case ('SubstorySort/sort'):
       return {
         ...state,
         subs: payload,

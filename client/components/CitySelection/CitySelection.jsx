@@ -1,6 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import propTypes from 'prop-types';
+import { connect } from 'react-redux';
+
 import CityButtonPress from './CityButtonPress';
 
 const mapStateToProps = (state) => ({
@@ -24,9 +25,7 @@ class CitySelection extends React.Component {
   }
 
   render() {
-    const {
-      cityLocationInput,
-    } = this.state;
+    const { cityLocationInput } = this.state;
     const { cityLocationInputRender } = this.props;
     return (
       <div>
@@ -38,7 +37,7 @@ class CitySelection extends React.Component {
               cityLocationInput={cityLocationInput}
             />
           </label>
-        ) : (<div />)}
+        ) : null}
       </div>
     );
   }

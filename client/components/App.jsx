@@ -1,7 +1,7 @@
 /* eslint-disable class-methods-use-this */
 import React from 'react';
 import Axios from 'axios';
-import { connect } from 'react-redux';
+
 import AbsentStory from './AbsentStory/AbsentStory';
 import PresentStory from './PresentStory/PresentStory';
 import CurrentUser from './CurrentUser/CurrentUser';
@@ -11,7 +11,6 @@ import CitySelection from './CitySelection/CitySelection';
 
 class App extends React.Component {
   static handleError(funcName, err) {
-    console.log(funcName, err);
     Axios.get(`/errorLog?funcname=${funcName}&err=${err}`);
     return 'result';
   }
@@ -27,7 +26,7 @@ class App extends React.Component {
   - error handling
 =====
   */
-  handleUserError(message) {
+  handleUserError() {
     // this.dispatch({
     //   type: '/ShowError',
     //   payload: message,
@@ -40,7 +39,7 @@ class App extends React.Component {
 =====
   */
 
-  handleUserData(data) {
+  handleUserData() {
     // need to actually do things with user data
     this.setState({});
   }
@@ -72,6 +71,7 @@ class App extends React.Component {
             />
             <div>
               <AbsentStory
+                handleError={App.handleError}
                 handleUserError={this.handleUserError}
               />
             </div>
@@ -89,9 +89,3 @@ class App extends React.Component {
 }
 
 export default App;
-
-/*
-citySelected
-presentStoryRender
-absentStoryRender
-*/

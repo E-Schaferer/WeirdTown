@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 
 const CityButtonPress = ({ cityLocationInput }) => {
   const dispatch = useDispatch();
+
   const handleButtonClick = () => {
     if (cityLocationInput === '') {
       alert('please enter a location');
@@ -25,10 +26,12 @@ const CityButtonPress = ({ cityLocationInput }) => {
         });
     }
   };
+
   return (
     <button type="button" onClick={handleButtonClick}>Submit</button>
   );
 };
+
 CityButtonPress.propTypes = {
   cityLocationInput: PropTypes.string,
 };

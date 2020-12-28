@@ -1,19 +1,5 @@
 const initialState = {
-  // absentStoryRender: false, // AbsentStory
-  // storySubmissionPrompt: false, // submission-prompt
-  // storyFormZone: false, // story-form-zone
-  // presentStoryRender: false, // PresentStory
-  // subStoryPrompt: false, // substory-prompt
-  // subStory: false, // substory
-  // subStoryList: false, // substory-list
-  // showSubStoriesButton: false, // substory-list-button-flex-zone :prev subStoryListButtonFlex
-  // subStoryListZone: false, // substory-list-zone
-  // subStoryButton: false, // sub-story-button
-  // subStoryForm: false, // sub-story-form
-  // subStorySubParent: false, // substory-sub-list
-  // subStoryRenderParent: false, // substory-render-zone
-  mapZoneRender: false, // mapzone
-  cityLocationInputRender: true, // citySelection
+  // present story state
   presentStoryRender: false, // presentStory
   subStoryPrime: false, // substory
   showSubStoriesButton: false, // showsubstories
@@ -21,8 +7,15 @@ const initialState = {
   subStoryRenderParent: false, // substorylist
   subStoryFormButton: false, // showsubform
   subStoryFormRender: false, // substoryform
+
+  // absent story state
+  absentStoryPrime: false, // absentstory
   storyFormButton: false, // storybuttonclick
   storyFormRender: false, // storyform
+
+  // other state
+  cityLocationInputRender: true, // citySelection
+  mapZoneRender: false, // mapzone
   errorZone: false,
   errorMsg: '',
 };
@@ -30,38 +23,65 @@ const initialState = {
 const renderReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
-    case 'presentStory/showSub':
+    case 'showSubStories/showSub':
       return {
         ...state,
-      };
-    case 'showSubStories/onShowSubStories':
-      return {
-        ...state,
+        showSubStoriesButton: false,
+        subStoryListParent: true,
+        subStoryFormButton: true,
       };
     case 'showSubForm/onShowSubForm':
       return {
         ...state,
+        subStoryFormButton: false,
+        subStoryListParent: false,
+        subStoryFormRender: true,
       };
-    case 'subStoryList/onSubStoryListItemClick':
+    case 'subStoryListItem/handleListClick':
       return {
         ...state,
+        subStoryRenderParent: true,
+        subStoryListParent: false,
       };
     case 'goBack/onGoBack':
       return {
         ...state,
+        subStoryRenderParent: false,
+        subStoryListParent: true,
       };
     case 'mapzone/handleLocationClick':
       return {
         ...state,
+        absentStoryPrime: true,
+        storyFormButton: true,
+        storyFormRender: false,
+        presentStoryRender: false,
+        subStoryPrime: false,
+        showSubStoriesButton: false,
+        subStoryListParent: false,
+        subStoryRenderParent: false,
+        subStoryFormButton: false,
+        subStoryFormRender: false,
       };
     case 'mapzone/handleLegendGet':
       return {
         ...state,
-        currentStory: 'FILL IN', // res.data[0],
+        absentStoryPrime: false,
+        storyFormButton: false,
+        storyFormRender: false,
+        presentStoryRender: true,
+        subStoryPrime: true,
+        showSubStoriesButton: true,
+        subStoryListParent: false,
+        subStoryRenderParent: false,
+        subStoryFormButton: false,
+        subStoryFormRender: false,
       };
     case 'StoryButtonClick/storyFormRender':
       return {
         ...state,
+        storyFormButton: false,
+        storyFormRender: true,
       };
     case 'cityButtonPress/handleStartingCitySubmit':
       return {

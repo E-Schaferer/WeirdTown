@@ -24,10 +24,12 @@ const Auth0ProviderWithHistory = ({ children }) => {
     </Auth0Provider>
   );
 };
+
 Auth0ProviderWithHistory.propTypes = {
   children: PropTypes.shape({}),
 };
 Auth0ProviderWithHistory.defaultProps = {
   children: null,
 };
+
 export default Auth0ProviderWithHistory;

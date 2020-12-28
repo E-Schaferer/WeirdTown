@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import SubStorySubmit from './SubStorySubmit';
 
-// formerly subStoryForm
-// subStoryFormRender
+import SubStorySubmit from './SubStorySubmit';
 
 const mapStateToProps = (state) => ({
   subStoryFormRender: state.renderReducer.subStoryFormRender,
@@ -105,11 +103,12 @@ class SubStoryForm extends React.Component {
             </div>
           </div>
         )
-          : (<div />)}
+          : (null)}
       </div>
     );
   }
 }
+
 SubStoryForm.propTypes = {
   handleError: PropTypes.func,
   handleUserError: PropTypes.func,

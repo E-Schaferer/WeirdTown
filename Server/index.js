@@ -1,9 +1,10 @@
 const path = require('path');
 const fs = require('fs');
 const Axios = require('axios');
+require('dotenv').config();
+
 const express = require('../node_modules/express');
 const db = require('../database/index.js');
-require('dotenv').config();
 
 const app = express();
 const port = 3777;
@@ -117,8 +118,10 @@ app.post('/storySubmit', (req, res) => {
   const queryStatement = 'INSERT INTO stories (latitude, longitude, storyname, storylocation, thingsseen, thingsheard, story, likes) VALUES (?, ?, ?, ?, ?, ?, ?, 0)';
   db.connection.query(queryStatement, queryArgs, (err) => {
     if (err) {
+      console.log(err);
       res.send(err);
     } else {
+      console.log('yaay!');
       res.sendStatus(200);
     }
   });

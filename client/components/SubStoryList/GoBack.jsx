@@ -4,11 +4,14 @@ import { useDispatch } from 'react-redux';
 
 const GoBack = () => {
   const dispatch = useDispatch();
+  const dispatcher = () => {
+    dispatch({ type: 'goBack/onGoBack' });
+  };
+
   return (
     <Button
-      onClick={dispatch({ type: 'goBack/onGoBack' })}
+      onClick={dispatcher}
       className="underlined clickable white-text"
-      id="substory-render-goback"
     >
       Return to the substory list
     </Button>

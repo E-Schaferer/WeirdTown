@@ -1,15 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
+
 import SubStoryLike from './SubStoryLike';
 import SubStoryDislike from './SubStoryDislike';
 
-const SubStoryRender = (props) => {
-  const {
-    handleError,
-    handleUserError,
-  } = props;
-  const subStory = useSelector((state) => state.storyRender.subStory);
+const SubStoryRender = ({ handleError, handleUserError }) => {
+  const subStory = useSelector((state) => state.storyReducer.subStory);
+
   return (
     <div>
       <div>

@@ -5,8 +5,17 @@ import { useSelector } from 'react-redux';
 import { Button } from 'react-bootstrap';
 
 const StoryFormSubmit = (props) => {
-  const lat = useSelector((state) => state.lat);
-  const long = useSelector((state) => state.long);
+  const {
+    inputName,
+    inputLocation,
+    inputSaw,
+    inputHeard,
+    inputStory,
+    handleError,
+    handleUserError,
+  } = props;
+  const coords = useSelector((state) => state.mapReducer.lastMarker);
+
   const storyFormSubmit = (name, loc, saw, heard, story) => {
     const promise = axios.post('/storySubmit', {
       story,
@@ -14,28 +23,20 @@ const StoryFormSubmit = (props) => {
       loc,
       saw,
       heard,
-      lat,
-      long,
+      lat: coords[0],
+      lng: coords[1],
     });
     const result = promise.then(() => {
       // needs alert
       window.location.reload(true);
     });
     const catcher = promise.catch((err) => {
-      props.handleError(['storyFormSubmit', err]);
+      handleError(['storyFormSubmit', err]);
     });
     return result || catcher;
   };
 
   const onStorySubmit = () => {
-    const {
-      inputName,
-      inputLocation,
-      inputSaw,
-      inputHeard,
-      inputStory,
-      handleUserError,
-    } = props;
     if (
       inputName === ''
       || inputLocation === ''
@@ -59,6 +60,7 @@ const StoryFormSubmit = (props) => {
     </Button>
   );
 };
+
 StoryFormSubmit.propTypes = {
   inputName: PropTypes.string,
   inputLocation: PropTypes.string,

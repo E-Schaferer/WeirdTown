@@ -2,15 +2,13 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 
-// formerly subStoryButton
-// subStoryFormButton
-
 const ShowSubForm = () => {
   const subStoryFormButton = useSelector((state) => state.renderReducer.subStoryFormButton);
   const dispatch = useDispatch();
   const dispatcher = () => {
     dispatch({ type: 'showSubForm/onShowSubForm' });
   };
+
   return (
     <div>
       {subStoryFormButton ? (
@@ -21,7 +19,7 @@ const ShowSubForm = () => {
           Write Your Own Sub-Story
         </Button>
       )
-        : (<div />)}
+        : null}
     </div>
   );
 };
