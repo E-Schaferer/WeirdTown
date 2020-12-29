@@ -30,8 +30,6 @@ class SubStoryForm extends React.Component {
 
   render() {
     const {
-      handleError,
-      handleUserError,
       subStoryFormRender,
     } = this.props;
     const {
@@ -89,13 +87,11 @@ class SubStoryForm extends React.Component {
             </div>
             <div>
               <SubStorySubmit
-                handleError={handleError}
                 inputSubName={inputSubName}
                 inputSubLocation={inputSubLocation}
                 inputSubSaw={inputSubSaw}
                 inputSubHeard={inputSubHeard}
                 inputSubStory={inputSubStory}
-                handleUserError={handleUserError}
               />
             </div>
             <div>
@@ -110,13 +106,9 @@ class SubStoryForm extends React.Component {
 }
 
 SubStoryForm.propTypes = {
-  handleError: PropTypes.func,
-  handleUserError: PropTypes.func,
   subStoryFormRender: PropTypes.bool,
 };
 SubStoryForm.defaultProps = {
-  handleError: undefined,
-  handleUserError: undefined,
   subStoryFormRender: false,
 };
 

@@ -1,11 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
 import SubStoryLike from './SubStoryLike';
 import SubStoryDislike from './SubStoryDislike';
 
-const SubStoryRender = ({ handleError, handleUserError }) => {
+const SubStoryRender = () => {
   const subStory = useSelector((state) => state.storyReducer.subStory);
 
   return (
@@ -33,14 +32,8 @@ const SubStoryRender = ({ handleError, handleUserError }) => {
           { ' ' }
           {subStory.sublikes}
         </h4>
-        <SubStoryLike
-          handleError={handleError}
-          handleUserError={handleUserError}
-        />
-        <SubStoryDislike
-          handleError={handleError}
-          handleUserError={handleUserError}
-        />
+        <SubStoryLike />
+        <SubStoryDislike />
       </div>
       <div>
         <h3 className="underlined">INCIDENT NAME:</h3>
@@ -64,16 +57,6 @@ const SubStoryRender = ({ handleError, handleUserError }) => {
       </div>
     </div>
   );
-};
-
-SubStoryRender.propTypes = {
-  handleError: PropTypes.func,
-  handleUserError: PropTypes.func,
-};
-
-SubStoryRender.defaultProps = {
-  handleError: undefined,
-  handleUserError: undefined,
 };
 
 export default SubStoryRender;

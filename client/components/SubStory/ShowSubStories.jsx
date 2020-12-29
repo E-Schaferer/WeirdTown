@@ -1,10 +1,9 @@
 import React from 'react';
 import Axios from 'axios';
-import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 
-const ShowSubStories = ({ handleError }) => {
+const ShowSubStories = () => {
   const showSubStoriesButton = useSelector((state) => state.renderReducer.showSubStoriesButton);
   const id = useSelector((state) => state.storyReducer.currentStory.id);
   const dispatch = useDispatch();
@@ -22,7 +21,10 @@ const ShowSubStories = ({ handleError }) => {
         });
       })
       .catch((err) => {
-        handleError('showSub', err);
+        dispatch({
+          type: 'ErrorModal/showError',
+          payload: err,
+        });
       });
   };
 
@@ -51,13 +53,6 @@ const ShowSubStories = ({ handleError }) => {
       </div> */}
     </div>
   );
-};
-
-ShowSubStories.propTypes = {
-  handleError: PropTypes.func,
-};
-ShowSubStories.defaultProps = {
-  handleError: undefined,
 };
 
 export default ShowSubStories;

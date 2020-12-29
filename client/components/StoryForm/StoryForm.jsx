@@ -30,8 +30,6 @@ class StoryForm extends React.Component {
 
   render() {
     const {
-      handleUserError,
-      handleError,
       storyFormRender,
     } = this.props;
     const {
@@ -86,8 +84,6 @@ class StoryForm extends React.Component {
                 inputSaw={inputSaw}
                 inputHeard={inputHeard}
                 inputStory={inputStory}
-                handleUserError={handleUserError}
-                handleError={handleError}
               />
             </div>
             <div>
@@ -101,13 +97,9 @@ class StoryForm extends React.Component {
 }
 
 StoryForm.propTypes = {
-  handleUserError: PropTypes.func,
-  handleError: PropTypes.func,
   storyFormRender: PropTypes.bool,
 };
 StoryForm.defaultProps = {
-  handleUserError: undefined,
-  handleError: undefined,
   storyFormRender: false,
 };
 

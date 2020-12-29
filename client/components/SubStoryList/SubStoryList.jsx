@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
 import SubStoryRender from '../SubStoryRender/SubStoryRender';
@@ -7,7 +6,7 @@ import GoBack from './GoBack';
 import SubStoryListItem from './SubStoryListItem';
 import SubstorySort from './SubstorySort';
 
-const SubStoryList = ({ handleError, handleUserError }) => {
+const SubStoryList = () => {
   const subStoryListParent = useSelector((state) => state.renderReducer.subStoryListParent);
   const subStoryRenderParent = useSelector((state) => state.renderReducer.subStoryRenderParent);
   const currentStory = useSelector((state) => state.storyReducer.currentStory);
@@ -48,24 +47,12 @@ const SubStoryList = ({ handleError, handleUserError }) => {
               <GoBack />
             </div>
             <div>
-              <SubStoryRender
-                handleError={handleError}
-                handleUserError={handleUserError}
-              />
+              <SubStoryRender />
             </div>
           </div>
         ) : null}
     </div>
   );
-};
-
-SubStoryList.propTypes = {
-  handleError: PropTypes.func,
-  handleUserError: PropTypes.func,
-};
-SubStoryList.defaultProps = {
-  handleError: undefined,
-  handleUserError: undefined,
 };
 
 export default SubStoryList;

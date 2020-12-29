@@ -1,6 +1,5 @@
 /* eslint-disable class-methods-use-this */
 import React from 'react';
-import Axios from 'axios';
 
 import AbsentStory from './AbsentStory/AbsentStory';
 import PresentStory from './PresentStory/PresentStory';
@@ -8,31 +7,9 @@ import CurrentUser from './CurrentUser/CurrentUser';
 import AuthBar from './AuthBar/AuthBar';
 import MapzoneWrapper from './MapZone/MapzoneWrapper';
 import CitySelection from './CitySelection/CitySelection';
+import ErrorModal from './ErrorModal/ErrorModal';
 
 class App extends React.Component {
-  static handleError(funcName, err) {
-    Axios.get(`/errorLog?funcname=${funcName}&err=${err}`);
-    return 'result';
-  }
-
-  constructor(props) {
-    super(props);
-    this.handleUserData = this.handleUserData.bind(this);
-    this.handleUserError = this.handleUserError.bind(this);
-  }
-
-  /*
-=====
-  - error handling
-=====
-  */
-  handleUserError() {
-    // this.dispatch({
-    //   type: '/ShowError',
-    //   payload: message,
-    // });
-  }
-
   /*
 =====
   - user data
@@ -53,7 +30,10 @@ class App extends React.Component {
     return (
       <div>
         <div>
-          <CurrentUser handleUserData={this.handleUserData} handleError={App.handleError} />
+          <ErrorModal />
+        </div>
+        <div>
+          <CurrentUser />
           <AuthBar />
         </div>
         <CitySelection />
@@ -66,20 +46,12 @@ class App extends React.Component {
             Normal Town
           </h1>
           <div>
-            <MapzoneWrapper
-              handleError={App.handleError}
-            />
+            <MapzoneWrapper />
             <div>
-              <AbsentStory
-                handleError={App.handleError}
-                handleUserError={this.handleUserError}
-              />
+              <AbsentStory />
             </div>
             <div className="flex-center">
-              <PresentStory
-                handleError={App.handleError}
-                handleUserError={this.handleUserError}
-              />
+              <PresentStory />
             </div>
           </div>
         </div>

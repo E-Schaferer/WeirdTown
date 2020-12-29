@@ -16,8 +16,8 @@ const initialState = {
   // other state
   cityLocationInputRender: true, // citySelection
   mapZoneRender: false, // mapzone
-  errorZone: false,
-  errorMsg: '',
+  errorRender: false,
+  errorMessage: '',
 };
 
 const renderReducer = (state = initialState, action) => {
@@ -89,17 +89,17 @@ const renderReducer = (state = initialState, action) => {
         mapZoneRender: true,
         cityLocationInputRender: false,
       };
-    case 'TBA/showError':
+    case 'ErrorModal/showError':
       return {
         ...state,
-        errorZone: true,
-        errorMsg: payload,
+        errorRender: true,
+        errorMessage: payload,
       };
-    case 'TBA/hideError':
+    case 'ErrorModal/hideError':
       return {
         ...state,
-        errorZone: false,
-        errorMsg: '',
+        errorRender: false,
+        errorMessage: '',
       };
     default:
       return state;

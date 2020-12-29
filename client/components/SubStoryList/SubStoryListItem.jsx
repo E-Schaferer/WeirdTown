@@ -1,9 +1,8 @@
 import React from 'react';
 import Axios from 'axios';
-import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 
-const SubStoryListItem = ({ handleError }) => {
+const SubStoryListItem = () => {
   const subs = useSelector((state) => state.storyReducer.subs);
   const dispatch = useDispatch();
 
@@ -20,7 +19,10 @@ const SubStoryListItem = ({ handleError }) => {
         handleListClick(result);
       })
       .catch((err) => {
-        handleError(err);
+        dispatch({
+          type: 'ErrorModal/showError',
+          payload: err,
+        });
       });
   };
 
@@ -33,13 +35,6 @@ const SubStoryListItem = ({ handleError }) => {
       </ol>
     </div>
   );
-};
-
-SubStoryListItem.propTypes = {
-  handleError: PropTypes.func,
-};
-SubStoryListItem.defaultProps = {
-  handleError: undefined,
 };
 
 export default SubStoryListItem;

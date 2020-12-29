@@ -1,10 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useSelector, shallowEqual } from 'react-redux';
 
 import SubStory from '../SubStory/SubStory';
 
-const PresentStory = ({ handleError, handleUserError }) => {
+const PresentStory = () => {
   const {
     id,
     likes,
@@ -67,24 +66,12 @@ const PresentStory = ({ handleError, handleUserError }) => {
             </div>
           </div>
           <div id="substory">
-            <SubStory
-              handleError={handleError}
-              handleUserError={handleUserError}
-            />
+            <SubStory />
           </div>
         </div>
       ) : null}
     </div>
   );
-};
-
-PresentStory.propTypes = {
-  handleError: PropTypes.func,
-  handleUserError: PropTypes.func,
-};
-PresentStory.defaultProps = {
-  handleError: undefined,
-  handleUserError: undefined,
 };
 
 export default PresentStory;
