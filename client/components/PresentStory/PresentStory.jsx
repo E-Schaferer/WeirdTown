@@ -19,8 +19,8 @@ const PresentStory = () => {
     <div>
       {presentStoryRender ? (
         <div>
-          <div>
-            <div>
+          <div className="content-background white">
+            <div className="flex centered column">
               <h5>Department of Weird Stuff</h5>
               <h5>
                 Case No°
@@ -28,7 +28,7 @@ const PresentStory = () => {
                 {10000 + id}
               </h5>
             </div>
-            <div>
+            <div className="flex centered column">
               <h1>CLASSIFIED</h1>
             </div>
             <div>
@@ -62,7 +62,7 @@ const PresentStory = () => {
               <p>{story}</p>
             </div>
             <div>
-              <h5 className="top-secret">TOP SECRET</h5>
+              <h5 className="flex centered column">TOP SECRET</h5>
             </div>
           </div>
           <div id="substory">

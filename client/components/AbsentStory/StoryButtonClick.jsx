@@ -7,7 +7,7 @@ import { storyFormRenderAction } from '../../redux/actions/actionCreators';
 const StoryButtonClick = () => {
   const dispatch = useDispatch();
   const dispatcher = () => {
-    dispatch(storyFormRenderAction);
+    dispatch(storyFormRenderAction());
   };
   const storyFormButton = useSelector((state) => state.renderReducer.storyFormButton);
 

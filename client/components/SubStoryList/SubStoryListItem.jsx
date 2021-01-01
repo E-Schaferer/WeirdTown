@@ -2,15 +2,20 @@ import React from 'react';
 import Axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 
+import { showErrorAction, substoryListClickAction } from '../../redux/actions/actionCreators';
+
 const SubStoryListItem = () => {
   const subs = useSelector((state) => state.storyReducer.subs);
   const dispatch = useDispatch();
+  const dispatcher = (result) => {
+    dispatch(substoryListClickAction(result));
+  };
+  const errDispatcher = (err) => {
+    dispatch(showErrorAction(err));
+  };
 
   const handleListClick = (result) => {
-    dispatch({
-      type: 'subStoryListItem/handleListClick',
-      payload: result.data[0],
-    });
+    dispatcher(result);
   };
 
   const onClick = (event) => {
@@ -19,10 +24,7 @@ const SubStoryListItem = () => {
         handleListClick(result);
       })
       .catch((err) => {
-        dispatch({
-          type: 'ErrorModal/showError',
-          payload: err,
-        });
+        errDispatcher(err);
       });
   };
 

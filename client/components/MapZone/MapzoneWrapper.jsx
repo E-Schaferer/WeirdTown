@@ -8,7 +8,9 @@ const MapzoneWrapper = () => {
   return (
     <div test-id="mapzone-wrapper">
       {mapZoneRender ? (
-        <Mapzone />
+        <div className="fade-in">
+          <Mapzone />
+        </div>
       ) : null}
     </div>
   );

@@ -3,28 +3,27 @@ import Axios from 'axios';
 import { Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { showErrorAction, showSubAction } from '../../redux/actions/actionCreators';
+
 const ShowSubStories = () => {
   const showSubStoriesButton = useSelector((state) => state.renderReducer.showSubStoriesButton);
   const id = useSelector((state) => state.storyReducer.currentStory.id);
   const dispatch = useDispatch();
+  const dispatcher = (result) => {
+    dispatch(showSubAction(result));
+  };
+  const errDispatcher = (err) => {
+    dispatch(showErrorAction(err));
+  };
 
   // this function will query the database for substories related to the current story
   const showSub = () => {
     Axios.get(`/subStoryGet?storyId=${id}`)
       .then((result) => {
-        dispatch({
-          type: 'showSubStories/showSub',
-          payload: {
-            subNum: result.data.length,
-            subs: result.data,
-          },
-        });
+        dispatcher(result);
       })
       .catch((err) => {
-        dispatch({
-          type: 'ErrorModal/showError',
-          payload: err,
-        });
+        errDispatcher(err);
       });
   };
 

@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 
+import { showErrorAction } from '../../redux/actions/actionCreators';
+
 const SubStorySubmit = (props) => {
   const {
     inputSubName,
@@ -14,6 +16,9 @@ const SubStorySubmit = (props) => {
   } = props;
   const currentStoryId = useSelector((state) => state.storyReducer.currentStory.id);
   const dispatch = useDispatch();
+  const errDispatcher = (err) => {
+    dispatch(showErrorAction(err));
+  };
 
   const subStoryFormSubmit = (name, loc, heard, saw, story) => {
     const promise = Axios.post('/subStorySubmit', {
@@ -29,10 +34,7 @@ const SubStorySubmit = (props) => {
       window.location.reload(true);
     });
     const catcher = promise.catch((err) => {
-      dispatch({
-        type: 'ErrorModal/showError',
-        payload: err,
-      });
+      errDispatcher(err);
     });
     return result || catcher;
   };
@@ -45,10 +47,7 @@ const SubStorySubmit = (props) => {
       || inputSubHeard === ''
       || inputSubStory === ''
     ) {
-      dispatch({
-        type: 'ErrorModal/showError',
-        payload: 'please fill out all fields',
-      });
+      errDispatcher('Please fill out all fields');
     } else {
       subStoryFormSubmit(inputSubName, inputSubLocation, inputSubHeard, inputSubSaw, inputSubStory);
     }

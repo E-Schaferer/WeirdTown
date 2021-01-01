@@ -1,20 +1,133 @@
 html {
   font-family: BaltimoreTypewriter;
-
-  background-color: #11131d;
-  color: white;
-}
-
-body {
-  font-family: BaltimoreTypewriter;
+  /* overscroll-behavior: none;  trying to get rid of the stupid chrome bounce effect while scrolling*/
 }
 
 input, label, textarea {
   display: block;
   padding: 5px;
 }
+
+body {
+  /* empty atm */
+}
+
+.background-image {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-image: url("ghost-town.png"), linear-gradient(rgba(33, 33, 33, 0.95), rgba(21, 21, 21, 1));
+  filter: grayscale(100%);
+  background-blend-mode: overlay;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  z-index: -1;
+}
+
+.content-background {
+  background-color: black;
+  background-origin: padding-box;
+  border-radius:  5px;
+  border: 1px solid white;
+  padding: 1em;
+}
+
+/* grid */
+.render-grid {
+  font-family: BaltimoreTypewriter;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 10em 35em 40em;
+}
+
+.grid-row1 {
+  grid-row: 1;
+}
+
+.grid-row2 {
+  grid-row: 2;
+}
+
+.grid-row3 {
+  grid-row: 3;
+}
+
+.grid-col2 {
+  grid-column: 2;
+}
+
+.grid-col3 {
+  grid-column: 3;
+}
+
+.grid-row2-col2 {
+  grid-row: 2;
+  grid-column: 2;
+}
+
+.grid-col1_4 {
+  grid-column: 1/4;
+}
+
+.background {
+  z-index: 1;
+}
+
+.foreground {
+  z-index: 2;
+}
+
+/* interactions */
+.clickable:hover {
+  cursor: pointer;
+  color: red;
+}
+
+/* positioning content */
+.flex {
+  display: flex;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.centered {
+  justify-content: center;
+  align-items: center;
+}
+
+/* style */
+.white {
+  color: white;
+}
+
+.shadow {
+  box-shadow: 5px 5px black;
+}
+
+/* animations */
+.fade-in {
+  animation-name: fade-in;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    margin-top: 10%;
+  }
+  to {
+    opacity: 1;
+    margin-top: 0%;
+  }
+}
+
+/* map zone */
 #map-render-zone {
-  height: 380px;
+  height: 40em;
   width: 95%;
   margin: 0 auto;
 }

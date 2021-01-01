@@ -2,11 +2,16 @@ import React from 'react';
 import { DropdownButton, Dropdown, ButtonGroup } from 'react-bootstrap';
 import { useSelector, shallowEqual, useDispatch } from 'react-redux';
 
-const actionCreate = (type, payload) => ({ type, payload });
+import { substorySortAction } from '../../redux/actions/actionCreators';
+
+// const actionCreate = (type, payload) => ({ type, payload });
 // use this more and replace other handwritten actions
 
 const SubstorySort = () => {
   const dispatch = useDispatch();
+  const dispatcher = (output) => {
+    dispatch(substorySortAction(output));
+  };
   const subs = useSelector(((state) => state.storyReducer.subs), shallowEqual);
   const output = subs.slice();
 
@@ -26,7 +31,7 @@ const SubstorySort = () => {
         break;
       default:
     }
-    dispatch(actionCreate('SubstorySort/sort', output));
+    dispatcher(output);
   };
 
   return (

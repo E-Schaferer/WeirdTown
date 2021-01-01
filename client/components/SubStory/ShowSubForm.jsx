@@ -2,11 +2,13 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { showSubFormAction } from '../../redux/actions/actionCreators';
+
 const ShowSubForm = () => {
   const subStoryFormButton = useSelector((state) => state.renderReducer.subStoryFormButton);
   const dispatch = useDispatch();
   const dispatcher = () => {
-    dispatch({ type: 'showSubForm/onShowSubForm' });
+    dispatch(showSubFormAction());
   };
 
   return (

@@ -4,11 +4,13 @@ import Axios from 'axios';
 import L from 'leaflet';
 import { connect } from 'react-redux';
 
+import { legendGetAction, locationClickAction, showErrorAction } from '../../redux/actions/actionCreators';
+
 function mapDispatchToProps(dispatch) {
   return {
-    legendGet: (res) => dispatch({ type: 'mapzone/handleLegendGet', payload: res.data[0] }),
-    handleLocationClick: (coords) => dispatch({ type: 'mapzone/handleLocationClick', payload: coords }),
-    error: (err) => dispatch({ type: 'ErrorModal/showError', payload: err }),
+    legendGet: (res) => dispatch(legendGetAction(res)),
+    handleLocationClick: (coords) => dispatch(locationClickAction(coords)),
+    error: (err) => dispatch(showErrorAction(err)),
   };
 }
 

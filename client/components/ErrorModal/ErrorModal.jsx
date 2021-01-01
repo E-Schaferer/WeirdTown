@@ -1,20 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useSelector, useDispatch } from 'react-redux';
 
-// import { closeErrorAction } from '../../redux/actions/actionCreators';
+import { closeErrorAction } from '../../redux/actions/actionCreators';
 
 const ErrorModal = () => {
   const modalRender = useSelector((state) => state.renderReducer.errorRender);
   const errorMessage = useSelector((state) => state.renderReducer.errorMessage);
   const dispatch = useDispatch();
-  const close = () => {
-    dispatch({
-      type: 'ErrorModal/hideError',
-      payload: '',
-    });
+  const dispatcher = () => {
+    dispatch(closeErrorAction());
   };
+  const close = () => {
+    dispatcher();
+  };
+
+  // const [show, setShow] = useState(false);
+
+  // const handleClose = () => setShow(false);
+  // const handleShow = () => setShow(true);
 
   return (
     <>
@@ -24,7 +29,7 @@ const ErrorModal = () => {
         </Modal.Header>
         <Modal.Body>{errorMessage}</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={close}>
+          <Button variant="primary" onClick={close}>
             Close
           </Button>
         </Modal.Footer>

@@ -59,6 +59,16 @@ const substorySortAction = (output) => ({
   payload: output,
 });
 
+const subLikeAction = () => ({
+  type: 'subStoryLike/like',
+  payload: 1,
+});
+
+const subDislikeAction = () => ({
+  type: 'subStoryDislike/dislike',
+  payload: 1,
+});
+
 module.exports = {
   closeErrorAction,
   showErrorAction,
@@ -71,4 +81,6 @@ module.exports = {
   goBackAction,
   substoryListClickAction,
   substorySortAction,
+  subLikeAction,
+  subDislikeAction,
 };

@@ -28,32 +28,28 @@ class App extends React.Component {
   */
   render() {
     return (
-      <div>
-        <div>
+      <div className="render-grid">
+        <div id="error-modal">
           <ErrorModal />
         </div>
-        <div>
+        <div id="authentication" className="grid-row1 grid-col3 flex column centered content-background white">
           <CurrentUser />
           <AuthBar />
         </div>
-        <CitySelection />
-        <div>
-          <h1>
-            My
-            {' '}
-            <span className="redacted">Weird</span>
-            {' '}
-            Normal Town
-          </h1>
-          <div>
-            <MapzoneWrapper />
-            <div>
-              <AbsentStory />
-            </div>
-            <div className="flex-center">
-              <PresentStory />
-            </div>
-          </div>
+        <div id="city-input" className="grid-row2 grid-col2 flex centered fade-in">
+          <CitySelection />
+        </div>
+        <div id="site-name" className="grid-row1 grid-col2 flex white centered">
+          <h1 className="content-background">Weird Town</h1>
+        </div>
+        <map id="map-zone" className="grid-row2 grid-col1_4">
+          <MapzoneWrapper />
+        </map>
+        <div id="absent-story" className="grid-row3 grid-col1_4">
+          <AbsentStory />
+        </div>
+        <div id="present-story" className="grid-row3 grid-col1_4">
+          <PresentStory />
         </div>
       </div>
     );

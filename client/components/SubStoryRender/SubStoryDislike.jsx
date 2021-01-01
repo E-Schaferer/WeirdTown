@@ -4,10 +4,18 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { showErrorAction, subDislikeAction } from '../../redux/actions/actionCreators';
+
 const SubStoryDislike = () => {
   const { user, isAuthenticated } = useAuth0();
   const id = useSelector((state) => state.storyReducer.subStory.id);
   const dispatch = useDispatch();
+  const dispatcher = () => {
+    dispatch(subDislikeAction());
+  };
+  const errDispatcher = (err) => {
+    dispatch(showErrorAction(err));
+  };
 
   const dislikeClick = () => {
     if (isAuthenticated) {
@@ -16,22 +24,13 @@ const SubStoryDislike = () => {
         userid: user.email,
       })
         .then(() => {
-          dispatch({
-            type: 'subStoryDislike/dislike',
-            payload: 1,
-          });
+          dispatcher();
         })
         .catch((err) => {
-          dispatch({
-            type: 'ErrorModal/showError',
-            payload: err,
-          });
+          errDispatcher(err);
         });
     } else {
-      dispatch({
-        type: 'ErrorModal/showError',
-        payload: 'Please sign in first.',
-      });
+      errDispatcher('please sign in first');
     }
   };
 

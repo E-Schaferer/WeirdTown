@@ -16,17 +16,15 @@ const SubStoryList = () => {
     <div>
       {subStoryListParent
         ? (
-          <div>
+          <div className="content-background white">
             {subNum > 0 ? (
               <div>
-                <div>
+                <div className="flex centered column">
                   <h5>Department of Weird Stuff</h5>
-                </div>
-                <div>
                   <h1>
                     Files associated with file No°
                     {' '}
-                    {currentStory.storyid}
+                    {currentStory.id}
                     :
                   </h1>
                 </div>

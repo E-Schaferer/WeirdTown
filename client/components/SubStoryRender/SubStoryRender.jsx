@@ -8,9 +8,9 @@ const SubStoryRender = () => {
   const subStory = useSelector((state) => state.storyReducer.subStory);
 
   return (
-    <div>
+    <div className="content-background white">
       <div>
-        <div>
+        <div className="flex centered column">
           <h5>Department of Weird Stuff</h5>
           <h5>
             Case No°
@@ -21,10 +21,8 @@ const SubStoryRender = () => {
           </h5>
         </div>
       </div>
-      <div>
-        <div>
-          <h1>CLASSIFIED</h1>
-        </div>
+      <div className="flex centered column">
+        <h1>CLASSIFIED</h1>
       </div>
       <div>
         <h4>
@@ -53,7 +51,7 @@ const SubStoryRender = () => {
         {subStory.substory}
       </div>
       <div>
-        <h5 className="top-secret">TOP SECRET</h5>
+        <h5 className="flex centered">TOP SECRET</h5>
       </div>
     </div>
   );
