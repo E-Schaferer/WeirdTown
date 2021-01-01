@@ -2,10 +2,12 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'react-bootstrap';
 
+import { storyFormRenderAction } from '../../redux/actions/actionCreators';
+
 const StoryButtonClick = () => {
   const dispatch = useDispatch();
   const dispatcher = () => {
-    dispatch({ type: 'StoryButtonClick/storyFormRender' });
+    dispatch(storyFormRenderAction());
   };
   const storyFormButton = useSelector((state) => state.renderReducer.storyFormButton);
 

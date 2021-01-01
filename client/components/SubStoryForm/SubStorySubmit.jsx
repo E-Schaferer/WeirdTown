@@ -2,7 +2,9 @@ import React from 'react';
 import Axios from 'axios';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { showErrorAction } from '../../redux/actions/actionCreators';
 
 const SubStorySubmit = (props) => {
   const {
@@ -11,10 +13,12 @@ const SubStorySubmit = (props) => {
     inputSubSaw,
     inputSubHeard,
     inputSubStory,
-    handleError,
-    handleUserError,
   } = props;
   const currentStoryId = useSelector((state) => state.storyReducer.currentStory.id);
+  const dispatch = useDispatch();
+  const errDispatcher = (err) => {
+    dispatch(showErrorAction(err));
+  };
 
   const subStoryFormSubmit = (name, loc, heard, saw, story) => {
     const promise = Axios.post('/subStorySubmit', {
@@ -30,7 +34,7 @@ const SubStorySubmit = (props) => {
       window.location.reload(true);
     });
     const catcher = promise.catch((err) => {
-      handleError(['subStoryFormSubmit', err]);
+      errDispatcher(err);
     });
     return result || catcher;
   };
@@ -43,8 +47,7 @@ const SubStorySubmit = (props) => {
       || inputSubHeard === ''
       || inputSubStory === ''
     ) {
-      const message = 'please fill out all fields';
-      handleUserError(message);
+      errDispatcher('Please fill out all fields');
     } else {
       subStoryFormSubmit(inputSubName, inputSubLocation, inputSubHeard, inputSubSaw, inputSubStory);
     }
@@ -66,8 +69,6 @@ SubStorySubmit.propTypes = {
   inputSubSaw: PropTypes.string,
   inputSubHeard: PropTypes.string,
   inputSubStory: PropTypes.string,
-  handleError: PropTypes.func,
-  handleUserError: PropTypes.func,
 };
 SubStorySubmit.defaultProps = {
   inputSubName: undefined,
@@ -75,8 +76,6 @@ SubStorySubmit.defaultProps = {
   inputSubSaw: undefined,
   inputSubHeard: undefined,
   inputSubStory: undefined,
-  handleError: undefined,
-  handleUserError: undefined,
 };
 
 export default SubStorySubmit;

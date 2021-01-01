@@ -3,12 +3,21 @@ import PropTypes from 'prop-types';
 import Axios from 'axios';
 import { useDispatch } from 'react-redux';
 
+import { startingCitySubmitAction, showErrorAction } from '../../redux/actions/actionCreators';
+
 const CityButtonPress = ({ cityLocationInput }) => {
   const dispatch = useDispatch();
+  const dispatcher = (result) => {
+    dispatch(startingCitySubmitAction(result));
+  };
+  const errDispatcher = () => {
+    const errMessage = 'please enter a location';
+    dispatch(showErrorAction(errMessage));
+  };
 
   const handleButtonClick = () => {
     if (cityLocationInput === '') {
-      alert('please enter a location');
+      errDispatcher();
     } else {
       Axios.get('/cityAPI', {
         params: {
@@ -16,13 +25,7 @@ const CityButtonPress = ({ cityLocationInput }) => {
         },
       })
         .then((result) => {
-          dispatch({
-            type: 'cityButtonPress/handleStartingCitySubmit',
-            payload: {
-              lat: result.data.lat,
-              long: result.data.lng,
-            },
-          });
+          dispatcher(result);
         });
     }
   };

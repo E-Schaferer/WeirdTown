@@ -1,12 +1,6 @@
 html {
   font-family: BaltimoreTypewriter;
-
-  background-color: #11131d;
-  color: white;
-}
-
-body {
-  font-family: BaltimoreTypewriter;
+  /* overscroll-behavior: none;  trying to get rid of the stupid chrome bounce effect while scrolling*/
 }
 
 input, label, textarea {
@@ -14,177 +8,127 @@ input, label, textarea {
   padding: 5px;
 }
 
-#title-zone {
-  background-color: #f2eecb;
-  color: black;
-  margin: 5px auto 5px auto;
-  width: 25%;
-  padding: 1px 5px 1px 5px;
+body {
+  /* empty atm */
 }
 
-#title-zone-inner {
-  display: flex;
-  justify-content: center;
+.background-image {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-image: url("ghost-town.png"), linear-gradient(rgba(33, 33, 33, 0.95), rgba(21, 21, 21, 1));
+  filter: grayscale(100%);
+  background-blend-mode: overlay;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  z-index: -1;
 }
 
-/*
-=====
-  - map config
-=====
-*/
-#map-render-zone {
-  height: 380px;
-  width: 95%;
-  margin: 0 auto;
-}
-
-/*
-=====
-  - present story config
-=====
-*/
-#present-story {
-  width: 70%;
-  color: black;
-  margin: 0 auto;
-}
-
-#story-zone {
-  margin: 10px;
-  padding: 10px 0 10px 10px;
-  background-color: #f2eecb;
-}
-
-#story-header {
-  display: flex;
-  justify-content: flex-end;
-}
-
-#story-classified {
-  display: flex;
-  justify-content: center;
-  width: 95%;
-}
-
-/*
-=====
-  - sub story config
-=====
-*/
-
-.substory-prompt {
-  color: white;
-}
-
-.substory-prompt-text, .substory-prompt-button {
-  display: flex;
-  justify-content: center;
-}
-
-#substory-list-flex, #substory-list-button-flex, #substory-story-button-flex {
-  display: flex;
-  justify-content: center;
-}
-
-/*
-=====
-  - absent story / substory config
-=====
-*/
-#absent-story-inner {
-  display: flex;
-  justify-content: center;
-}
-
-#prompt-question, #prompt-button {
-  display: flex;
-  justify-content: center;
-}
-
-#absent-story-zone {
-  background-color: #f2eecb;
-  color: black;
-  padding: 5px;
-  width: 70%;
-}
-
-#sub-story-form, #substory-sub-list, #substory-render-actual {
-  padding: 20px;
-  background-color: #f2eecb;
-  color: black;
-}
-
-#absent-story-inner {
-  padding: 10px;
-}
-
-#input-header, #substory-header {
-  display: flex;
-  justify-content: center;
-}
-
-#input-weird-header, #substory-weird-header {
-  display: flex;
-  justify-content: flex-end;
-}
-
-#submit-zone {
-  display: flex;
-  justify-content: center;
-  margin: 5px;
-}
-
-#secret-footer, #sub-footer {
-  color: red;
-  display: flex;
-  justify-content: center;
-}
-
-.top-secret {
-  border: 1px solid red;
-  padding: 0.5px
-}
-
-/*
-=====
-  - text customization
-=====
-*/
-
-.redacted {
+.content-background {
   background-color: black;
+  background-origin: padding-box;
+  border-radius:  5px;
+  border: 1px solid white;
+  padding: 1em;
 }
 
-.underlined {
-  text-decoration: underline;
+/* grid */
+.render-grid {
+  font-family: BaltimoreTypewriter;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 10em 35em 40em;
 }
 
-.white-text {
-  color: white;
+.grid-row1 {
+  grid-row: 1;
 }
 
-/*
-=====
-  - div manipulation
-=====
-*/
-
-.hidden {
-  display: none;
+.grid-row2 {
+  grid-row: 2;
 }
 
-/*
-=====
-  - clickables
-=====
-*/
-.clickable-hightlight:hover {
+.grid-row3 {
+  grid-row: 3;
 }
 
+.grid-col2 {
+  grid-column: 2;
+}
+
+.grid-col3 {
+  grid-column: 3;
+}
+
+.grid-row2-col2 {
+  grid-row: 2;
+  grid-column: 2;
+}
+
+.grid-col1_4 {
+  grid-column: 1/4;
+}
+
+.background {
+  z-index: 1;
+}
+
+.foreground {
+  z-index: 2;
+}
+
+/* interactions */
 .clickable:hover {
   cursor: pointer;
-}
-
-.disabled {
   color: red;
 }
+
+/* positioning content */
+.flex {
+  display: flex;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.centered {
+  justify-content: center;
+  align-items: center;
+}
+
+/* style */
+.white {
+  color: white;
+}
+
+.shadow {
+  box-shadow: 5px 5px black;
+}
+
+/* animations */
+.fade-in {
+  animation-name: fade-in;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    margin-top: 10%;
+  }
+  to {
+    opacity: 1;
+    margin-top: 0%;
+  }
+}
+
+/* map zone */
+#map-render-zone {
+  height: 40em;
+  width: 95%;
+  margin: 0 auto;
+}
+

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
 import SubStoryRender from '../SubStoryRender/SubStoryRender';
@@ -7,7 +6,7 @@ import GoBack from './GoBack';
 import SubStoryListItem from './SubStoryListItem';
 import SubstorySort from './SubstorySort';
 
-const SubStoryList = ({ handleError, handleUserError }) => {
+const SubStoryList = () => {
   const subStoryListParent = useSelector((state) => state.renderReducer.subStoryListParent);
   const subStoryRenderParent = useSelector((state) => state.renderReducer.subStoryRenderParent);
   const currentStory = useSelector((state) => state.storyReducer.currentStory);
@@ -17,17 +16,15 @@ const SubStoryList = ({ handleError, handleUserError }) => {
     <div>
       {subStoryListParent
         ? (
-          <div>
+          <div className="content-background white">
             {subNum > 0 ? (
               <div>
-                <div>
+                <div className="flex centered column">
                   <h5>Department of Weird Stuff</h5>
-                </div>
-                <div>
                   <h1>
                     Files associated with file No°
                     {' '}
-                    {currentStory.storyid}
+                    {currentStory.id}
                     :
                   </h1>
                 </div>
@@ -48,24 +45,12 @@ const SubStoryList = ({ handleError, handleUserError }) => {
               <GoBack />
             </div>
             <div>
-              <SubStoryRender
-                handleError={handleError}
-                handleUserError={handleUserError}
-              />
+              <SubStoryRender />
             </div>
           </div>
         ) : null}
     </div>
   );
-};
-
-SubStoryList.propTypes = {
-  handleError: PropTypes.func,
-  handleUserError: PropTypes.func,
-};
-SubStoryList.defaultProps = {
-  handleError: undefined,
-  handleUserError: undefined,
 };
 
 export default SubStoryList;

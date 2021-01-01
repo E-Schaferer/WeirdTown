@@ -30,8 +30,8 @@ class CitySelection extends React.Component {
     return (
       <div>
         {cityLocationInputRender ? (
-          <label htmlFor="cityLocationInput">
-            Where do you live?
+          <label htmlFor="cityLocationInput" className="flex centered column content-background">
+            <p className="white">Where do you live?</p>
             <input name="cityLocationInput" onChange={this.handleTextAreaChange} />
             <CityButtonPress
               cityLocationInput={cityLocationInput}

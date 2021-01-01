@@ -11,7 +11,7 @@ const AbsentStory = ({ handleUserError, handleError }) => {
   return (
     <div>
       {absentStoryPrime ? (
-        <div>
+        <div className="flex column centered white content-background">
           <StoryButtonClick />
           <StoryForm
             handleUserError={handleUserError}

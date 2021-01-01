@@ -1,17 +1,21 @@
 import React from 'react';
 import Axios from 'axios';
-import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 
-const SubStoryListItem = ({ handleError }) => {
+import { showErrorAction, substoryListClickAction } from '../../redux/actions/actionCreators';
+
+const SubStoryListItem = () => {
   const subs = useSelector((state) => state.storyReducer.subs);
   const dispatch = useDispatch();
+  const dispatcher = (result) => {
+    dispatch(substoryListClickAction(result));
+  };
+  const errDispatcher = (err) => {
+    dispatch(showErrorAction(err));
+  };
 
   const handleListClick = (result) => {
-    dispatch({
-      type: 'subStoryListItem/handleListClick',
-      payload: result.data[0],
-    });
+    dispatcher(result);
   };
 
   const onClick = (event) => {
@@ -20,7 +24,7 @@ const SubStoryListItem = ({ handleError }) => {
         handleListClick(result);
       })
       .catch((err) => {
-        handleError(err);
+        errDispatcher(err);
       });
   };
 
@@ -33,13 +37,6 @@ const SubStoryListItem = ({ handleError }) => {
       </ol>
     </div>
   );
-};
-
-SubStoryListItem.propTypes = {
-  handleError: PropTypes.func,
-};
-SubStoryListItem.defaultProps = {
-  handleError: undefined,
 };
 
 export default SubStoryListItem;

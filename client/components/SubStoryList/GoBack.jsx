@@ -2,10 +2,12 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 
+import { goBackAction } from '../../redux/actions/actionCreators';
+
 const GoBack = () => {
   const dispatch = useDispatch();
   const dispatcher = () => {
-    dispatch({ type: 'goBack/onGoBack' });
+    dispatch(goBackAction());
   };
 
   return (

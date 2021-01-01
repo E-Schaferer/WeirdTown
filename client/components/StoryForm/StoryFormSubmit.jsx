@@ -1,8 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Button } from 'react-bootstrap';
+
+import { showErrorAction } from '../../redux/actions/actionCreators';
 
 const StoryFormSubmit = (props) => {
   const {
@@ -11,10 +13,12 @@ const StoryFormSubmit = (props) => {
     inputSaw,
     inputHeard,
     inputStory,
-    handleError,
-    handleUserError,
   } = props;
   const coords = useSelector((state) => state.mapReducer.lastMarker);
+  const dispatch = useDispatch();
+  const errDispatcher = (err) => {
+    dispatch(showErrorAction(err));
+  };
 
   const storyFormSubmit = (name, loc, saw, heard, story) => {
     const promise = axios.post('/storySubmit', {
@@ -31,7 +35,7 @@ const StoryFormSubmit = (props) => {
       window.location.reload(true);
     });
     const catcher = promise.catch((err) => {
-      handleError(['storyFormSubmit', err]);
+      errDispatcher(err);
     });
     return result || catcher;
   };
@@ -44,8 +48,7 @@ const StoryFormSubmit = (props) => {
       || inputHeard === ''
       || inputStory === ''
     ) {
-      const message = 'Please fill out all fields.';
-      handleUserError(message);
+      errDispatcher('please fill out all fields');
     } else {
       storyFormSubmit(inputName, inputLocation, inputSaw, inputHeard, inputStory);
     }
@@ -67,8 +70,6 @@ StoryFormSubmit.propTypes = {
   inputSaw: PropTypes.string,
   inputHeard: PropTypes.string,
   inputStory: PropTypes.string,
-  handleError: PropTypes.func,
-  handleUserError: PropTypes.func,
 };
 StoryFormSubmit.defaultProps = {
   inputName: '',
@@ -76,8 +77,6 @@ StoryFormSubmit.defaultProps = {
   inputSaw: '',
   inputHeard: '',
   inputStory: '',
-  handleError: undefined,
-  handleUserError: undefined,
 };
 
 export default StoryFormSubmit;

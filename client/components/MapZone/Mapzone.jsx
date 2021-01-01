@@ -4,10 +4,13 @@ import Axios from 'axios';
 import L from 'leaflet';
 import { connect } from 'react-redux';
 
+import { legendGetAction, locationClickAction, showErrorAction } from '../../redux/actions/actionCreators';
+
 function mapDispatchToProps(dispatch) {
   return {
-    legendGet: (res) => dispatch({ type: 'mapzone/handleLegendGet', payload: res.data[0] }),
-    handleLocationClick: (coords) => dispatch({ type: 'mapzone/handleLocationClick', payload: coords }),
+    legendGet: (res) => dispatch(legendGetAction(res)),
+    handleLocationClick: (coords) => dispatch(locationClickAction(coords)),
+    error: (err) => dispatch(showErrorAction(err)),
   };
 }
 
@@ -36,7 +39,7 @@ class Mapzone extends React.Component {
   componentDidMount() {
     const here = this;
     const { zoom } = this.state;
-    const { handleError, lat, long } = this.props;
+    const { error, lat, long } = this.props;
     Axios.get('/allStories')
       .then((result) => {
         for (let i = 0; i < result.data.length; i += 1) {
@@ -61,7 +64,7 @@ class Mapzone extends React.Component {
       })
       .catch((err) => {
         // needs alert
-        handleError('mapzone did mount', err);
+        error(err);
       });
   }
 
@@ -84,14 +87,14 @@ class Mapzone extends React.Component {
   }
 
   handleLegendGet(location) {
-    const { handleError, legendGet } = this.props;
+    const { error, legendGet } = this.props;
     let promise = Axios.get(`/locationInfo?lat=${location[0]}&lng=${location[1]}`);
     promise = promise.then((res) => {
       legendGet(res);
     })
       .catch((err) => {
         // needs alert
-        handleError('handleLegendGet', err);
+        error(err);
       });
     return promise;
   }
@@ -130,14 +133,14 @@ class Mapzone extends React.Component {
 }
 Mapzone.propTypes = {
   handleLocationClick: PropTypes.func,
-  handleError: PropTypes.func,
+  error: PropTypes.func,
   lat: PropTypes.number,
   long: PropTypes.number,
   legendGet: PropTypes.func,
 };
 Mapzone.defaultProps = {
   handleLocationClick: undefined,
-  handleError: undefined,
+  error: undefined,
   lat: undefined,
   long: undefined,
   legendGet: undefined,

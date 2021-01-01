@@ -1,10 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useSelector, shallowEqual } from 'react-redux';
 
 import SubStory from '../SubStory/SubStory';
 
-const PresentStory = ({ handleError, handleUserError }) => {
+const PresentStory = () => {
   const {
     id,
     likes,
@@ -20,8 +19,8 @@ const PresentStory = ({ handleError, handleUserError }) => {
     <div>
       {presentStoryRender ? (
         <div>
-          <div>
-            <div>
+          <div className="content-background white">
+            <div className="flex centered column">
               <h5>Department of Weird Stuff</h5>
               <h5>
                 Case No°
@@ -29,7 +28,7 @@ const PresentStory = ({ handleError, handleUserError }) => {
                 {10000 + id}
               </h5>
             </div>
-            <div>
+            <div className="flex centered column">
               <h1>CLASSIFIED</h1>
             </div>
             <div>
@@ -63,28 +62,16 @@ const PresentStory = ({ handleError, handleUserError }) => {
               <p>{story}</p>
             </div>
             <div>
-              <h5 className="top-secret">TOP SECRET</h5>
+              <h5 className="flex centered column">TOP SECRET</h5>
             </div>
           </div>
           <div id="substory">
-            <SubStory
-              handleError={handleError}
-              handleUserError={handleUserError}
-            />
+            <SubStory />
           </div>
         </div>
       ) : null}
     </div>
   );
-};
-
-PresentStory.propTypes = {
-  handleError: PropTypes.func,
-  handleUserError: PropTypes.func,
-};
-PresentStory.defaultProps = {
-  handleError: undefined,
-  handleUserError: undefined,
 };
 
 export default PresentStory;

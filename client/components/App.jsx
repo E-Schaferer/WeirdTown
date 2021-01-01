@@ -1,6 +1,5 @@
 /* eslint-disable class-methods-use-this */
 import React from 'react';
-import Axios from 'axios';
 
 import AbsentStory from './AbsentStory/AbsentStory';
 import PresentStory from './PresentStory/PresentStory';
@@ -8,31 +7,9 @@ import CurrentUser from './CurrentUser/CurrentUser';
 import AuthBar from './AuthBar/AuthBar';
 import MapzoneWrapper from './MapZone/MapzoneWrapper';
 import CitySelection from './CitySelection/CitySelection';
+import ErrorModal from './ErrorModal/ErrorModal';
 
 class App extends React.Component {
-  static handleError(funcName, err) {
-    Axios.get(`/errorLog?funcname=${funcName}&err=${err}`);
-    return 'result';
-  }
-
-  constructor(props) {
-    super(props);
-    this.handleUserData = this.handleUserData.bind(this);
-    this.handleUserError = this.handleUserError.bind(this);
-  }
-
-  /*
-=====
-  - error handling
-=====
-  */
-  handleUserError() {
-    // this.dispatch({
-    //   type: '/ShowError',
-    //   payload: message,
-    // });
-  }
-
   /*
 =====
   - user data
@@ -51,37 +28,28 @@ class App extends React.Component {
   */
   render() {
     return (
-      <div>
-        <div>
-          <CurrentUser handleUserData={this.handleUserData} handleError={App.handleError} />
+      <div className="render-grid">
+        <div id="error-modal">
+          <ErrorModal />
+        </div>
+        <div id="authentication" className="grid-row1 grid-col3 flex column centered content-background white">
+          <CurrentUser />
           <AuthBar />
         </div>
-        <CitySelection />
-        <div>
-          <h1>
-            My
-            {' '}
-            <span className="redacted">Weird</span>
-            {' '}
-            Normal Town
-          </h1>
-          <div>
-            <MapzoneWrapper
-              handleError={App.handleError}
-            />
-            <div>
-              <AbsentStory
-                handleError={App.handleError}
-                handleUserError={this.handleUserError}
-              />
-            </div>
-            <div className="flex-center">
-              <PresentStory
-                handleError={App.handleError}
-                handleUserError={this.handleUserError}
-              />
-            </div>
-          </div>
+        <div id="city-input" className="grid-row2 grid-col2 flex centered fade-in">
+          <CitySelection />
+        </div>
+        <div id="site-name" className="grid-row1 grid-col2 flex white centered">
+          <h1 className="content-background">Weird Town</h1>
+        </div>
+        <map id="map-zone" className="grid-row2 grid-col1_4">
+          <MapzoneWrapper />
+        </map>
+        <div id="absent-story" className="grid-row3 grid-col1_4">
+          <AbsentStory />
+        </div>
+        <div id="present-story" className="grid-row3 grid-col1_4">
+          <PresentStory />
         </div>
       </div>
     );

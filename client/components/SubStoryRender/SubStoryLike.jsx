@@ -1,14 +1,21 @@
 import React from 'react';
 import Axios from 'axios';
-import PropTypes from 'prop-types';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 
-const SubStoryLike = ({ handleError, handleUserError }) => {
+import { showErrorAction, subLikeAction } from '../../redux/actions/actionCreators';
+
+const SubStoryLike = () => {
   const { user, isAuthenticated } = useAuth0();
   const id = useSelector((state) => state.storyReducer.subStory.id);
   const dispatch = useDispatch();
+  const dispatcher = () => {
+    dispatch(subLikeAction());
+  };
+  const errDispatcher = (err) => {
+    dispatch(showErrorAction(err));
+  };
 
   const likeClick = () => {
     if (isAuthenticated) {
@@ -17,32 +24,19 @@ const SubStoryLike = ({ handleError, handleUserError }) => {
         user: user.email,
       })
         .then(() => {
-          dispatch({
-            type: 'subStoryLike/like',
-            payload: 1,
-          });
+          dispatcher();
         })
         .catch((err) => {
-          handleError(['likeClick', err]);
+          errDispatcher(err);
         });
     } else {
-      const message = 'Please sign in first.';
-      handleUserError(message);
+      errDispatcher('Please sign in first');
     }
   };
 
   return (
     <Button onClick={likeClick}>Like</Button>
   );
-};
-
-SubStoryLike.propTypes = {
-  handleError: PropTypes.func,
-  handleUserError: PropTypes.func,
-};
-SubStoryLike.defaultProps = {
-  handleError: undefined,
-  handleUserError: undefined,
 };
 
 export default SubStoryLike;

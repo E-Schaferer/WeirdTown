@@ -1,14 +1,21 @@
 import React from 'react';
 import Axios from 'axios';
-import PropTypes from 'prop-types';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 
-const SubStoryDislike = ({ handleError, handleUserError }) => {
+import { showErrorAction, subDislikeAction } from '../../redux/actions/actionCreators';
+
+const SubStoryDislike = () => {
   const { user, isAuthenticated } = useAuth0();
   const id = useSelector((state) => state.storyReducer.subStory.id);
   const dispatch = useDispatch();
+  const dispatcher = () => {
+    dispatch(subDislikeAction());
+  };
+  const errDispatcher = (err) => {
+    dispatch(showErrorAction(err));
+  };
 
   const dislikeClick = () => {
     if (isAuthenticated) {
@@ -17,32 +24,19 @@ const SubStoryDislike = ({ handleError, handleUserError }) => {
         userid: user.email,
       })
         .then(() => {
-          dispatch({
-            type: 'subStoryDislike/dislike',
-            payload: 1,
-          });
+          dispatcher();
         })
         .catch((err) => {
-          handleError(['dislikeClick', err]);
+          errDispatcher(err);
         });
     } else {
-      const message = 'Please sign in first.';
-      handleUserError(message);
+      errDispatcher('please sign in first');
     }
   };
 
   return (
     <Button onClick={dislikeClick}>Dislike</Button>
   );
-};
-
-SubStoryDislike.propTypes = {
-  handleError: PropTypes.func,
-  handleUserError: PropTypes.func,
-};
-SubStoryDislike.defaultProps = {
-  handleError: undefined,
-  handleUserError: undefined,
 };
 
 export default SubStoryDislike;

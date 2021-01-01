@@ -30,8 +30,6 @@ class StoryForm extends React.Component {
 
   render() {
     const {
-      handleUserError,
-      handleError,
       storyFormRender,
     } = this.props;
     const {
@@ -45,7 +43,7 @@ class StoryForm extends React.Component {
       <div>
         {storyFormRender ? (
           <div>
-            <div>
+            <div className="flex centered column">
               <h5>Department of Weird Stuff</h5>
               <h1>WEIRD INCIDENT SUBMISSION FORM</h1>
             </div>
@@ -79,18 +77,16 @@ class StoryForm extends React.Component {
                 <textarea name="inputStory" rows="5" cols="75" onChange={this.handleTextAreaChange} type="text" />
               </label>
             </div>
-            <div>
+            <div className="flex centered column">
               <StoryFormSubmit
                 inputName={inputName}
                 inputLocation={inputLocation}
                 inputSaw={inputSaw}
                 inputHeard={inputHeard}
                 inputStory={inputStory}
-                handleUserError={handleUserError}
-                handleError={handleError}
               />
             </div>
-            <div>
+            <div className="flex centered column">
               <h5 className="top-secret">TOP SECRET</h5>
             </div>
           </div>
@@ -101,13 +97,9 @@ class StoryForm extends React.Component {
 }
 
 StoryForm.propTypes = {
-  handleUserError: PropTypes.func,
-  handleError: PropTypes.func,
   storyFormRender: PropTypes.bool,
 };
 StoryForm.defaultProps = {
-  handleUserError: undefined,
-  handleError: undefined,
   storyFormRender: false,
 };
 
