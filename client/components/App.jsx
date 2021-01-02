@@ -32,9 +32,11 @@ class App extends React.Component {
         <div id="error-modal">
           <ErrorModal />
         </div>
-        <div id="authentication" className="grid-row1 grid-col3 flex column centered content-background white">
-          <CurrentUser />
-          <AuthBar />
+        <div className="flex to-end">
+          <div id="authentication" className="grid-row1 grid-col3 flex column centered content-background white margin-5">
+            <CurrentUser />
+            <AuthBar />
+          </div>
         </div>
         <div id="city-input" className="grid-row2 grid-col2 flex centered fade-in">
           <CitySelection />

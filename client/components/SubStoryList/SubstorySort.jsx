@@ -1,5 +1,5 @@
 import React from 'react';
-import { DropdownButton, Dropdown, ButtonGroup } from 'react-bootstrap';
+import { DropdownButton, Dropdown, ButtonGroup, Button } from 'react-bootstrap';
 import { useSelector, shallowEqual, useDispatch } from 'react-redux';
 
 import { substorySortAction } from '../../redux/actions/actionCreators';
@@ -35,8 +35,8 @@ const SubstorySort = () => {
   };
 
   return (
-    <DropdownButton as={ButtonGroup} id="substory-dropdown-sort" title="Sort By">
-      <Dropdown.Item as="button" id="sort-date-desc" data-testid="1" onClick={() => handleSort('dateDesc')}>Date (Descending)</Dropdown.Item>
+    <DropdownButton as={ButtonGroup} id="substory-dropdown-sort" title="Sort By" variant="secondary">
+      <Dropdown.Item as="button" id="sort-date-desc" onClick={() => handleSort('dateDesc')}>Date (Descending)</Dropdown.Item>
       <Dropdown.Item as="button" id="sort-date-asc" onClick={() => handleSort('dateAsc')}>Date (Ascending)</Dropdown.Item>
       <Dropdown.Item as="button" id="sort-like-desc" onClick={() => handleSort('likesDesc')}>Likes (Descending)</Dropdown.Item>
       <Dropdown.Item as="button" id="sort-like-asc" onClick={() => handleSort('likdesDesc')}>Likes (Ascending)</Dropdown.Item>

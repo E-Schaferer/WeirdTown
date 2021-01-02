@@ -42,7 +42,7 @@ class StoryForm extends React.Component {
     return (
       <div>
         {storyFormRender ? (
-          <div className="fade-in content-background white">
+          <div className="fade-in content-background white bottom-of-screen">
             <div className="flex centered column">
               <h5>Department of Weird Stuff</h5>
               <h1>WEIRD INCIDENT SUBMISSION FORM</h1>
@@ -77,7 +77,7 @@ class StoryForm extends React.Component {
                 <textarea name="inputStory" rows="5" cols="75" onChange={this.handleTextAreaChange} type="text" />
               </label>
             </div>
-            <div className="flex centered column">
+            <div className="flex centered column padding-small">
               <StoryFormSubmit
                 inputName={inputName}
                 inputLocation={inputLocation}

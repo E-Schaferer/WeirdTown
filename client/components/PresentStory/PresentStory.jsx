@@ -19,8 +19,8 @@ const PresentStory = () => {
   return (
     <div>
       {presentStoryRender ? (
-        <div>
-          <div className="content-background white fade-in">
+        <div className="flex centered">
+          <div className="content-background white fade-in width-majority">
             <div className="flex centered column">
               <h5>Department of Weird Stuff</h5>
               <h5>
@@ -32,23 +32,23 @@ const PresentStory = () => {
             <div className="flex centered column">
               <h1>CLASSIFIED</h1>
             </div>
-            <div>
+            <div className="padding-small">
               <h4>
                 likes:
                 {' '}
                 {likes}
               </h4>
             </div>
-            <div>
-              <h3 className="underlined">INCIDENT NAME:</h3>
+            <div className="padding-small">
+              <h3>INCIDENT NAME:</h3>
               <p>{storyname}</p>
             </div>
-            <div>
-              <h3 className="underlined">INCIDENT LOCATION:</h3>
+            <div className="padding-small">
+              <h3>INCIDENT LOCATION:</h3>
               <p>{storylocation}</p>
             </div>
-            <div>
-              <h3 className="underlined">WITNESSES DESCRIPTION:</h3>
+            <div className="padding-small">
+              <h3>WITNESSES DESCRIPTION:</h3>
               <p>
                 -
                 {thingsseen}
@@ -58,8 +58,8 @@ const PresentStory = () => {
                 {thingsheard}
               </p>
             </div>
-            <div>
-              <h3 className="underlined">TIMELINE OF EVENTS:</h3>
+            <div className="padding-small">
+              <h3>TIMELINE OF EVENTS:</h3>
               <p>{story}</p>
             </div>
             <ShowSubStories />

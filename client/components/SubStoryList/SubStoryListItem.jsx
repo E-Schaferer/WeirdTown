@@ -29,7 +29,7 @@ const SubStoryListItem = () => {
   };
 
   // clean this subList up
-  const subList = subs.map((sub) => <li id={`sub-item-${sub.id}`} name={sub.id} key={sub.id} role="presentation" className="clickable clickable-highlight" onClick={onClick}>{sub.subname}</li>);
+  const subList = subs.map((sub) => <li id={`sub-item-${sub.id}`} name={sub.id} key={sub.id} role="presentation" className="clickable clickable-highlight padding-small" onClick={onClick}>{sub.subname}</li>);
   return (
     <div>
       <ol data-testid="sub-list" className="sub-list">

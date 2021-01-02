@@ -10,8 +10,8 @@ const GoBackToStory = () => {
     dispatch(goBackToStoryAction());
   };
   return (
-    <Button onClick={goBackDispatcher}>
-      return to story
+    <Button className="btn-light" onClick={goBackDispatcher}>
+      Return to story
     </Button>
   );
 };

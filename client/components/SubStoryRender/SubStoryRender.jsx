@@ -9,7 +9,7 @@ const SubStoryRender = () => {
   const subStory = useSelector((state) => state.storyReducer.subStory);
 
   return (
-    <div className="content-background white fade-in">
+    <div className="content-background white fade-in width-majority">
       <GoBackToList />
       <div>
         <div className="flex centered column">
@@ -26,7 +26,7 @@ const SubStoryRender = () => {
       <div className="flex centered column">
         <h1>CLASSIFIED</h1>
       </div>
-      <div>
+      <div className="padding-small">
         <h4>
           likes:
           { ' ' }
@@ -35,21 +35,21 @@ const SubStoryRender = () => {
         <SubStoryLike />
         <SubStoryDislike />
       </div>
-      <div>
-        <h3 className="underlined">INCIDENT NAME:</h3>
+      <div className="padding-small">
+        <h3>INCIDENT NAME:</h3>
         {subStory.subname}
       </div>
-      <div>
-        <h3 className="underlined">INCIDENT LOCATION:</h3>
+      <div className="padding-small">
+        <h3>INCIDENT LOCATION:</h3>
         {subStory.sublocation}
       </div>
-      <div>
-        <h3 className="underlined">WITNESS DESCRIPTION:</h3>
+      <div className="padding-small">
+        <h3>WITNESS DESCRIPTION:</h3>
         {subStory.subseen}
         {subStory.subheard}
       </div>
-      <div>
-        <h3 className="underlined">TIMELINE OF EVENTS:</h3>
+      <div className="padding-small">
+        <h3>TIMELINE OF EVENTS:</h3>
         {subStory.substory}
       </div>
       <div>

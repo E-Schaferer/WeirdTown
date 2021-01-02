@@ -31,7 +31,7 @@ const CityButtonPress = ({ cityLocationInput }) => {
   };
 
   return (
-    <button type="button" onClick={handleButtonClick}>Submit</button>
+    <button className="margin-5 btn-light" type="button" onClick={handleButtonClick}>Submit</button>
   );
 };
 

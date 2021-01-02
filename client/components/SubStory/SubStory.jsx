@@ -11,12 +11,14 @@ const SubStory = () => {
     <div>
       {subStoryPrime ? (
         <div>
-          <div>
-            <ol>
+          <div className="flex centered">
+            <ol className="width-majority">
               <SubStoryList />
             </ol>
           </div>
-          <SubStoryForm />
+          <div className="flex centered">
+            <SubStoryForm />
+          </div>
         </div>
       ) : null}
     </div>
