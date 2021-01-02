@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import GoBack from '../../components/SubStoryList/GoBack';
+import GoBackToList from '../../components/SubStoryList/GoBackToList';
 
 configure({ adapter: new Adapter() });
 
