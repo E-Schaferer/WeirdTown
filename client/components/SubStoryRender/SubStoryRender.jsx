@@ -3,12 +3,14 @@ import { useSelector } from 'react-redux';
 
 import SubStoryLike from './SubStoryLike';
 import SubStoryDislike from './SubStoryDislike';
+import GoBackToList from '../SubStoryList/GoBackToList';
 
 const SubStoryRender = () => {
   const subStory = useSelector((state) => state.storyReducer.subStory);
 
   return (
-    <div className="content-background white">
+    <div className="content-background white fade-in">
+      <GoBackToList />
       <div>
         <div className="flex centered column">
           <h5>Department of Weird Stuff</h5>

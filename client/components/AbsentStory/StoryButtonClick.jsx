@@ -14,7 +14,7 @@ const StoryButtonClick = () => {
   return (
     <div>
       {storyFormButton ? (
-        <div>
+        <div className="flex column centered white content-background fade-in">
           <h2>No stories have been told about this place. Would you like to share one?</h2>
           <Button onClick={dispatcher}>Share your story</Button>
         </div>

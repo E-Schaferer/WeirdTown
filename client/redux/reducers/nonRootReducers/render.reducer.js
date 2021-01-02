@@ -29,6 +29,7 @@ const renderReducer = (state = initialState, action) => {
         showSubStoriesButton: false,
         subStoryListParent: true,
         subStoryFormButton: true,
+        presentStoryRender: false,
       };
     case 'showSubForm/onShowSubForm':
       return {
@@ -43,11 +44,20 @@ const renderReducer = (state = initialState, action) => {
         subStoryRenderParent: true,
         subStoryListParent: false,
       };
-    case 'goBack/onGoBack':
+    case 'goBackToList/onGoBack':
       return {
         ...state,
         subStoryRenderParent: false,
         subStoryListParent: true,
+        subStoryFormRender: false,
+        subStoryFormButton: true,
+      };
+    case 'goBackToStory/onGoBack':
+      return {
+        ...state,
+        presentStoryRender: true,
+        showSubStoriesButton: true,
+        subStoryListParent: false,
       };
     case 'mapzone/handleLocationClick':
       return {

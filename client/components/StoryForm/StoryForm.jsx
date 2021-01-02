@@ -42,7 +42,7 @@ class StoryForm extends React.Component {
     return (
       <div>
         {storyFormRender ? (
-          <div>
+          <div className="fade-in content-background white">
             <div className="flex centered column">
               <h5>Department of Weird Stuff</h5>
               <h1>WEIRD INCIDENT SUBMISSION FORM</h1>

@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, shallowEqual } from 'react-redux';
 
 import SubStory from '../SubStory/SubStory';
+import ShowSubStories from '../SubStory/ShowSubStories';
 
 const PresentStory = () => {
   const {
@@ -19,7 +20,7 @@ const PresentStory = () => {
     <div>
       {presentStoryRender ? (
         <div>
-          <div className="content-background white">
+          <div className="content-background white fade-in">
             <div className="flex centered column">
               <h5>Department of Weird Stuff</h5>
               <h5>
@@ -61,15 +62,16 @@ const PresentStory = () => {
               <h3 className="underlined">TIMELINE OF EVENTS:</h3>
               <p>{story}</p>
             </div>
+            <ShowSubStories />
             <div>
               <h5 className="flex centered column">TOP SECRET</h5>
             </div>
           </div>
-          <div id="substory">
-            <SubStory />
-          </div>
         </div>
       ) : null}
+      <div id="substory">
+        <SubStory />
+      </div>
     </div>
   );
 };

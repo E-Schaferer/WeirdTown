@@ -44,8 +44,13 @@ const showSubAction = (result) => ({
   },
 });
 
-const goBackAction = () => ({
-  type: 'goBack/onGoBack',
+const goBackToListAction = () => ({
+  type: 'goBackToList/onGoBack',
+  payload: '',
+});
+
+const goBackToStoryAction = () => ({
+  type: 'goBackToStory/onGoBack',
   payload: '',
 });
 
@@ -78,7 +83,8 @@ module.exports = {
   locationClickAction,
   showSubFormAction,
   showSubAction,
-  goBackAction,
+  goBackToListAction,
+  goBackToStoryAction,
   substoryListClickAction,
   substorySortAction,
   subLikeAction,

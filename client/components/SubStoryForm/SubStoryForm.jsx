@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import SubStorySubmit from './SubStorySubmit';
+import GoBackToList from '../SubStoryList/GoBackToList';
 
 const mapStateToProps = (state) => ({
   subStoryFormRender: state.renderReducer.subStoryFormRender,
@@ -42,11 +43,10 @@ class SubStoryForm extends React.Component {
     return (
       <div>
         {subStoryFormRender ? (
-          <div>
-            <div>
+          <div className="content-background white fade-in">
+            <GoBackToList />
+            <div className="flex centered column">
               <h5>Department of Weird Stuff</h5>
-            </div>
-            <div>
               <h1>
                 INCIDENT
                 {' '}
@@ -94,8 +94,8 @@ class SubStoryForm extends React.Component {
                 inputSubStory={inputSubStory}
               />
             </div>
-            <div>
-              <h5 className="top-secret">TOP SECRET</h5>
+            <div className="flex centered">
+              <h5>TOP SECRET</h5>
             </div>
           </div>
         )
