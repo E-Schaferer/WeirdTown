@@ -15,7 +15,7 @@ const ShowSubForm = () => {
     <div>
       {subStoryFormButton ? (
         <Button
-          className="clickable"
+          className="clickable btn-light"
           onClick={dispatcher}
         >
           Write Your Own Sub-Story

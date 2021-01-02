@@ -1,35 +1,22 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
 import StoryForm from '../StoryForm/StoryForm';
 import StoryButtonClick from './StoryButtonClick';
 
-const AbsentStory = ({ handleUserError, handleError }) => {
+const AbsentStory = () => {
   const absentStoryPrime = useSelector((state) => state.renderReducer.absentStoryPrime);
 
   return (
     <div>
       {absentStoryPrime ? (
-        <div>
+        <div className="flex centered">
           <StoryButtonClick />
-          <StoryForm
-            handleUserError={handleUserError}
-            handleError={handleError}
-          />
+          <StoryForm />
         </div>
       ) : null}
     </div>
   );
-};
-
-AbsentStory.propTypes = {
-  handleUserError: PropTypes.func,
-  handleError: PropTypes.func,
-};
-AbsentStory.defaultProps = {
-  handleUserError: undefined,
-  handleError: undefined,
 };
 
 export default AbsentStory;

@@ -35,7 +35,7 @@ const SubStoryLike = () => {
   };
 
   return (
-    <Button onClick={likeClick}>Like</Button>
+    <Button className="btn-light" onClick={likeClick}>Like</Button>
   );
 };
 

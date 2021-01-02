@@ -35,7 +35,7 @@ const SubStoryDislike = () => {
   };
 
   return (
-    <Button onClick={dislikeClick}>Dislike</Button>
+    <Button className="btn-light" onClick={dislikeClick}>Dislike</Button>
   );
 };
 

@@ -45,7 +45,7 @@ const SubStoryList = () => {
         ) : null}
       {subStoryRenderParent
         ? (
-          <div>
+          <div className="flex centered">
             <SubStoryRender />
           </div>
         ) : null}

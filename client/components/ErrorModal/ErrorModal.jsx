@@ -29,7 +29,7 @@ const ErrorModal = () => {
         </Modal.Header>
         <Modal.Body>{errorMessage}</Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={close}>
+          <Button className="btn-dark" variant="primary" onClick={close}>
             Close
           </Button>
         </Modal.Footer>

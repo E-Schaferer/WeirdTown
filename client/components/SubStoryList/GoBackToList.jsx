@@ -13,9 +13,9 @@ const GoBackToList = () => {
   return (
     <Button
       onClick={dispatcher}
-      className="underlined clickable white-text"
+      className="btn-light"
     >
-      Return to the substory list
+      Return to substory list
     </Button>
   );
 };

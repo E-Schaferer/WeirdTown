@@ -11,7 +11,7 @@ const LogoutButton = () => {
         returnTo: window.location.origin,
       })}
       variant="danger"
-      className="btn-margin"
+      className="btn-margin btn-light"
     >
       Log Out
     </Button>

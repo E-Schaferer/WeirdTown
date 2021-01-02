@@ -31,7 +31,7 @@ const ShowSubStories = () => {
     <div>
       {showSubStoriesButton ? (
         <Button
-          className="clickable"
+          className="clickable btn-light"
           onClick={showSub}
         >
           Show Associated Files

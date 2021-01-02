@@ -56,7 +56,7 @@ const StoryFormSubmit = (props) => {
 
   return (
     <Button
-      className="clickable"
+      className="clickable btn-light"
       onClick={onStorySubmit}
     >
       Submit your story!

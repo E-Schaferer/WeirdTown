@@ -56,7 +56,7 @@ const SubStorySubmit = (props) => {
   return (
     <Button
       onClick={subSubmitClick}
-      className="clickable"
+      className="clickable btn-light"
     >
       Submit Substory
     </Button>
