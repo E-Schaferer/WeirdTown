@@ -2,12 +2,12 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 
-import { goBackAction } from '../../redux/actions/actionCreators';
+import { goBackToListAction } from '../../redux/actions/actionCreators';
 
-const GoBack = () => {
+const GoBackToList = () => {
   const dispatch = useDispatch();
   const dispatcher = () => {
-    dispatch(goBackAction());
+    dispatch(goBackToListAction());
   };
 
   return (
@@ -20,4 +20,4 @@ const GoBack = () => {
   );
 };
 
-export default GoBack;
+export default GoBackToList;

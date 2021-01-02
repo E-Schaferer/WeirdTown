@@ -9,7 +9,7 @@ const ShowSubStories = () => {
   const showSubStoriesButton = useSelector((state) => state.renderReducer.showSubStoriesButton);
   const id = useSelector((state) => state.storyReducer.currentStory.id);
   const dispatch = useDispatch();
-  const dispatcher = (result) => {
+  const showSubDispatcher = (result) => {
     dispatch(showSubAction(result));
   };
   const errDispatcher = (err) => {
@@ -20,7 +20,7 @@ const ShowSubStories = () => {
   const showSub = () => {
     Axios.get(`/subStoryGet?storyId=${id}`)
       .then((result) => {
-        dispatcher(result);
+        showSubDispatcher(result);
       })
       .catch((err) => {
         errDispatcher(err);
